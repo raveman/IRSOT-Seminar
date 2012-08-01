@@ -1,0 +1,328 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C462BDAF15C95A8700170E3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDAE15C95A8700170E3C /* UIKit.framework */; };
+		C462BDB115C95A8700170E3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB015C95A8700170E3C /* Foundation.framework */; };
+		C462BDB315C95A8700170E3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB215C95A8700170E3C /* CoreGraphics.framework */; };
+		C462BDB515C95A8700170E3C /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB415C95A8700170E3C /* CoreData.framework */; };
+		C462BDBB15C95A8700170E3C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C462BDB915C95A8700170E3C /* InfoPlist.strings */; };
+		C462BDBD15C95A8700170E3C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDBC15C95A8700170E3C /* main.m */; };
+		C462BDC115C95A8700170E3C /* ISAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDC015C95A8700170E3C /* ISAppDelegate.m */; };
+		C462BDC415C95A8700170E3C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C462BDC215C95A8700170E3C /* MainStoryboard_iPhone.storyboard */; };
+		C462BDC715C95A8700170E3C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C462BDC515C95A8700170E3C /* MainStoryboard_iPad.storyboard */; };
+		C462BDCA15C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */; };
+		C462BDCD15C95A8700170E3C /* ISMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCC15C95A8700170E3C /* ISMasterViewController.m */; };
+		C462BDD015C95A8700170E3C /* ISDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCF15C95A8700170E3C /* ISDetailViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C462BDAA15C95A8700170E3C /* IRSOT Seminars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IRSOT Seminars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C462BDAE15C95A8700170E3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C462BDB015C95A8700170E3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C462BDB215C95A8700170E3C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C462BDB415C95A8700170E3C /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C462BDB815C95A8700170E3C /* IRSOT Seminars-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "IRSOT Seminars-Info.plist"; sourceTree = "<group>"; };
+		C462BDBA15C95A8700170E3C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C462BDBC15C95A8700170E3C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C462BDBE15C95A8700170E3C /* IRSOT Seminars-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IRSOT Seminars-Prefix.pch"; sourceTree = "<group>"; };
+		C462BDBF15C95A8700170E3C /* ISAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISAppDelegate.h; sourceTree = "<group>"; };
+		C462BDC015C95A8700170E3C /* ISAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISAppDelegate.m; sourceTree = "<group>"; };
+		C462BDC315C95A8700170E3C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		C462BDC615C95A8700170E3C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		C462BDC915C95A8700170E3C /* IRSOT_Seminars.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IRSOT_Seminars.xcdatamodel; sourceTree = "<group>"; };
+		C462BDCB15C95A8700170E3C /* ISMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISMasterViewController.h; sourceTree = "<group>"; };
+		C462BDCC15C95A8700170E3C /* ISMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISMasterViewController.m; sourceTree = "<group>"; };
+		C462BDCE15C95A8700170E3C /* ISDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISDetailViewController.h; sourceTree = "<group>"; };
+		C462BDCF15C95A8700170E3C /* ISDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISDetailViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C462BDA715C95A8700170E3C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C462BDAF15C95A8700170E3C /* UIKit.framework in Frameworks */,
+				C462BDB115C95A8700170E3C /* Foundation.framework in Frameworks */,
+				C462BDB315C95A8700170E3C /* CoreGraphics.framework in Frameworks */,
+				C462BDB515C95A8700170E3C /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C462BD9F15C95A8700170E3C = {
+			isa = PBXGroup;
+			children = (
+				C462BDB615C95A8700170E3C /* IRSOT Seminars */,
+				C462BDAD15C95A8700170E3C /* Frameworks */,
+				C462BDAB15C95A8700170E3C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C462BDAB15C95A8700170E3C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C462BDAA15C95A8700170E3C /* IRSOT Seminars.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C462BDAD15C95A8700170E3C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C462BDAE15C95A8700170E3C /* UIKit.framework */,
+				C462BDB015C95A8700170E3C /* Foundation.framework */,
+				C462BDB215C95A8700170E3C /* CoreGraphics.framework */,
+				C462BDB415C95A8700170E3C /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C462BDB615C95A8700170E3C /* IRSOT Seminars */ = {
+			isa = PBXGroup;
+			children = (
+				C462BDBF15C95A8700170E3C /* ISAppDelegate.h */,
+				C462BDC015C95A8700170E3C /* ISAppDelegate.m */,
+				C462BDC215C95A8700170E3C /* MainStoryboard_iPhone.storyboard */,
+				C462BDC515C95A8700170E3C /* MainStoryboard_iPad.storyboard */,
+				C462BDCB15C95A8700170E3C /* ISMasterViewController.h */,
+				C462BDCC15C95A8700170E3C /* ISMasterViewController.m */,
+				C462BDCE15C95A8700170E3C /* ISDetailViewController.h */,
+				C462BDCF15C95A8700170E3C /* ISDetailViewController.m */,
+				C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */,
+				C462BDB715C95A8700170E3C /* Supporting Files */,
+			);
+			path = "IRSOT Seminars";
+			sourceTree = "<group>";
+		};
+		C462BDB715C95A8700170E3C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C462BDB815C95A8700170E3C /* IRSOT Seminars-Info.plist */,
+				C462BDB915C95A8700170E3C /* InfoPlist.strings */,
+				C462BDBC15C95A8700170E3C /* main.m */,
+				C462BDBE15C95A8700170E3C /* IRSOT Seminars-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C462BDA915C95A8700170E3C /* IRSOT Seminars */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C462BDD315C95A8700170E3C /* Build configuration list for PBXNativeTarget "IRSOT Seminars" */;
+			buildPhases = (
+				C462BDA615C95A8700170E3C /* Sources */,
+				C462BDA715C95A8700170E3C /* Frameworks */,
+				C462BDA815C95A8700170E3C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "IRSOT Seminars";
+			productName = "IRSOT Seminars";
+			productReference = C462BDAA15C95A8700170E3C /* IRSOT Seminars.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C462BDA115C95A8700170E3C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = IS;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Bob Ershov";
+			};
+			buildConfigurationList = C462BDA415C95A8700170E3C /* Build configuration list for PBXProject "IRSOT Seminars" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C462BD9F15C95A8700170E3C;
+			productRefGroup = C462BDAB15C95A8700170E3C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C462BDA915C95A8700170E3C /* IRSOT Seminars */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C462BDA815C95A8700170E3C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C462BDBB15C95A8700170E3C /* InfoPlist.strings in Resources */,
+				C462BDC415C95A8700170E3C /* MainStoryboard_iPhone.storyboard in Resources */,
+				C462BDC715C95A8700170E3C /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C462BDA615C95A8700170E3C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C462BDBD15C95A8700170E3C /* main.m in Sources */,
+				C462BDC115C95A8700170E3C /* ISAppDelegate.m in Sources */,
+				C462BDCA15C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld in Sources */,
+				C462BDCD15C95A8700170E3C /* ISMasterViewController.m in Sources */,
+				C462BDD015C95A8700170E3C /* ISDetailViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C462BDB915C95A8700170E3C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C462BDBA15C95A8700170E3C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C462BDC215C95A8700170E3C /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C462BDC315C95A8700170E3C /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		C462BDC515C95A8700170E3C /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C462BDC615C95A8700170E3C /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C462BDD115C95A8700170E3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C462BDD215C95A8700170E3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C462BDD415C95A8700170E3C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
+				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C462BDD515C95A8700170E3C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
+				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C462BDA415C95A8700170E3C /* Build configuration list for PBXProject "IRSOT Seminars" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C462BDD115C95A8700170E3C /* Debug */,
+				C462BDD215C95A8700170E3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C462BDD315C95A8700170E3C /* Build configuration list for PBXNativeTarget "IRSOT Seminars" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C462BDD415C95A8700170E3C /* Debug */,
+				C462BDD515C95A8700170E3C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C462BDC915C95A8700170E3C /* IRSOT_Seminars.xcdatamodel */,
+			);
+			currentVersion = C462BDC915C95A8700170E3C /* IRSOT_Seminars.xcdatamodel */;
+			path = IRSOT_Seminars.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = C462BDA115C95A8700170E3C /* Project object */;
+}

@@ -32,6 +32,9 @@
         ISMasterViewController *controller = (ISMasterViewController *)navigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
     }
+    
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
+    
     return YES;
 }
 							

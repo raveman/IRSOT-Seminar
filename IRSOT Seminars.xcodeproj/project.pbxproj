@@ -19,6 +19,12 @@
 		C462BDCA15C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */; };
 		C462BDCD15C95A8700170E3C /* ISMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCC15C95A8700170E3C /* ISMasterViewController.m */; };
 		C462BDD015C95A8700170E3C /* ISDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCF15C95A8700170E3C /* ISDetailViewController.m */; };
+		C462BDDB15C95B7300170E3C /* ISMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */; };
+		C4DE788015C95C02007FBEC4 /* ISInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE787F15C95C02007FBEC4 /* ISInfoTableViewController.m */; };
+		C4DE788415C95C42007FBEC4 /* ISWebviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE788315C95C42007FBEC4 /* ISWebviewViewController.m */; };
+		C4DE788715C95C96007FBEC4 /* ISSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE788615C95C96007FBEC4 /* ISSettingsViewController.m */; };
+		C4DE788A15C95D26007FBEC4 /* ISSeminarListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE788915C95D26007FBEC4 /* ISSeminarListTableViewController.m */; };
+		C4DE788F15C95E34007FBEC4 /* Info Links.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4DE788E15C95E34007FBEC4 /* Info Links.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +46,17 @@
 		C462BDCC15C95A8700170E3C /* ISMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISMasterViewController.m; sourceTree = "<group>"; };
 		C462BDCE15C95A8700170E3C /* ISDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISDetailViewController.h; sourceTree = "<group>"; };
 		C462BDCF15C95A8700170E3C /* ISDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISDetailViewController.m; sourceTree = "<group>"; };
+		C462BDD915C95B7300170E3C /* ISMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMainPageViewController.h; sourceTree = "<group>"; };
+		C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMainPageViewController.m; sourceTree = "<group>"; };
+		C4DE787E15C95C02007FBEC4 /* ISInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISInfoTableViewController.h; sourceTree = "<group>"; };
+		C4DE787F15C95C02007FBEC4 /* ISInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISInfoTableViewController.m; sourceTree = "<group>"; };
+		C4DE788215C95C42007FBEC4 /* ISWebviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISWebviewViewController.h; sourceTree = "<group>"; };
+		C4DE788315C95C42007FBEC4 /* ISWebviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISWebviewViewController.m; sourceTree = "<group>"; };
+		C4DE788515C95C96007FBEC4 /* ISSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSettingsViewController.h; sourceTree = "<group>"; };
+		C4DE788615C95C96007FBEC4 /* ISSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSettingsViewController.m; sourceTree = "<group>"; };
+		C4DE788815C95D26007FBEC4 /* ISSeminarListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSeminarListTableViewController.h; sourceTree = "<group>"; };
+		C4DE788915C95D26007FBEC4 /* ISSeminarListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSeminarListTableViewController.m; sourceTree = "<group>"; };
+		C4DE788E15C95E34007FBEC4 /* Info Links.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info Links.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,14 +105,11 @@
 		C462BDB615C95A8700170E3C /* IRSOT Seminars */ = {
 			isa = PBXGroup;
 			children = (
-				C462BDBF15C95A8700170E3C /* ISAppDelegate.h */,
-				C462BDC015C95A8700170E3C /* ISAppDelegate.m */,
 				C462BDC215C95A8700170E3C /* MainStoryboard_iPhone.storyboard */,
 				C462BDC515C95A8700170E3C /* MainStoryboard_iPad.storyboard */,
-				C462BDCB15C95A8700170E3C /* ISMasterViewController.h */,
-				C462BDCC15C95A8700170E3C /* ISMasterViewController.m */,
-				C462BDCE15C95A8700170E3C /* ISDetailViewController.h */,
-				C462BDCF15C95A8700170E3C /* ISDetailViewController.m */,
+				C4DE788D15C95DE0007FBEC4 /* Trash Views */,
+				C4DE788C15C95DCA007FBEC4 /* Info */,
+				C4DE788B15C95DC1007FBEC4 /* Main Views */,
 				C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */,
 				C462BDB715C95A8700170E3C /* Supporting Files */,
 			);
@@ -105,12 +119,50 @@
 		C462BDB715C95A8700170E3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C4DE788E15C95E34007FBEC4 /* Info Links.plist */,
 				C462BDB815C95A8700170E3C /* IRSOT Seminars-Info.plist */,
 				C462BDB915C95A8700170E3C /* InfoPlist.strings */,
+				C462BDBF15C95A8700170E3C /* ISAppDelegate.h */,
+				C462BDC015C95A8700170E3C /* ISAppDelegate.m */,
 				C462BDBC15C95A8700170E3C /* main.m */,
 				C462BDBE15C95A8700170E3C /* IRSOT Seminars-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C4DE788B15C95DC1007FBEC4 /* Main Views */ = {
+			isa = PBXGroup;
+			children = (
+				C462BDD915C95B7300170E3C /* ISMainPageViewController.h */,
+				C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */,
+				C4DE788815C95D26007FBEC4 /* ISSeminarListTableViewController.h */,
+				C4DE788915C95D26007FBEC4 /* ISSeminarListTableViewController.m */,
+				C4DE788515C95C96007FBEC4 /* ISSettingsViewController.h */,
+				C4DE788615C95C96007FBEC4 /* ISSettingsViewController.m */,
+			);
+			name = "Main Views";
+			sourceTree = "<group>";
+		};
+		C4DE788C15C95DCA007FBEC4 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				C4DE787E15C95C02007FBEC4 /* ISInfoTableViewController.h */,
+				C4DE787F15C95C02007FBEC4 /* ISInfoTableViewController.m */,
+				C4DE788215C95C42007FBEC4 /* ISWebviewViewController.h */,
+				C4DE788315C95C42007FBEC4 /* ISWebviewViewController.m */,
+			);
+			name = Info;
+			sourceTree = "<group>";
+		};
+		C4DE788D15C95DE0007FBEC4 /* Trash Views */ = {
+			isa = PBXGroup;
+			children = (
+				C462BDCB15C95A8700170E3C /* ISMasterViewController.h */,
+				C462BDCC15C95A8700170E3C /* ISMasterViewController.m */,
+				C462BDCE15C95A8700170E3C /* ISDetailViewController.h */,
+				C462BDCF15C95A8700170E3C /* ISDetailViewController.m */,
+			);
+			name = "Trash Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -168,6 +220,7 @@
 				C462BDBB15C95A8700170E3C /* InfoPlist.strings in Resources */,
 				C462BDC415C95A8700170E3C /* MainStoryboard_iPhone.storyboard in Resources */,
 				C462BDC715C95A8700170E3C /* MainStoryboard_iPad.storyboard in Resources */,
+				C4DE788F15C95E34007FBEC4 /* Info Links.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +236,11 @@
 				C462BDCA15C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld in Sources */,
 				C462BDCD15C95A8700170E3C /* ISMasterViewController.m in Sources */,
 				C462BDD015C95A8700170E3C /* ISDetailViewController.m in Sources */,
+				C462BDDB15C95B7300170E3C /* ISMainPageViewController.m in Sources */,
+				C4DE788015C95C02007FBEC4 /* ISInfoTableViewController.m in Sources */,
+				C4DE788415C95C42007FBEC4 /* ISWebviewViewController.m in Sources */,
+				C4DE788715C95C96007FBEC4 /* ISSettingsViewController.m in Sources */,
+				C4DE788A15C95D26007FBEC4 /* ISSeminarListTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +366,7 @@
 				C462BDD515C95A8700170E3C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

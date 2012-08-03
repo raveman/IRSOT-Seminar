@@ -13,7 +13,10 @@
 @interface ISSeminarListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) Sections *section;
 
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSFetchedResultsController *currentFetchedResultsController;
+@property (strong, nonatomic) NSFetchedResultsController *seminarFetchedResultsController;
+@property (strong, nonatomic) NSFetchedResultsController *bkFetchedResultsController;
+
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

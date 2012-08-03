@@ -48,6 +48,7 @@
     }
     
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
+    [[UISearchBar appearance] setBackgroundColor: [UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
     
     return YES;
 }
@@ -106,7 +107,7 @@
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return _managedObjectContext;

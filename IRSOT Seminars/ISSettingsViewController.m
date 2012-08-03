@@ -39,7 +39,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_texture.png"]];
 
     if (self.emptyStore) self.deleteButton.hidden = NO;
@@ -85,44 +84,44 @@
 #pragma mark - Loading staff from website
 
 - (void) loadData {
-    
-    BOOL updated = NO;
-//    dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
-//    dispatch_async(fetchQ, ^{
+
     [SVProgressHUD showWithStatus:NSLocalizedString(@"Загружаю семинары", @"Loading seminars data from the web")];
-    NSDictionary *sectionsAndTypes = [SeminarFetcher sectionsAndTypes];
+    dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
+    dispatch_async(fetchQ, ^{
+        NSDictionary *sectionsAndTypes = [SeminarFetcher sectionsAndTypes];
         
-//        [self.managedObjectContext performBlock:^{
-    NSArray *sections = [sectionsAndTypes valueForKey:@"sections"];
-    NSArray *types = [sectionsAndTypes valueForKey:@"types"];
-    
-    for (NSDictionary *section in sections) {
-        [Sections sectionWithTerm:section inManagedObjectContext:self.managedObjectContext];
-        NSLog(@"Section: %@", [section objectForKey:@"name"]);
-    }
-    
-    for (NSDictionary *type in types) {
-        [Type typeWithTerm:type inManagedObjectContext:self.managedObjectContext];
-        NSLog(@"Type: %@", [type objectForKey:@"name"]);
-    }
+        [self.managedObjectContext performBlock:^{
+            NSArray *sections = [sectionsAndTypes valueForKey:@"sections"];
+            NSArray *types = [sectionsAndTypes valueForKey:@"types"];
+            
+            for (NSDictionary *section in sections) {
+                [Sections sectionWithTerm:section inManagedObjectContext:self.managedObjectContext];
+                NSLog(@"Section: %@", [section objectForKey:@"name"]);
+            }
+            
+            for (NSDictionary *type in types) {
+                [Type typeWithTerm:type inManagedObjectContext:self.managedObjectContext];
+                NSLog(@"Type: %@", [type objectForKey:@"name"]);
+            }
 
-    NSArray *seminars = [SeminarFetcher seminars];
-    for (NSDictionary *seminarInfo in seminars) {
-        [Seminar seminarWithDictionary:seminarInfo inManagedObjectContext:self.managedObjectContext];
-    }
+            NSArray *seminars = [SeminarFetcher seminars];
+            for (NSDictionary *seminarInfo in seminars) {
+                [Seminar seminarWithDictionary:seminarInfo inManagedObjectContext:self.managedObjectContext];
+            }
 
-    NSError *error = nil;
-    if (![self.managedObjectContext save:&error]) {
-        NSLog(@"Could'not save: %@", [error localizedDescription]);
-        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Ошибка загрузки", @"Seminars load error")];
-    } else {
-        updated = YES;
-        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Семинары загружены!", @"Seminars loaded successfully")];
-    }
+            NSError *error = nil;
+            if (![self.managedObjectContext save:&error]) {
+                NSLog(@"Could'not save: %@", [error localizedDescription]);
+                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Ошибка загрузки", @"Seminars load error")];
+            } else {
+
+                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Семинары загружены!", @"Seminars loaded successfully")];
+                self.deleteButton.hidden = NO;
+            }
     
-//        }]; // end managedObjectContext performBlock
-//    }); // end dispatch_async(fetchQ) block
-//    dispatch_release(fetchQ);
+        }]; // end managedObjectContext performBlock
+    }); // end dispatch_async(fetchQ) block
+    dispatch_release(fetchQ);
 }
 
 // удаляем все данные из приложения
@@ -147,7 +146,7 @@
         //recreate the store like in the  appDelegate method
         [persistentCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];//recreates the persistent store
         deleted = YES;
-        self.deleteButton.enabled = NO;
+        self.deleteButton.hidden = YES;
     }
     
     [self.managedObjectContext unlock];

@@ -74,8 +74,17 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Данные" message:@"У нас нет еще загруженных семинаров" delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:@"Загрузить", nil];
         [alert show];
     }
-    
+}
 
+- (void) viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if ([[self.fetchedResultsController fetchedObjects] count]) {
+        NSIndexPath *indexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
+        if (indexPath.row) {
+            [self.seminarCategoriesTableView deselectRowAtIndexPath:indexPath animated:YES];
+        }
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -94,6 +103,7 @@
         Sections *section = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         [segue.destinationViewController setSection:section];
         [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
+
     }
     
     if ([[segue identifier] isEqualToString:@"Settings"]) {

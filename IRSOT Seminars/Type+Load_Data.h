@@ -8,6 +8,9 @@
 
 #import "Type.h"
 
+#define SEMINAR_TYPE_SEMINAR 1
+#define SEMINAR_TYPE_BK 2
+
 @interface Type (Load_Data)
 
 + (Type *)typeWithTerm:(NSDictionary *)term inManagedObjectContext:(NSManagedObjectContext *)context;

@@ -6,49 +6,51 @@
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
-#define CACHE_NAME @"Seminar List"
+#define CACHE_NAME_SEMINAR @"Seminar List"
+#define CACHE_NAME_BK @"BK List"
 
 #import "ISSeminarListTableViewController.h"
 #import "ISSeminarViewController.h"
 
 #import "Seminar+Load_Data.h"
+#import "Type+Load_Data.h"
 #import "Lector.h"
 
 @interface ISSeminarListTableViewController ()
+@property (weak, nonatomic) IBOutlet UISegmentedControl *seminarTypeSwitch;
+@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 
 @end
 
 @implementation ISSeminarListTableViewController
+@synthesize seminarTypeSwitch = _seminarTypeSwitch;
+@synthesize searchBar = _searchBar;
 @synthesize section = _section;
 
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize currentFetchedResultsController = _fetchedResultsController;
+@synthesize seminarFetchedResultsController = _seminarFetchedResultsController;
+@synthesize bkFetchedResultsController = _bkFetchedResultsController;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
+    self.currentFetchedResultsController = self.seminarFetchedResultsController;
+    
 }
 
 - (void)viewDidUnload
 {
+    [self setSeminarTypeSwitch:nil];
+    [self setSearchBar:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
+- (void)viewWillDisappear:(BOOL)animated
+{
     [super viewWillDisappear:animated];
-//    [NSFetchedResultsController deleteCacheWithName:CACHE_NAME];
+    [NSFetchedResultsController deleteCacheWithName:CACHE_NAME_SEMINAR];
+    [NSFetchedResultsController deleteCacheWithName:CACHE_NAME_BK];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -64,6 +66,22 @@
         [segue.destinationViewController setSeminar:seminar];
         [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
     }
+}
+
+#pragma mark - UISegmentedControl
+- (IBAction)seminarTypeChanged:(UISegmentedControl *)sender {
+    switch (sender.selectedSegmentIndex) {
+        case 0:
+            self.currentFetchedResultsController = self.seminarFetchedResultsController;
+            [self.tableView reloadData];
+            break;
+        case 1:
+            self.currentFetchedResultsController = self.bkFetchedResultsController;
+            [self.tableView reloadData];
+            break;
+        default:
+            break;
+    }    
 }
 
 #pragma mark - Table view data source
@@ -98,12 +116,6 @@
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         Seminar *seminar = [self.fetchedResultsController objectAtIndexPath:indexPath];
         cell.textLabel.text = seminar.name;
-//        NSString *lectors = nil;
-//        for (Lector *lector in seminar.lectors) {
-//            if (!lectors) lectors = [NSString stringWithFormat:@"%@", lector.name];
-//                else lectors = [NSString stringWithFormat:@"%@, %@", lectors, lector.name];
-//        }
-//        cell.detailTextLabel.text = lectors;
         cell.detailTextLabel.text = [seminar stringWithLectorNames];
     }
     
@@ -151,10 +163,10 @@
     // nil for section name key path means "no sections".
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
+    self.currentFetchedResultsController = aFetchedResultsController;
     
 	NSError *error = nil;
-	if (![self.fetchedResultsController performFetch:&error]) {
+	if (![self.currentFetchedResultsController performFetch:&error]) {
         // Replace this implementation with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
 	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
@@ -164,9 +176,88 @@
     return _fetchedResultsController;
 }
 
+- (NSFetchedResultsController *)seminarFetchedResultsController
+{
+    if (_seminarFetchedResultsController != nil) {
+        return _seminarFetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Seminar" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %@ AND type.id == %d", self.section.id, SEMINAR_TYPE_SEMINAR];
+    
+    // Set the batch size to a suitable number.
+    [fetchRequest setFetchBatchSize:20];
+    
+    // Edit the sort key as appropriate.
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    // Edit the section name key path and cache name if appropriate.
+    // nil for section name key path means "no sections".
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:CACHE_NAME_SEMINAR];
+    aFetchedResultsController.delegate = self;
+    self.seminarFetchedResultsController = aFetchedResultsController;
+    
+	NSError *error = nil;
+	if (![self.seminarFetchedResultsController performFetch:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	    abort();
+	}
+    
+    return _seminarFetchedResultsController;
+}
+- (NSFetchedResultsController *)bkFetchedResultsController
+{
+    if (_bkFetchedResultsController != nil) {
+        return _bkFetchedResultsController;
+    }
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    // Edit the entity name as appropriate.
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Seminar" inManagedObjectContext:self.managedObjectContext];
+    [fetchRequest setEntity:entity];
+    
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %@ AND type.id == %d", self.section.id, SEMINAR_TYPE_BK];
+    
+    // Set the batch size to a suitable number.
+    [fetchRequest setFetchBatchSize:20];
+    
+    // Edit the sort key as appropriate.
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    
+    [fetchRequest setSortDescriptors:sortDescriptors];
+    
+    // Edit the section name key path and cache name if appropriate.
+    // nil for section name key path means "no sections".
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:CACHE_NAME_BK];
+    aFetchedResultsController.delegate = self;
+    self.bkFetchedResultsController = aFetchedResultsController;
+    
+	NSError *error = nil;
+	if (![self.bkFetchedResultsController performFetch:&error]) {
+        // Replace this implementation with code to handle the error appropriately.
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	    abort();
+	}
+    
+    return _bkFetchedResultsController;
+}
+
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-    [self.tableView beginUpdates];
+    if (controller == self.currentFetchedResultsController) {
+        [self.tableView beginUpdates];
+    }
 }
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo

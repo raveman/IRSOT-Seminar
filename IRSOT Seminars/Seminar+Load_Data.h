@@ -12,4 +12,6 @@
 
 + (Seminar *)seminarWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)context;
 
+- (NSString *)stringWithLectorNames;
+
 @end

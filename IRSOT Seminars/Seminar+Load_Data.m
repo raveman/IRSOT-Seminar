@@ -70,4 +70,14 @@
     return seminar;
 }
 
+- (NSString *)stringWithLectorNames
+{
+    NSString *lectors = nil;
+    for (Lector *lector in self.lectors) {
+        if (!lectors) lectors = [NSString stringWithFormat:@"%@", lector.name];
+        else lectors = [NSString stringWithFormat:@"%@, %@", lectors, lector.name];
+    }
+    return lectors;
+}
+
 @end

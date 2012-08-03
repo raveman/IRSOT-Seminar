@@ -11,7 +11,7 @@
 #import "ISSeminarListTableViewController.h"
 #import "ISSeminarViewController.h"
 
-#import "Seminar.h"
+#import "Seminar+Load_Data.h"
 #import "Lector.h"
 
 @interface ISSeminarListTableViewController ()
@@ -48,7 +48,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
-    [NSFetchedResultsController deleteCacheWithName:CACHE_NAME];
+//    [NSFetchedResultsController deleteCacheWithName:CACHE_NAME];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -64,7 +64,6 @@
         [segue.destinationViewController setSeminar:seminar];
         [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
     }
-    
 }
 
 #pragma mark - Table view data source
@@ -99,12 +98,13 @@
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         Seminar *seminar = [self.fetchedResultsController objectAtIndexPath:indexPath];
         cell.textLabel.text = seminar.name;
-        NSString *lectors = nil;
-        for (Lector *lector in seminar.lectors) {
-            if (!lectors) lectors = [NSString stringWithFormat:@"%@", lector.name];
-                else lectors = [NSString stringWithFormat:@"%@, %@", lectors, lector.name];
-        }
-        cell.detailTextLabel.text = lectors;
+//        NSString *lectors = nil;
+//        for (Lector *lector in seminar.lectors) {
+//            if (!lectors) lectors = [NSString stringWithFormat:@"%@", lector.name];
+//                else lectors = [NSString stringWithFormat:@"%@, %@", lectors, lector.name];
+//        }
+//        cell.detailTextLabel.text = lectors;
+        cell.detailTextLabel.text = [seminar stringWithLectorNames];
     }
     
     return cell;
@@ -149,7 +149,7 @@
     
     // Edit the section name key path and cache name if appropriate.
     // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:CACHE_NAME];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     

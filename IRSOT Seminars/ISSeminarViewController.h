@@ -7,8 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Seminar.h"
-
+#import "Seminar+Load_Data.h"
 
 @interface ISSeminarViewController : UIViewController
 @property (nonatomic, strong) Seminar *seminar;

@@ -77,6 +77,20 @@
             </objects>
             <point key="canvasLocation" x="965" y="260"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="zmk-pM-7s6">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wn9-3e-uXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="EJV-r4-OVK" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h2o-GO-luv">
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2200" y="907"/>
+        </scene>
         <!--Seminar View Controller-->
         <scene sceneID="xiA-S5-OSx">
             <objects>
@@ -85,11 +99,63 @@
                     <view key="view" contentMode="scaleToFill" id="fcP-m7-ud3">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" showsHorizontalScrollIndicator="NO" id="lmO-J5-cdE">
+                                <rect key="frame" x="0.0" y="-20" width="320" height="683"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="TopLeft" text="Seminar Name" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" minimumFontSize="10" id="AWq-Yt-mMi">
+                                        <rect key="frame" x="20" y="20" width="280" height="84"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Section" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="845-cE-uCg">
+                                        <rect key="frame" x="20" y="112" width="130" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="iVH-jy-7Eu">
+                                        <rect key="frame" x="158" y="112" width="142" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="14"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" id="d0O-e2-pzM">
+                                        <rect key="frame" x="20" y="199" width="280" height="265"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                    </textView>
+                                    <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Lectors" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" minimumFontSize="10" id="KwB-nD-wdW">
+                                        <rect key="frame" x="20" y="141" width="280" height="50"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="yEd-Pi-iHD">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="EtB-jk-2eY"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="lectorsLabel" destination="KwB-nD-wdW" id="8yf-el-CHC"/>
+                        <outlet property="programTextView" destination="d0O-e2-pzM" id="Q8Z-N8-SZe"/>
+                        <outlet property="sectionLabel" destination="845-cE-uCg" id="cUn-Ia-5ZQ"/>
+                        <outlet property="seminarNameLabel" destination="AWq-Yt-mMi" id="1et-6n-gay"/>
+                        <outlet property="typeLabel" destination="iVH-jy-7Eu" id="aR2-EZ-Y04"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1871" y="260"/>
@@ -338,6 +404,51 @@
             <point key="canvasLocation" x="1433" y="-423"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="ISInfoTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISInfoTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ISMainPageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISMainPageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="noDataLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="seminarCategoriesTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ISSeminarListTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarListTableViewController.h"/>
+        </class>
+        <class className="ISSeminarViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lectorsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="programTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="sectionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="seminarNameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="typeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ISSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="delete:" candidateClass="UIButton"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="load:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="refreshButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="updateDateLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ISWebviewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISWebviewViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

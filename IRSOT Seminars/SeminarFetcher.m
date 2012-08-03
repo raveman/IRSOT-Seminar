@@ -9,7 +9,7 @@
 #import "SeminarFetcher.h"
 
 #define SEMINAR_URL @"http://devedu.ruseminar.ru/api/nonauth/"
-#define SEMINAR_TAXONOMY_URL @"taxonomy_vocavulary"
+#define SEMINAR_TAXONOMY_URL @"taxonomy_vocabulary"
 #define SEMINAR_TERM_URL @"taxonomy_term"
 #define SEMINAR_TYPE @"seminar_type"
 #define SEMINAR_SECTION @"seminar_section"
@@ -33,8 +33,8 @@
 
 + (NSDictionary *)sectionsAndTypes
 {
-    NSMutableArray *sections = [NSArray array];
-    NSMutableArray *types = [NSArray array];
+    NSMutableArray *sections = [NSMutableArray array];
+    NSMutableArray *types = [NSMutableArray array];
 
     // выбираем список всех словарей
     NSString *taxonomyRequest = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_TAXONOMY_URL];
@@ -46,16 +46,16 @@
     
     //пробегаем по словаряем, заполняем массивы для типов и секций
     for (NSDictionary *taxonomyDict in taxonomy) {
-        if ([[taxonomyDict valueForKey:@"machine_name"] isEqualToString:SEMINAR_SECTION]) {
+        if ([[taxonomyDict objectForKey:@"machine_name"] isEqualToString:SEMINAR_SECTION]) {
             for (NSDictionary *term in terms) {
-                if ([term valueForKey:@"vid"] == [taxonomyDict valueForKey:@"vid"]) {
+                if ([[term objectForKey:@"vid"] isEqualToString:[taxonomyDict objectForKey:@"vid"]]) {
                     [sections addObject:term];
                 }
             }
         }
-        if ([[taxonomyDict valueForKey:@"machine_name"] isEqualToString:SEMINAR_TYPE]) {
+        if ([[taxonomyDict objectForKey:@"machine_name"] isEqualToString:SEMINAR_TYPE]) {
             for (NSDictionary *term in terms) {
-                if ([term valueForKey:@"vid"] == [taxonomyDict valueForKey:@"vid"]) {
+                if ([[term objectForKey:@"vid"] isEqualToString:[taxonomyDict objectForKey:@"vid"]]) {
                     [types addObject:term];
                 }
             }

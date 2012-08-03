@@ -246,6 +246,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="load:" destination="4YO-by-1FM" eventType="touchUpInside" id="xr1-bh-L2q"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lkE-P4-A7P">
                                 <rect key="frame" x="20" y="234" width="280" height="37"/>
@@ -258,6 +261,9 @@
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="delete:" destination="4YO-by-1FM" eventType="touchUpInside" id="YIC-WF-PmU"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Дата последнего обновления:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="wyw-aS-yaN">
                                 <rect key="frame" x="20" y="54" width="280" height="21"/>
@@ -284,36 +290,6 @@
             <point key="canvasLocation" x="1433" y="-423"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ISInfoTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISInfoTableViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="ISMainPageViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISMainPageViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="seminarCategoriesTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-        <class className="ISSeminarListTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarListTableViewController.h"/>
-        </class>
-        <class className="ISSettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSettingsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="outlet" name="updateDateLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ISWebviewViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISWebviewViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

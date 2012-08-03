@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
+// TODO: do something when model changed!!!!
+
 #import "ISAppDelegate.h"
 
 //#import "ISMasterViewController.h"

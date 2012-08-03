@@ -11,6 +11,10 @@
 		C40D8F1015CBD8610048ABF4 /* Lector.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F0F15CBD8610048ABF4 /* Lector.m */; };
 		C40D8F1315CBD8610048ABF4 /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1215CBD8610048ABF4 /* Seminar.m */; };
 		C40D8F1615CBD8610048ABF4 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1515CBD8610048ABF4 /* Type.m */; };
+		C40D8F1A15CBDBBB0048ABF4 /* Sections+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1915CBDBBB0048ABF4 /* Sections+Load_Data.m */; };
+		C40D8F1D15CBDFB30048ABF4 /* Type+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1C15CBDFB30048ABF4 /* Type+Load_Data.m */; };
+		C40D8F2315CBEA5D0048ABF4 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C40D8F2015CBEA5D0048ABF4 /* SVProgressHUD.bundle */; };
+		C40D8F2415CBEA5D0048ABF4 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F2215CBEA5D0048ABF4 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C462BDAF15C95A8700170E3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDAE15C95A8700170E3C /* UIKit.framework */; };
 		C462BDB115C95A8700170E3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB015C95A8700170E3C /* Foundation.framework */; };
 		C462BDB315C95A8700170E3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB215C95A8700170E3C /* CoreGraphics.framework */; };
@@ -41,6 +45,13 @@
 		C40D8F1215CBD8610048ABF4 /* Seminar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seminar.m; sourceTree = "<group>"; };
 		C40D8F1415CBD8610048ABF4 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
 		C40D8F1515CBD8610048ABF4 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
+		C40D8F1815CBDBBB0048ABF4 /* Sections+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Sections+Load_Data.h"; sourceTree = "<group>"; };
+		C40D8F1915CBDBBB0048ABF4 /* Sections+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Sections+Load_Data.m"; sourceTree = "<group>"; };
+		C40D8F1B15CBDFB30048ABF4 /* Type+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Type+Load_Data.h"; sourceTree = "<group>"; };
+		C40D8F1C15CBDFB30048ABF4 /* Type+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Type+Load_Data.m"; sourceTree = "<group>"; };
+		C40D8F2015CBEA5D0048ABF4 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		C40D8F2115CBEA5D0048ABF4 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		C40D8F2215CBEA5D0048ABF4 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		C462BDAA15C95A8700170E3C /* IRSOT Seminars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IRSOT Seminars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C462BDAE15C95A8700170E3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C462BDB015C95A8700170E3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -94,8 +105,12 @@
 			children = (
 				C40D8F0A15CBD8610048ABF4 /* Sections.h */,
 				C40D8F0B15CBD8610048ABF4 /* Sections.m */,
+				C40D8F1815CBDBBB0048ABF4 /* Sections+Load_Data.h */,
+				C40D8F1915CBDBBB0048ABF4 /* Sections+Load_Data.m */,
 				C40D8F1415CBD8610048ABF4 /* Type.h */,
 				C40D8F1515CBD8610048ABF4 /* Type.m */,
+				C40D8F1B15CBDFB30048ABF4 /* Type+Load_Data.h */,
+				C40D8F1C15CBDFB30048ABF4 /* Type+Load_Data.m */,
 				C40D8F1115CBD8610048ABF4 /* Seminar.h */,
 				C40D8F1215CBD8610048ABF4 /* Seminar.m */,
 				C40D8F0E15CBD8610048ABF4 /* Lector.h */,
@@ -103,6 +118,24 @@
 				C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */,
 			);
 			name = CoreData;
+			sourceTree = "<group>";
+		};
+		C40D8F1E15CBEA350048ABF4 /* Contrib */ = {
+			isa = PBXGroup;
+			children = (
+				C40D8F1F15CBEA5D0048ABF4 /* SVProgressHUD */,
+			);
+			name = Contrib;
+			sourceTree = "<group>";
+		};
+		C40D8F1F15CBEA5D0048ABF4 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C40D8F2015CBEA5D0048ABF4 /* SVProgressHUD.bundle */,
+				C40D8F2115CBEA5D0048ABF4 /* SVProgressHUD.h */,
+				C40D8F2215CBEA5D0048ABF4 /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		C462BD9F15C95A8700170E3C = {
@@ -136,6 +169,7 @@
 		C462BDB615C95A8700170E3C /* IRSOT Seminars */ = {
 			isa = PBXGroup;
 			children = (
+				C40D8F1E15CBEA350048ABF4 /* Contrib */,
 				C462BDC215C95A8700170E3C /* MainStoryboard_iPhone.storyboard */,
 				C462BDC515C95A8700170E3C /* MainStoryboard_iPad.storyboard */,
 				C4DE789015C96EF3007FBEC4 /* SeminarFetcher.h */,
@@ -254,6 +288,7 @@
 				C462BDC415C95A8700170E3C /* MainStoryboard_iPhone.storyboard in Resources */,
 				C462BDC715C95A8700170E3C /* MainStoryboard_iPad.storyboard in Resources */,
 				C4DE788F15C95E34007FBEC4 /* Info Links.plist in Resources */,
+				C40D8F2315CBEA5D0048ABF4 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +314,9 @@
 				C40D8F1015CBD8610048ABF4 /* Lector.m in Sources */,
 				C40D8F1315CBD8610048ABF4 /* Seminar.m in Sources */,
 				C40D8F1615CBD8610048ABF4 /* Type.m in Sources */,
+				C40D8F1A15CBDBBB0048ABF4 /* Sections+Load_Data.m in Sources */,
+				C40D8F1D15CBDFB30048ABF4 /* Type+Load_Data.m in Sources */,
+				C40D8F2415CBEA5D0048ABF4 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

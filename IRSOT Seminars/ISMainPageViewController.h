@@ -17,4 +17,6 @@
 
 @property (strong, nonatomic) ISSeminarListTableViewController *detailViewController;
 
+@property (weak, nonatomic) IBOutlet UITableView *seminarCategoriesTableView;
+
 @end

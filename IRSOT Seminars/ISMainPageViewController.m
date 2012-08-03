@@ -14,26 +14,17 @@
 #import "ISMainPageViewController.h"
 #import "ISSeminarListTableViewController.h"
 
-@interface ISMainPageViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *seminarCategoriesTableView;
+#import "Sections.h"
 
-@property (nonatomic, strong) NSArray *seminarSections;
+@interface ISMainPageViewController () <UITableViewDataSource, UITableViewDelegate>
+
 @end
 
 @implementation ISMainPageViewController
 
 @synthesize seminarCategoriesTableView = _seminarCategoriesTableView;
-@synthesize seminarSections = _seminarSections;
-
 
 #pragma mark - getters and setters
-- (NSArray *) seminarSections
-{
-    NSArray *seminarSections = [NSArray arrayWithObjects:@"Бухгалтерский учет", @"Финансы", @"Право", @"Управление", @"Кадры", nil];
-    _seminarSections = seminarSections;
-    
-    return _seminarSections;
-}
 
 #pragma mark - UIViewController lifecycle
 - (void)viewDidLoad
@@ -103,7 +94,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [self.seminarSections count];
+//    return [self.seminarSections count];
+    
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    return [sectionInfo numberOfObjects];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -116,7 +110,10 @@
     }
     
     // Configure the cell...
-    cell.textLabel.text = [self.seminarSections objectAtIndex:indexPath.row];
+    //    cell.textLabel.text = [self.seminarSections objectAtIndex:indexPath.row];
+    
+    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    cell.textLabel.text = [[object valueForKey:@"name"] description];
     
     return cell;
 }
@@ -139,7 +136,7 @@
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
     // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Sections" inManagedObjectContext:self.managedObjectContext];
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Section" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.

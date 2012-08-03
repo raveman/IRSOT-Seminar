@@ -28,10 +28,9 @@
         // handle error
     } else if ([matches count] == 0) {
         section = [NSEntityDescription insertNewObjectForEntityForName:@"Section" inManagedObjectContext:context];
-        section.id = [term valueForKey:@"id"];
-        section.name = [term valueForKey:@"name"];
-        section.machine_name = [term valueForKey:@"machine_name"];
-        
+        section.id = [NSNumber numberWithInteger:[[term objectForKey:@"tid"] integerValue]];
+        section.name = [term objectForKey:@"name"];
+        section.machine_name = [term objectForKey:@"machine_name"];
     } else {
         section = [matches lastObject];
     }

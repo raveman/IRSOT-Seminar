@@ -13,6 +13,7 @@
 #define SEMINAR_TERM_URL @"taxonomy_term"
 #define SEMINAR_TYPE @"seminar_type"
 #define SEMINAR_SECTION @"seminar_section"
+#define SEMINAR_LIST_URL @"seminar_list_rest"
 
 
 @implementation SeminarFetcher
@@ -37,12 +38,12 @@
     NSMutableArray *types = [NSMutableArray array];
 
     // выбираем список всех словарей
-    NSString *taxonomyRequest = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_TAXONOMY_URL];
-    NSArray *taxonomy = [self executeFetch:taxonomyRequest];
+    NSString *taxonomyURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_TAXONOMY_URL];
+    NSArray *taxonomy = [self executeFetch:taxonomyURL];
     
     //выбираем список всех терминов
-    NSString *termRequest = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_TERM_URL];
-    NSArray *terms = [self executeFetch:termRequest];
+    NSString *termURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_TERM_URL];
+    NSArray *terms = [self executeFetch:termURL];
     
     //пробегаем по словаряем, заполняем массивы для типов и секций
     for (NSDictionary *taxonomyDict in taxonomy) {
@@ -68,14 +69,16 @@
 
 + (NSArray *)seminars
 {
-    return nil;
+    NSString *seminarURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_LIST_URL];
+    NSArray *seminars = [SeminarFetcher executeFetch:seminarURL];
     
+    return seminars;
 }
 
 + (NSArray *)lectors
 {
+
     return nil;
-    
 }
 
 @end

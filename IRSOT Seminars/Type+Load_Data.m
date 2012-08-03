@@ -28,10 +28,9 @@
         // handle error
     } else if ([matches count] == 0) {
         type = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext:context];
-        type.id = [term valueForKey:@"id"];
-        type.name = [term valueForKey:@"name"];
-        type.machine_name = [term valueForKey:@"machine_name"];
-        
+        type.id = [NSNumber numberWithInteger:[[term objectForKey:@"tid"] integerValue]];
+        type.name = [term objectForKey:@"name"];
+        type.machine_name = [term objectForKey:@"machine_name"];
     } else {
         type = [matches lastObject];
     }

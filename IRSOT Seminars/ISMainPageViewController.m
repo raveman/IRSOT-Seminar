@@ -13,14 +13,17 @@
 
 #import "ISMainPageViewController.h"
 #import "ISSeminarListTableViewController.h"
+#import "ISSettingsViewController.h"
 
 #import "Sections.h"
 
-@interface ISMainPageViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ISMainPageViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, ISSettingsViewControllerDelegate>
 
+@property (weak, nonatomic) IBOutlet UILabel *noDataLabel;
 @end
 
 @implementation ISMainPageViewController
+@synthesize noDataLabel = _noDataLabel;
 
 @synthesize seminarCategoriesTableView = _seminarCategoriesTableView;
 
@@ -36,15 +39,43 @@
     // setting categories list tableview datasource and delegate
     self.seminarCategoriesTableView.dataSource = self;
     self.seminarCategoriesTableView.delegate = self;
-    
+
     self.title = NSLocalizedString(@"Семинары ИРСОТ", @"Main Page Title");
+    
+    self.noDataLabel.shadowColor = [UIColor grayColor];
+    self.noDataLabel.shadowOffset = CGSizeMake(1,-1);
+    self.noDataLabel.font = [UIFont boldSystemFontOfSize:28.0];
+    self.noDataLabel.textColor = [UIColor whiteColor];
+    
+    UIBarButtonItem *setupButton = self.navigationItem.rightBarButtonItem;
+    setupButton.image = [UIImage imageNamed:@"smaller-gear.png"];
+    setupButton.title = @"";
+    
+    self.seminarCategoriesTableView.backgroundColor = [UIColor clearColor];
+    self.seminarCategoriesTableView.opaque = NO;
+    self.seminarCategoriesTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-hash-background.png"]];
+    
 }
 
 - (void)viewDidUnload
 {
     [self setSeminarCategoriesTableView:nil];
+    [self setNoDataLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+
+    NSInteger count = [[self.fetchedResultsController fetchedObjects] count];
+    if (!count) {
+        // у нас нет еще никаких данных, надо бы их загрузить
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Данные" message:@"У нас нет еще загруженных семинаров" delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:@"Загрузить", nil];
+        [alert show];
+    }
+    
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -58,27 +89,23 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-//    if ([segue.identifier isEqualToString:@"Seminar List for Section"]) {
-//        NSIndexPath *indexPath = nil;
-//        if ([sender isKindOfClass:[NSIndexPath class]]) {
-//            indexPath = (NSIndexPath *) sender;
-//        } else if ([sender isKindOfClass:[UITableViewCell class]]) {
-//            indexPath = [self.seminarCategoriesTableView indexPathForCell:sender];
-//        } else if (!sender || (sender == self) || (sender == self.seminarCategoriesTableView)) {
-//            indexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
-//        }
-//        
-//        ISSeminarListTableViewController *seminarListVC = (ISSeminarListTableViewController *)segue.destinationViewController;
-//        [seminarListVC setSection:[NSNumber numberWithInt: indexPath.row]];
-//    };
-    if ([[segue identifier] isEqualToString:@"Seminar List for Section"]) {
+    if ([[segue identifier] isEqualToString:@"Seminar List For Section"]) {
         NSIndexPath *indexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
         NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         [[segue destinationViewController] setSection:object];
     }
     
     if ([[segue identifier] isEqualToString:@"Settings"]) {
-        [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
+        ISSettingsViewController *dvc = (ISSettingsViewController *)[segue destinationViewController];
+        
+        // TODO: разобраться с поведением кнопки удаления семинаров
+        if (![self.fetchedResultsController.fetchedObjects count]) {
+            dvc.emptyStore = NO;
+        } else {
+            dvc.emptyStore = YES;
+        }
+        [dvc setManagedObjectContext:self.managedObjectContext];
+        [dvc setDelegate:self];
     }
     
 }
@@ -91,13 +118,23 @@
 //    return 1;
 //}
 
+
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-//    return [self.seminarSections count];
+    NSInteger count = 0;
     
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-    return [sectionInfo numberOfObjects];
+    if ([[self.fetchedResultsController fetchedObjects] count]) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+        count = [sectionInfo numberOfObjects];
+        self.noDataLabel.hidden = YES;
+    } else {
+        self.noDataLabel.hidden = NO;
+        self.noDataLabel.text = NSLocalizedString(@"Нет данных", @"Main Page Categories list no data");
+    }
+        
+    return count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -108,21 +145,24 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+
     // Configure the cell...
-    //    cell.textLabel.text = [self.seminarSections objectAtIndex:indexPath.row];
-    
-    NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"name"] description];
+    if ([[self.fetchedResultsController fetchedObjects] count]) {
+        Sections *section = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        cell.textLabel.text = [section.name uppercaseString];
+    }
     
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        self.detailViewController.section = object;
+    
+    if ([self.fetchedResultsController fetchedObjects]) {
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+            self.detailViewController.section = object;
+        }
     }
 }
 
@@ -143,7 +183,7 @@
     [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:NO];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -215,20 +255,28 @@
     [self.seminarCategoriesTableView endUpdates];
 }
 
-/*
- // Implementing the above methods to update the table view in response to individual changes may have performance implications if a large number of changes are made simultaneously. If this proves to be an issue, you can instead just implement controllerDidChangeContent: which notifies the delegate that all section and object changes have been processed.
- 
- - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
- {
- // In the simplest, most efficient, case, reload the table view.
- [self.tableView reloadData];
- }
- */
-
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [[object valueForKey:@"timeStamp"] description];
+    cell.textLabel.text = [[object valueForKey:@"name"] description];
+}
+
+#pragma mark - UIAlerViewDelegate
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    if (buttonIndex == 1) {
+        [self performSegueWithIdentifier:@"Settings" sender:self];
+    }
+    // в buttonIndex содержится номер кнопки
+}
+
+#pragma mark - ISSettingsViewControllerDelegate
+- (void) settingsViewController:(ISSettingsViewController *)sender didDeletedStore:(BOOL)deleted
+{
+    if (deleted) {
+        self.fetchedResultsController = nil;
+        [self.seminarCategoriesTableView reloadData];
+    }
 }
 
 

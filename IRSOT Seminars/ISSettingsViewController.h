@@ -8,7 +8,19 @@
 
 #import <UIKit/UIKit.h>
 
+@class ISSettingsViewController;
+
+@protocol ISSettingsViewControllerDelegate <NSObject>
+
+- (void) settingsViewController:(ISSettingsViewController *)sender didDeletedStore: (BOOL) deleted;
+
+@end
+
+
 @interface ISSettingsViewController : UIViewController
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+@property (nonatomic) BOOL emptyStore;
 
+@property (nonatomic, weak) id <ISSettingsViewControllerDelegate> delegate;
+ 
 @end

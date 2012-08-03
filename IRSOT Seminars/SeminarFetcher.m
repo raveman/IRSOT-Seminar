@@ -7,13 +7,8 @@
 //
 
 #import "SeminarFetcher.h"
+#import "SVProgressHUD/SVProgressHUD.h"
 
-#define SEMINAR_URL @"http://devedu.ruseminar.ru/api/nonauth/"
-#define SEMINAR_TAXONOMY_URL @"taxonomy_vocabulary"
-#define SEMINAR_TERM_URL @"taxonomy_term"
-#define SEMINAR_TYPE @"seminar_type"
-#define SEMINAR_SECTION @"seminar_section"
-#define SEMINAR_LIST_URL @"seminar_list_rest"
 
 
 @implementation SeminarFetcher
@@ -27,7 +22,11 @@
     NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:query] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
     NSError *error = nil;
     NSArray *results = jsonData ? [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error] : nil;
-    if (error) NSLog(@"[%@ %@] JSON error: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), error.localizedDescription);
+    if (error) {
+        NSString *errorMessage = [NSString stringWithFormat:@"[%@ %@] JSON error: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), error.localizedDescription];
+        [SVProgressHUD showErrorWithStatus:errorMessage];
+        NSLog(errorMessage, nil);
+    }
     NSLog(@"[%@ %@] received %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), results);
     return results;
 }
@@ -65,7 +64,6 @@
     
     return [NSDictionary dictionaryWithObjectsAndKeys:sections, @"sections", types, @"types", nil];
 }
-
 
 + (NSArray *)seminars
 {

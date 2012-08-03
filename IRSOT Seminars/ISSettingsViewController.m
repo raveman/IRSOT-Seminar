@@ -12,13 +12,10 @@
 #import "ISMainPageViewController.h"
 #import "SeminarFetcher.h"
 
-#import "Type.h"
-#import "Sections.h"
-#import "Lector.h"
-#import "Seminar.h"
-
 #import "Type+Load_Data.h"
 #import "Sections+Load_Data.h"
+#import "Seminar+Load_Data.m"
+#import "Lector+Load_Data.h"
 
 @interface ISSettingsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *updateDateLabel;
@@ -92,31 +89,36 @@
     BOOL updated = NO;
 //    dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
 //    dispatch_async(fetchQ, ^{
-        [SVProgressHUD showWithStatus:NSLocalizedString(@"Загружаю семинары", @"Loading seminars data from the web")];
-        NSDictionary *sectionsAndTypes = [SeminarFetcher sectionsAndTypes];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"Загружаю семинары", @"Loading seminars data from the web")];
+    NSDictionary *sectionsAndTypes = [SeminarFetcher sectionsAndTypes];
         
 //        [self.managedObjectContext performBlock:^{
-            NSArray *sections = [sectionsAndTypes valueForKey:@"sections"];
-            NSArray *types = [sectionsAndTypes valueForKey:@"types"];
-            
-            for (NSDictionary *section in sections) {
-                [Sections sectionWithTerm:section inManagedObjectContext:self.managedObjectContext];
-                NSLog(@"Section: %@", [section objectForKey:@"name"]);
-            }
-            
-            for (NSDictionary *type in types) {
-                [Type typeWithTerm:type inManagedObjectContext:self.managedObjectContext];
-                NSLog(@"Type: %@", [type objectForKey:@"name"]);
-            }
+    NSArray *sections = [sectionsAndTypes valueForKey:@"sections"];
+    NSArray *types = [sectionsAndTypes valueForKey:@"types"];
+    
+    for (NSDictionary *section in sections) {
+        [Sections sectionWithTerm:section inManagedObjectContext:self.managedObjectContext];
+        NSLog(@"Section: %@", [section objectForKey:@"name"]);
+    }
+    
+    for (NSDictionary *type in types) {
+        [Type typeWithTerm:type inManagedObjectContext:self.managedObjectContext];
+        NSLog(@"Type: %@", [type objectForKey:@"name"]);
+    }
 
-            NSError *error;
-            if (![self.managedObjectContext save:&error]) {
-                NSLog(@"Could'not save: %@", [error localizedDescription]);
-                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Ошибка загрузки", @"Seminars load error")];
-            } else {
-                updated = YES;
-                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Семинары загружены!", @"Seminars loaded successfully")];
-            }
+    NSArray *seminars = [SeminarFetcher seminars];
+    for (NSDictionary *seminarInfo in seminars) {
+        [Seminar seminarWithDictionary:seminarInfo inManagedObjectContext:self.managedObjectContext];
+    }
+
+    NSError *error = nil;
+    if (![self.managedObjectContext save:&error]) {
+        NSLog(@"Could'not save: %@", [error localizedDescription]);
+        [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Ошибка загрузки", @"Seminars load error")];
+    } else {
+        updated = YES;
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Семинары загружены!", @"Seminars loaded successfully")];
+    }
     
 //        }]; // end managedObjectContext performBlock
 //    }); // end dispatch_async(fetchQ) block

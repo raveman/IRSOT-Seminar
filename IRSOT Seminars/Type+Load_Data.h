@@ -11,5 +11,6 @@
 @interface Type (Load_Data)
 
 + (Type *)typeWithTerm:(NSDictionary *)term inManagedObjectContext:(NSManagedObjectContext *)context;
++ (Type *)typeWithId:(NSInteger)typeId inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end

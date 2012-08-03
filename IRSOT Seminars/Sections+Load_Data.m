@@ -16,7 +16,7 @@
     
     // check whether we have already a new section in our database
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Section"];
-    request.predicate = [NSPredicate predicateWithFormat:@"id = %@", [term objectForKey:@"tid"]];
+    request.predicate = [NSPredicate predicateWithFormat:@"id == %@", [term objectForKey:@"tid"]];
     // soring our fetch
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
@@ -38,5 +38,27 @@
     return section;
 }
 
++ (Sections *)sectionWithId:(NSInteger)sectionId inManagedObjectContext:(NSManagedObjectContext *)context
+{
+    Sections *section = nil;
+    // check whether we have already a new section in our database
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Section"];
+    request.predicate = [NSPredicate predicateWithFormat:@"id = %d", sectionId];
+    // sorting our fetch
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
+    
+    NSError *error = nil;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    
+    if ([matches count] == 0) {
+        // TODO: handle error
+        // why we have no section ?
+    } else {
+        section = [matches lastObject];
+    }
+
+    return section;
+}
 
 @end

@@ -16,8 +16,9 @@
 @property (nonatomic, retain) NSDate * date_end;
 @property (nonatomic, retain) NSDate * date_start;
 @property (nonatomic, retain) NSString * name;
-@property (nonatomic, retain) NSString * online;
+@property (nonatomic, retain) NSNumber * online;
 @property (nonatomic, retain) NSNumber * ruseminarID;
+@property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSSet *lectors;
 @property (nonatomic, retain) Sections *section;
 @property (nonatomic, retain) Type *type;

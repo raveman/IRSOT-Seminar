@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ISSeminarListTableViewController : UITableViewController
-@property (nonatomic, strong) NSManagedObject *section;
+#import "Sections.h"
+
+@interface ISSeminarListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@property (nonatomic, strong) Sections *section;
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
 @end

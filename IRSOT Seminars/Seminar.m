@@ -19,6 +19,7 @@
 @dynamic name;
 @dynamic online;
 @dynamic ruseminarID;
+@dynamic id;
 @dynamic lectors;
 @dynamic section;
 @dynamic type;

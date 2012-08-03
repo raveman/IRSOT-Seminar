@@ -91,14 +91,13 @@
 {
     if ([[segue identifier] isEqualToString:@"Seminar List For Section"]) {
         NSIndexPath *indexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
-        NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [[segue destinationViewController] setSection:object];
+        Sections *section = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        [segue.destinationViewController setSection:section];
+        [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
     }
     
     if ([[segue identifier] isEqualToString:@"Settings"]) {
         ISSettingsViewController *dvc = (ISSettingsViewController *)[segue destinationViewController];
-        
-        // TODO: разобраться с поведением кнопки удаления семинаров
         if (![self.fetchedResultsController.fetchedObjects count]) {
             dvc.emptyStore = NO;
         } else {
@@ -160,8 +159,8 @@
     
     if ([self.fetchedResultsController fetchedObjects]) {
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            NSManagedObject *object = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-            self.detailViewController.section = object;
+            Sections *section = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+            self.detailViewController.section = section;
         }
     }
 }

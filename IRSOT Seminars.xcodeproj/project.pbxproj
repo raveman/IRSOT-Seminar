@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C40D8F0C15CBD8610048ABF4 /* Sections.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F0B15CBD8610048ABF4 /* Sections.m */; };
-		C40D8F1015CBD8610048ABF4 /* Lector.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F0F15CBD8610048ABF4 /* Lector.m */; };
-		C40D8F1315CBD8610048ABF4 /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1215CBD8610048ABF4 /* Seminar.m */; };
-		C40D8F1615CBD8610048ABF4 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1515CBD8610048ABF4 /* Type.m */; };
 		C40D8F1A15CBDBBB0048ABF4 /* Sections+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1915CBDBBB0048ABF4 /* Sections+Load_Data.m */; };
 		C40D8F1D15CBDFB30048ABF4 /* Type+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1C15CBDFB30048ABF4 /* Type+Load_Data.m */; };
 		C40D8F2315CBEA5D0048ABF4 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C40D8F2015CBEA5D0048ABF4 /* SVProgressHUD.bundle */; };
@@ -33,6 +29,13 @@
 		C48F96F115CC3DD200F4AA51 /* light-hash-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48F96EF15CC3DD200F4AA51 /* light-hash-background@2x.png */; };
 		C48F96F415CC3E8300F4AA51 /* bg_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = C48F96F215CC3E8300F4AA51 /* bg_texture.png */; };
 		C48F96F515CC3E8300F4AA51 /* bg_texture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48F96F315CC3E8300F4AA51 /* bg_texture@2x.png */; };
+		C48F96F815CC46D400F4AA51 /* Seminar+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F96F715CC46D400F4AA51 /* Seminar+Load_Data.m */; };
+		C48F970715CC49EA00F4AA51 /* Lector.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F970615CC49EA00F4AA51 /* Lector.m */; };
+		C48F970A15CC49EA00F4AA51 /* Sections.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F970915CC49EA00F4AA51 /* Sections.m */; };
+		C48F970D15CC49EB00F4AA51 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F970C15CC49EB00F4AA51 /* Type.m */; };
+		C48F971015CC49EB00F4AA51 /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F970F15CC49EB00F4AA51 /* Seminar.m */; };
+		C48F971315CC519E00F4AA51 /* Lector+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */; };
+		C48F972215CC663400F4AA51 /* ISSeminarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F972115CC663400F4AA51 /* ISSeminarViewController.m */; };
 		C4B2BEC515CC2BF900C4A714 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = C4B2BEC315CC2BF900C4A714 /* gear.png */; };
 		C4B2BEC615CC2BF900C4A714 /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4B2BEC415CC2BF900C4A714 /* gear@2x.png */; };
 		C4DE788015C95C02007FBEC4 /* ISInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE787F15C95C02007FBEC4 /* ISInfoTableViewController.m */; };
@@ -44,14 +47,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C40D8F0A15CBD8610048ABF4 /* Sections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sections.h; sourceTree = "<group>"; };
-		C40D8F0B15CBD8610048ABF4 /* Sections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sections.m; sourceTree = "<group>"; };
-		C40D8F0E15CBD8610048ABF4 /* Lector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lector.h; sourceTree = "<group>"; };
-		C40D8F0F15CBD8610048ABF4 /* Lector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lector.m; sourceTree = "<group>"; };
-		C40D8F1115CBD8610048ABF4 /* Seminar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seminar.h; sourceTree = "<group>"; };
-		C40D8F1215CBD8610048ABF4 /* Seminar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seminar.m; sourceTree = "<group>"; };
-		C40D8F1415CBD8610048ABF4 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
-		C40D8F1515CBD8610048ABF4 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
 		C40D8F1815CBDBBB0048ABF4 /* Sections+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Sections+Load_Data.h"; sourceTree = "<group>"; };
 		C40D8F1915CBDBBB0048ABF4 /* Sections+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Sections+Load_Data.m"; sourceTree = "<group>"; };
 		C40D8F1B15CBDFB30048ABF4 /* Type+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Type+Load_Data.h"; sourceTree = "<group>"; };
@@ -84,6 +79,20 @@
 		C48F96EF15CC3DD200F4AA51 /* light-hash-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-hash-background@2x.png"; sourceTree = "<group>"; };
 		C48F96F215CC3E8300F4AA51 /* bg_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_texture.png; sourceTree = "<group>"; };
 		C48F96F315CC3E8300F4AA51 /* bg_texture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_texture@2x.png"; sourceTree = "<group>"; };
+		C48F96F615CC46D400F4AA51 /* Seminar+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Seminar+Load_Data.h"; sourceTree = "<group>"; };
+		C48F96F715CC46D400F4AA51 /* Seminar+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Seminar+Load_Data.m"; sourceTree = "<group>"; };
+		C48F970515CC49EA00F4AA51 /* Lector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lector.h; sourceTree = "<group>"; };
+		C48F970615CC49EA00F4AA51 /* Lector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lector.m; sourceTree = "<group>"; };
+		C48F970815CC49EA00F4AA51 /* Sections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sections.h; sourceTree = "<group>"; };
+		C48F970915CC49EA00F4AA51 /* Sections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sections.m; sourceTree = "<group>"; };
+		C48F970B15CC49EB00F4AA51 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
+		C48F970C15CC49EB00F4AA51 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
+		C48F970E15CC49EB00F4AA51 /* Seminar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seminar.h; sourceTree = "<group>"; };
+		C48F970F15CC49EB00F4AA51 /* Seminar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seminar.m; sourceTree = "<group>"; };
+		C48F971115CC519E00F4AA51 /* Lector+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Lector+Load_Data.h"; sourceTree = "<group>"; };
+		C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Lector+Load_Data.m"; sourceTree = "<group>"; };
+		C48F972015CC663400F4AA51 /* ISSeminarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSeminarViewController.h; sourceTree = "<group>"; };
+		C48F972115CC663400F4AA51 /* ISSeminarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSeminarViewController.m; sourceTree = "<group>"; };
 		C4B2BEC315CC2BF900C4A714 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
 		C4B2BEC415CC2BF900C4A714 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
 		C4DE787E15C95C02007FBEC4 /* ISInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISInfoTableViewController.h; sourceTree = "<group>"; };
@@ -117,19 +126,23 @@
 		C40D8F1715CBD8730048ABF4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				C40D8F0A15CBD8610048ABF4 /* Sections.h */,
-				C40D8F0B15CBD8610048ABF4 /* Sections.m */,
+				C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */,
+				C48F970E15CC49EB00F4AA51 /* Seminar.h */,
+				C48F970F15CC49EB00F4AA51 /* Seminar.m */,
+				C48F970B15CC49EB00F4AA51 /* Type.h */,
+				C48F970C15CC49EB00F4AA51 /* Type.m */,
+				C48F970815CC49EA00F4AA51 /* Sections.h */,
+				C48F970915CC49EA00F4AA51 /* Sections.m */,
+				C48F970515CC49EA00F4AA51 /* Lector.h */,
+				C48F970615CC49EA00F4AA51 /* Lector.m */,
+				C48F971115CC519E00F4AA51 /* Lector+Load_Data.h */,
+				C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */,
 				C40D8F1815CBDBBB0048ABF4 /* Sections+Load_Data.h */,
 				C40D8F1915CBDBBB0048ABF4 /* Sections+Load_Data.m */,
-				C40D8F1415CBD8610048ABF4 /* Type.h */,
-				C40D8F1515CBD8610048ABF4 /* Type.m */,
 				C40D8F1B15CBDFB30048ABF4 /* Type+Load_Data.h */,
 				C40D8F1C15CBDFB30048ABF4 /* Type+Load_Data.m */,
-				C40D8F1115CBD8610048ABF4 /* Seminar.h */,
-				C40D8F1215CBD8610048ABF4 /* Seminar.m */,
-				C40D8F0E15CBD8610048ABF4 /* Lector.h */,
-				C40D8F0F15CBD8610048ABF4 /* Lector.m */,
-				C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */,
+				C48F96F615CC46D400F4AA51 /* Seminar+Load_Data.h */,
+				C48F96F715CC46D400F4AA51 /* Seminar+Load_Data.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -156,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				C462BDB615C95A8700170E3C /* IRSOT Seminars */,
+				C4DE788D15C95DE0007FBEC4 /* Trash Views */,
 				C462BDAD15C95A8700170E3C /* Frameworks */,
 				C462BDAB15C95A8700170E3C /* Products */,
 			);
@@ -190,7 +204,6 @@
 				C4DE789115C96EF3007FBEC4 /* SeminarFetcher.m */,
 				C40D8F1715CBD8730048ABF4 /* CoreData */,
 				C4DE788B15C95DC1007FBEC4 /* Main Views */,
-				C4DE788D15C95DE0007FBEC4 /* Trash Views */,
 				C4DE788C15C95DCA007FBEC4 /* Info */,
 				C462BDB715C95A8700170E3C /* Supporting Files */,
 			);
@@ -227,6 +240,8 @@
 				C4DE788915C95D26007FBEC4 /* ISSeminarListTableViewController.m */,
 				C4DE788515C95C96007FBEC4 /* ISSettingsViewController.h */,
 				C4DE788615C95C96007FBEC4 /* ISSettingsViewController.m */,
+				C48F972015CC663400F4AA51 /* ISSeminarViewController.h */,
+				C48F972115CC663400F4AA51 /* ISSeminarViewController.m */,
 			);
 			name = "Main Views";
 			sourceTree = "<group>";
@@ -251,6 +266,7 @@
 				C462BDCF15C95A8700170E3C /* ISDetailViewController.m */,
 			);
 			name = "Trash Views";
+			path = "IRSOT Seminars";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -338,13 +354,16 @@
 				C4DE788715C95C96007FBEC4 /* ISSettingsViewController.m in Sources */,
 				C4DE788A15C95D26007FBEC4 /* ISSeminarListTableViewController.m in Sources */,
 				C4DE789215C96EF3007FBEC4 /* SeminarFetcher.m in Sources */,
-				C40D8F0C15CBD8610048ABF4 /* Sections.m in Sources */,
-				C40D8F1015CBD8610048ABF4 /* Lector.m in Sources */,
-				C40D8F1315CBD8610048ABF4 /* Seminar.m in Sources */,
-				C40D8F1615CBD8610048ABF4 /* Type.m in Sources */,
 				C40D8F1A15CBDBBB0048ABF4 /* Sections+Load_Data.m in Sources */,
 				C40D8F1D15CBDFB30048ABF4 /* Type+Load_Data.m in Sources */,
 				C40D8F2415CBEA5D0048ABF4 /* SVProgressHUD.m in Sources */,
+				C48F96F815CC46D400F4AA51 /* Seminar+Load_Data.m in Sources */,
+				C48F970715CC49EA00F4AA51 /* Lector.m in Sources */,
+				C48F970A15CC49EA00F4AA51 /* Sections.m in Sources */,
+				C48F970D15CC49EB00F4AA51 /* Type.m in Sources */,
+				C48F971015CC49EB00F4AA51 /* Seminar.m in Sources */,
+				C48F971315CC519E00F4AA51 /* Lector+Load_Data.m in Sources */,
+				C48F972215CC663400F4AA51 /* ISSeminarViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
-@interface ISMainPageViewController : UIViewController
+#import "ISSeminarListTableViewController.h"
+
+@interface ISMainPageViewController : UIViewController <NSFetchedResultsControllerDelegate>
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
+
+@property (strong, nonatomic) ISSeminarListTableViewController *detailViewController;
 
 @end

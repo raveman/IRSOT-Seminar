@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Дистанционное участие</key>
+	<dict>
+		<key>Дистанционное обучение</key>
+		<string>http://www.ruseminar.ru/distance</string>
+		<key>РОДО</key>
+		<string>http://www.ruseminar.ru/rodo</string>
+	</dict>
+	<key>Условия участия</key>
+	<dict>
+		<key>Раздел «Кадры»</key>
+		<string>http://www.ruseminar.ru/terms-kadry</string>
+		<key>Разделы «Бухгалтерский учет и налогообложение», «Финансы», «Право», «Управление»</key>
+		<string>http://www.ruseminar.ru/terms</string>
+		<key>Региональные представители</key>
+		<string>http://www.ruseminar.ru/region</string>
+		<key>Образец договора</key>
+		<string>http://www.ruseminar.ru/dogovor</string>
+	</dict>
+	<key>О Компании</key>
+	<dict>
+        <key>О Компании</key>
+		<string>http://www.ruseminar.ru/about</string>
+		<key>Контакты</key>
+		<string>http://www.ruseminar.ru/contacts</string>
+		<key>Лицензии</key>
+		<string>http://www.ruseminar.ru/licenses</string>
+
+	</dict>
+</dict>
+</plist>

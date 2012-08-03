@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ISSeminarListTableViewController : UITableViewController
-@property (nonatomic, strong) NSNumber *section;
+@property (nonatomic, strong) NSManagedObject *section;
 @end

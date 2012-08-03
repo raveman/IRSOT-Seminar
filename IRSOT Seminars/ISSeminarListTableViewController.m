@@ -13,6 +13,7 @@
 @end
 
 @implementation ISSeminarListTableViewController
+@synthesize section = _section;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

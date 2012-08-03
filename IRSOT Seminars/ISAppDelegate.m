@@ -8,7 +8,8 @@
 
 #import "ISAppDelegate.h"
 
-#import "ISMasterViewController.h"
+//#import "ISMasterViewController.h"
+#import "ISMainPageViewController.h"
 
 @implementation ISAppDelegate
 
@@ -25,11 +26,17 @@
         splitViewController.delegate = (id)navigationController.topViewController;
         
         UINavigationController *masterNavigationController = [splitViewController.viewControllers objectAtIndex:0];
-        ISMasterViewController *controller = (ISMasterViewController *)masterNavigationController.topViewController;
+        ISMainPageViewController *controller = (ISMainPageViewController *)masterNavigationController.topViewController;
         controller.managedObjectContext = self.managedObjectContext;
     } else {
-        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-        ISMasterViewController *controller = (ISMasterViewController *)navigationController.topViewController;
+//        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+//        ISMainPageViewController *controller = (ISMainPageViewController *)navigationController.topViewController;
+//        controller.managedObjectContext = self.managedObjectContext;
+        
+        // т.к. корневой контроллер у нас UITabBarViewController, то у него мы спрашиваем на первой закладке первый контроллер,
+        // которым оказывается UINavigationController, а у уже него мы получаем на View Controller
+        UITabBarController *masterController = (UITabBarController *)self.window.rootViewController;
+        ISMainPageViewController *controller = (ISMainPageViewController *)[[masterController.viewControllers objectAtIndex:0] topViewController];
         controller.managedObjectContext = self.managedObjectContext;
     }
     

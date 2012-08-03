@@ -7,21 +7,20 @@
 //
 
 #import "ISSettingsViewController.h"
+#import "SeminarFetcher.h"
+
+#import "Type.h"
+#import "Sections.h"
+#import "Lector.h"
+#import "Seminar.h"
 
 @interface ISSettingsViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *updateDateLabel;
 
 @end
 
 @implementation ISSettingsViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize updateDateLabel;
 
 - (void)viewDidLoad
 {
@@ -31,13 +30,18 @@
 
 - (void)viewDidUnload
 {
+    [self setUpdateDateLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    } else {
+        return YES;
+    }
 }
 
 // done button pressed
@@ -46,5 +50,39 @@
     [[self presentingViewController] dismissModalViewControllerAnimated:YES];
 
 }
+
+#pragma mark - Loading staff from website
+
+- (void) loadData {
+    dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
+    dispatch_async(fetchQ, ^{
+        NSDictionary *sectionsAndTypes = [SeminarFetcher sectionsAndTypes];
+        
+        [self.managedObjectContext performBlock:^{
+            NSArray *sections = [sectionsAndTypes valueForKey:@"sections"];
+            NSArray *types = [sectionsAndTypes valueForKey:@"types"];
+            
+            for (NSDictionary *section in sections) {
+                Sections *newSection = [NSEntityDescription insertNewObjectForEntityForName:@"Sections" inManagedObjectContext:self.managedObjectContext];
+                newSection.id = [newSection valueForKey:@"id"];
+                newSection.name = [newSection valueForKey:@"name"];
+                newSection.machine_name = [newSection valueForKey:@"machine_name"];
+            }
+            
+            for (NSDictionary *type in types) {
+                Type *newType = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext:self.managedObjectContext];
+                newType.id = [type valueForKey:@"id"];
+                newType.name = [type valueForKey:@"name"];
+                newType.machine_name = [type valueForKey:@"machine_name"];
+            }
+            
+            
+        }]; // end managedObjectContext performBlock
+    }); // end dispatch_async(fetchQ) block
+    
+    dispatch_release(fetchQ);
+    
+}
+
 
 @end

@@ -135,7 +135,7 @@
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
         NSDictionary *dictionary = [self getDictionaryFor:self.infoLinks atIndex:indexPath.section];
         NSURL *url = [NSURL URLWithString:[dictionary objectForKey:[self getKeyForDictionary:dictionary atIndex:indexPath.row]]];
-        RSWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
+        ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
         [dvc setUrl:url];
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         [dvc setTitle:cell.textLabel.text];

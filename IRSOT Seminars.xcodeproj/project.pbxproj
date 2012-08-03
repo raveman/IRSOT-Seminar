@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C40D8F0C15CBD8610048ABF4 /* Sections.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F0B15CBD8610048ABF4 /* Sections.m */; };
+		C40D8F1015CBD8610048ABF4 /* Lector.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F0F15CBD8610048ABF4 /* Lector.m */; };
+		C40D8F1315CBD8610048ABF4 /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1215CBD8610048ABF4 /* Seminar.m */; };
+		C40D8F1615CBD8610048ABF4 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1515CBD8610048ABF4 /* Type.m */; };
 		C462BDAF15C95A8700170E3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDAE15C95A8700170E3C /* UIKit.framework */; };
 		C462BDB115C95A8700170E3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB015C95A8700170E3C /* Foundation.framework */; };
 		C462BDB315C95A8700170E3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB215C95A8700170E3C /* CoreGraphics.framework */; };
@@ -25,9 +29,18 @@
 		C4DE788715C95C96007FBEC4 /* ISSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE788615C95C96007FBEC4 /* ISSettingsViewController.m */; };
 		C4DE788A15C95D26007FBEC4 /* ISSeminarListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE788915C95D26007FBEC4 /* ISSeminarListTableViewController.m */; };
 		C4DE788F15C95E34007FBEC4 /* Info Links.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4DE788E15C95E34007FBEC4 /* Info Links.plist */; };
+		C4DE789215C96EF3007FBEC4 /* SeminarFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE789115C96EF3007FBEC4 /* SeminarFetcher.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C40D8F0A15CBD8610048ABF4 /* Sections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sections.h; sourceTree = "<group>"; };
+		C40D8F0B15CBD8610048ABF4 /* Sections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sections.m; sourceTree = "<group>"; };
+		C40D8F0E15CBD8610048ABF4 /* Lector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lector.h; sourceTree = "<group>"; };
+		C40D8F0F15CBD8610048ABF4 /* Lector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lector.m; sourceTree = "<group>"; };
+		C40D8F1115CBD8610048ABF4 /* Seminar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seminar.h; sourceTree = "<group>"; };
+		C40D8F1215CBD8610048ABF4 /* Seminar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seminar.m; sourceTree = "<group>"; };
+		C40D8F1415CBD8610048ABF4 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
+		C40D8F1515CBD8610048ABF4 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
 		C462BDAA15C95A8700170E3C /* IRSOT Seminars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IRSOT Seminars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C462BDAE15C95A8700170E3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C462BDB015C95A8700170E3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -57,6 +70,8 @@
 		C4DE788815C95D26007FBEC4 /* ISSeminarListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSeminarListTableViewController.h; sourceTree = "<group>"; };
 		C4DE788915C95D26007FBEC4 /* ISSeminarListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSeminarListTableViewController.m; sourceTree = "<group>"; };
 		C4DE788E15C95E34007FBEC4 /* Info Links.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info Links.plist"; sourceTree = "<group>"; };
+		C4DE789015C96EF3007FBEC4 /* SeminarFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeminarFetcher.h; sourceTree = "<group>"; };
+		C4DE789115C96EF3007FBEC4 /* SeminarFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeminarFetcher.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +89,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C40D8F1715CBD8730048ABF4 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				C40D8F0A15CBD8610048ABF4 /* Sections.h */,
+				C40D8F0B15CBD8610048ABF4 /* Sections.m */,
+				C40D8F1415CBD8610048ABF4 /* Type.h */,
+				C40D8F1515CBD8610048ABF4 /* Type.m */,
+				C40D8F1115CBD8610048ABF4 /* Seminar.h */,
+				C40D8F1215CBD8610048ABF4 /* Seminar.m */,
+				C40D8F0E15CBD8610048ABF4 /* Lector.h */,
+				C40D8F0F15CBD8610048ABF4 /* Lector.m */,
+				C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
 		C462BD9F15C95A8700170E3C = {
 			isa = PBXGroup;
 			children = (
@@ -107,10 +138,12 @@
 			children = (
 				C462BDC215C95A8700170E3C /* MainStoryboard_iPhone.storyboard */,
 				C462BDC515C95A8700170E3C /* MainStoryboard_iPad.storyboard */,
+				C4DE789015C96EF3007FBEC4 /* SeminarFetcher.h */,
+				C4DE789115C96EF3007FBEC4 /* SeminarFetcher.m */,
+				C40D8F1715CBD8730048ABF4 /* CoreData */,
+				C4DE788B15C95DC1007FBEC4 /* Main Views */,
 				C4DE788D15C95DE0007FBEC4 /* Trash Views */,
 				C4DE788C15C95DCA007FBEC4 /* Info */,
-				C4DE788B15C95DC1007FBEC4 /* Main Views */,
-				C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */,
 				C462BDB715C95A8700170E3C /* Supporting Files */,
 			);
 			path = "IRSOT Seminars";
@@ -241,6 +274,11 @@
 				C4DE788415C95C42007FBEC4 /* ISWebviewViewController.m in Sources */,
 				C4DE788715C95C96007FBEC4 /* ISSettingsViewController.m in Sources */,
 				C4DE788A15C95D26007FBEC4 /* ISSeminarListTableViewController.m in Sources */,
+				C4DE789215C96EF3007FBEC4 /* SeminarFetcher.m in Sources */,
+				C40D8F0C15CBD8610048ABF4 /* Sections.m in Sources */,
+				C40D8F1015CBD8610048ABF4 /* Lector.m in Sources */,
+				C40D8F1315CBD8610048ABF4 /* Seminar.m in Sources */,
+				C40D8F1615CBD8610048ABF4 /* Type.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

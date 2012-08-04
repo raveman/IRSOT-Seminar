@@ -11,6 +11,8 @@
 		C40D8F1D15CBDFB30048ABF4 /* Type+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1C15CBDFB30048ABF4 /* Type+Load_Data.m */; };
 		C40D8F2315CBEA5D0048ABF4 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C40D8F2015CBEA5D0048ABF4 /* SVProgressHUD.bundle */; };
 		C40D8F2415CBEA5D0048ABF4 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F2215CBEA5D0048ABF4 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C415A30215CC95A0004BCD79 /* ISBookmarksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C415A30115CC95A0004BCD79 /* ISBookmarksTableViewController.m */; };
+		C415A30B15CC9952004BCD79 /* ISLectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C415A30A15CC9952004BCD79 /* ISLectorViewController.m */; };
 		C462BDAF15C95A8700170E3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDAE15C95A8700170E3C /* UIKit.framework */; };
 		C462BDB115C95A8700170E3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB015C95A8700170E3C /* Foundation.framework */; };
 		C462BDB315C95A8700170E3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB215C95A8700170E3C /* CoreGraphics.framework */; };
@@ -54,6 +56,10 @@
 		C40D8F2015CBEA5D0048ABF4 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		C40D8F2115CBEA5D0048ABF4 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		C40D8F2215CBEA5D0048ABF4 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		C415A30015CC95A0004BCD79 /* ISBookmarksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISBookmarksTableViewController.h; sourceTree = "<group>"; };
+		C415A30115CC95A0004BCD79 /* ISBookmarksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISBookmarksTableViewController.m; sourceTree = "<group>"; };
+		C415A30915CC9952004BCD79 /* ISLectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorViewController.h; sourceTree = "<group>"; };
+		C415A30A15CC9952004BCD79 /* ISLectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorViewController.m; sourceTree = "<group>"; };
 		C462BDAA15C95A8700170E3C /* IRSOT Seminars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IRSOT Seminars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C462BDAE15C95A8700170E3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C462BDB015C95A8700170E3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -165,6 +171,24 @@
 			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
+		C415A30415CC95B0004BCD79 /* Bookmarks */ = {
+			isa = PBXGroup;
+			children = (
+				C415A30015CC95A0004BCD79 /* ISBookmarksTableViewController.h */,
+				C415A30115CC95A0004BCD79 /* ISBookmarksTableViewController.m */,
+			);
+			name = Bookmarks;
+			sourceTree = "<group>";
+		};
+		C415A30C15CC996A004BCD79 /* Lector Views */ = {
+			isa = PBXGroup;
+			children = (
+				C415A30915CC9952004BCD79 /* ISLectorViewController.h */,
+				C415A30A15CC9952004BCD79 /* ISLectorViewController.m */,
+			);
+			name = "Lector Views";
+			sourceTree = "<group>";
+		};
 		C462BD9F15C95A8700170E3C = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +228,8 @@
 				C4DE789115C96EF3007FBEC4 /* SeminarFetcher.m */,
 				C40D8F1715CBD8730048ABF4 /* CoreData */,
 				C4DE788B15C95DC1007FBEC4 /* Main Views */,
+				C415A30415CC95B0004BCD79 /* Bookmarks */,
+				C415A30C15CC996A004BCD79 /* Lector Views */,
 				C4DE788C15C95DCA007FBEC4 /* Info */,
 				C462BDB715C95A8700170E3C /* Supporting Files */,
 			);
@@ -364,6 +390,8 @@
 				C48F971015CC49EB00F4AA51 /* Seminar.m in Sources */,
 				C48F971315CC519E00F4AA51 /* Lector+Load_Data.m in Sources */,
 				C48F972215CC663400F4AA51 /* ISSeminarViewController.m in Sources */,
+				C415A30215CC95A0004BCD79 /* ISBookmarksTableViewController.m in Sources */,
+				C415A30B15CC9952004BCD79 /* ISLectorViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

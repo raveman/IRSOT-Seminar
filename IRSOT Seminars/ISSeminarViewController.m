@@ -5,6 +5,7 @@
 //  Created by Bob Ershov on 04.08.12.
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
+// TODO: переделать все UILabel в UITextView, чтобы у пользователя была возможность копи-паста
 
 #import "ISSeminarViewController.h"
 #import "Sections.h"
@@ -112,6 +113,11 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSLog(@"Sender: %@", sender);
 }
 
 @end

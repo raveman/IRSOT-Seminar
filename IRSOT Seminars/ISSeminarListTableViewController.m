@@ -6,8 +6,11 @@
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
-#define CACHE_NAME_SEMINAR @"Seminar List"
-#define CACHE_NAME_BK @"BK List"
+//#define CACHE_NAME_SEMINAR @"Seminar List"
+//#define CACHE_NAME_BK @"BK List"
+
+#define CACHE_NAME_SEMINAR nil
+#define CACHE_NAME_BK nil
 
 #import "ISSeminarListTableViewController.h"
 #import "ISSeminarViewController.h"
@@ -16,26 +19,34 @@
 #import "Type+Load_Data.h"
 #import "Lector.h"
 
-@interface ISSeminarListTableViewController ()
+@interface ISSeminarListTableViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *seminarTypeSwitch;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (nonatomic, strong) NSMutableArray *searchResults;
+
+@property (nonatomic) BOOL searchIsActive;
 
 @end
 
 @implementation ISSeminarListTableViewController
 @synthesize seminarTypeSwitch = _seminarTypeSwitch;
 @synthesize searchBar = _searchBar;
+@synthesize searchResults = _searchResults;
+
 @synthesize section = _section;
 
 @synthesize currentFetchedResultsController = _fetchedResultsController;
 @synthesize seminarFetchedResultsController = _seminarFetchedResultsController;
 @synthesize bkFetchedResultsController = _bkFetchedResultsController;
 
+@synthesize searchIsActive = _searchIsActive;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     self.currentFetchedResultsController = self.seminarFetchedResultsController;
+    self.searchDisplayController.searchBar.delegate = self;
     
 }
 
@@ -61,10 +72,21 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Seminar View"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        Seminar *seminar = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        NSIndexPath *indexPath = nil;
+        Seminar *seminar = nil;
+
+        if ([sender isKindOfClass:[NSIndexPath class]]) {
+            indexPath = sender;
+            // не знаю почему, но если идти напрямую к ivar, то все работает
+            seminar = [_fetchedResultsController objectAtIndexPath:indexPath];
+        } else {
+            indexPath = [self.tableView indexPathForCell:sender];
+            seminar = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+        }
+        
         [segue.destinationViewController setSeminar:seminar];
         [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
+        
     }
 }
 
@@ -126,13 +148,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        [tableView deselectRowAtIndexPath:indexPath animated:YES];
+        [self performSegueWithIdentifier:@"Seminar View" sender:indexPath];
+    }
 }
 
 #pragma mark - Fetched results controller
@@ -183,23 +202,18 @@
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Seminar" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %@ AND type.id == %d", self.section.id, SEMINAR_TYPE_SEMINAR];
     
-    // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
-    // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:CACHE_NAME_SEMINAR];
     aFetchedResultsController.delegate = self;
     self.seminarFetchedResultsController = aFetchedResultsController;
@@ -255,8 +269,27 @@
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-    if (controller == self.currentFetchedResultsController) {
-        [self.tableView beginUpdates];
+//    if (controller == self.currentFetchedResultsController) {
+//        [self.tableView beginUpdates];
+//    }
+
+    if ([self searchIsActive]) {
+        [[[self searchDisplayController] searchResultsTableView] beginUpdates];
+    }
+    else  {
+        if (controller == self.currentFetchedResultsController) {
+            [self.tableView beginUpdates];
+        }
+    }
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+{
+    if ([self searchIsActive]) {
+        [[[self searchDisplayController] searchResultsTableView] endUpdates];
+    }
+    else  {
+        [self.tableView endUpdates];
     }
 }
 
@@ -300,10 +333,10 @@
     }
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.tableView endUpdates];
-}
+//- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+//{
+//    [self.tableView endUpdates];
+//}
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
@@ -311,5 +344,85 @@
     cell.textLabel.text = [[object valueForKey:@"name"] description];
 }
 
+#pragma mark - Content filtering
+- (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
+{
+    NSFetchRequest *aRequest = [[self fetchedResultsController] fetchRequest];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[cd] %@", searchText];
+    
+    [aRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    if (![[self fetchedResultsController] performFetch:&error]) {
+        // Handle error
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+}
+
+#pragma mark - UISearch Delegates
+//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+//    NSInteger searchOption = controller.searchBar.selectedScopeButtonIndex;
+//    return [self searchDisplayController:controller shouldReloadTableForSearchString:searchString searchScope:searchOption];
+//}
+- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
+{
+    [self filterContentForSearchText:[self.searchDisplayController.searchBar text] scope:nil];
+    
+    return YES;
+}
+
+- (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
+{
+    NSFetchRequest *aRequest = [[self currentFetchedResultsController] fetchRequest];
+    
+    [aRequest setPredicate:nil];
+    
+    NSError *error = nil;
+    if (![[self currentFetchedResultsController] performFetch:&error]) {
+        // Handle error
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        abort();
+    }
+    
+    [self setSearchIsActive:NO];
+    return;
+}
+
+- (void)searchDisplayControllerWillBeginSearch:(UISearchDisplayController *)controller {
+    [self setSearchIsActive:YES];
+    return;
+}
+
+//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+//    NSString* searchString = controller.searchBar.text;
+//    return [self searchDisplayController:controller shouldReloadTableForSearchString:searchString searchScope:searchOption];
+//}
+
+//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString*)searchString searchScope:(NSInteger)searchOption {
+//    
+//    NSPredicate *predicate = nil;
+//    if ([searchString length]) {
+//        if (searchOption == 0) {
+//            // full text, in my implementation.  Other scope button titles are "Author", "Title"
+//            //            predicate = [NSPredicate predicateWithFormat:@"title contains[cd] %@ OR author contains[cd] %@", searchString, searchString];
+//            predicate = [NSPredicate predicateWithFormat:@"name contains [cd] %@", searchString];
+//        } else {
+//            
+//            // docs say keys are case insensitive, but apparently not so.
+//            predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", [[controller.searchBar.scopeButtonTitles objectAtIndex:searchOption] lowercaseString], searchString];
+//        }
+//    }
+//    [self.currentFetchedResultsController.fetchRequest setPredicate:predicate];
+//    
+//    NSError *error = nil;
+//    if (![[self currentFetchedResultsController] performFetch:&error]) {
+//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//        abort();
+//    }           
+//    
+//    return YES;
+//}
 
 @end

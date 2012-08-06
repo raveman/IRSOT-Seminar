@@ -22,13 +22,12 @@
 	</dict>
 	<key>О Компании</key>
 	<dict>
-        <key>О Компании</key>
+		<key>О нас</key>
 		<string>http://www.ruseminar.ru/about</string>
 		<key>Контакты</key>
 		<string>http://www.ruseminar.ru/contacts</string>
 		<key>Лицензии</key>
 		<string>http://www.ruseminar.ru/licenses</string>
-
 	</dict>
 </dict>
 </plist>

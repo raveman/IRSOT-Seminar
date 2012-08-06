@@ -189,6 +189,15 @@
 			name = "Lector Views";
 			sourceTree = "<group>";
 		};
+		C42B777A15D02CE500835E9F /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C4DE789015C96EF3007FBEC4 /* SeminarFetcher.h */,
+				C4DE789115C96EF3007FBEC4 /* SeminarFetcher.m */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		C462BD9F15C95A8700170E3C = {
 			isa = PBXGroup;
 			children = (
@@ -224,8 +233,7 @@
 				C40D8F1E15CBEA350048ABF4 /* Contrib */,
 				C462BDC215C95A8700170E3C /* MainStoryboard_iPhone.storyboard */,
 				C462BDC515C95A8700170E3C /* MainStoryboard_iPad.storyboard */,
-				C4DE789015C96EF3007FBEC4 /* SeminarFetcher.h */,
-				C4DE789115C96EF3007FBEC4 /* SeminarFetcher.m */,
+				C42B777A15D02CE500835E9F /* Helpers */,
 				C40D8F1715CBD8730048ABF4 /* CoreData */,
 				C4DE788B15C95DC1007FBEC4 /* Main Views */,
 				C415A30415CC95B0004BCD79 /* Bookmarks */,
@@ -264,10 +272,10 @@
 				C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */,
 				C4DE788815C95D26007FBEC4 /* ISSeminarListTableViewController.h */,
 				C4DE788915C95D26007FBEC4 /* ISSeminarListTableViewController.m */,
-				C4DE788515C95C96007FBEC4 /* ISSettingsViewController.h */,
-				C4DE788615C95C96007FBEC4 /* ISSettingsViewController.m */,
 				C48F972015CC663400F4AA51 /* ISSeminarViewController.h */,
 				C48F972115CC663400F4AA51 /* ISSeminarViewController.m */,
+				C4DE788515C95C96007FBEC4 /* ISSettingsViewController.h */,
+				C4DE788615C95C96007FBEC4 /* ISSettingsViewController.m */,
 			);
 			name = "Main Views";
 			sourceTree = "<group>";

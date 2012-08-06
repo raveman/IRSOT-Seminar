@@ -28,7 +28,7 @@
         // handle error
     } else if ([matches count] == 0) {
         lector = [NSEntityDescription insertNewObjectForEntityForName:@"Lector" inManagedObjectContext:context];
-        lector.name = name;
+        lector.name = [name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     } else {
         lector = [matches lastObject];
     }

@@ -132,8 +132,8 @@
         cell.textLabel.text = seminar.name;
         
         NSString *lectors = [seminar stringWithLectorNames];
-        if ([lectors length] > 40) {
-            lectors = [lectors substringToIndex:38];
+        if ([lectors length] > 36) {
+            lectors = [lectors substringToIndex:36];
             lectors = [lectors stringByAppendingString:@"…"];
         }
         

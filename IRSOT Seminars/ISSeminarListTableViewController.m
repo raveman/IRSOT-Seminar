@@ -130,10 +130,26 @@
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         Seminar *seminar = [self.fetchedResultsController objectAtIndexPath:indexPath];
         cell.textLabel.text = seminar.name;
-        cell.detailTextLabel.text = [seminar stringWithLectorNames];
+        
+        NSString *lectors = [seminar stringWithLectorNames];
+        if ([lectors length] > 40) {
+            lectors = [lectors substringToIndex:38];
+            lectors = [lectors stringByAppendingString:@"…"];
+        }
+        
+        cell.detailTextLabel.text =[NSString stringWithFormat:@"%@\n%@", lectors, [seminar stringWithSeminarDates]];
+        cell.detailTextLabel.numberOfLines = 0;
+        cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
     }
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    int numberOfRows = 3;
+
+    return (40.0 + (numberOfRows - 1) * 15.0);
 }
 
 #pragma mark - Table view delegate

@@ -288,5 +288,11 @@
     }
 }
 
+- (void) settingsViewController:(ISSettingsViewController *)sender didUpdatedStore:(BOOL)updated
+{
+    if (updated) {
+        [self.seminarCategoriesTableView reloadData];
+    }
+}
 
 @end

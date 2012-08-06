@@ -12,10 +12,10 @@
 #import "Type.h"
 #import "Lector.h"
 
-
 @interface ISSeminarViewController ()
 
-@property (weak, nonatomic) IBOutlet UILabel *seminarNameLabel;
+@property (weak, nonatomic) IBOutlet UITextView *seminarName;
+@property (weak, nonatomic) IBOutlet UILabel *seminarDate;
 @property (weak, nonatomic) IBOutlet UILabel *sectionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lectorsLabel;
@@ -24,7 +24,9 @@
 @end
 
 @implementation ISSeminarViewController
-@synthesize seminarNameLabel = _seminarNameLabel;
+
+@synthesize seminarName = _seminarName;
+@synthesize seminarDate = _seminarDate;
 @synthesize sectionLabel = _sectionLabel;
 @synthesize typeLabel = _typeLabel;
 @synthesize lectorsLabel = _lectorsLabel;
@@ -38,12 +40,21 @@
     CGSize maximumLabelSize = CGSizeMake(320,300);
     CGSize expectedLabelSize = [label.text sizeWithFont:label.font constrainedToSize:maximumLabelSize lineBreakMode:label.lineBreakMode];
     
-    //adjust the label the the new height.
-    CGRect newFrame = self.seminarNameLabel.frame;
+    //adjust the label new height.
+    CGRect newFrame = label.frame;
     newFrame.size.height = expectedLabelSize.height;
     label.frame = newFrame;
     
     return newFrame;
+}
+
+- (CGRect) resizeTextView:(UITextView *)textView
+{
+    CGRect frame = textView.frame;
+    frame.size.height = textView.contentSize.height;
+    textView.frame = frame;
+    
+    return frame;
 }
 
 - (void)viewDidLoad
@@ -53,30 +64,38 @@
     self.title = self.seminar.name;
     
     if ([[self.seminar.name substringToIndex:1] isEqualToString:@"«"]) {
-            self.seminarNameLabel.text = [NSString stringWithFormat:@"%@»", self.seminar.name];
+            self.seminarName.text = [NSString stringWithFormat:@"%@»", self.seminar.name];
     } else {
-        self.seminarNameLabel.text = [NSString stringWithFormat:@"«%@»", self.seminar.name];
+        self.seminarName.text = [NSString stringWithFormat:@"«%@»", self.seminar.name];
     }
     
     // получаем размеры заголовка
-    CGRect headerRect = [self resizeLabel:self.seminarNameLabel];
-
-    // опускаем тип и раздел семинаров на высоту заголовка
+     CGRect headerRect = [self resizeTextView:self.seminarName];
+    
+    // опускаем дату проведения семинара
+    self.seminarDate.text = [self.seminar stringWithSeminarDates];
+    CGRect rect = self.seminarDate.frame;
+    rect.origin.y = headerRect.origin.y + headerRect.size.height;
+    self.seminarDate.frame = rect;
+    int height = rect.origin.y + rect.size.height;
+    
+    // опускаем тип и раздел семинаров на высоту предыдущих двух
     self.sectionLabel.text = self.seminar.section.name;
-    CGRect rect = self.sectionLabel.frame;
+    rect = self.sectionLabel.frame;
 //    headerRect.origin.y = self.seminarNameLabel.frame.origin.y + headerRect.size.height;
 //    headerRect.origin.y = headerRect.size.height;
-    rect.origin.y = headerRect.origin.y + headerRect.size.height + 32;
+//    rect.origin.y = headerRect.origin.y + headerRect.size.height + 20;
+    rect.origin.y = height + rect.size.height;
     self.sectionLabel.frame = rect;
     
     self.typeLabel.text = self.seminar.type.name;
     rect = self.typeLabel.frame;
-    rect.origin.y = headerRect.origin.y + headerRect.size.height + 32;
+//    rect.origin.y = headerRect.origin.y + headerRect.size.height + 20;
+    rect.origin.y = height + rect.size.height;
     self.typeLabel.frame = rect;
     
     // получаем общую высоту текущего заголовка: заголовок + тип и секция семинара
-//    headerRect.size.height = headerRect.size.height + rect.size.height;
-    int height = rect.origin.y + rect.size.height;
+    height = rect.origin.y + rect.size.height;
     
     // опускаем лекторов на текущее смещение
     self.lectorsLabel.text  = [self.seminar stringWithLectorNames];
@@ -99,13 +118,14 @@
 
 - (void)viewDidUnload
 {
-    [self setSeminarNameLabel:nil];
     [self setSectionLabel:nil];
     [self setTypeLabel:nil];
     [self setLectorsLabel:nil];
     [self setProgramTextView:nil];
 
     [self setScrollView:nil];
+    [self setSeminarDate:nil];
+    [self setSeminarName:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

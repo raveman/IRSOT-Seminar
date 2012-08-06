@@ -87,6 +87,7 @@
 - (void) loadData {
 
     [SVProgressHUD showWithStatus:NSLocalizedString(@"Загружаю семинары", @"Loading seminars data from the web")];
+    BOOL __block updated = NO;
     dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
     dispatch_async(fetchQ, ^{
         NSDictionary *sectionsAndTypes = [SeminarFetcher sectionsAndTypes];
@@ -118,11 +119,13 @@
 
                 [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Семинары загружены!", @"Seminars loaded successfully")];
                 self.deleteButton.hidden = NO;
+                updated = YES;
             }
-    
+            [self.delegate settingsViewController:self didUpdatedStore:updated];
         }]; // end managedObjectContext performBlock
     }); // end dispatch_async(fetchQ) block
     dispatch_release(fetchQ);
+
 }
 
 // удаляем все данные из приложения

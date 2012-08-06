@@ -13,6 +13,7 @@
 @protocol ISSettingsViewControllerDelegate <NSObject>
 
 - (void) settingsViewController:(ISSettingsViewController *)sender didDeletedStore: (BOOL) deleted;
+- (void) settingsViewController:(ISSettingsViewController *)sender didUpdatedStore: (BOOL) updated;
 
 @end
 

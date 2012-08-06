@@ -66,6 +66,7 @@
     // опускаем тип и раздел семинаров на высоту заголовка
     self.sectionLabel.text = self.seminar.section.name;
     CGRect rect = self.sectionLabel.frame;
+    headerRect.origin.y = self.seminarNameLabel.frame.origin.y + headerRect.size.height;
     rect.origin.y = headerRect.size.height + 32;
     self.sectionLabel.frame = rect;
     

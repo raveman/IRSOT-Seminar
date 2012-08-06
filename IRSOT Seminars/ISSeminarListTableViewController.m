@@ -73,20 +73,14 @@
 {
     if ([segue.identifier isEqualToString:@"Seminar View"]) {
         NSIndexPath *indexPath = nil;
-        Seminar *seminar = nil;
-
         if ([sender isKindOfClass:[NSIndexPath class]]) {
             indexPath = sender;
-            // не знаю почему, но если идти напрямую к ivar, то все работает
-            seminar = [_fetchedResultsController objectAtIndexPath:indexPath];
         } else {
             indexPath = [self.tableView indexPathForCell:sender];
-            seminar = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         }
-        
+        Seminar *seminar = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         [segue.destinationViewController setSeminar:seminar];
         [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
-        
     }
 }
 
@@ -170,7 +164,7 @@
     fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %@", self.section.id];
     
     // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
+//    [fetchRequest setFetchBatchSize:20];
     
     // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
@@ -207,7 +201,7 @@
     
     fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %@ AND type.id == %d", self.section.id, SEMINAR_TYPE_SEMINAR];
     
-    [fetchRequest setFetchBatchSize:20];
+//    [fetchRequest setFetchBatchSize:20];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
@@ -228,6 +222,7 @@
     
     return _seminarFetchedResultsController;
 }
+
 - (NSFetchedResultsController *)bkFetchedResultsController
 {
     if (_bkFetchedResultsController != nil) {
@@ -235,31 +230,24 @@
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Seminar" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %@ AND type.id == %d", self.section.id, SEMINAR_TYPE_BK];
     
-    // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
+//    [fetchRequest setFetchBatchSize:20];
     
-    // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:CACHE_NAME_BK];
     aFetchedResultsController.delegate = self;
     self.bkFetchedResultsController = aFetchedResultsController;
     
 	NSError *error = nil;
 	if (![self.bkFetchedResultsController performFetch:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
 	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	    abort();
 	}
@@ -348,8 +336,13 @@
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     NSFetchRequest *aRequest = [[self fetchedResultsController] fetchRequest];
+    NSInteger currentSeminarType = [self.seminarTypeSwitch selectedSegmentIndex];
+    if (currentSeminarType) currentSeminarType = SEMINAR_TYPE_SEMINAR;
+        else currentSeminarType = SEMINAR_TYPE_BK;
     
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[cd] %@", searchText];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[cd] %@ AND section.id == %@ AND type.id == %d", searchText, self.section.id, currentSeminarType];
+
+//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[cd] %@ AND section.id == %@", searchText, self.section.id];
     
     [aRequest setPredicate:predicate];
     
@@ -375,8 +368,23 @@
 
 - (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
 {
-    NSFetchRequest *aRequest = [[self currentFetchedResultsController] fetchRequest];
-    
+    NSFetchRequest *aRequest = nil;
+    switch ([self.seminarTypeSwitch selectedSegmentIndex]) {
+        case 0:
+            self.seminarFetchedResultsController = nil;
+            aRequest = [[self seminarFetchedResultsController] fetchRequest];
+//            self.currentFetchedResultsController = self.seminarFetchedResultsController;
+            break;
+        case 1:
+            self.bkFetchedResultsController = nil;
+            aRequest = [[self bkFetchedResultsController] fetchRequest];
+//            self.currentFetchedResultsController = self.bkFetchedResultsController;
+            break;
+        default:
+            break;
+    }
+
+    // TODO: пофиксить баги с обновлением обратно состояния наших списков
     [aRequest setPredicate:nil];
     
     NSError *error = nil;

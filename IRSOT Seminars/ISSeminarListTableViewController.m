@@ -35,9 +35,7 @@
 
 @synthesize section = _section;
 
-@synthesize currentFetchedResultsController = _fetchedResultsController;
-@synthesize seminarFetchedResultsController = _seminarFetchedResultsController;
-@synthesize bkFetchedResultsController = _bkFetchedResultsController;
+@synthesize fetchedResultsController = _fetchedResultsController;
 
 @synthesize searchIsActive = _searchIsActive;
 
@@ -45,9 +43,7 @@
 {
     [super viewDidLoad];
 
-    self.currentFetchedResultsController = self.seminarFetchedResultsController;
     self.searchDisplayController.searchBar.delegate = self;
-    
 }
 
 - (void)viewDidUnload
@@ -60,8 +56,9 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [NSFetchedResultsController deleteCacheWithName:CACHE_NAME_SEMINAR];
-    [NSFetchedResultsController deleteCacheWithName:CACHE_NAME_BK];
+// don't need to delete caches, we do not support them now
+//    [NSFetchedResultsController deleteCacheWithName:CACHE_NAME_SEMINAR];
+//    [NSFetchedResultsController deleteCacheWithName:CACHE_NAME_BK];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -88,11 +85,12 @@
 - (IBAction)seminarTypeChanged:(UISegmentedControl *)sender {
     switch (sender.selectedSegmentIndex) {
         case 0:
-            self.currentFetchedResultsController = self.seminarFetchedResultsController;
+//            self.currentFetchedResultsController = self.seminarFetchedResultsController;
+            self.fetchedResultsController = nil;
             [self.tableView reloadData];
             break;
         case 1:
-            self.currentFetchedResultsController = self.bkFetchedResultsController;
+            self.fetchedResultsController = nil;
             [self.tableView reloadData];
             break;
         default:
@@ -157,30 +155,29 @@
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Seminar" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
+
+    NSInteger currentSeminarType = [self.seminarTypeSwitch selectedSegmentIndex];
+    if (currentSeminarType) currentSeminarType = SEMINAR_TYPE_BK;
+        else currentSeminarType = SEMINAR_TYPE_SEMINAR;
+
+    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %d AND type.id == %d", [self.section.id integerValue], currentSeminarType];
     
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %@", self.section.id];
-    
-    // Set the batch size to a suitable number.
 //    [fetchRequest setFetchBatchSize:20];
     
-    // Edit the sort key as appropriate.
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
-    self.currentFetchedResultsController = aFetchedResultsController;
+    self.fetchedResultsController = aFetchedResultsController;
     
 	NSError *error = nil;
-	if (![self.currentFetchedResultsController performFetch:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
+	if (![self.fetchedResultsController performFetch:&error]) {
+        // TODO: handle error!
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
 	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	    abort();
@@ -189,83 +186,13 @@
     return _fetchedResultsController;
 }
 
-- (NSFetchedResultsController *)seminarFetchedResultsController
-{
-    if (_seminarFetchedResultsController != nil) {
-        return _seminarFetchedResultsController;
-    }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Seminar" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %@ AND type.id == %d", self.section.id, SEMINAR_TYPE_SEMINAR];
-    
-//    [fetchRequest setFetchBatchSize:20];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:CACHE_NAME_SEMINAR];
-    aFetchedResultsController.delegate = self;
-    self.seminarFetchedResultsController = aFetchedResultsController;
-    
-	NSError *error = nil;
-	if (![self.seminarFetchedResultsController performFetch:&error]) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	    abort();
-	}
-    
-    return _seminarFetchedResultsController;
-}
-
-- (NSFetchedResultsController *)bkFetchedResultsController
-{
-    if (_bkFetchedResultsController != nil) {
-        return _bkFetchedResultsController;
-    }
-    
-    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Seminar" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
-    
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %@ AND type.id == %d", self.section.id, SEMINAR_TYPE_BK];
-    
-//    [fetchRequest setFetchBatchSize:20];
-    
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    
-    [fetchRequest setSortDescriptors:sortDescriptors];
-    
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:CACHE_NAME_BK];
-    aFetchedResultsController.delegate = self;
-    self.bkFetchedResultsController = aFetchedResultsController;
-    
-	NSError *error = nil;
-	if (![self.bkFetchedResultsController performFetch:&error]) {
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	    abort();
-	}
-    
-    return _bkFetchedResultsController;
-}
-
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
 {
-//    if (controller == self.currentFetchedResultsController) {
-//        [self.tableView beginUpdates];
-//    }
-
     if ([self searchIsActive]) {
         [[[self searchDisplayController] searchResultsTableView] beginUpdates];
     }
     else  {
-        if (controller == self.currentFetchedResultsController) {
+        if (controller == self.fetchedResultsController) {
             [self.tableView beginUpdates];
         }
     }
@@ -336,15 +263,17 @@
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     NSFetchRequest *aRequest = [[self fetchedResultsController] fetchRequest];
-    NSInteger currentSeminarType = [self.seminarTypeSwitch selectedSegmentIndex];
-    if (currentSeminarType) currentSeminarType = SEMINAR_TYPE_SEMINAR;
-        else currentSeminarType = SEMINAR_TYPE_BK;
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[cd] %@ AND section.id == %@ AND type.id == %d", searchText, self.section.id, currentSeminarType];
 
-//    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"name contains[cd] %@ AND section.id == %@", searchText, self.section.id];
+    NSInteger currentSeminarType = [self.seminarTypeSwitch selectedSegmentIndex];
+    if (currentSeminarType) currentSeminarType = SEMINAR_TYPE_BK;
+    else currentSeminarType = SEMINAR_TYPE_SEMINAR;
     
-    [aRequest setPredicate:predicate];
+    aRequest.predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@ AND section.id == %d AND type.id == %d", searchText, [self.section.id integerValue] , currentSeminarType];
+  
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    
+    [aRequest setSortDescriptors:sortDescriptors];
     
     NSError *error = nil;
     if (![[self fetchedResultsController] performFetch:&error]) {
@@ -355,10 +284,7 @@
 }
 
 #pragma mark - UISearch Delegates
-//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-//    NSInteger searchOption = controller.searchBar.selectedScopeButtonIndex;
-//    return [self searchDisplayController:controller shouldReloadTableForSearchString:searchString searchScope:searchOption];
-//}
+
 - (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString
 {
     [self filterContentForSearchText:[self.searchDisplayController.searchBar text] scope:nil];
@@ -368,31 +294,8 @@
 
 - (void)searchDisplayControllerDidEndSearch:(UISearchDisplayController *)controller
 {
-    NSFetchRequest *aRequest = nil;
-    switch ([self.seminarTypeSwitch selectedSegmentIndex]) {
-        case 0:
-            self.seminarFetchedResultsController = nil;
-            aRequest = [[self seminarFetchedResultsController] fetchRequest];
-//            self.currentFetchedResultsController = self.seminarFetchedResultsController;
-            break;
-        case 1:
-            self.bkFetchedResultsController = nil;
-            aRequest = [[self bkFetchedResultsController] fetchRequest];
-//            self.currentFetchedResultsController = self.bkFetchedResultsController;
-            break;
-        default:
-            break;
-    }
-
-    // TODO: пофиксить баги с обновлением обратно состояния наших списков
-    [aRequest setPredicate:nil];
-    
-    NSError *error = nil;
-    if (![[self currentFetchedResultsController] performFetch:&error]) {
-        // Handle error
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }
+    self.fetchedResultsController = nil;
+    [self fetchedResultsController];
     
     [self setSearchIsActive:NO];
     return;
@@ -402,35 +305,5 @@
     [self setSearchIsActive:YES];
     return;
 }
-
-//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
-//    NSString* searchString = controller.searchBar.text;
-//    return [self searchDisplayController:controller shouldReloadTableForSearchString:searchString searchScope:searchOption];
-//}
-
-//- (BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString*)searchString searchScope:(NSInteger)searchOption {
-//    
-//    NSPredicate *predicate = nil;
-//    if ([searchString length]) {
-//        if (searchOption == 0) {
-//            // full text, in my implementation.  Other scope button titles are "Author", "Title"
-//            //            predicate = [NSPredicate predicateWithFormat:@"title contains[cd] %@ OR author contains[cd] %@", searchString, searchString];
-//            predicate = [NSPredicate predicateWithFormat:@"name contains [cd] %@", searchString];
-//        } else {
-//            
-//            // docs say keys are case insensitive, but apparently not so.
-//            predicate = [NSPredicate predicateWithFormat:@"%K contains[cd] %@", [[controller.searchBar.scopeButtonTitles objectAtIndex:searchOption] lowercaseString], searchString];
-//        }
-//    }
-//    [self.currentFetchedResultsController.fetchRequest setPredicate:predicate];
-//    
-//    NSError *error = nil;
-//    if (![[self currentFetchedResultsController] performFetch:&error]) {
-//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-//        abort();
-//    }           
-//    
-//    return YES;
-//}
 
 @end

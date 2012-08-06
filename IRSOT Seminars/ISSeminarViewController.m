@@ -50,9 +50,7 @@
 {
     [super viewDidLoad];
     
-	// Do any additional setup after loading the view.
     self.title = self.seminar.name;
-
     
     if ([[self.seminar.name substringToIndex:1] isEqualToString:@"«"]) {
             self.seminarNameLabel.text = [NSString stringWithFormat:@"%@»", self.seminar.name];
@@ -66,13 +64,14 @@
     // опускаем тип и раздел семинаров на высоту заголовка
     self.sectionLabel.text = self.seminar.section.name;
     CGRect rect = self.sectionLabel.frame;
-    headerRect.origin.y = self.seminarNameLabel.frame.origin.y + headerRect.size.height;
-    rect.origin.y = headerRect.size.height + 32;
+//    headerRect.origin.y = self.seminarNameLabel.frame.origin.y + headerRect.size.height;
+//    headerRect.origin.y = headerRect.size.height;
+    rect.origin.y = headerRect.origin.y + headerRect.size.height + 32;
     self.sectionLabel.frame = rect;
     
     self.typeLabel.text = self.seminar.type.name;
     rect = self.typeLabel.frame;
-    rect.origin.y = headerRect.size.height + 32;
+    rect.origin.y = headerRect.origin.y + headerRect.size.height + 32;
     self.typeLabel.frame = rect;
     
     // получаем общую высоту текущего заголовка: заголовок + тип и секция семинара

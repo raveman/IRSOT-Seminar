@@ -18,11 +18,13 @@
 #define SEMINAR_NAME @"node_title"
 #define SEMINAR_LECTOR @"lector"
 #define SEMINAR_DATE_START @"date_start.value"
-#define SEMINAR_DATE_END @"date_end.value"
+#define SEMINAR_DATE_END @"date_end.value2"
 #define SEMINAR_ONLINE @"online"
 #define SEMINAR_RUSEMINAR_ID @"ruseminar_id"
 
 #define SEMINAR_DATE_FORMAT @"yyyy-MM-dd HH:mm:ss"
+#define SEMINAR_DATE_FORMAT_DATE @"dd"
+#define SEMINAR_DATE_FORMAT_DATE_MONTH @"MMMM YYYY"
 
 @interface SeminarFetcher : NSObject
 

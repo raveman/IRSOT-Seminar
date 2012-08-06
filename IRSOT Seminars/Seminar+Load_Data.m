@@ -34,6 +34,7 @@
         seminar = [NSEntityDescription insertNewObjectForEntityForName:@"Seminar" inManagedObjectContext:context];
         seminar.id = [NSNumber numberWithInteger:[[dictionary objectForKey:@"nid"] integerValue]];
         seminar.name = [dictionary objectForKey:SEMINAR_NAME];
+        seminar.ruseminarID = [NSNumber numberWithInteger:[[dictionary objectForKey:SEMINAR_RUSEMINAR_ID] integerValue]];
         
         NSString *dateStartStr = [dictionary valueForKeyPath:SEMINAR_DATE_START];
         NSString *dateEndStr = [dictionary valueForKeyPath:SEMINAR_DATE_END];
@@ -46,7 +47,6 @@
         seminar.date_start = dateStart;
         seminar.date_end = dateEnd;
         
-        seminar.ruseminarID = [NSNumber numberWithInteger:[[dictionary objectForKey:SEMINAR_RUSEMINAR_ID] integerValue]];
         seminar.online = [NSNumber numberWithInteger:[[[dictionary objectForKey:SEMINAR_ONLINE] objectForKey:@"value"] integerValue]];
 
         NSInteger sectionId = [[[dictionary objectForKey:SEMINAR_SECTION] objectForKey:@"tid"] integerValue];
@@ -78,6 +78,29 @@
         else lectors = [NSString stringWithFormat:@"%@, %@", lectors, lector.name];
     }
     return lectors;
+}
+
+- (NSString *)stringWithSeminarDates
+{
+    
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU.UTF-8" ];
+    
+    NSDateFormatter *dateFormatterDate = [[NSDateFormatter alloc] init];
+    [dateFormatterDate setDateFormat:SEMINAR_DATE_FORMAT_DATE];
+    [dateFormatterDate setLocale:locale];
+    NSDateFormatter *dateFormatterMonth = [[NSDateFormatter alloc] init];
+    [dateFormatterMonth setLocale:locale];
+    [dateFormatterMonth setDateFormat:SEMINAR_DATE_FORMAT_DATE_MONTH];
+    
+    NSString *dateStr;
+    
+    if ([[dateFormatterDate stringFromDate:self.date_start] isEqualToString:[dateFormatterDate stringFromDate:self.date_end]]) {
+        dateStr = [NSString stringWithFormat:@"%@ %@", [dateFormatterDate stringFromDate:self.date_start],  [dateFormatterMonth stringFromDate:self.date_start]];
+    } else {
+        dateStr = [NSString stringWithFormat:@"%@ - %@ %@", [dateFormatterDate stringFromDate:self.date_start], [dateFormatterDate stringFromDate:self.date_end], [dateFormatterMonth stringFromDate:self.date_start]];
+    }
+    
+    return dateStr;
 }
 
 @end

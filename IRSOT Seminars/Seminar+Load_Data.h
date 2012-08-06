@@ -13,5 +13,6 @@
 + (Seminar *)seminarWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)context;
 
 - (NSString *)stringWithLectorNames;
+- (NSString *)stringWithSeminarDates;
 
 @end

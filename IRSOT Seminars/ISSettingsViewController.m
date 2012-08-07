@@ -148,7 +148,10 @@
         // remove the file containing the data
         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:&error];
         //recreate the store like in the  appDelegate method
-        [persistentCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error];//recreates the persistent store
+        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                                 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                                 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+        [persistentCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error];//recreates the persistent store
         deleted = YES;
         self.deleteButton.hidden = YES;
     }

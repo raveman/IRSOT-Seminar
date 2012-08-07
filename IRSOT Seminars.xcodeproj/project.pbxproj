@@ -13,6 +13,10 @@
 		C40D8F2415CBEA5D0048ABF4 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F2215CBEA5D0048ABF4 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C415A30215CC95A0004BCD79 /* ISBookmarksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C415A30115CC95A0004BCD79 /* ISBookmarksTableViewController.m */; };
 		C415A30B15CC9952004BCD79 /* ISLectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C415A30A15CC9952004BCD79 /* ISLectorViewController.m */; };
+		C4228C5C15D12ED500960BBA /* irsot-icon-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4228C5B15D12ED500960BBA /* irsot-icon-iPhone@2x.png */; };
+		C4228C5F15D12EEF00960BBA /* irsot-icon-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4228C5E15D12EEF00960BBA /* irsot-icon-iPhone.png */; };
+		C4228C6115D12F0D00960BBA /* irsot-icon-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4228C6015D12F0D00960BBA /* irsot-icon-iPad@2x.png */; };
+		C4228C6315D12F2800960BBA /* irsot-icon-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4228C6215D12F2800960BBA /* irsot-icon-iPad.png */; };
 		C462BDAF15C95A8700170E3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDAE15C95A8700170E3C /* UIKit.framework */; };
 		C462BDB115C95A8700170E3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB015C95A8700170E3C /* Foundation.framework */; };
 		C462BDB315C95A8700170E3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB215C95A8700170E3C /* CoreGraphics.framework */; };
@@ -60,6 +64,10 @@
 		C415A30115CC95A0004BCD79 /* ISBookmarksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISBookmarksTableViewController.m; sourceTree = "<group>"; };
 		C415A30915CC9952004BCD79 /* ISLectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorViewController.h; sourceTree = "<group>"; };
 		C415A30A15CC9952004BCD79 /* ISLectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorViewController.m; sourceTree = "<group>"; };
+		C4228C5B15D12ED500960BBA /* irsot-icon-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "irsot-icon-iPhone@2x.png"; path = "../irsot-icon-iPhone@2x.png"; sourceTree = "<group>"; };
+		C4228C5E15D12EEF00960BBA /* irsot-icon-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "irsot-icon-iPhone.png"; path = "../irsot-icon-iPhone.png"; sourceTree = "<group>"; };
+		C4228C6015D12F0D00960BBA /* irsot-icon-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "irsot-icon-iPad@2x.png"; path = "../irsot-icon-iPad@2x.png"; sourceTree = "<group>"; };
+		C4228C6215D12F2800960BBA /* irsot-icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "irsot-icon-iPad.png"; path = "../irsot-icon-iPad.png"; sourceTree = "<group>"; };
 		C462BDAA15C95A8700170E3C /* IRSOT Seminars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IRSOT Seminars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C462BDAE15C95A8700170E3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C462BDB015C95A8700170E3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -189,6 +197,17 @@
 			name = "Lector Views";
 			sourceTree = "<group>";
 		};
+		C4228C6415D1805600960BBA /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				C4228C6215D12F2800960BBA /* irsot-icon-iPad.png */,
+				C4228C6015D12F0D00960BBA /* irsot-icon-iPad@2x.png */,
+				C4228C5E15D12EEF00960BBA /* irsot-icon-iPhone.png */,
+				C4228C5B15D12ED500960BBA /* irsot-icon-iPhone@2x.png */,
+			);
+			name = "New Group";
+			sourceTree = "<group>";
+		};
 		C42B777A15D02CE500835E9F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +266,7 @@
 		C462BDB715C95A8700170E3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C4228C6415D1805600960BBA /* New Group */,
 				C48F96F215CC3E8300F4AA51 /* bg_texture.png */,
 				C48F96F315CC3E8300F4AA51 /* bg_texture@2x.png */,
 				C48F96EE15CC3DD200F4AA51 /* light-hash-background.png */,
@@ -367,6 +387,10 @@
 				C48F96F115CC3DD200F4AA51 /* light-hash-background@2x.png in Resources */,
 				C48F96F415CC3E8300F4AA51 /* bg_texture.png in Resources */,
 				C48F96F515CC3E8300F4AA51 /* bg_texture@2x.png in Resources */,
+				C4228C5C15D12ED500960BBA /* irsot-icon-iPhone@2x.png in Resources */,
+				C4228C5F15D12EEF00960BBA /* irsot-icon-iPhone.png in Resources */,
+				C4228C6115D12F0D00960BBA /* irsot-icon-iPad@2x.png in Resources */,
+				C4228C6315D12F2800960BBA /* irsot-icon-iPad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

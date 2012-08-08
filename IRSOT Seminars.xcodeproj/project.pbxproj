@@ -17,6 +17,10 @@
 		C4228C5F15D12EEF00960BBA /* irsot-icon-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4228C5E15D12EEF00960BBA /* irsot-icon-iPhone.png */; };
 		C4228C6115D12F0D00960BBA /* irsot-icon-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4228C6015D12F0D00960BBA /* irsot-icon-iPad@2x.png */; };
 		C4228C6315D12F2800960BBA /* irsot-icon-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4228C6215D12F2800960BBA /* irsot-icon-iPad.png */; };
+		C456423715D25924001C4024 /* lectors-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C456423515D25924001C4024 /* lectors-iPhone.png */; };
+		C456423815D25924001C4024 /* lectors-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C456423615D25924001C4024 /* lectors-iPhone@2x.png */; };
+		C456427615D25AE2001C4024 /* gear-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C456427415D25AE2001C4024 /* gear-iPhone.png */; };
+		C456427715D25AE2001C4024 /* gear-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C456427515D25AE2001C4024 /* gear-iPhone@2x.png */; };
 		C462BDAF15C95A8700170E3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDAE15C95A8700170E3C /* UIKit.framework */; };
 		C462BDB115C95A8700170E3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB015C95A8700170E3C /* Foundation.framework */; };
 		C462BDB315C95A8700170E3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB215C95A8700170E3C /* CoreGraphics.framework */; };
@@ -30,7 +34,6 @@
 		C462BDCD15C95A8700170E3C /* ISMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCC15C95A8700170E3C /* ISMasterViewController.m */; };
 		C462BDD015C95A8700170E3C /* ISDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCF15C95A8700170E3C /* ISDetailViewController.m */; };
 		C462BDDB15C95B7300170E3C /* ISMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */; };
-		C48F96EC15CC3B7500F4AA51 /* smaller-gear.png in Resources */ = {isa = PBXBuildFile; fileRef = C48F96EB15CC3B7500F4AA51 /* smaller-gear.png */; };
 		C48F96F015CC3DD200F4AA51 /* light-hash-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C48F96EE15CC3DD200F4AA51 /* light-hash-background.png */; };
 		C48F96F115CC3DD200F4AA51 /* light-hash-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48F96EF15CC3DD200F4AA51 /* light-hash-background@2x.png */; };
 		C48F96F415CC3E8300F4AA51 /* bg_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = C48F96F215CC3E8300F4AA51 /* bg_texture.png */; };
@@ -42,8 +45,6 @@
 		C48F971015CC49EB00F4AA51 /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F970F15CC49EB00F4AA51 /* Seminar.m */; };
 		C48F971315CC519E00F4AA51 /* Lector+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */; };
 		C48F972215CC663400F4AA51 /* ISSeminarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F972115CC663400F4AA51 /* ISSeminarViewController.m */; };
-		C4B2BEC515CC2BF900C4A714 /* gear.png in Resources */ = {isa = PBXBuildFile; fileRef = C4B2BEC315CC2BF900C4A714 /* gear.png */; };
-		C4B2BEC615CC2BF900C4A714 /* gear@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4B2BEC415CC2BF900C4A714 /* gear@2x.png */; };
 		C4DE788015C95C02007FBEC4 /* ISInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE787F15C95C02007FBEC4 /* ISInfoTableViewController.m */; };
 		C4DE788415C95C42007FBEC4 /* ISWebviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE788315C95C42007FBEC4 /* ISWebviewViewController.m */; };
 		C4DE788715C95C96007FBEC4 /* ISSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE788615C95C96007FBEC4 /* ISSettingsViewController.m */; };
@@ -68,6 +69,10 @@
 		C4228C5E15D12EEF00960BBA /* irsot-icon-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "irsot-icon-iPhone.png"; path = "../irsot-icon-iPhone.png"; sourceTree = "<group>"; };
 		C4228C6015D12F0D00960BBA /* irsot-icon-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "irsot-icon-iPad@2x.png"; path = "../irsot-icon-iPad@2x.png"; sourceTree = "<group>"; };
 		C4228C6215D12F2800960BBA /* irsot-icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "irsot-icon-iPad.png"; path = "../irsot-icon-iPad.png"; sourceTree = "<group>"; };
+		C456423515D25924001C4024 /* lectors-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lectors-iPhone.png"; path = "icons/lectors-iPhone.png"; sourceTree = "<group>"; };
+		C456423615D25924001C4024 /* lectors-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lectors-iPhone@2x.png"; path = "icons/lectors-iPhone@2x.png"; sourceTree = "<group>"; };
+		C456427415D25AE2001C4024 /* gear-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gear-iPhone.png"; path = "icons/gear-iPhone.png"; sourceTree = "<group>"; };
+		C456427515D25AE2001C4024 /* gear-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gear-iPhone@2x.png"; path = "icons/gear-iPhone@2x.png"; sourceTree = "<group>"; };
 		C462BDAA15C95A8700170E3C /* IRSOT Seminars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IRSOT Seminars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C462BDAE15C95A8700170E3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C462BDB015C95A8700170E3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -88,7 +93,6 @@
 		C462BDCF15C95A8700170E3C /* ISDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISDetailViewController.m; sourceTree = "<group>"; };
 		C462BDD915C95B7300170E3C /* ISMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMainPageViewController.h; sourceTree = "<group>"; };
 		C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMainPageViewController.m; sourceTree = "<group>"; };
-		C48F96EB15CC3B7500F4AA51 /* smaller-gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "smaller-gear.png"; sourceTree = "<group>"; };
 		C48F96EE15CC3DD200F4AA51 /* light-hash-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-hash-background.png"; sourceTree = "<group>"; };
 		C48F96EF15CC3DD200F4AA51 /* light-hash-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-hash-background@2x.png"; sourceTree = "<group>"; };
 		C48F96F215CC3E8300F4AA51 /* bg_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_texture.png; sourceTree = "<group>"; };
@@ -107,8 +111,6 @@
 		C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Lector+Load_Data.m"; sourceTree = "<group>"; };
 		C48F972015CC663400F4AA51 /* ISSeminarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSeminarViewController.h; sourceTree = "<group>"; };
 		C48F972115CC663400F4AA51 /* ISSeminarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSeminarViewController.m; sourceTree = "<group>"; };
-		C4B2BEC315CC2BF900C4A714 /* gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gear.png; sourceTree = "<group>"; };
-		C4B2BEC415CC2BF900C4A714 /* gear@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gear@2x.png"; sourceTree = "<group>"; };
 		C4DE787E15C95C02007FBEC4 /* ISInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISInfoTableViewController.h; sourceTree = "<group>"; };
 		C4DE787F15C95C02007FBEC4 /* ISInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISInfoTableViewController.m; sourceTree = "<group>"; };
 		C4DE788215C95C42007FBEC4 /* ISWebviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISWebviewViewController.h; sourceTree = "<group>"; };
@@ -197,7 +199,7 @@
 			name = "Lector Views";
 			sourceTree = "<group>";
 		};
-		C4228C6415D1805600960BBA /* New Group */ = {
+		C4228C6415D1805600960BBA /* app icon */ = {
 			isa = PBXGroup;
 			children = (
 				C4228C6215D12F2800960BBA /* irsot-icon-iPad.png */,
@@ -205,7 +207,7 @@
 				C4228C5E15D12EEF00960BBA /* irsot-icon-iPhone.png */,
 				C4228C5B15D12ED500960BBA /* irsot-icon-iPhone@2x.png */,
 			);
-			name = "New Group";
+			name = "app icon";
 			sourceTree = "<group>";
 		};
 		C42B777A15D02CE500835E9F /* Helpers */ = {
@@ -215,6 +217,17 @@
 				C4DE789115C96EF3007FBEC4 /* SeminarFetcher.m */,
 			);
 			name = Helpers;
+			sourceTree = "<group>";
+		};
+		C456427815D25B53001C4024 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				C456427415D25AE2001C4024 /* gear-iPhone.png */,
+				C456427515D25AE2001C4024 /* gear-iPhone@2x.png */,
+				C456423515D25924001C4024 /* lectors-iPhone.png */,
+				C456423615D25924001C4024 /* lectors-iPhone@2x.png */,
+			);
+			name = icons;
 			sourceTree = "<group>";
 		};
 		C462BD9F15C95A8700170E3C = {
@@ -266,14 +279,12 @@
 		C462BDB715C95A8700170E3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C4228C6415D1805600960BBA /* New Group */,
+				C456427815D25B53001C4024 /* icons */,
+				C4228C6415D1805600960BBA /* app icon */,
 				C48F96F215CC3E8300F4AA51 /* bg_texture.png */,
 				C48F96F315CC3E8300F4AA51 /* bg_texture@2x.png */,
 				C48F96EE15CC3DD200F4AA51 /* light-hash-background.png */,
 				C48F96EF15CC3DD200F4AA51 /* light-hash-background@2x.png */,
-				C48F96EB15CC3B7500F4AA51 /* smaller-gear.png */,
-				C4B2BEC315CC2BF900C4A714 /* gear.png */,
-				C4B2BEC415CC2BF900C4A714 /* gear@2x.png */,
 				C4DE788E15C95E34007FBEC4 /* Info Links.plist */,
 				C462BDB815C95A8700170E3C /* IRSOT Seminars-Info.plist */,
 				C462BDB915C95A8700170E3C /* InfoPlist.strings */,
@@ -380,9 +391,6 @@
 				C462BDC715C95A8700170E3C /* MainStoryboard_iPad.storyboard in Resources */,
 				C4DE788F15C95E34007FBEC4 /* Info Links.plist in Resources */,
 				C40D8F2315CBEA5D0048ABF4 /* SVProgressHUD.bundle in Resources */,
-				C4B2BEC515CC2BF900C4A714 /* gear.png in Resources */,
-				C4B2BEC615CC2BF900C4A714 /* gear@2x.png in Resources */,
-				C48F96EC15CC3B7500F4AA51 /* smaller-gear.png in Resources */,
 				C48F96F015CC3DD200F4AA51 /* light-hash-background.png in Resources */,
 				C48F96F115CC3DD200F4AA51 /* light-hash-background@2x.png in Resources */,
 				C48F96F415CC3E8300F4AA51 /* bg_texture.png in Resources */,
@@ -391,6 +399,10 @@
 				C4228C5F15D12EEF00960BBA /* irsot-icon-iPhone.png in Resources */,
 				C4228C6115D12F0D00960BBA /* irsot-icon-iPad@2x.png in Resources */,
 				C4228C6315D12F2800960BBA /* irsot-icon-iPad.png in Resources */,
+				C456423715D25924001C4024 /* lectors-iPhone.png in Resources */,
+				C456423815D25924001C4024 /* lectors-iPhone@2x.png in Resources */,
+				C456427615D25AE2001C4024 /* gear-iPhone.png in Resources */,
+				C456427715D25AE2001C4024 /* gear-iPhone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

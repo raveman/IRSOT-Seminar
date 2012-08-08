@@ -48,7 +48,7 @@
     self.noDataLabel.textColor = [UIColor whiteColor];
     
     UIBarButtonItem *setupButton = self.navigationItem.rightBarButtonItem;
-    setupButton.image = [UIImage imageNamed:@"smaller-gear.png"];
+    setupButton.image = [UIImage imageNamed:@"gear-iPhone.png"];
     setupButton.title = @"";
     
     self.seminarCategoriesTableView.backgroundColor = [UIColor clearColor];
@@ -73,15 +73,10 @@
         // у нас нет еще никаких данных, надо бы их загрузить
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Данные" message:@"У нас нет еще загруженных семинаров" delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:@"Загрузить", nil];
         [alert show];
-    }
-}
-
-- (void) viewDidAppear:(BOOL)animated
-{
-    [super viewDidAppear:animated];
-    if ([[self.fetchedResultsController fetchedObjects] count]) {
+    } else {
+        // deselecting previous selected row
         NSIndexPath *indexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
-        if (indexPath.row) {
+        if (indexPath != nil) {
             [self.seminarCategoriesTableView deselectRowAtIndexPath:indexPath animated:YES];
         }
     }

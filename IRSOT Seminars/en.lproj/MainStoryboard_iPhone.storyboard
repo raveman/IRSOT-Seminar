@@ -65,7 +65,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Jea-tH-Syn">
-                        <barButtonItem key="rightBarButtonItem" title="Настройки" id="9t0-lu-CQ2">
+                        <barButtonItem key="rightBarButtonItem" image="gear-iPhone.png" id="9t0-lu-CQ2">
                             <connections>
                                 <segue destination="4YO-by-1FM" kind="modal" identifier="Settings" id="e5e-Uw-2wc"/>
                             </connections>
@@ -529,7 +529,7 @@
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yF-QR-At9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="wVt-ZX-VzO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Лекторы" id="I3v-YM-Iff"/>
+                    <tabBarItem key="tabBarItem" title="Лекторы" image="lectors-iPhone.png" id="I3v-YM-Iff"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ytB-te-eC4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -544,6 +544,10 @@
             <point key="canvasLocation" x="462" y="1476"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gear-iPhone.png" width="20" height="20"/>
+        <image name="lectors-iPhone.png" width="30" height="30"/>
+    </resources>
     <classes>
         <class className="ISBookmarksTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISBookmarksTableViewController.h"/>
@@ -567,7 +571,6 @@
         <class className="ISSeminarListTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarListTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="seminarTypeChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="seminarTypeSwitch" candidateClass="UISegmentedControl"/>
             </relationships>

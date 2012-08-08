@@ -14,8 +14,6 @@
 @property (nonatomic, strong) Sections *section;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
-
-
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

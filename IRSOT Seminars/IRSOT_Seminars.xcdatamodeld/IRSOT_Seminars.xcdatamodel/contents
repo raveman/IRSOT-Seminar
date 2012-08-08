@@ -32,9 +32,9 @@
         <relationship name="seminars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Seminar" inverseName="type" inverseEntity="Seminar" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Lector" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Section" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Seminar" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Type" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Lector" positionX="-261" positionY="-0" width="128" height="133"/>
+        <element name="Section" positionX="0" positionY="0" width="128" height="103"/>
+        <element name="Seminar" positionX="0" positionY="0" width="128" height="178"/>
+        <element name="Type" positionX="0" positionY="0" width="128" height="103"/>
     </elements>
 </model>

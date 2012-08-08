@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ISLectorListTableViewController : UITableViewController
+@interface ISLectorListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+
+@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @end

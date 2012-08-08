@@ -44,6 +44,7 @@
     [super viewDidLoad];
 
     self.searchDisplayController.searchBar.delegate = self;
+    self.searchDisplayController.searchBar.backgroundColor = [UIColor clearColor];
 }
 
 - (void)viewDidUnload
@@ -123,24 +124,42 @@
     static NSString *CellIdentifier = @"SeminarList cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    // Configure the cell...
-    if ([[self.fetchedResultsController fetchedObjects] count]) {
-        Seminar *seminar = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        cell.textLabel.text = seminar.name;
-        
-        NSString *lectors = [seminar stringWithLectorNames];
-        if ([lectors length] > 36) {
-            lectors = [lectors substringToIndex:36];
-            lectors = [lectors stringByAppendingString:@"…"];
+    if (tableView == self.tableView) {
+        // Configure the cell...
+        if ([[self.fetchedResultsController fetchedObjects] count]) {
+            Seminar *seminar = [self.fetchedResultsController objectAtIndexPath:indexPath];
+            cell.textLabel.text = seminar.name;
+            
+            NSString *lectors = [seminar stringWithLectorNames];
+            if ([lectors length] > 36) {
+                lectors = [lectors substringToIndex:36];
+                lectors = [lectors stringByAppendingString:@"…"];
+            }
+            
+            cell.detailTextLabel.text =[NSString stringWithFormat:@"%@\n%@", lectors, [seminar stringWithSeminarDates]];
+            cell.detailTextLabel.numberOfLines = 2;
+            cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         }
-        
-        cell.detailTextLabel.text =[NSString stringWithFormat:@"%@\n%@", lectors, [seminar stringWithSeminarDates]];
-        cell.detailTextLabel.numberOfLines = 0;
-        cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+    } else {
+        if ([[self.fetchedResultsController fetchedObjects] count]) {
+            Seminar *seminar = [self.fetchedResultsController objectAtIndexPath:indexPath];
+            cell.textLabel.text = seminar.name;
+            
+            NSString *lectors = [seminar stringWithLectorNames];
+            if ([lectors length] > 36) {
+                lectors = [lectors substringToIndex:36];
+                lectors = [lectors stringByAppendingString:@"…"];
+            }
+            
+            cell.detailTextLabel.text =[NSString stringWithFormat:@"%@\n%@", lectors, [seminar stringWithSeminarDates]];
+            cell.detailTextLabel.numberOfLines = 2;
+            cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+        }
     }
+    
     
     return cell;
 }

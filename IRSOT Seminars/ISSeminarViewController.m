@@ -8,6 +8,7 @@
 // TODO: переделать все UILabel в UITextView, чтобы у пользователя была возможность копи-паста
 
 #import "ISSeminarViewController.h"
+#import "ISWebviewViewController.h"
 #import "Sections.h"
 #import "Type.h"
 #import "Lector.h"
@@ -141,7 +142,13 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    NSLog(@"Sender: %@", sender);
+    if ([segue.identifier isEqualToString:@"Bill Webview"]) {
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.ruseminar.ru/bill?id=%@", self.seminar.ruseminarID]];
+        
+        ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
+        [dvc setUrl:url];
+        [dvc setWebviewTitle:@"Принять участие"];
+    }
 }
 
 @end

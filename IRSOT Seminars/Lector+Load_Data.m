@@ -16,7 +16,7 @@
     
     // check whether we have already a new Lector in our database
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Lector"];
-    request.predicate = [NSPredicate predicateWithFormat:@"id == %@", name];
+    request.predicate = [NSPredicate predicateWithFormat:@"name == %@", name];
     // soring our fetch
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
@@ -26,13 +26,25 @@
     
     if (!matches || ([matches count] > 1)) {
         // handle error
+        // some shit happens but we return last object anyway
+        lector = [matches lastObject];
+
     } else if ([matches count] == 0) {
         lector = [NSEntityDescription insertNewObjectForEntityForName:@"Lector" inManagedObjectContext:context];
         lector.name = [name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+//        lector.name = [name stringByTrimmingCharactersInSet:[[NSCharacterSet letterCharacterSet] invertedSet]];
     } else {
         lector = [matches lastObject];
     }
     
     return lector;
 }
+
+- (NSString *) lectorNameInitial {
+    [self willAccessValueForKey:@"lectorNameInitial"];
+    NSString * initial = [[self name] substringToIndex:1];
+    [self didAccessValueForKey:@"lectorNameInitial"];
+    return initial;
+}
+
 @end

@@ -7,32 +7,70 @@
 //
 
 #import "ISLectorViewController.h"
+#import "ISSeminarViewController.h"
+#import "Seminar+Load_Data.h"
+#import "Helper.h"
 
-@interface ISLectorViewController ()
+@interface ISLectorViewController () <UITableViewDataSource, UITableViewDelegate>
 
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UITextView *lectorName;
+@property (weak, nonatomic) IBOutlet UITextView *lectorBio;
+@property (weak, nonatomic) IBOutlet UITableView *lectorSeminars;
 @end
 
 @implementation ISLectorViewController
+@synthesize scrollView = _scrollView;
+@synthesize lectorName = _lectorName;
+@synthesize lectorBio = _lectorBio;
+@synthesize lectorSeminars = _lectorSeminars;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize lector = _lector;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	// view additional setups
+    self.lectorSeminars.dataSource = self;
+    self.lectorSeminars.delegate = self;
+    
+    self.title = self.lector.name;
+    self.lectorName.text = self.lector.name;
+    
+    CGRect rect = [Helper resizeTextView:self.lectorBio];
+    
+    CGSize size = rect.size;
+    size.height += rect.origin.y + 20;
+    
+    size.height += self.lectorSeminars.frame.size.height;
+    int tableHeight = self.lectorSeminars.contentSize.height * [self.lector.seminars count];
+//    CGRectGetMaxY([self.tableView rectForSection:[self.tableView numberOfSections] - 1])
+    CGRect tableFrame = self.lectorSeminars.frame;
+    tableFrame.size.height += tableHeight;
+    self.lectorSeminars.frame = tableFrame;
+    
+    size.height += tableHeight;
+    self.scrollView.scrollEnabled = YES;
+    self.scrollView.contentSize = size;
+    
 }
 
 - (void)viewDidUnload
 {
+    [self setLectorName:nil];
+    [self setLectorBio:nil];
+    [self setLectorSeminars:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    NSIndexPath *indexPath = [self.lectorSeminars indexPathForSelectedRow];
+    if (indexPath != nil) {
+        [self.lectorSeminars deselectRowAtIndexPath:indexPath animated:YES];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -43,5 +81,47 @@
         return YES;
     }
 }
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"Lector Seminar View"]) {
+        NSIndexPath *indexPath = self.lectorSeminars.indexPathForSelectedRow;
+        Seminar *seminar = [[self.lector.seminars allObjects] objectAtIndex:indexPath.row];
+        ISSeminarViewController *dvc = (ISSeminarViewController *)segue.destinationViewController;
+        [dvc setSeminar:seminar];
+    }
+}
+
+#pragma mark - UITableViewDataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.lector.seminars count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Lector Seminar Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
+    
+    if ([self.lector.seminars count]) {
+        NSArray *seminars = [self.lector.seminars allObjects];
+        Seminar *seminar = [seminars objectAtIndex:indexPath.row];
+        cell.textLabel.text = seminar.name;
+        cell.detailTextLabel.text = [seminar stringWithSeminarDates];
+    }
+    
+    return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return NSLocalizedString(@"Семинары лектора:", @"Lector Seminar Table Title");
+}
+
+#pragma mark - UITableViewDelegate
 
 @end

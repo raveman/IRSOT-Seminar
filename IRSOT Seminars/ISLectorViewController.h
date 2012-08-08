@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Lector+Load_Data.h"
 
 @interface ISLectorViewController : UIViewController
+
+@property (nonatomic, strong) Lector *lector;
 
 @end

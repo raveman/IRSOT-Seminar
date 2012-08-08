@@ -11,12 +11,14 @@
 @interface ISWebviewViewController ()
 //@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
+@property (weak, nonatomic) IBOutlet UINavigationBar *modalNavigationBar;
 
 @end
 
 @implementation ISWebviewViewController
 //@synthesize scrollview;
 @synthesize webview;
+@synthesize modalNavigationBar;
 
 @synthesize url = _url;
 
@@ -30,6 +32,12 @@
 {
     [super viewDidLoad];
     
+    if (self.navigationController) {
+        self.modalNavigationBar.hidden = YES;
+    } else {
+        self.modalNavigationBar.topItem.title = self.webviewTitle;
+    }
+    
 	// Do any additional setup after loading the view.
 }
 
@@ -37,6 +45,7 @@
 {
     [self setWebview:nil];
 //    [self setScrollview:nil];
+    [self setModalNavigationBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -48,6 +57,10 @@
     } else {
         return YES;
     }
+}
+
+- (IBAction)done:(UIBarButtonItem *)sender {
+        [[self presentingViewController] dismissModalViewControllerAnimated:YES];
 }
 
 @end

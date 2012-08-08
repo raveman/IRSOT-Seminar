@@ -10,8 +10,9 @@
 
 #import "ISAppDelegate.h"
 
-//#import "ISMasterViewController.h"
 #import "ISMainPageViewController.h"
+#import "ISBookmarksTableViewController.h"
+#import "ISLectorListTableViewController.h"
 
 @implementation ISAppDelegate
 
@@ -43,8 +44,13 @@
         // т.к. корневой контроллер у нас UITabBarViewController, то у него мы спрашиваем на первой закладке первый контроллер,
         // которым оказывается UINavigationController, а у уже него мы получаем на View Controller
         UITabBarController *masterController = (UITabBarController *)self.window.rootViewController;
-        ISMainPageViewController *controller = (ISMainPageViewController *)[[masterController.viewControllers objectAtIndex:0] topViewController];
-        controller.managedObjectContext = self.managedObjectContext;
+
+        ISMainPageViewController *mainController = (ISMainPageViewController *)[[masterController.viewControllers objectAtIndex:0] topViewController];
+        mainController.managedObjectContext = self.managedObjectContext;
+        ISBookmarksTableViewController *bookmarksController = (ISBookmarksTableViewController *)[[masterController.viewControllers objectAtIndex:1] topViewController];
+        bookmarksController.managedObjectContext = self.managedObjectContext;
+        ISLectorListTableViewController *lectorsController = (ISLectorListTableViewController *)[[masterController.viewControllers objectAtIndex:2] topViewController];
+        lectorsController.managedObjectContext = self.managedObjectContext;
     }
     
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];

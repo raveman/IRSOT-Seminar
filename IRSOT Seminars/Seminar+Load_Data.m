@@ -83,7 +83,7 @@
 - (NSString *)stringWithSeminarDates
 {
     
-    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU.UTF-8" ];
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
     
     NSDateFormatter *dateFormatterDate = [[NSDateFormatter alloc] init];
     [dateFormatterDate setDateFormat:SEMINAR_DATE_FORMAT_DATE];

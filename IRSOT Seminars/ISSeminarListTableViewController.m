@@ -6,18 +6,19 @@
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
-//#define CACHE_NAME_SEMINAR @"Seminar List"
-//#define CACHE_NAME_BK @"BK List"
-
-#define CACHE_NAME_SEMINAR nil
-#define CACHE_NAME_BK nil
-
 #import "ISSeminarListTableViewController.h"
 #import "ISSeminarViewController.h"
 
 #import "Seminar+Load_Data.h"
 #import "Type+Load_Data.h"
 #import "Lector.h"
+#import "ISSettingsViewController.h"
+
+
+//#define CACHE_NAME_SEMINAR @"Seminar List"
+//#define CACHE_NAME_BK @"BK List"
+#define CACHE_NAME_SEMINAR nil
+#define CACHE_NAME_BK nil
 
 @interface ISSeminarListTableViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *seminarTypeSwitch;
@@ -25,6 +26,8 @@
 @property (nonatomic, strong) NSMutableArray *searchResults;
 
 @property (nonatomic) BOOL searchIsActive;
+
+@property (nonatomic) BOOL sortByDate;
 
 @end
 
@@ -38,6 +41,14 @@
 @synthesize fetchedResultsController = _fetchedResultsController;
 
 @synthesize searchIsActive = _searchIsActive;
+@synthesize sortByDate = _sortByDate;
+
+- (BOOL) sortByDate
+{
+    if (!_sortByDate) _sortByDate = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
+    
+    return _sortByDate;
+}
 
 - (void)viewDidLoad
 {
@@ -45,6 +56,7 @@
 
     self.searchDisplayController.searchBar.delegate = self;
     self.searchDisplayController.searchBar.backgroundColor = [UIColor clearColor];
+    
 }
 
 - (void)viewDidUnload
@@ -64,7 +76,11 @@
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    } else {
+        return YES;
+    }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -202,7 +218,11 @@
 //    [fetchRequest setFetchBatchSize:20];
     
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
+    NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject: sortDescriptor];
+    if (self.sortByDate) {
+        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date_start" ascending:YES];
+        [sortDescriptors insertObject:sortDescriptor atIndex:0];
+    }
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     

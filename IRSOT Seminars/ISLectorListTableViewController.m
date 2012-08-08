@@ -1,24 +1,27 @@
 //
-//  ISBookmarksTableViewController.m
+//  ISLectorListTableViewController.m
 //  IRSOT Seminars
 //
-//  Created by Bob Ershov on 04.08.12.
+//  Created by Bob Ershov on 08.08.12.
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
-#import "ISBookmarksTableViewController.h"
+#import "ISLectorListTableViewController.h"
 
-@interface ISBookmarksTableViewController ()
-
-@property (nonatomic, strong) UIManagedDocument *bookmarksDatabase;
+@interface ISLectorListTableViewController ()
 
 @end
 
-@implementation ISBookmarksTableViewController
+@implementation ISLectorListTableViewController
 
-@synthesize bookmarksDatabase = _bookmarksDatabase;
-
-@synthesize fetchedResultsController = _fetchedResultsController;
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    self = [super initWithStyle:style];
+    if (self) {
+        // Custom initialization
+    }
+    return self;
+}
 
 - (void)viewDidLoad
 {
@@ -51,8 +54,9 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 1;
+    return 0;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -123,9 +127,5 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      */
 }
-
-#pragma mark - NSFetchedResultsControllerDelegate
-
-
 
 @end

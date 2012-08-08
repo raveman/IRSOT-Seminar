@@ -34,6 +34,7 @@
 		C462BDCD15C95A8700170E3C /* ISMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCC15C95A8700170E3C /* ISMasterViewController.m */; };
 		C462BDD015C95A8700170E3C /* ISDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCF15C95A8700170E3C /* ISDetailViewController.m */; };
 		C462BDDB15C95B7300170E3C /* ISMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */; };
+		C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */; };
 		C48F96F015CC3DD200F4AA51 /* light-hash-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C48F96EE15CC3DD200F4AA51 /* light-hash-background.png */; };
 		C48F96F115CC3DD200F4AA51 /* light-hash-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48F96EF15CC3DD200F4AA51 /* light-hash-background@2x.png */; };
 		C48F96F415CC3E8300F4AA51 /* bg_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = C48F96F215CC3E8300F4AA51 /* bg_texture.png */; };
@@ -93,6 +94,8 @@
 		C462BDCF15C95A8700170E3C /* ISDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISDetailViewController.m; sourceTree = "<group>"; };
 		C462BDD915C95B7300170E3C /* ISMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMainPageViewController.h; sourceTree = "<group>"; };
 		C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMainPageViewController.m; sourceTree = "<group>"; };
+		C483E40A15D2ADD1001A41FB /* ISLectorListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorListTableViewController.h; sourceTree = "<group>"; };
+		C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorListTableViewController.m; sourceTree = "<group>"; };
 		C48F96EE15CC3DD200F4AA51 /* light-hash-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-hash-background.png"; sourceTree = "<group>"; };
 		C48F96EF15CC3DD200F4AA51 /* light-hash-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-hash-background@2x.png"; sourceTree = "<group>"; };
 		C48F96F215CC3E8300F4AA51 /* bg_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_texture.png; sourceTree = "<group>"; };
@@ -193,6 +196,8 @@
 		C415A30C15CC996A004BCD79 /* Lector Views */ = {
 			isa = PBXGroup;
 			children = (
+				C483E40A15D2ADD1001A41FB /* ISLectorListTableViewController.h */,
+				C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */,
 				C415A30915CC9952004BCD79 /* ISLectorViewController.h */,
 				C415A30A15CC9952004BCD79 /* ISLectorViewController.m */,
 			);
@@ -436,6 +441,7 @@
 				C48F972215CC663400F4AA51 /* ISSeminarViewController.m in Sources */,
 				C415A30215CC95A0004BCD79 /* ISBookmarksTableViewController.m in Sources */,
 				C415A30B15CC9952004BCD79 /* ISLectorViewController.m in Sources */,
+				C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,7 +20,7 @@
 
 @interface ISSettingsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *updateDateLabel;
-
+@property (weak, nonatomic) IBOutlet UISwitch *sortSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *refreshButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
@@ -31,6 +31,7 @@
 
 @implementation ISSettingsViewController
 @synthesize updateDateLabel;
+@synthesize sortSwitch;
 @synthesize refreshButton;
 @synthesize deleteButton;
 @synthesize delegate = _delegate;
@@ -42,6 +43,8 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_texture.png"]];
 
+    self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
+    
     if (self.emptyStore) self.deleteButton.hidden = NO;
         else self.deleteButton.hidden = YES;
 }
@@ -51,8 +54,16 @@
     [self setUpdateDateLabel:nil];
     [self setDeleteButton:nil];
     [self setRefreshButton:nil];
+    [self setSortSwitch:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.updateDateLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:UPDATE_DATE_KEY];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -80,6 +91,14 @@
 - (IBAction)delete:(UIButton *)sender
 {
     [self deleteData];
+}
+
+- (IBAction)sortSwitchPressed:(UISwitch *)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *sortByDate = [NSNumber numberWithBool:sender.on];
+    
+    [defaults setObject:sortByDate forKey:SORT_KEY];
+    [defaults synchronize];
 }
 
 #pragma mark - Loading staff from website
@@ -120,6 +139,21 @@
                 [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Семинары загружены!", @"Seminars loaded successfully")];
                 self.deleteButton.hidden = NO;
                 updated = YES;
+                
+                NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
+//                NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatFromTemplate:@"HH:MM dd.mm.yyyy" options:nil locale:nil];
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+                [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+                
+                [dateFormatter setLocale:locale];
+                NSString *dateUpdated = [dateFormatter stringFromDate:[NSDate date]];
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+                self.updateDateLabel.text = dateUpdated;
+                
+                [defaults setObject:dateUpdated forKey:UPDATE_DATE_KEY];
+                [defaults synchronize];
             }
             [self.delegate settingsViewController:self didUpdatedStore:updated];
         }]; // end managedObjectContext performBlock
@@ -154,6 +188,10 @@
         [persistentCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error];//recreates the persistent store
         deleted = YES;
         self.deleteButton.hidden = YES;
+        self.updateDateLabel.text = @"";
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:@"" forKey:UPDATE_DATE_KEY];
+        [defaults synchronize];
     }
     
     [self.managedObjectContext unlock];

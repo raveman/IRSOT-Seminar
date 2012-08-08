@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define SORT_KEY @"SeminarList.Sort"
+#define UPDATE_DATE_KEY @"UpdateDate"
+
 @class ISSettingsViewController;
 
 @protocol ISSettingsViewControllerDelegate <NSObject>

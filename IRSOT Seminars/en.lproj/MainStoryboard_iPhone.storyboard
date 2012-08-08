@@ -18,13 +18,13 @@
                     </tabBar>
                     <connections>
                         <segue destination="Ycv-0g-Mlc" kind="relationship" relationship="viewControllers" id="2Wh-Zm-QWy"/>
-                        <segue destination="xDk-YY-uSY" kind="relationship" relationship="viewControllers" id="Iwg-rV-XcY"/>
+                        <segue destination="Zxi-AR-pyA" kind="relationship" relationship="viewControllers" id="Iwg-rV-XcY"/>
                         <segue destination="wVt-ZX-VzO" kind="relationship" relationship="viewControllers" id="Jra-1z-wBy"/>
                         <segue destination="k9T-3C-wg4" kind="relationship" relationship="viewControllers" id="eUW-Ol-dlR"/>
                     </connections>
                 </tabBarController>
             </objects>
-            <point key="canvasLocation" x="-143" y="206"/>
+            <point key="canvasLocation" x="-231" y="1186"/>
         </scene>
         <!--Main Page View Controller-->
         <scene sceneID="Ifn-8N-kG4">
@@ -78,7 +78,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="965" y="260"/>
+            <point key="canvasLocation" x="956" y="260"/>
         </scene>
         <!--Lector View Controller-->
         <scene sceneID="zmk-pM-7s6">
@@ -88,12 +88,76 @@
                     <view key="view" contentMode="scaleToFill" id="h2o-GO-luv">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="YZA-G3-pOv">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Лектор И.О." id="ce4-5w-kED">
+                                        <rect key="frame" x="20" y="20" width="280" height="39"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Zv3-Tp-ttp">
+                                        <rect key="frame" x="20" y="67" width="280" height="192"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <string key="text">БиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиография</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fGS-fC-93I">
+                                        <rect key="frame" x="0.0" y="288" width="320" height="137"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Lector Seminar Cell" textLabel="9eP-d7-KqR" detailTextLabel="r86-Y2-cjd" style="IBUITableViewCellStyleSubtitle" id="dRg-dh-pKe">
+                                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="9eP-d7-KqR">
+                                                            <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="r86-Y2-cjd">
+                                                            <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <connections>
+                                                    <segue destination="907-pJ-PWX" kind="push" identifier="Lector Seminar View" id="9u7-eT-DiF"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="U1u-XU-aFx"/>
+                    <connections>
+                        <outlet property="lectorBio" destination="Zv3-Tp-ttp" id="ZAk-Jz-QUu"/>
+                        <outlet property="lectorName" destination="ce4-5w-kED" id="4Z1-Ji-BNC"/>
+                        <outlet property="lectorSeminars" destination="fGS-fC-93I" id="sXW-Sc-NYG"/>
+                        <outlet property="scrollView" destination="YZA-G3-pOv" id="cF8-2w-IrO"/>
+                    </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="2241" y="1556"/>
+            <point key="canvasLocation" x="1996" y="1438"/>
         </scene>
         <!--Seminar View Controller-->
         <scene sceneID="xiA-S5-OSx">
@@ -156,6 +220,9 @@
                                         <state key="highlighted">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="2kA-qE-Yhq" kind="modal" identifier="Bill Webview" id="UiY-x5-4jX"/>
+                                        </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Название семинара" textAlignment="center" id="jfs-iB-s1z">
                                         <rect key="frame" x="20" y="55" width="280" height="35"/>
@@ -184,7 +251,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1875" y="260"/>
+            <point key="canvasLocation" x="1996" y="544"/>
         </scene>
         <!--Seminar List Table View Controller-->
         <scene sceneID="ccs-ya-jZJ">
@@ -276,7 +343,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j0L-2k-AKs" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="xDk-YY-uSY" customClass="ISBookmarksTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="RRX-Sm-jvm">
-                        <rect key="frame" x="0.0" y="20" width="320" height="411"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -304,6 +371,9 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <connections>
+                                    <segue destination="907-pJ-PWX" kind="push" identifier="Seminar View" id="ce4-2g-nyb"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -311,10 +381,10 @@
                             <outlet property="delegate" destination="xDk-YY-uSY" id="d1R-VV-bC9"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="dJB-d8-dMU"/>
+                    <navigationItem key="navigationItem" id="iPJ-Ex-viY"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="479" y="-363"/>
+            <point key="canvasLocation" x="956" y="859"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="74o-AY-3Eu">
@@ -333,7 +403,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="479" y="260"/>
+            <point key="canvasLocation" x="470" y="260"/>
         </scene>
         <!--Info Table View Controller-->
         <scene sceneID="aSj-P5-m2M">
@@ -369,7 +439,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="956" y="907"/>
+            <point key="canvasLocation" x="956" y="2087"/>
         </scene>
         <!--Webview View Controller-->
         <scene sceneID="CvF-yR-gkm">
@@ -377,24 +447,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="anx-Oe-kCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="2kA-qE-Yhq" customClass="ISWebviewViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="niK-jU-zPM">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" id="yeg-FU-DkF">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <rect key="frame" x="0.0" y="44" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
+                            <navigationBar contentMode="scaleToFill" id="wNf-fY-mdc">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="Attend seminar" id="vLt-eb-25u">
+                                        <barButtonItem key="rightBarButtonItem" title="Done" id="t4v-8c-HTw">
+                                            <connections>
+                                                <action selector="done:" destination="2kA-qE-Yhq" id="nGM-oo-0lt"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ogw-aX-x52"/>
                     <connections>
+                        <outlet property="modalNavigationBar" destination="wNf-fY-mdc" id="KSn-SH-AaK"/>
                         <outlet property="webview" destination="yeg-FU-DkF" id="fFM-CQ-9st"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1433" y="907"/>
+            <point key="canvasLocation" x="1433" y="2087"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rNw-C9-6TY">
@@ -413,7 +497,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="470" y="907"/>
+            <point key="canvasLocation" x="479" y="2087"/>
         </scene>
         <!--Lector List Table View Controller-->
         <scene sceneID="HGQ-JR-Icj">
@@ -425,12 +509,28 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Lector Cell" id="4pI-o0-lPe">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Lector Cell" textLabel="RyC-aI-B0L" detailTextLabel="QWm-xH-XfA" style="IBUITableViewCellStyleSubtitle" id="4pI-o0-lPe">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="RyC-aI-B0L">
+                                            <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QWm-xH-XfA">
+                                            <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <connections>
@@ -446,7 +546,7 @@
                     <navigationItem key="navigationItem" id="unb-b0-4i3"/>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="956" y="1556"/>
+            <point key="canvasLocation" x="956" y="1466"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="SWy-91-C3Q">
@@ -541,7 +641,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1433" y="-423"/>
+            <point key="canvasLocation" x="1433" y="-365"/>
         </scene>
         <!--Navigation Controller - Лекторы-->
         <scene sceneID="q7Y-jp-qFF">
@@ -560,7 +660,26 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="470" y="1556"/>
+            <point key="canvasLocation" x="470" y="1466"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="tJu-Zn-Gs6">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="beZ-ga-SFg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="Zxi-AR-pyA" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="dJB-d8-dMU"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NSQ-fd-JQf">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="xDk-YY-uSY" kind="relationship" relationship="rootViewController" id="Nu8-Fu-cxC"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="470" y="859"/>
         </scene>
     </scenes>
     <resources>
@@ -582,6 +701,12 @@
         </class>
         <class className="ISLectorViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISLectorViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lectorBio" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="lectorName" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="lectorSeminars" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
         </class>
         <class className="ISMainPageViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISMainPageViewController.h"/>
@@ -626,6 +751,8 @@
         <class className="ISWebviewViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISWebviewViewController.h"/>
             <relationships>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="modalNavigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
             </relationships>
         </class>
@@ -637,5 +764,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="kks-Rh-JSv"/>
+        <segue reference="9u7-eT-DiF"/>
+        <segue reference="UiY-x5-4jX"/>
     </inferredMetricsTieBreakers>
 </document>

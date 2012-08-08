@@ -35,6 +35,7 @@
 		C462BDD015C95A8700170E3C /* ISDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCF15C95A8700170E3C /* ISDetailViewController.m */; };
 		C462BDDB15C95B7300170E3C /* ISMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */; };
 		C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */; };
+		C483E40F15D2C393001A41FB /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40E15D2C393001A41FB /* Helper.m */; };
 		C48F96F015CC3DD200F4AA51 /* light-hash-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C48F96EE15CC3DD200F4AA51 /* light-hash-background.png */; };
 		C48F96F115CC3DD200F4AA51 /* light-hash-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C48F96EF15CC3DD200F4AA51 /* light-hash-background@2x.png */; };
 		C48F96F415CC3E8300F4AA51 /* bg_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = C48F96F215CC3E8300F4AA51 /* bg_texture.png */; };
@@ -96,6 +97,8 @@
 		C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMainPageViewController.m; sourceTree = "<group>"; };
 		C483E40A15D2ADD1001A41FB /* ISLectorListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorListTableViewController.h; sourceTree = "<group>"; };
 		C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorListTableViewController.m; sourceTree = "<group>"; };
+		C483E40D15D2C393001A41FB /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
+		C483E40E15D2C393001A41FB /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
 		C48F96EE15CC3DD200F4AA51 /* light-hash-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-hash-background.png"; sourceTree = "<group>"; };
 		C48F96EF15CC3DD200F4AA51 /* light-hash-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light-hash-background@2x.png"; sourceTree = "<group>"; };
 		C48F96F215CC3E8300F4AA51 /* bg_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_texture.png; sourceTree = "<group>"; };
@@ -220,6 +223,8 @@
 			children = (
 				C4DE789015C96EF3007FBEC4 /* SeminarFetcher.h */,
 				C4DE789115C96EF3007FBEC4 /* SeminarFetcher.m */,
+				C483E40D15D2C393001A41FB /* Helper.h */,
+				C483E40E15D2C393001A41FB /* Helper.m */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -442,6 +447,7 @@
 				C415A30215CC95A0004BCD79 /* ISBookmarksTableViewController.m in Sources */,
 				C415A30B15CC9952004BCD79 /* ISLectorViewController.m in Sources */,
 				C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */,
+				C483E40F15D2C393001A41FB /* Helper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

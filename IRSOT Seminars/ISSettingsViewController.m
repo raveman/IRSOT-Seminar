@@ -185,10 +185,15 @@
         NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
                                  [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
                                  [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-        [persistentCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error];//recreates the persistent store
+        if (![persistentCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
+
+            NSLog(@"Recreating store after deletion: unresolved error %@, %@", error, [error userInfo]);
+            abort();
+        }
+
         deleted = YES;
         self.deleteButton.hidden = YES;
-        self.updateDateLabel.text = @"";
+        self.updateDateLabel.text = @"Данных нет";
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:@"" forKey:UPDATE_DATE_KEY];
         [defaults synchronize];

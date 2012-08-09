@@ -8,36 +8,41 @@
 
 #import "ISNewsWebviewControllerViewController.h"
 
-@interface ISNewsWebviewControllerViewController ()
+@interface ISNewsWebviewControllerViewController () <UIWebViewDelegate>
+@property (weak, nonatomic) IBOutlet UIWebView *webview;
 
 @end
 
 @implementation ISNewsWebviewControllerViewController
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize webview;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    self.title = NSLocalizedString(@"Новости ИРСОТ", @"News Webview Title");
+    
+    NSURL *url = [NSURL URLWithString:@"http://twitter.com/irsot"];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    [self.webview loadRequest: request];
 }
 
 - (void)viewDidUnload
 {
+    [self setWebview:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    } else {
+        return YES;
+    }
 }
+
+#pragma mark - IUWebviewDelegate
 
 @end

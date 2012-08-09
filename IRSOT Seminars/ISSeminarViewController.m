@@ -9,6 +9,7 @@
 
 #import "ISSeminarViewController.h"
 #import "ISWebviewViewController.h"
+#import "Helper.h"
 #import "Sections.h"
 #import "Type.h"
 #import "Lector.h"
@@ -36,26 +37,52 @@
 
 @synthesize seminar = _seminar;
 
-- (CGRect) resizeLabel:(UILabel *)label
-{
-    CGSize maximumLabelSize = CGSizeMake(320,300);
-    CGSize expectedLabelSize = [label.text sizeWithFont:label.font constrainedToSize:maximumLabelSize lineBreakMode:label.lineBreakMode];
-    
-    //adjust the label new height.
-    CGRect newFrame = label.frame;
-    newFrame.size.height = expectedLabelSize.height;
-    label.frame = newFrame;
-    
-    return newFrame;
-}
 
-- (CGRect) resizeTextView:(UITextView *)textView
+- (void) recalculateElementsBounds
 {
-    CGRect frame = textView.frame;
-    frame.size.height = textView.contentSize.height;
-    textView.frame = frame;
+    // получаем размеры заголовка
+    CGSize currentSize = self.view.frame.size;
+    CGRect headerRect = [Helper resizeTextView:self.seminarName withSize: currentSize];
     
-    return frame;
+    // опускаем дату проведения семинара
+    
+    CGRect rect = self.seminarDate.frame;
+    rect.origin.y = headerRect.origin.y + headerRect.size.height;
+    self.seminarDate.frame = rect;
+    int height = rect.origin.y + rect.size.height;
+    
+    // опускаем тип и раздел семинаров на высоту предыдущих двух
+    
+    rect = self.sectionLabel.frame;
+    rect.origin.y = height + rect.size.height;
+    self.sectionLabel.frame = rect;
+    
+    rect = self.typeLabel.frame;
+    //    rect.origin.y = headerRect.origin.y + headerRect.size.height + 20;
+    rect.origin.y = height + rect.size.height;
+    self.typeLabel.frame = rect;
+    
+    // получаем общую высоту текущего заголовка: заголовок + тип и секция семинара
+    height = rect.origin.y + rect.size.height;
+    
+    // опускаем лекторов на текущее смещение
+    rect = [Helper resizeLabel:self.lectorsLabel withSize:currentSize];
+    rect.origin.y = height + 10;
+    self.lectorsLabel.frame = rect;
+    
+    height = rect.origin.y + rect.size.height;
+    // осталось опустить описание семинара
+    rect = self.programTextView.frame;
+    rect.origin.y = height + 10;
+    CGRect programRect = [Helper resizeTextView:self.programTextView withSize: currentSize];
+    rect.size.width = programRect.size.width;
+    self.programTextView.frame = rect;
+    
+    CGSize size = rect.size;
+    size.height += height + 20;
+    
+    self.scrollView.scrollEnabled = YES;
+    self.scrollView.contentSize = size;
 }
 
 - (void)viewDidLoad
@@ -70,51 +97,10 @@
         self.seminarName.text = [NSString stringWithFormat:@"«%@»", self.seminar.name];
     }
     
-    // получаем размеры заголовка
-     CGRect headerRect = [self resizeTextView:self.seminarName];
-    
-    // опускаем дату проведения семинара
     self.seminarDate.text = [self.seminar stringWithSeminarDates];
-    CGRect rect = self.seminarDate.frame;
-    rect.origin.y = headerRect.origin.y + headerRect.size.height;
-    self.seminarDate.frame = rect;
-    int height = rect.origin.y + rect.size.height;
-    
-    // опускаем тип и раздел семинаров на высоту предыдущих двух
     self.sectionLabel.text = self.seminar.section.name;
-    rect = self.sectionLabel.frame;
-//    headerRect.origin.y = self.seminarNameLabel.frame.origin.y + headerRect.size.height;
-//    headerRect.origin.y = headerRect.size.height;
-//    rect.origin.y = headerRect.origin.y + headerRect.size.height + 20;
-    rect.origin.y = height + rect.size.height;
-    self.sectionLabel.frame = rect;
-    
     self.typeLabel.text = self.seminar.type.name;
-    rect = self.typeLabel.frame;
-//    rect.origin.y = headerRect.origin.y + headerRect.size.height + 20;
-    rect.origin.y = height + rect.size.height;
-    self.typeLabel.frame = rect;
-    
-    // получаем общую высоту текущего заголовка: заголовок + тип и секция семинара
-    height = rect.origin.y + rect.size.height;
-    
-    // опускаем лекторов на текущее смещение
     self.lectorsLabel.text  = [self.seminar stringWithLectorNames];
-    rect = [self resizeLabel:self.lectorsLabel];
-    rect.origin.y = height + 10;
-    self.lectorsLabel.frame = rect;
-    
-    height = rect.origin.y + rect.size.height;
-    // осталось опустить описание семинара
-    rect = self.programTextView.frame;
-    rect.origin.y = height + 10;
-    self.programTextView.frame = rect;
-    
-    CGSize size = rect.size;
-    size.height += height + 20;
-    
-    self.scrollView.scrollEnabled = YES;
-    self.scrollView.contentSize = size;
 }
 
 - (void)viewDidUnload
@@ -138,6 +124,18 @@
     } else {
         return YES;
     }
+}
+
+- (void) viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self recalculateElementsBounds];
+}
+
+- (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+
+    [self recalculateElementsBounds];
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender

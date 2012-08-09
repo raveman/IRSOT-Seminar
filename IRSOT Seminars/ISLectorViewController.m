@@ -27,6 +27,30 @@
 
 @synthesize lector = _lector;
 
+- (void) recalculateElementsBounds
+{
+    CGSize currentSize = self.view.frame.size;
+    CGRect titleFrame = [Helper resizeTextView:self.lectorName withSize:currentSize];
+    
+    // header
+    CGSize size = titleFrame.size;
+    // bio
+    CGRect rect = [Helper resizeTextView:self.lectorBio withSize:currentSize];
+    size.height += rect.origin.y + rect.size.height;
+    
+    // seminars
+    size.height += self.lectorSeminars.frame.size.height;
+    int tableHeight = self.lectorSeminars.rowHeight * [self.lector.seminars count];
+    //    CGRectGetMaxY([self.tableView rectForSection:[self.tableView numberOfSections] - 1])
+    CGRect tableFrame = self.lectorSeminars.frame;
+    tableFrame.size.height += tableHeight;
+    self.lectorSeminars.frame = tableFrame;
+    
+    size.height += tableHeight;
+    self.scrollView.scrollEnabled = YES;
+    self.scrollView.contentSize = size;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -36,23 +60,6 @@
     
     self.title = self.lector.name;
     self.lectorName.text = self.lector.name;
-    
-    CGRect rect = [Helper resizeTextView:self.lectorBio];
-    
-    CGSize size = rect.size;
-    size.height += rect.origin.y + 20;
-    
-    size.height += self.lectorSeminars.frame.size.height;
-    int tableHeight = self.lectorSeminars.contentSize.height * [self.lector.seminars count];
-//    CGRectGetMaxY([self.tableView rectForSection:[self.tableView numberOfSections] - 1])
-    CGRect tableFrame = self.lectorSeminars.frame;
-    tableFrame.size.height += tableHeight;
-    self.lectorSeminars.frame = tableFrame;
-    
-    size.height += tableHeight;
-    self.scrollView.scrollEnabled = YES;
-    self.scrollView.contentSize = size;
-    
 }
 
 - (void)viewDidUnload
@@ -67,10 +74,18 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+ 
+    [self recalculateElementsBounds];
     NSIndexPath *indexPath = [self.lectorSeminars indexPathForSelectedRow];
     if (indexPath != nil) {
         [self.lectorSeminars deselectRowAtIndexPath:indexPath animated:YES];
     }
+}
+
+- (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    
+    [self recalculateElementsBounds];
+    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -119,7 +134,7 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return NSLocalizedString(@"Семинары лектора:", @"Lector Seminar Table Title");
+    return NSLocalizedString(@"Семинары:", @"Lector Seminar Table Title");
 }
 
 #pragma mark - UITableViewDelegate

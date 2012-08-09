@@ -8,8 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
+#define HORIZONTAL_MARGIN 40
+
 @interface Helper : NSObject
-+ (CGRect) resizeLabel:(UILabel *)label;
-+ (CGRect) resizeTextView:(UITextView *)textView;
++ (CGRect) resizeLabel:(UILabel *)label withSize:(CGSize)size;
++ (CGRect) resizeTextView:(UITextView *)textView withSize:(CGSize)size;
 
 @end

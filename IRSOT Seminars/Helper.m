@@ -10,9 +10,11 @@
 
 @implementation Helper
 
-+ (CGRect) resizeLabel:(UILabel *)label
++ (CGRect) resizeLabel:(UILabel *)label withSize: (CGSize)size
 {
-    CGSize maximumLabelSize = CGSizeMake(320,300);
+    
+    CGSize maximumLabelSize = size;
+    
     CGSize expectedLabelSize = [label.text sizeWithFont:label.font constrainedToSize:maximumLabelSize lineBreakMode:label.lineBreakMode];
     
     //adjust the label new height.
@@ -23,13 +25,18 @@
     return newFrame;
 }
 
-+ (CGRect) resizeTextView:(UITextView *)textView
++ (CGRect) resizeTextView:(UITextView *)textView withSize: (CGSize)size
 {
+    CGRect newFrame = textView.frame;
+    newFrame.size.width = size.width - HORIZONTAL_MARGIN;
+    textView.frame = newFrame;
+    
     CGRect frame = textView.frame;
     frame.size.height = textView.contentSize.height;
     textView.frame = frame;
     
     return frame;
 }
+
 
 @end

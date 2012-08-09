@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
+#import "SVProgressHUD/SVProgressHUD.h"
 #import "ISNewsWebviewControllerViewController.h"
 
 @interface ISNewsWebviewControllerViewController () <UIWebViewDelegate>
@@ -20,7 +21,8 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.title = NSLocalizedString(@"Новости ИРСОТ", @"News Webview Title");
+//    self.title = NSLocalizedString(@"Новости ИРСОТ", @"News Webview Title");
+    self.navigationItem.title = NSLocalizedString(@"Новости ИРСОТ", @"News Webview Title");
     
     NSURL *url = [NSURL URLWithString:@"http://twitter.com/irsot"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -44,5 +46,22 @@
 }
 
 #pragma mark - IUWebviewDelegate
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [SVProgressHUD show];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [SVProgressHUD dismiss];
+    
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [SVProgressHUD showErrorWithStatus:@"Ошибка загрузки :-("];
+    
+}
 
 @end

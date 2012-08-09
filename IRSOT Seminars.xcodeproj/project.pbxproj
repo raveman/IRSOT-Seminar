@@ -47,6 +47,9 @@
 		C48F971015CC49EB00F4AA51 /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F970F15CC49EB00F4AA51 /* Seminar.m */; };
 		C48F971315CC519E00F4AA51 /* Lector+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */; };
 		C48F972215CC663400F4AA51 /* ISSeminarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F972115CC663400F4AA51 /* ISSeminarViewController.m */; };
+		C4D7CEF015D3F1440003F90C /* twitter-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D7CEEE15D3F1440003F90C /* twitter-iPhone.png */; };
+		C4D7CEF115D3F1440003F90C /* twitter-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D7CEEF15D3F1440003F90C /* twitter-iPhone@2x.png */; };
+		C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */; };
 		C4DE788015C95C02007FBEC4 /* ISInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE787F15C95C02007FBEC4 /* ISInfoTableViewController.m */; };
 		C4DE788415C95C42007FBEC4 /* ISWebviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE788315C95C42007FBEC4 /* ISWebviewViewController.m */; };
 		C4DE788715C95C96007FBEC4 /* ISSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE788615C95C96007FBEC4 /* ISSettingsViewController.m */; };
@@ -117,6 +120,10 @@
 		C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Lector+Load_Data.m"; sourceTree = "<group>"; };
 		C48F972015CC663400F4AA51 /* ISSeminarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSeminarViewController.h; sourceTree = "<group>"; };
 		C48F972115CC663400F4AA51 /* ISSeminarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSeminarViewController.m; sourceTree = "<group>"; };
+		C4D7CEEE15D3F1440003F90C /* twitter-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "twitter-iPhone.png"; path = "icons/twitter-iPhone.png"; sourceTree = "<group>"; };
+		C4D7CEEF15D3F1440003F90C /* twitter-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "twitter-iPhone@2x.png"; path = "icons/twitter-iPhone@2x.png"; sourceTree = "<group>"; };
+		C4D7CEF315D3F1A60003F90C /* ISNewsWebviewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISNewsWebviewControllerViewController.h; sourceTree = "<group>"; };
+		C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISNewsWebviewControllerViewController.m; sourceTree = "<group>"; };
 		C4DE787E15C95C02007FBEC4 /* ISInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISInfoTableViewController.h; sourceTree = "<group>"; };
 		C4DE787F15C95C02007FBEC4 /* ISInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISInfoTableViewController.m; sourceTree = "<group>"; };
 		C4DE788215C95C42007FBEC4 /* ISWebviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISWebviewViewController.h; sourceTree = "<group>"; };
@@ -236,6 +243,8 @@
 				C456427515D25AE2001C4024 /* gear-iPhone@2x.png */,
 				C456423515D25924001C4024 /* lectors-iPhone.png */,
 				C456423615D25924001C4024 /* lectors-iPhone@2x.png */,
+				C4D7CEEE15D3F1440003F90C /* twitter-iPhone.png */,
+				C4D7CEEF15D3F1440003F90C /* twitter-iPhone@2x.png */,
 			);
 			name = icons;
 			sourceTree = "<group>";
@@ -281,6 +290,8 @@
 				C415A30415CC95B0004BCD79 /* Bookmarks */,
 				C415A30C15CC996A004BCD79 /* Lector Views */,
 				C4DE788C15C95DCA007FBEC4 /* Info */,
+				C4D7CEF315D3F1A60003F90C /* ISNewsWebviewControllerViewController.h */,
+				C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */,
 				C462BDB715C95A8700170E3C /* Supporting Files */,
 			);
 			path = "IRSOT Seminars";
@@ -413,6 +424,8 @@
 				C456423815D25924001C4024 /* lectors-iPhone@2x.png in Resources */,
 				C456427615D25AE2001C4024 /* gear-iPhone.png in Resources */,
 				C456427715D25AE2001C4024 /* gear-iPhone@2x.png in Resources */,
+				C4D7CEF015D3F1440003F90C /* twitter-iPhone.png in Resources */,
+				C4D7CEF115D3F1440003F90C /* twitter-iPhone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +461,7 @@
 				C415A30B15CC9952004BCD79 /* ISLectorViewController.m in Sources */,
 				C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */,
 				C483E40F15D2C393001A41FB /* Helper.m in Sources */,
+				C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

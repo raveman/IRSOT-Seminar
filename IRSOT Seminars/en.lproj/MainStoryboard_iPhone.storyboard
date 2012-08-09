@@ -21,6 +21,7 @@
                         <segue destination="Zxi-AR-pyA" kind="relationship" relationship="viewControllers" id="Iwg-rV-XcY"/>
                         <segue destination="wVt-ZX-VzO" kind="relationship" relationship="viewControllers" id="Jra-1z-wBy"/>
                         <segue destination="k9T-3C-wg4" kind="relationship" relationship="viewControllers" id="eUW-Ol-dlR"/>
+                        <segue destination="COB-C0-uHh" kind="relationship" relationship="viewControllers" id="lqV-fQ-u3r"/>
                     </connections>
                 </tabBarController>
             </objects>
@@ -91,26 +92,27 @@
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="YZA-G3-pOv">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Лектор И.О." id="ce4-5w-kED">
                                         <rect key="frame" x="20" y="20" width="280" height="39"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Zv3-Tp-ttp">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" id="Zv3-Tp-ttp">
                                         <rect key="frame" x="20" y="67" width="280" height="192"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <string key="text">БиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиография</string>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                     </textView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fGS-fC-93I">
                                         <rect key="frame" x="0.0" y="288" width="320" height="137"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Lector Seminar Cell" textLabel="9eP-d7-KqR" detailTextLabel="r86-Y2-cjd" style="IBUITableViewCellStyleSubtitle" id="dRg-dh-pKe">
@@ -181,7 +183,7 @@
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Тип" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="iVH-jy-7Eu">
                                         <rect key="frame" x="172" y="128" width="128" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
@@ -195,7 +197,7 @@
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" id="d0O-e2-pzM">
                                         <rect key="frame" x="20" y="193" width="280" height="265"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
@@ -204,17 +206,18 @@
                                     </textView>
                                     <label opaque="NO" clipsSubviews="YES" contentMode="TopLeft" text="Lectors" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="10" id="KwB-nD-wdW">
                                         <rect key="frame" x="20" y="158" width="280" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vtu-XN-M2c">
                                         <rect key="frame" x="20" y="10" width="280" height="37"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                        <color key="tintColor" red="0.28627450980000002" green="0.6588235294" blue="0.78823529410000004" alpha="1" colorSpace="deviceRGB"/>
                                         <state key="normal" title="Принять участие">
-                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleColor" red="0.94509810209274292" green="0.5215686559677124" blue="0.28235295414924622" alpha="1" colorSpace="deviceRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <state key="highlighted">
@@ -226,7 +229,7 @@
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Название семинара" textAlignment="center" id="jfs-iB-s1z">
                                         <rect key="frame" x="20" y="55" width="280" height="35"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -439,7 +442,7 @@
                     </connections>
                 </tableViewController>
             </objects>
-            <point key="canvasLocation" x="956" y="2087"/>
+            <point key="canvasLocation" x="1482" y="2087"/>
         </scene>
         <!--Webview View Controller-->
         <scene sceneID="CvF-yR-gkm">
@@ -450,11 +453,6 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" id="yeg-FU-DkF">
-                                <rect key="frame" x="0.0" y="44" width="320" height="416"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            </webView>
                             <navigationBar contentMode="scaleToFill" id="wNf-fY-mdc">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -468,6 +466,14 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <webView contentMode="scaleToFill" id="yeg-FU-DkF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2kA-qE-Yhq" id="lM2-wz-XH5"/>
+                                </connections>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -478,7 +484,38 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1433" y="2087"/>
+            <point key="canvasLocation" x="1959" y="2087"/>
+        </scene>
+        <!--News Webview Controller View Controller-->
+        <scene sceneID="3e6-Hn-RJF">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eio-a8-5sM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="4Np-xq-L1a" customClass="ISNewsWebviewControllerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ch6-15-QmY">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView multipleTouchEnabled="YES" contentMode="scaleToFill" id="9Rt-W9-zCZ">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="4Np-xq-L1a" id="j3k-L8-VIZ"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="xTn-dw-86G">
+                        <nil key="title"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webview" destination="9Rt-W9-zCZ" id="cBV-fk-CZX"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="444" y="2208"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rNw-C9-6TY">
@@ -497,7 +534,7 @@
                     </connections>
                 </navigationController>
             </objects>
-            <point key="canvasLocation" x="479" y="2087"/>
+            <point key="canvasLocation" x="1005" y="2087"/>
         </scene>
         <!--Lector List Table View Controller-->
         <scene sceneID="HGQ-JR-Icj">
@@ -681,10 +718,30 @@
             </objects>
             <point key="canvasLocation" x="470" y="859"/>
         </scene>
+        <!--Navigation Controller - News-->
+        <scene sceneID="eVJ-Oq-EBg">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="f1M-gw-vZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="COB-C0-uHh" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="News" image="twitter-iPhone.png" id="csr-NV-gtj"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="lCR-x4-ekP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4Np-xq-L1a" kind="relationship" relationship="rootViewController" id="6Hw-MP-zdi"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-82" y="2208"/>
+        </scene>
     </scenes>
     <resources>
         <image name="gear-iPhone.png" width="20" height="20"/>
         <image name="lectors-iPhone.png" width="30" height="30"/>
+        <image name="twitter-iPhone.png" width="30" height="30"/>
     </resources>
     <classes>
         <class className="ISBookmarksTableViewController" superclassName="UITableViewController">
@@ -713,6 +770,12 @@
             <relationships>
                 <relationship kind="outlet" name="noDataLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="seminarCategoriesTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ISNewsWebviewControllerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISNewsWebviewControllerViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
             </relationships>
         </class>
         <class className="ISSeminarListTableViewController" superclassName="UITableViewController">
@@ -763,8 +826,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="kks-Rh-JSv"/>
-        <segue reference="9u7-eT-DiF"/>
         <segue reference="UiY-x5-4jX"/>
+        <segue reference="9u7-eT-DiF"/>
+        <segue reference="3dE-kl-7oN"/>
     </inferredMetricsTieBreakers>
 </document>

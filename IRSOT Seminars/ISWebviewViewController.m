@@ -6,9 +6,10 @@
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
+#import "SVProgressHUD/SVProgressHUD.h"
 #import "ISWebviewViewController.h"
 
-@interface ISWebviewViewController ()
+@interface ISWebviewViewController () <UIWebViewDelegate>
 //@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
 @property (weak, nonatomic) IBOutlet UINavigationBar *modalNavigationBar;
@@ -34,8 +35,13 @@
     
     if (self.navigationController) {
         self.modalNavigationBar.hidden = YES;
+
     } else {
         self.modalNavigationBar.topItem.title = self.webviewTitle;
+        CGRect webviewFrame = self.webview.frame;
+        webviewFrame.size.height -= self.modalNavigationBar.frame.size.height;
+        webviewFrame.origin.y = self.modalNavigationBar.frame.size.height;
+        self.webview.frame = webviewFrame;
     }
     
 	// Do any additional setup after loading the view.
@@ -62,5 +68,24 @@
 - (IBAction)done:(UIBarButtonItem *)sender {
         [[self presentingViewController] dismissModalViewControllerAnimated:YES];
 }
+
+#pragma mark - UIWebViewDelegate
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [SVProgressHUD show];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [SVProgressHUD dismiss];
+    
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    [SVProgressHUD showErrorWithStatus:@"Ошибка :-("];
+    
+}
+
 
 @end

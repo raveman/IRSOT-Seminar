@@ -28,15 +28,15 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-        splitViewController.delegate = (id)navigationController.topViewController;
-        
-        UINavigationController *masterNavigationController = [splitViewController.viewControllers objectAtIndex:0];
-        ISMainPageViewController *controller = (ISMainPageViewController *)masterNavigationController.topViewController;
-        controller.managedObjectContext = self.managedObjectContext;
-    } else {
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+//        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
+//        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
+//        splitViewController.delegate = (id)navigationController.topViewController;
+//        
+//        UINavigationController *masterNavigationController = [splitViewController.viewControllers objectAtIndex:0];
+//        ISMainPageViewController *controller = (ISMainPageViewController *)masterNavigationController.topViewController;
+//        controller.managedObjectContext = self.managedObjectContext;
+//    } else {
 //        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
 //        ISMainPageViewController *controller = (ISMainPageViewController *)navigationController.topViewController;
 //        controller.managedObjectContext = self.managedObjectContext;
@@ -51,7 +51,7 @@
         bookmarksController.managedObjectContext = self.managedObjectContext;
         ISLectorListTableViewController *lectorsController = (ISLectorListTableViewController *)[[masterController.viewControllers objectAtIndex:2] topViewController];
         lectorsController.managedObjectContext = self.managedObjectContext;
-    }
+//    }
     
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
     [[UISearchBar appearance] setBackgroundColor: [UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];

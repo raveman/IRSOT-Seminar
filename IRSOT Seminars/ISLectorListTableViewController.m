@@ -6,36 +6,38 @@
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 // TODO: fix index titles
+#import "SVProgressHUD/SVProgressHUD.h"
 
+#import "ISAppDelegate.h"
 #import "ISLectorListTableViewController.h"
 #import "ISLectorViewController.h"
 
 #import "Lector+Load_Data.h"
 
 @interface ISLectorListTableViewController ()
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation ISLectorListTableViewController
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize tableView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
     self.title = NSLocalizedString(@"Лекторы", @"Lector List View Title");
 
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
 }
 
 - (void)viewDidUnload
 {
+
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+    [self setTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -58,6 +60,20 @@
         ISLectorViewController *dvc = (ISLectorViewController *) segue.destinationViewController;
         [dvc setLector:lector];
     }
+}
+
+#pragma mark - Notification handlers
+- (void) seminarDataChanged:(NSNotification *)notification
+{
+    //    notification.name;
+    //    notification.object;
+    //    notification.userInfo;
+    
+    if ([notification.userInfo objectForKey:NSRemovedPersistentStoresKey]) {
+        self.fetchedResultsController = nil;
+    }
+    
+    [self.tableView reloadData];
 }
 
 #pragma mark - Table view data source
@@ -86,7 +102,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Lector Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
@@ -155,9 +171,11 @@
 	NSError *error = nil;
 	if (![self.fetchedResultsController performFetch:&error]) {
         // TODO: handle error!
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-	    abort();
+        NSString *errorMessage = [NSString stringWithFormat:@"Unresolved error %@, %@", error, [error userInfo]];
+        [SVProgressHUD showErrorWithStatus:errorMessage];
+	    NSLog(@"%@", errorMessage);
+        
+//	    abort();
 	}
     
     return _fetchedResultsController;
@@ -192,24 +210,24 @@
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
 {
-    UITableView *tableView = self.tableView;
+//    UITableView *tableView = self.tableView;
     
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+            [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            [self.tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }

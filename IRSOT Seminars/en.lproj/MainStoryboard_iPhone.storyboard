@@ -581,6 +581,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="unb-b0-4i3"/>
+                    <connections>
+                        <outlet property="tableView" destination="Rjq-ZV-ASn" id="Pdb-S5-AlY"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="956" y="1466"/>
@@ -616,6 +619,7 @@
                                     <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <state key="disabled" title="Загрузка невозможна"/>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -667,11 +671,19 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="error label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="8Sr-QW-8SI">
+                                <rect key="frame" x="20" y="155" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="deleteButton" destination="lkE-P4-A7P" id="iFy-EA-c3J"/>
+                        <outlet property="errorLabel" destination="8Sr-QW-8SI" id="Scm-ei-BYP"/>
                         <outlet property="refreshButton" destination="5fM-Rm-cZ0" id="REn-bn-beK"/>
                         <outlet property="sortSwitch" destination="JCF-i9-aHj" id="HCZ-NP-H5h"/>
                         <outlet property="updateDateLabel" destination="gLr-1M-sYL" id="jMS-tm-zWZ"/>
@@ -755,6 +767,9 @@
         </class>
         <class className="ISLectorListTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISLectorListTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
         </class>
         <class className="ISLectorViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISLectorViewController.h"/>
@@ -802,10 +817,8 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSettingsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="delete:" candidateClass="UIButton"/>
-                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
-                <relationship kind="action" name="load:" candidateClass="UIButton"/>
-                <relationship kind="action" name="sortSwitchPressed:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="refreshButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="sortSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="updateDateLabel" candidateClass="UILabel"/>
@@ -828,6 +841,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="UiY-x5-4jX"/>
         <segue reference="9u7-eT-DiF"/>
-        <segue reference="3dE-kl-7oN"/>
+        <segue reference="kks-Rh-JSv"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -34,6 +34,8 @@
 		C462BDCD15C95A8700170E3C /* ISMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCC15C95A8700170E3C /* ISMasterViewController.m */; };
 		C462BDD015C95A8700170E3C /* ISDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCF15C95A8700170E3C /* ISDetailViewController.m */; };
 		C462BDDB15C95B7300170E3C /* ISMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */; };
+		C46A617B15DD29AA0093C39E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C46A617A15DD29AA0093C39E /* Reachability.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C46A618215DD2E2D0093C39E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46A618115DD2E2D0093C39E /* SystemConfiguration.framework */; };
 		C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */; };
 		C483E40F15D2C393001A41FB /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40E15D2C393001A41FB /* Helper.m */; };
 		C48F96F015CC3DD200F4AA51 /* light-hash-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C48F96EE15CC3DD200F4AA51 /* light-hash-background.png */; };
@@ -98,6 +100,9 @@
 		C462BDCF15C95A8700170E3C /* ISDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISDetailViewController.m; sourceTree = "<group>"; };
 		C462BDD915C95B7300170E3C /* ISMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMainPageViewController.h; sourceTree = "<group>"; };
 		C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMainPageViewController.m; sourceTree = "<group>"; };
+		C46A617915DD29AA0093C39E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		C46A617A15DD29AA0093C39E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		C46A618115DD2E2D0093C39E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C483E40A15D2ADD1001A41FB /* ISLectorListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorListTableViewController.h; sourceTree = "<group>"; };
 		C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorListTableViewController.m; sourceTree = "<group>"; };
 		C483E40D15D2C393001A41FB /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
@@ -142,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C46A618215DD2E2D0093C39E /* SystemConfiguration.framework in Frameworks */,
 				C462BDAF15C95A8700170E3C /* UIKit.framework in Frameworks */,
 				C462BDB115C95A8700170E3C /* Foundation.framework in Frameworks */,
 				C462BDB315C95A8700170E3C /* CoreGraphics.framework in Frameworks */,
@@ -179,6 +185,8 @@
 		C40D8F1E15CBEA350048ABF4 /* Contrib */ = {
 			isa = PBXGroup;
 			children = (
+				C46A617915DD29AA0093C39E /* Reachability.h */,
+				C46A617A15DD29AA0093C39E /* Reachability.m */,
 				C40D8F1F15CBEA5D0048ABF4 /* SVProgressHUD */,
 			);
 			name = Contrib;
@@ -270,6 +278,7 @@
 		C462BDAD15C95A8700170E3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C46A618115DD2E2D0093C39E /* SystemConfiguration.framework */,
 				C462BDAE15C95A8700170E3C /* UIKit.framework */,
 				C462BDB015C95A8700170E3C /* Foundation.framework */,
 				C462BDB215C95A8700170E3C /* CoreGraphics.framework */,
@@ -462,6 +471,7 @@
 				C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */,
 				C483E40F15D2C393001A41FB /* Helper.m in Sources */,
 				C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */,
+				C46A617B15DD29AA0093C39E /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@
 // оранжевый R: 208, G: 126, B: 73
 //
 
-
+#import "ISAppDelegate.h"
 #import "ISMainPageViewController.h"
 #import "ISSeminarListTableViewController.h"
 #import "ISSettingsViewController.h"
@@ -33,6 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
     
 //    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0];
 	
@@ -54,11 +55,11 @@
     self.seminarCategoriesTableView.backgroundColor = [UIColor clearColor];
     self.seminarCategoriesTableView.opaque = NO;
     self.seminarCategoriesTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-hash-background.png"]];
-    
 }
 
 - (void)viewDidUnload
 {
+   
     [self setSeminarCategoriesTableView:nil];
     [self setNoDataLabel:nil];
     [super viewDidUnload];

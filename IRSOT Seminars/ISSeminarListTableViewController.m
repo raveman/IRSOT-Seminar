@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
+#import "ISAppDelegate.h"
 #import "ISSeminarListTableViewController.h"
 #import "ISSeminarViewController.h"
 
@@ -53,7 +54,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
+    
     self.searchDisplayController.searchBar.delegate = self;
     self.searchDisplayController.searchBar.backgroundColor = [UIColor clearColor];
     

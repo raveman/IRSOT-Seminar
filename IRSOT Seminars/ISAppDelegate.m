@@ -20,11 +20,13 @@
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
-- (void) createPersistentStore
+#pragma mark - shared delegate
++ (ISAppDelegate *)sharedDelegate
 {
-    
+    return (ISAppDelegate *) [UIApplication sharedApplication].delegate;
 }
 
+#pragma mark - UIApplicationDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
@@ -43,14 +45,14 @@
         
         // т.к. корневой контроллер у нас UITabBarViewController, то у него мы спрашиваем на первой закладке первый контроллер,
         // которым оказывается UINavigationController, а у уже него мы получаем на View Controller
-        UITabBarController *masterController = (UITabBarController *)self.window.rootViewController;
-
-        ISMainPageViewController *mainController = (ISMainPageViewController *)[[masterController.viewControllers objectAtIndex:0] topViewController];
-        mainController.managedObjectContext = self.managedObjectContext;
-        ISBookmarksTableViewController *bookmarksController = (ISBookmarksTableViewController *)[[masterController.viewControllers objectAtIndex:1] topViewController];
-        bookmarksController.managedObjectContext = self.managedObjectContext;
-        ISLectorListTableViewController *lectorsController = (ISLectorListTableViewController *)[[masterController.viewControllers objectAtIndex:2] topViewController];
-        lectorsController.managedObjectContext = self.managedObjectContext;
+//        UITabBarController *masterController = (UITabBarController *)self.window.rootViewController;
+//
+//        ISMainPageViewController *mainController = (ISMainPageViewController *)[[masterController.viewControllers objectAtIndex:0] topViewController];
+//        mainController.managedObjectContext = self.managedObjectContext;
+//        ISBookmarksTableViewController *bookmarksController = (ISBookmarksTableViewController *)[[masterController.viewControllers objectAtIndex:1] topViewController];
+//        bookmarksController.managedObjectContext = self.managedObjectContext;
+//        ISLectorListTableViewController *lectorsController = (ISLectorListTableViewController *)[[masterController.viewControllers objectAtIndex:2] topViewController];
+//        lectorsController.managedObjectContext = self.managedObjectContext;
 //    }
     
     [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
@@ -186,5 +188,6 @@
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
 }
+
 
 @end

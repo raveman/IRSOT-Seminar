@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+#define SEMINAR_SITE @"devedu.ruseminar.ru"
 #define SEMINAR_URL @"http://devedu.ruseminar.ru/api/nonauth/"
 #define SEMINAR_TAXONOMY_URL @"taxonomy_vocabulary"
 #define SEMINAR_TERM_URL @"taxonomy_term"
@@ -25,6 +26,10 @@
 #define SEMINAR_DATE_FORMAT @"yyyy-MM-dd HH:mm:ss"
 #define SEMINAR_DATE_FORMAT_DATE @"dd"
 #define SEMINAR_DATE_FORMAT_DATE_MONTH @"MMMM YYYY"
+
+// extern NSString *const kReachabilityChangedNotification;
+
+// NSString *const kSeminarDataChangedNotification = @"kSeminarDataChangedNotification";
 
 @interface SeminarFetcher : NSObject
 

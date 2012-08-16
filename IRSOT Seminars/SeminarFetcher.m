@@ -9,8 +9,6 @@
 #import "SeminarFetcher.h"
 #import "SVProgressHUD/SVProgressHUD.h"
 
-
-
 @implementation SeminarFetcher
 
 + (NSArray *) executeFetch: (NSString *)query
@@ -19,8 +17,14 @@
     query = [query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     // NSLog(@"[%@ %@] sent %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), query);
 
-    NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:query] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
     NSError *error = nil;
+
+    NSData *jsonData = [[NSString stringWithContentsOfURL:[NSURL URLWithString:query] encoding:NSUTF8StringEncoding error:&error] dataUsingEncoding:NSUTF8StringEncoding];
+    if(error) {
+        NSString *errorMessage = [NSString stringWithFormat:@"[%@ %@] JSON error: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), error.localizedDescription];
+        [SVProgressHUD showErrorWithStatus:errorMessage];
+        NSLog(errorMessage, nil);
+    }
     NSArray *results = jsonData ? [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error] : nil;
     if (error) {
         NSString *errorMessage = [NSString stringWithFormat:@"[%@ %@] JSON error: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), error.localizedDescription];

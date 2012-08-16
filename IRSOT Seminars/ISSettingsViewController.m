@@ -8,10 +8,12 @@
 // TODO: add error checking: no network, broken data transfer, etc...
 
 #import "SVProgressHUD/SVProgressHUD.h"
+#import "Reachability.h"
 
 #import "ISSettingsViewController.h"
 #import "ISMainPageViewController.h"
 #import "SeminarFetcher.h"
+
 
 #import "Type+Load_Data.h"
 #import "Sections+Load_Data.h"
@@ -23,6 +25,9 @@
 @property (weak, nonatomic) IBOutlet UISwitch *sortSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *refreshButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
+@property (weak, nonatomic) IBOutlet UILabel *errorLabel;
+
+@property (strong, nonatomic) Reachability * reach;
 
 - (void) loadData;
 - (void) deleteData;
@@ -34,9 +39,19 @@
 @synthesize sortSwitch;
 @synthesize refreshButton;
 @synthesize deleteButton;
+@synthesize errorLabel;
 @synthesize delegate = _delegate;
 
 @synthesize emptyStore;
+@synthesize reach = _reach;
+
+- (Reachability *)reach
+{
+    if (_reach == nil) _reach = [Reachability reachabilityWithHostname:SEMINAR_SITE];
+    
+    return _reach;
+}
+
 
 - (void)viewDidLoad
 {
@@ -44,17 +59,43 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_texture.png"]];
 
     self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
+    errorLabel.text = @"";
     
     if (self.emptyStore) self.deleteButton.hidden = NO;
         else self.deleteButton.hidden = YES;
+    
+    
+    self.reach.reachableBlock = ^(Reachability * reachability)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            refreshButton.enabled = YES;
+            errorLabel.text = @"";
+        });
+    };
+    
+    self.reach.unreachableBlock = ^(Reachability * reachability)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            refreshButton.enabled = NO;
+            NSString *noInternetText = NSLocalizedString(@"Нет доступа к интернету", @"No network access");
+            errorLabel.text = noInternetText;
+            [SVProgressHUD showErrorWithStatus:noInternetText];
+        });
+    };
+    
+    [self.reach startNotifier];
 }
 
 - (void)viewDidUnload
 {
+    [self.reach stopNotifier];
+    
     [self setUpdateDateLabel:nil];
     [self setDeleteButton:nil];
     [self setRefreshButton:nil];
     [self setSortSwitch:nil];
+    [self setErrorLabel:nil];
+    [self setReach:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -74,6 +115,8 @@
         return YES;
     }
 }
+
+#pragma mark - UI interactions
 
 // done button pressed
 - (IBAction)done:(UIBarButtonItem *)sender
@@ -133,7 +176,8 @@
             NSError *error = nil;
             if (![self.managedObjectContext save:&error]) {
                 NSLog(@"Could'not save: %@", [error localizedDescription]);
-                [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Ошибка загрузки", @"Seminars load error")];
+                
+                [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Ошибка загрузки %@", [error localizedDescription]]];
             } else {
 
                 [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Семинары загружены!", @"Seminars loaded successfully")];

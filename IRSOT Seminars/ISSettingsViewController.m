@@ -8,7 +8,7 @@
 // TODO: add error checking: no network, broken data transfer, etc...
 
 #import "SVProgressHUD/SVProgressHUD.h"
-#import "Reachability.h"
+#import "ReachabilityARC.h"
 
 #import "ISSettingsViewController.h"
 #import "ISMainPageViewController.h"
@@ -28,7 +28,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 
-@property (strong, nonatomic) Reachability * reach;
+@property (strong, nonatomic) ReachabilityARC * reach;
 
 - (void) loadData;
 - (void) deleteData;
@@ -47,9 +47,9 @@
 @synthesize emptyStore;
 @synthesize reach = _reach;
 
-- (Reachability *)reach
+- (ReachabilityARC *)reach
 {
-    if (_reach == nil) _reach = [Reachability reachabilityWithHostname:SEMINAR_SITE];
+    if (_reach == nil) _reach = [ReachabilityARC reachabilityWithHostname:SEMINAR_SITE];
     
     return _reach;
 }
@@ -69,7 +69,7 @@
         else self.deleteButton.hidden = YES;
     
     
-    self.reach.reachableBlock = ^(Reachability * reachability)
+    self.reach.reachableBlock = ^(ReachabilityARC * reachability)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             refreshButton.enabled = YES;
@@ -77,7 +77,7 @@
         });
     };
     
-    self.reach.unreachableBlock = ^(Reachability * reachability)
+    self.reach.unreachableBlock = ^(ReachabilityARC * reachability)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             refreshButton.enabled = NO;
@@ -194,27 +194,29 @@
                 
                 [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Ошибка загрузки %@", [error localizedDescription]]];
             } else {
-
-                [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Семинары загружены!", @"Seminars loaded successfully")];
-                self.deleteButton.hidden = NO;
-                updated = YES;
-                
-                NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
-//                NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatFromTemplate:@"HH:MM dd.mm.yyyy" options:nil locale:nil];
-                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-                [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-                
-                [dateFormatter setLocale:locale];
-                NSString *dateUpdated = [dateFormatter stringFromDate:[NSDate date]];
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-                self.updateDateLabel.text = dateUpdated;
-                
-                [defaults setObject:dateUpdated forKey:UPDATE_DATE_KEY];
-                [defaults synchronize];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Семинары загружены!", @"Seminars loaded successfully")];
+                    self.deleteButton.hidden = NO;
+                    updated = YES;
+                    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
+                    //                NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatFromTemplate:@"HH:MM dd.mm.yyyy" options:nil locale:nil];
+                    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+                    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+                    
+                    [dateFormatter setLocale:locale];
+                    NSString *dateUpdated = [dateFormatter stringFromDate:[NSDate date]];
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    
+                    self.updateDateLabel.text = dateUpdated;
+                    
+                    [defaults setObject:dateUpdated forKey:UPDATE_DATE_KEY];
+                    [defaults synchronize];
+                    
+                    [self.delegate settingsViewController:self didUpdatedStore:updated];
+                });
             }
-            [self.delegate settingsViewController:self didUpdatedStore:updated];
+
         }]; // end managedObjectContext performBlock
     }); // end dispatch_async(fetchQ) block
     dispatch_release(fetchQ);

@@ -12,10 +12,16 @@
 @interface ISNewsWebviewControllerViewController () <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
 
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *forwardButton;
+
 @end
 
 @implementation ISNewsWebviewControllerViewController
 @synthesize webview;
+@synthesize backButton;
+@synthesize forwardButton;
+
 
 - (void)viewDidLoad
 {
@@ -23,6 +29,7 @@
 	// Do any additional setup after loading the view.
 //    self.title = NSLocalizedString(@"Новости ИРСОТ", @"News Webview Title");
     self.navigationItem.title = NSLocalizedString(@"Новости ИРСОТ", @"News Webview Title");
+    self.webview.scalesPageToFit = YES;
     
     NSURL *url = [NSURL URLWithString:@"http://twitter.com/irsot"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
@@ -32,6 +39,9 @@
 - (void)viewDidUnload
 {
     [self setWebview:nil];
+
+    [self setBackButton:nil];
+    [self setForwardButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -44,6 +54,14 @@
         return YES;
     }
 }
+#pragma mark - web buttons methods
+
+- (IBAction)backButtonPressed:(UIBarButtonItem *)sender {
+    [self.webview goBack];
+}
+- (IBAction)forwardButtonPressed:(UIBarButtonItem *)sender {
+    [self.webview goForward];
+}
 
 #pragma mark - IUWebviewDelegate
 
@@ -55,7 +73,12 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [SVProgressHUD dismiss];
+    self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     
+    if (webview.canGoBack) self.backButton.enabled = YES;
+        else self.backButton.enabled = NO;
+    if (webview.canGoForward) self.forwardButton.enabled = YES;
+        else self.forwardButton.enabled = NO;
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error

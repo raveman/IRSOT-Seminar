@@ -11,12 +11,24 @@
 		C40D8F1D15CBDFB30048ABF4 /* Type+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1C15CBDFB30048ABF4 /* Type+Load_Data.m */; };
 		C40D8F2315CBEA5D0048ABF4 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C40D8F2015CBEA5D0048ABF4 /* SVProgressHUD.bundle */; };
 		C40D8F2415CBEA5D0048ABF4 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F2215CBEA5D0048ABF4 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		C40F52EB15DD725E0022A9B5 /* back-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C40F52E715DD725E0022A9B5 /* back-iPhone.png */; };
+		C40F52EC15DD725E0022A9B5 /* back-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C40F52E815DD725E0022A9B5 /* back-iPhone@2x.png */; };
+		C40F52ED15DD725E0022A9B5 /* forward-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C40F52E915DD725E0022A9B5 /* forward-iPhone.png */; };
+		C40F52EE15DD725E0022A9B5 /* forward-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C40F52EA15DD725E0022A9B5 /* forward-iPhone@2x.png */; };
 		C415A30215CC95A0004BCD79 /* ISBookmarksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C415A30115CC95A0004BCD79 /* ISBookmarksTableViewController.m */; };
 		C415A30B15CC9952004BCD79 /* ISLectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C415A30A15CC9952004BCD79 /* ISLectorViewController.m */; };
 		C4228C5C15D12ED500960BBA /* irsot-icon-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4228C5B15D12ED500960BBA /* irsot-icon-iPhone@2x.png */; };
 		C4228C5F15D12EEF00960BBA /* irsot-icon-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4228C5E15D12EEF00960BBA /* irsot-icon-iPhone.png */; };
 		C4228C6115D12F0D00960BBA /* irsot-icon-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4228C6015D12F0D00960BBA /* irsot-icon-iPad@2x.png */; };
 		C4228C6315D12F2800960BBA /* irsot-icon-iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4228C6215D12F2800960BBA /* irsot-icon-iPad.png */; };
+		C423682415DEBAFE0066B1D7 /* libShareKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C423681A15DEBABA0066B1D7 /* libShareKit.a */; };
+		C423682515DEBB350066B1D7 /* ShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C423681C15DEBABA0066B1D7 /* ShareKit.bundle */; };
+		C423682715DEBBDF0066B1D7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682615DEBBDF0066B1D7 /* Security.framework */; };
+		C423682915DEBBE70066B1D7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682815DEBBE70066B1D7 /* MessageUI.framework */; };
+		C423682B15DEBBEF0066B1D7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682A15DEBBEF0066B1D7 /* CFNetwork.framework */; };
+		C423682D15DEBBF70066B1D7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682C15DEBBF70066B1D7 /* CoreLocation.framework */; };
+		C423682F15DEBBFF0066B1D7 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682E15DEBBFF0066B1D7 /* Twitter.framework */; };
+		C423683215DEBD380066B1D7 /* ReachabilityARC.m in Sources */ = {isa = PBXBuildFile; fileRef = C423683115DEBD380066B1D7 /* ReachabilityARC.m */; };
 		C456423715D25924001C4024 /* lectors-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C456423515D25924001C4024 /* lectors-iPhone.png */; };
 		C456423815D25924001C4024 /* lectors-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C456423615D25924001C4024 /* lectors-iPhone@2x.png */; };
 		C456427615D25AE2001C4024 /* gear-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C456427415D25AE2001C4024 /* gear-iPhone.png */; };
@@ -34,7 +46,6 @@
 		C462BDCD15C95A8700170E3C /* ISMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCC15C95A8700170E3C /* ISMasterViewController.m */; };
 		C462BDD015C95A8700170E3C /* ISDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCF15C95A8700170E3C /* ISDetailViewController.m */; };
 		C462BDDB15C95B7300170E3C /* ISMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */; };
-		C46A617B15DD29AA0093C39E /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C46A617A15DD29AA0093C39E /* Reachability.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C46A618215DD2E2D0093C39E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46A618115DD2E2D0093C39E /* SystemConfiguration.framework */; };
 		C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */; };
 		C483E40F15D2C393001A41FB /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40E15D2C393001A41FB /* Helper.m */; };
@@ -60,6 +71,51 @@
 		C4DE789215C96EF3007FBEC4 /* SeminarFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE789115C96EF3007FBEC4 /* SeminarFetcher.m */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		C423681715DEBABA0066B1D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C423680C15DEBAB90066B1D7 /* ShareKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1D6058910D05DD3D006BFB54;
+			remoteInfo = "Demo App";
+		};
+		C423681915DEBABA0066B1D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C423680C15DEBAB90066B1D7 /* ShareKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7AB5342E1552AADD00171BCE;
+			remoteInfo = "Static Library";
+		};
+		C423681B15DEBABA0066B1D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C423680C15DEBAB90066B1D7 /* ShareKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7AB5360F1552E26800171BCE;
+			remoteInfo = "Resource Bundle";
+		};
+		C423681D15DEBABA0066B1D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C423680C15DEBAB90066B1D7 /* ShareKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7A0F9246156BA2A0009CB40A;
+			remoteInfo = "Static Library No Submodules";
+		};
+		C423682015DEBAE80066B1D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C423680C15DEBAB90066B1D7 /* ShareKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7AB5342D1552AADD00171BCE;
+			remoteInfo = "Static Library";
+		};
+		C423682215DEBAED0066B1D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C423680C15DEBAB90066B1D7 /* ShareKit.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 7AB5360E1552E26800171BCE;
+			remoteInfo = "Resource Bundle";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		C40D8F1815CBDBBB0048ABF4 /* Sections+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Sections+Load_Data.h"; sourceTree = "<group>"; };
 		C40D8F1915CBDBBB0048ABF4 /* Sections+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Sections+Load_Data.m"; sourceTree = "<group>"; };
@@ -68,6 +124,10 @@
 		C40D8F2015CBEA5D0048ABF4 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		C40D8F2115CBEA5D0048ABF4 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		C40D8F2215CBEA5D0048ABF4 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		C40F52E715DD725E0022A9B5 /* back-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-iPhone.png"; path = "icons/back-iPhone.png"; sourceTree = "<group>"; };
+		C40F52E815DD725E0022A9B5 /* back-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-iPhone@2x.png"; path = "icons/back-iPhone@2x.png"; sourceTree = "<group>"; };
+		C40F52E915DD725E0022A9B5 /* forward-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forward-iPhone.png"; path = "icons/forward-iPhone.png"; sourceTree = "<group>"; };
+		C40F52EA15DD725E0022A9B5 /* forward-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forward-iPhone@2x.png"; path = "icons/forward-iPhone@2x.png"; sourceTree = "<group>"; };
 		C415A30015CC95A0004BCD79 /* ISBookmarksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISBookmarksTableViewController.h; sourceTree = "<group>"; };
 		C415A30115CC95A0004BCD79 /* ISBookmarksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISBookmarksTableViewController.m; sourceTree = "<group>"; };
 		C415A30915CC9952004BCD79 /* ISLectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorViewController.h; sourceTree = "<group>"; };
@@ -76,6 +136,14 @@
 		C4228C5E15D12EEF00960BBA /* irsot-icon-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "irsot-icon-iPhone.png"; path = "../irsot-icon-iPhone.png"; sourceTree = "<group>"; };
 		C4228C6015D12F0D00960BBA /* irsot-icon-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "irsot-icon-iPad@2x.png"; path = "../irsot-icon-iPad@2x.png"; sourceTree = "<group>"; };
 		C4228C6215D12F2800960BBA /* irsot-icon-iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "irsot-icon-iPad.png"; path = "../irsot-icon-iPad.png"; sourceTree = "<group>"; };
+		C423680C15DEBAB90066B1D7 /* ShareKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ShareKit.xcodeproj; path = Submodules/ShareKit/ShareKit.xcodeproj; sourceTree = "<group>"; };
+		C423682615DEBBDF0066B1D7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		C423682815DEBBE70066B1D7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		C423682A15DEBBEF0066B1D7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		C423682C15DEBBF70066B1D7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		C423682E15DEBBFF0066B1D7 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
+		C423683015DEBD380066B1D7 /* ReachabilityARC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityARC.h; sourceTree = "<group>"; };
+		C423683115DEBD380066B1D7 /* ReachabilityARC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityARC.m; sourceTree = "<group>"; };
 		C456423515D25924001C4024 /* lectors-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lectors-iPhone.png"; path = "icons/lectors-iPhone.png"; sourceTree = "<group>"; };
 		C456423615D25924001C4024 /* lectors-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lectors-iPhone@2x.png"; path = "icons/lectors-iPhone@2x.png"; sourceTree = "<group>"; };
 		C456427415D25AE2001C4024 /* gear-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "gear-iPhone.png"; path = "icons/gear-iPhone.png"; sourceTree = "<group>"; };
@@ -100,8 +168,6 @@
 		C462BDCF15C95A8700170E3C /* ISDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISDetailViewController.m; sourceTree = "<group>"; };
 		C462BDD915C95B7300170E3C /* ISMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMainPageViewController.h; sourceTree = "<group>"; };
 		C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMainPageViewController.m; sourceTree = "<group>"; };
-		C46A617915DD29AA0093C39E /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
-		C46A617A15DD29AA0093C39E /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		C46A618115DD2E2D0093C39E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C483E40A15D2ADD1001A41FB /* ISLectorListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorListTableViewController.h; sourceTree = "<group>"; };
 		C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorListTableViewController.m; sourceTree = "<group>"; };
@@ -152,6 +218,12 @@
 				C462BDB115C95A8700170E3C /* Foundation.framework in Frameworks */,
 				C462BDB315C95A8700170E3C /* CoreGraphics.framework in Frameworks */,
 				C462BDB515C95A8700170E3C /* CoreData.framework in Frameworks */,
+				C423682F15DEBBFF0066B1D7 /* Twitter.framework in Frameworks */,
+				C423682D15DEBBF70066B1D7 /* CoreLocation.framework in Frameworks */,
+				C423682B15DEBBEF0066B1D7 /* CFNetwork.framework in Frameworks */,
+				C423682915DEBBE70066B1D7 /* MessageUI.framework in Frameworks */,
+				C423682715DEBBDF0066B1D7 /* Security.framework in Frameworks */,
+				C423682415DEBAFE0066B1D7 /* libShareKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,8 +257,8 @@
 		C40D8F1E15CBEA350048ABF4 /* Contrib */ = {
 			isa = PBXGroup;
 			children = (
-				C46A617915DD29AA0093C39E /* Reachability.h */,
-				C46A617A15DD29AA0093C39E /* Reachability.m */,
+				C423683015DEBD380066B1D7 /* ReachabilityARC.h */,
+				C423683115DEBD380066B1D7 /* ReachabilityARC.m */,
 				C40D8F1F15CBEA5D0048ABF4 /* SVProgressHUD */,
 			);
 			name = Contrib;
@@ -233,6 +305,17 @@
 			name = "app icon";
 			sourceTree = "<group>";
 		};
+		C423680D15DEBAB90066B1D7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C423681815DEBABA0066B1D7 /* ShareKitDemo.app */,
+				C423681A15DEBABA0066B1D7 /* libShareKit.a */,
+				C423681C15DEBABA0066B1D7 /* ShareKit.bundle */,
+				C423681E15DEBABA0066B1D7 /* libShareKitNoSubmodules.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C42B777A15D02CE500835E9F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,6 +330,10 @@
 		C456427815D25B53001C4024 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				C40F52E715DD725E0022A9B5 /* back-iPhone.png */,
+				C40F52E815DD725E0022A9B5 /* back-iPhone@2x.png */,
+				C40F52E915DD725E0022A9B5 /* forward-iPhone.png */,
+				C40F52EA15DD725E0022A9B5 /* forward-iPhone@2x.png */,
 				C456427415D25AE2001C4024 /* gear-iPhone.png */,
 				C456427515D25AE2001C4024 /* gear-iPhone@2x.png */,
 				C456423515D25924001C4024 /* lectors-iPhone.png */,
@@ -264,6 +351,7 @@
 				C4DE788D15C95DE0007FBEC4 /* Trash Views */,
 				C462BDAD15C95A8700170E3C /* Frameworks */,
 				C462BDAB15C95A8700170E3C /* Products */,
+				C423680C15DEBAB90066B1D7 /* ShareKit.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -278,6 +366,11 @@
 		C462BDAD15C95A8700170E3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C423682E15DEBBFF0066B1D7 /* Twitter.framework */,
+				C423682C15DEBBF70066B1D7 /* CoreLocation.framework */,
+				C423682A15DEBBEF0066B1D7 /* CFNetwork.framework */,
+				C423682815DEBBE70066B1D7 /* MessageUI.framework */,
+				C423682615DEBBDF0066B1D7 /* Security.framework */,
 				C46A618115DD2E2D0093C39E /* SystemConfiguration.framework */,
 				C462BDAE15C95A8700170E3C /* UIKit.framework */,
 				C462BDB015C95A8700170E3C /* Foundation.framework */,
@@ -378,6 +471,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				C423682315DEBAED0066B1D7 /* PBXTargetDependency */,
+				C423682115DEBAE80066B1D7 /* PBXTargetDependency */,
 			);
 			name = "IRSOT Seminars";
 			productName = "IRSOT Seminars";
@@ -404,12 +499,49 @@
 			mainGroup = C462BD9F15C95A8700170E3C;
 			productRefGroup = C462BDAB15C95A8700170E3C /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = C423680D15DEBAB90066B1D7 /* Products */;
+					ProjectRef = C423680C15DEBAB90066B1D7 /* ShareKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				C462BDA915C95A8700170E3C /* IRSOT Seminars */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		C423681815DEBABA0066B1D7 /* ShareKitDemo.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ShareKitDemo.app;
+			remoteRef = C423681715DEBABA0066B1D7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C423681A15DEBABA0066B1D7 /* libShareKit.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libShareKit.a;
+			remoteRef = C423681915DEBABA0066B1D7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C423681C15DEBABA0066B1D7 /* ShareKit.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ShareKit.bundle;
+			remoteRef = C423681B15DEBABA0066B1D7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C423681E15DEBABA0066B1D7 /* libShareKitNoSubmodules.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libShareKitNoSubmodules.a;
+			remoteRef = C423681D15DEBABA0066B1D7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		C462BDA815C95A8700170E3C /* Resources */ = {
@@ -421,6 +553,7 @@
 				C462BDC715C95A8700170E3C /* MainStoryboard_iPad.storyboard in Resources */,
 				C4DE788F15C95E34007FBEC4 /* Info Links.plist in Resources */,
 				C40D8F2315CBEA5D0048ABF4 /* SVProgressHUD.bundle in Resources */,
+				C423682515DEBB350066B1D7 /* ShareKit.bundle in Resources */,
 				C48F96F015CC3DD200F4AA51 /* light-hash-background.png in Resources */,
 				C48F96F115CC3DD200F4AA51 /* light-hash-background@2x.png in Resources */,
 				C48F96F415CC3E8300F4AA51 /* bg_texture.png in Resources */,
@@ -435,6 +568,10 @@
 				C456427715D25AE2001C4024 /* gear-iPhone@2x.png in Resources */,
 				C4D7CEF015D3F1440003F90C /* twitter-iPhone.png in Resources */,
 				C4D7CEF115D3F1440003F90C /* twitter-iPhone@2x.png in Resources */,
+				C40F52EB15DD725E0022A9B5 /* back-iPhone.png in Resources */,
+				C40F52EC15DD725E0022A9B5 /* back-iPhone@2x.png in Resources */,
+				C40F52ED15DD725E0022A9B5 /* forward-iPhone.png in Resources */,
+				C40F52EE15DD725E0022A9B5 /* forward-iPhone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -471,11 +608,24 @@
 				C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */,
 				C483E40F15D2C393001A41FB /* Helper.m in Sources */,
 				C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */,
-				C46A617B15DD29AA0093C39E /* Reachability.m in Sources */,
+				C423683215DEBD380066B1D7 /* ReachabilityARC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C423682115DEBAE80066B1D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Static Library";
+			targetProxy = C423682015DEBAE80066B1D7 /* PBXContainerItemProxy */;
+		};
+		C423682315DEBAED0066B1D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Resource Bundle";
+			targetProxy = C423682215DEBAED0066B1D7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C462BDB915C95A8700170E3C /* InfoPlist.strings */ = {
@@ -562,7 +712,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
 				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "Submodules/*/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -573,7 +728,12 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
 				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "Submodules/*/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

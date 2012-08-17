@@ -36,7 +36,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="w0b-6g-azz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="w0b-6g-azz">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -384,7 +384,9 @@
                             <outlet property="delegate" destination="xDk-YY-uSY" id="d1R-VV-bC9"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="iPJ-Ex-viY"/>
+                    <navigationItem key="navigationItem" id="iPJ-Ex-viY">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="9Rn-mZ-Wf3"/>
+                    </navigationItem>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="956" y="859"/>
@@ -509,8 +511,20 @@
                     </view>
                     <navigationItem key="navigationItem" id="xTn-dw-86G">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" image="back-iPhone.png" id="cz8-Cm-X5I">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="4Np-xq-L1a" id="xMn-Ck-VPO"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="forward-iPhone.png" id="t52-Ly-c4R">
+                            <connections>
+                                <action selector="forwardButtonPressed:" destination="4Np-xq-L1a" id="mYW-jM-pNJ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backButton" destination="cz8-Cm-X5I" id="wUT-7F-qyN"/>
+                        <outlet property="forwardButton" destination="t52-Ly-c4R" id="A0g-a4-XIu"/>
                         <outlet property="webview" destination="9Rt-W9-zCZ" id="cBV-fk-CZX"/>
                     </connections>
                 </viewController>
@@ -672,10 +686,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="error label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="8Sr-QW-8SI">
-                                <rect key="frame" x="20" y="155" width="280" height="21"/>
+                                <rect key="frame" x="20" y="219" width="280" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.40000000596046448" blue="0.40000000596046448" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" id="JfL-Z8-sYL">
+                                <rect key="frame" x="221" y="107" width="79" height="27"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="iCloudSwithPressed:" destination="4YO-by-1FM" eventType="valueChanged" id="hp2-ga-J0H"/>
+                                    <action selector="sortSwitchPressed:" destination="4YO-by-1FM" eventType="valueChanged" id="HIB-hD-SFv"/>
+                                </connections>
+                            </switch>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Использовать iCloud для синхронизации закладок" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="10" id="vhw-oK-D8J">
+                                <rect key="frame" x="20" y="100" width="193" height="41"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -684,6 +713,7 @@
                     <connections>
                         <outlet property="deleteButton" destination="lkE-P4-A7P" id="iFy-EA-c3J"/>
                         <outlet property="errorLabel" destination="8Sr-QW-8SI" id="Scm-ei-BYP"/>
+                        <outlet property="iCloudSwitch" destination="JfL-Z8-sYL" id="EXm-o9-H8r"/>
                         <outlet property="refreshButton" destination="5fM-Rm-cZ0" id="REn-bn-beK"/>
                         <outlet property="sortSwitch" destination="JCF-i9-aHj" id="HCZ-NP-H5h"/>
                         <outlet property="updateDateLabel" destination="gLr-1M-sYL" id="jMS-tm-zWZ"/>
@@ -751,7 +781,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="gear-iPhone.png" width="20" height="20"/>
+        <image name="back-iPhone.png" width="20" height="20"/>
+        <image name="forward-iPhone.png" width="20" height="20"/>
+        <image name="gear-iPhone.png" width="30" height="30"/>
         <image name="lectors-iPhone.png" width="30" height="30"/>
         <image name="twitter-iPhone.png" width="30" height="30"/>
     </resources>
@@ -790,6 +822,10 @@
         <class className="ISNewsWebviewControllerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISNewsWebviewControllerViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="forwardButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="forwardButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
             </relationships>
         </class>
@@ -817,8 +853,13 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSettingsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="delete:" candidateClass="UIButton"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="iCloudSwithPressed:" candidateClass="UISwitch"/>
+                <relationship kind="action" name="load:" candidateClass="UIButton"/>
+                <relationship kind="action" name="sortSwitchPressed:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iCloudSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="refreshButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="sortSwitch" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="updateDateLabel" candidateClass="UILabel"/>
@@ -827,7 +868,6 @@
         <class className="ISWebviewViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISWebviewViewController.h"/>
             <relationships>
-                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="modalNavigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
             </relationships>
@@ -839,8 +879,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="UiY-x5-4jX"/>
-        <segue reference="9u7-eT-DiF"/>
         <segue reference="kks-Rh-JSv"/>
+        <segue reference="ce4-2g-nyb"/>
+        <segue reference="UiY-x5-4jX"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #define SORT_KEY @"SeminarList.Sort"
+#define USE_ICLOUD_KEY @"SeminarList.UseiCloud"
 #define UPDATE_DATE_KEY @"UpdateDate"
 
 @class ISSettingsViewController;

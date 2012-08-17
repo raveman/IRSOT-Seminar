@@ -23,6 +23,7 @@
 @interface ISSettingsViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *updateDateLabel;
 @property (weak, nonatomic) IBOutlet UISwitch *sortSwitch;
+@property (weak, nonatomic) IBOutlet UISwitch *iCloudSwitch;
 @property (weak, nonatomic) IBOutlet UIButton *refreshButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
@@ -37,6 +38,7 @@
 @implementation ISSettingsViewController
 @synthesize updateDateLabel;
 @synthesize sortSwitch;
+@synthesize iCloudSwitch;
 @synthesize refreshButton;
 @synthesize deleteButton;
 @synthesize errorLabel;
@@ -59,6 +61,8 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_texture.png"]];
 
     self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
+    self.iCloudSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USE_ICLOUD_KEY] boolValue];
+    
     errorLabel.text = @"";
     
     if (self.emptyStore) self.deleteButton.hidden = NO;
@@ -96,6 +100,7 @@
     [self setSortSwitch:nil];
     [self setErrorLabel:nil];
     [self setReach:nil];
+    [self setICloudSwitch:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -136,11 +141,21 @@
     [self deleteData];
 }
 
-- (IBAction)sortSwitchPressed:(UISwitch *)sender {
+- (IBAction)sortSwitchPressed:(UISwitch *)sender
+{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSNumber *sortByDate = [NSNumber numberWithBool:sender.on];
     
     [defaults setObject:sortByDate forKey:SORT_KEY];
+    [defaults synchronize];
+}
+
+- (IBAction)iCloudSwithPressed:(UISwitch *)sender
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *useiCloud = [NSNumber numberWithBool:sender.on];
+    
+    [defaults setObject:useiCloud forKey:USE_ICLOUD_KEY];
     [defaults synchronize];
 }
 

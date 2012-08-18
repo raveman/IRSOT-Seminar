@@ -2,7 +2,7 @@
 //  Seminar.h
 //  IRSOT Seminars
 //
-//  Created by Bob Ershov on 03.08.12.
+//  Created by Bob Ershov on 18.08.12.
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
@@ -15,10 +15,10 @@
 
 @property (nonatomic, retain) NSDate * date_end;
 @property (nonatomic, retain) NSDate * date_start;
+@property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSNumber * online;
 @property (nonatomic, retain) NSNumber * ruseminarID;
-@property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSSet *lectors;
 @property (nonatomic, retain) Sections *section;
 @property (nonatomic, retain) Type *type;

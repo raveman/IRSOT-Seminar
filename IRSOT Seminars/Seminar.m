@@ -2,7 +2,7 @@
 //  Seminar.m
 //  IRSOT Seminars
 //
-//  Created by Bob Ershov on 03.08.12.
+//  Created by Bob Ershov on 18.08.12.
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
@@ -16,10 +16,10 @@
 
 @dynamic date_end;
 @dynamic date_start;
+@dynamic id;
 @dynamic name;
 @dynamic online;
 @dynamic ruseminarID;
-@dynamic id;
 @dynamic lectors;
 @dynamic section;
 @dynamic type;

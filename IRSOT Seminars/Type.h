@@ -2,20 +2,18 @@
 //  Type.h
 //  IRSOT Seminars
 //
-//  Created by Bob Ershov on 03.08.12.
+//  Created by Bob Ershov on 18.08.12.
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "Term.h"
 
 @class Seminar;
 
-@interface Type : NSManagedObject
+@interface Type : Term
 
-@property (nonatomic, retain) NSNumber * id;
-@property (nonatomic, retain) NSString * machine_name;
-@property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSSet *seminars;
 @end
 

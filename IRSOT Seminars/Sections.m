@@ -2,7 +2,7 @@
 //  Sections.m
 //  IRSOT Seminars
 //
-//  Created by Bob Ershov on 03.08.12.
+//  Created by Bob Ershov on 18.08.12.
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
@@ -12,9 +12,6 @@
 
 @implementation Sections
 
-@dynamic id;
-@dynamic machine_name;
-@dynamic name;
 @dynamic seminars;
 
 @end

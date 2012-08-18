@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 #import "Sections.h"
+#import "Type.h"
 
 @interface ISSeminarListTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 @property (nonatomic, strong) Sections *section;
+@property (nonatomic, strong) Type *type;
 
 @property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;

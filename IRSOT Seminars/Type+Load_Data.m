@@ -31,6 +31,7 @@
         type.id = [NSNumber numberWithInteger:[[term objectForKey:@"tid"] integerValue]];
         type.name = [term objectForKey:@"name"];
         type.machine_name = [term objectForKey:@"machine_name"];
+        type.vid = [NSNumber numberWithInteger:[[term objectForKey:@"vid"] integerValue]];
     } else {
         type = [matches lastObject];
     }

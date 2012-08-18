@@ -14,5 +14,6 @@
 @dynamic id;
 @dynamic machine_name;
 @dynamic name;
+@dynamic vid;
 
 @end

@@ -26,9 +26,11 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (nonatomic, strong) NSMutableArray *searchResults;
 
+@property (nonatomic) NSInteger currentSeminarType;
 @property (nonatomic) BOOL searchIsActive;
 
 @property (nonatomic) BOOL sortByDate;
+
 
 @end
 
@@ -36,13 +38,28 @@
 @synthesize seminarTypeSwitch = _seminarTypeSwitch;
 @synthesize searchBar = _searchBar;
 @synthesize searchResults = _searchResults;
+@synthesize currentSeminarType = _currentSeminarType;
 
 @synthesize section = _section;
+@synthesize type = _type;
 
 @synthesize fetchedResultsController = _fetchedResultsController;
 
 @synthesize searchIsActive = _searchIsActive;
 @synthesize sortByDate = _sortByDate;
+
+- (NSInteger)currentSeminarType
+{
+    _currentSeminarType = [self.seminarTypeSwitch selectedSegmentIndex];
+    if (self.section) {
+        if (_currentSeminarType) _currentSeminarType = SEMINAR_TYPE_BK;
+        else _currentSeminarType = SEMINAR_TYPE_SEMINAR;
+    } else {
+        _currentSeminarType = [self.type.id integerValue];
+    }
+
+    return _currentSeminarType;
+}
 
 - (BOOL) sortByDate
 {
@@ -54,11 +71,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
+//    self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
     
     self.searchDisplayController.searchBar.delegate = self;
     self.searchDisplayController.searchBar.backgroundColor = [UIColor clearColor];
     
+    // if we have no arrived section we need to hide seminar type switch
+    // and set currentSeminarType
+    if (!self.section) {
+        self.seminarTypeSwitch.hidden = YES;
+    }
 }
 
 - (void)viewDidUnload
@@ -211,11 +233,12 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Seminar" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
 
-    NSInteger currentSeminarType = [self.seminarTypeSwitch selectedSegmentIndex];
-    if (currentSeminarType) currentSeminarType = SEMINAR_TYPE_BK;
-        else currentSeminarType = SEMINAR_TYPE_SEMINAR;
+    if (self.section) {
 
-    fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %d AND type.id == %d", [self.section.id integerValue], currentSeminarType];
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %d AND type.id == %d", [self.section.id integerValue], self.currentSeminarType];
+    } else {
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"type.id == %d", self.currentSeminarType];
+    }
     
 //    [fetchRequest setFetchBatchSize:20];
     
@@ -321,11 +344,11 @@
 {
     NSFetchRequest *aRequest = [[self fetchedResultsController] fetchRequest];
 
-    NSInteger currentSeminarType = [self.seminarTypeSwitch selectedSegmentIndex];
-    if (currentSeminarType) currentSeminarType = SEMINAR_TYPE_BK;
-    else currentSeminarType = SEMINAR_TYPE_SEMINAR;
-    
-    aRequest.predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@ AND section.id == %d AND type.id == %d", searchText, [self.section.id integerValue] , currentSeminarType];
+    if (self.section) {
+        aRequest.predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@ AND section.id == %d AND type.id == %d", searchText, [self.section.id integerValue] , self.currentSeminarType];
+    } else {
+        aRequest.predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@ AND type.id == %d", searchText,  self.currentSeminarType];
+    }
   
     NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     NSArray *sortDescriptors = @[sortDescriptor];

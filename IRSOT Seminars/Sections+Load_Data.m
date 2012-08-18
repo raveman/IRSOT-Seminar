@@ -31,6 +31,7 @@
         section.id = [NSNumber numberWithInteger:[[term objectForKey:@"tid"] integerValue]];
         section.name = [term objectForKey:@"name"];
         section.machine_name = [term objectForKey:@"machine_name"];
+        section.vid = [NSNumber numberWithInteger:[[term objectForKey:@"vid"] integerValue]];
     } else {
         section = [matches lastObject];
     }

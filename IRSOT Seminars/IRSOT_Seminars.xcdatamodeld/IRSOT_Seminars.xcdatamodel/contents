@@ -26,15 +26,16 @@
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="machine_name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Type" representedClassName="Type" parentEntity="Term" syncable="YES">
         <relationship name="seminars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Seminar" inverseName="type" inverseEntity="Seminar" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Lector" positionX="-380" positionY="209" width="128" height="133"/>
-        <element name="Section" positionX="-288" positionY="-103" width="128" height="103"/>
-        <element name="Seminar" positionX="-20" positionY="27" width="128" height="178"/>
-        <element name="Type" positionX="-99" positionY="-220" width="128" height="103"/>
-        <element name="Term" positionX="-297" positionY="-277" width="128" height="88"/>
+        <element name="Lector" positionX="-261" positionY="-0" width="128" height="133"/>
+        <element name="Section" positionX="0" positionY="0" width="128" height="103"/>
+        <element name="Seminar" positionX="0" positionY="0" width="128" height="178"/>
+        <element name="Type" positionX="0" positionY="0" width="128" height="103"/>
+        <element name="Term" positionX="-297" positionY="-277" width="128" height="103"/>
     </elements>
 </model>

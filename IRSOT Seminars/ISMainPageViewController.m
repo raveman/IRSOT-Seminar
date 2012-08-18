@@ -16,15 +16,18 @@
 #import "ISSettingsViewController.h"
 
 #import "Sections.h"
+#import "Type+Load_Data.h"
+
+#define CACHE_NAME @"Master"
 
 @interface ISMainPageViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, ISSettingsViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *noDataLabel;
+
 @end
 
 @implementation ISMainPageViewController
 @synthesize noDataLabel = _noDataLabel;
-
 @synthesize seminarCategoriesTableView = _seminarCategoriesTableView;
 
 #pragma mark - getters and setters
@@ -94,12 +97,17 @@
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([[segue identifier] isEqualToString:@"Seminar List For Section"]) {
+    if ([[segue identifier] isEqualToString:@"Seminar List For Section or Type"]) {
         NSIndexPath *indexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
-        Sections *section = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-        [segue.destinationViewController setSection:section];
-        [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
-
+        if (indexPath.section == 0) {
+            Sections *section = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+            [segue.destinationViewController setSection:section];
+            [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
+        } else {
+            Type *type = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+            [segue.destinationViewController setType:type];
+            [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
+        }
     }
     
     if ([[segue identifier] isEqualToString:@"Settings"]) {
@@ -112,18 +120,18 @@
         [dvc setManagedObjectContext:self.managedObjectContext];
         [dvc setDelegate:self];
     }
-    
 }
 
 #pragma mark - UITableView dataSource and delegate
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return [[self.fetchedResultsController sections] count];
+}
+
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 //{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 1;
+//    return [[[self.fetchedResultsController sections] objectAtIndex:section] name];
 //}
-
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -132,7 +140,13 @@
     
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-        count = [sectionInfo numberOfObjects];
+       count = [sectionInfo numberOfObjects];
+//        if (section == SEMINAR_TYPE_SEMINAR_BK) {
+//            count = [sectionInfo numberOfObjects];
+//        } else {
+//            count = [sectionInfo numberOfObjects] - 2;
+//        }
+        
         self.noDataLabel.hidden = YES;
     } else {
         self.noDataLabel.hidden = NO;
@@ -154,7 +168,9 @@
     // Configure the cell...
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         Sections *section = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        cell.textLabel.text = [section.name uppercaseString];
+        NSString *sectionName = [[[section.name substringToIndex:1] uppercaseString] stringByAppendingString:[section.name substringFromIndex:1]];
+        
+        cell.textLabel.text = sectionName;
     }
     
     return cell;
@@ -180,22 +196,22 @@
     }
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
-    // Edit the entity name as appropriate.
-    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Section" inManagedObjectContext:self.managedObjectContext];
+
+    // Fetching "meta" entity Term, because we need in Sections and Types simultaneously.
+    // Section and Type are derived from Term
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Term" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
     
     // Set the batch size to a suitable number.
     [fetchRequest setFetchBatchSize:20];
     
-    // Edit the sort key as appropriate.
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
+    // Sort keys: we have two: first - by vid, second by name.
+    NSArray *sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"vid" ascending:NO],
+                                 [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
-    // Edit the section name key path and cache name if appropriate.
-    // nil for section name key path means "no sections".
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:@"Master"];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"vid" cacheName:CACHE_NAME];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     

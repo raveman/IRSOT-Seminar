@@ -42,7 +42,7 @@
 
 - (NSString *) lectorNameInitial {
     [self willAccessValueForKey:@"lectorNameInitial"];
-    NSString * initial = [[self name] substringToIndex:1];
+    NSString *initial = [self.name substringToIndex:1];
     [self didAccessValueForKey:@"lectorNameInitial"];
     return initial;
 }

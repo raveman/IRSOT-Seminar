@@ -15,7 +15,6 @@
 #import "Lector.h"
 #import "ISSettingsViewController.h"
 
-
 //#define CACHE_NAME_SEMINAR @"Seminar List"
 //#define CACHE_NAME_BK @"BK List"
 #define CACHE_NAME_SEMINAR nil
@@ -30,7 +29,6 @@
 @property (nonatomic) BOOL searchIsActive;
 
 @property (nonatomic) BOOL sortByDate;
-
 
 @end
 

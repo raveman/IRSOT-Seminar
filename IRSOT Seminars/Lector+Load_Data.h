@@ -12,6 +12,6 @@
 
 + (Lector *)lectorWithName:(NSString *)name inManagedObjectContext:(NSManagedObjectContext *)context;
 
-- (NSString *) lectorNameInitial;
+- (NSString *)lectorNameInitial;
 
 @end

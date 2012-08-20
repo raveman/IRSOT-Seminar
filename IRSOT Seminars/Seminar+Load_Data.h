@@ -8,6 +8,12 @@
 
 #import "Seminar.h"
 
+#define BOOKMARKS_KEY @"Bookmark"
+
+#define BOOKMARK_SEMINAR_NAME_KEY @"Seminar.Name"
+#define BOOKMARK_SEMINAR_ID_KEY @"Seminar.ID"
+#define BOOKMARK_SEMINAR_DATE_KEY @"Seminar.Date"
+
 @interface Seminar (Load_Data)
 
 + (Seminar *)seminarWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)context;

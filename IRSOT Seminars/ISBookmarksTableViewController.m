@@ -7,18 +7,26 @@
 //
 
 #import "ISBookmarksTableViewController.h"
+#import "Seminar+Load_Data.h"
 
 @interface ISBookmarksTableViewController ()
 
-@property (nonatomic, strong) UIManagedDocument *bookmarksDatabase;
+@property (nonatomic, strong) NSArray *bookmarks;
 
 @end
 
 @implementation ISBookmarksTableViewController
 
-@synthesize bookmarksDatabase = _bookmarksDatabase;
+@synthesize bookmarks = _bookmarks;
 
-@synthesize fetchedResultsController = _fetchedResultsController;
+- (NSArray *)bookmarks
+{
+    if (!_bookmarks) {
+        NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+        _bookmarks = [store arrayForKey:BOOKMARKS_KEY];
+    }
+    return _bookmarks;
+}
 
 - (void)viewDidLoad
 {
@@ -30,13 +38,28 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateBookmarks:)
+                                                 name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification
+                                               object:store];
+    [store synchronize];
+
 }
 
 - (void)viewDidUnload
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self updateBookmarks];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -48,6 +71,25 @@
     }
 }
 
+#pragma mark - iCloud key value
+- (void)updateBookmarks
+{
+    NSUbiquitousKeyValueStore *store = [NSUbiquitousKeyValueStore defaultStore];
+    NSArray *bookmarks = [store arrayForKey:BOOKMARKS_KEY];
+    self.bookmarks = bookmarks;
+    [self.tableView reloadData];
+}
+
+- (void)updateBookmarks:(NSNotification *)notification
+{
+    NSDictionary *userInfo = [notification userInfo];
+    NSNumber *reasonForChange = [userInfo objectForKey:NSUbiquitousKeyValueStoreChangeReasonKey];
+    int reason = [reasonForChange integerValue];
+    if ((reason == NSUbiquitousKeyValueStoreServerChange) || (reason == NSUbiquitousKeyValueStoreInitialSyncChange)) {
+        NSArray *changedKeys = [userInfo objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
+        
+    }
+}
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -58,17 +100,20 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 0;
+    return [self.bookmarks count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"Bookmark Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+    }
     
-    // Configure the cell...
+    NSDictionary *bookmark = [self.bookmarks objectAtIndex:indexPath.row];
+    cell.textLabel.text = [bookmark objectForKey:BOOKMARK_SEMINAR_NAME_KEY];
+    cell.detailTextLabel.text = [bookmark objectForKey:BOOKMARK_SEMINAR_DATE_KEY];
     
     return cell;
 }
@@ -124,7 +169,6 @@
 }
 
 #pragma mark - NSFetchedResultsControllerDelegate
-
 
 
 @end

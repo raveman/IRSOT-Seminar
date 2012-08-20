@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ISBookmarksTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
-
-@property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (strong, nonatomic) NSFetchedResultsController *fetchedResultsController;
+@interface ISBookmarksTableViewController : UITableViewController
 
 @end

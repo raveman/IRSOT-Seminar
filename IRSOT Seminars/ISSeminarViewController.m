@@ -13,8 +13,12 @@
 #import "Sections.h"
 #import "Type.h"
 #import "Lector.h"
+#import "Seminar+Load_Data.h"
 
-@interface ISSeminarViewController ()
+#define ADD_BOOKMARK @"Добавить закладку"
+
+
+@interface ISSeminarViewController () <UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *attendSeminarButton;
 @property (weak, nonatomic) IBOutlet UITextView *seminarName;
@@ -24,6 +28,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *lectorsLabel;
 @property (weak, nonatomic) IBOutlet UITextView *programTextView;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
+@property (weak, nonatomic) UIActionSheet *actionSheet;
+
 @end
 
 @implementation ISSeminarViewController
@@ -39,6 +46,7 @@
 
 @synthesize seminar = _seminar;
 
+@synthesize actionSheet = _actionSheet;
 
 - (void) recalculateElementsBounds
 {
@@ -149,6 +157,33 @@
         ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
         [dvc setUrl:url];
         [dvc setWebviewTitle:@"Принять участие"];
+    }
+}
+
+- (IBAction)share:(UIBarButtonItem *)sender {
+    if (self.actionSheet) {
+        // do nothing
+    } else {
+        NSString *addBookmarkButton = NSLocalizedString(ADD_BOOKMARK, @"Add seminar bookmark button title");
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Закладки" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, nil];
+        [actionSheet showFromBarButtonItem:sender animated:YES];
+        self.actionSheet = actionSheet;
+    }
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    NSString *choice = [actionSheet buttonTitleAtIndex:buttonIndex];
+    if (buttonIndex == [actionSheet destructiveButtonIndex]) {
+    } else if ([choice isEqualToString:ADD_BOOKMARK]) {
+        NSUbiquitousKeyValueStore *bookmarksStore = [NSUbiquitousKeyValueStore defaultStore];
+        NSMutableArray *bookmarksArray = [[bookmarksStore arrayForKey:BOOKMARKS_KEY] mutableCopy];
+        if (bookmarksArray == nil) bookmarksArray = [NSMutableArray array];
+        
+        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys:self.seminar.name, BOOKMARK_SEMINAR_NAME_KEY, self.seminar.id, BOOKMARK_SEMINAR_ID_KEY, [self.seminar stringWithSeminarDates], BOOKMARK_SEMINAR_DATE_KEY , nil];
+        [bookmarksArray addObject:bookmark];
+        [bookmarksStore setObject:bookmarksArray forKey:BOOKMARKS_KEY];
     }
 }
 

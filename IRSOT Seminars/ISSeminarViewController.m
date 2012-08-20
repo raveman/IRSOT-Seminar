@@ -16,6 +16,7 @@
 
 @interface ISSeminarViewController ()
 
+@property (weak, nonatomic) IBOutlet UIButton *attendSeminarButton;
 @property (weak, nonatomic) IBOutlet UITextView *seminarName;
 @property (weak, nonatomic) IBOutlet UILabel *seminarDate;
 @property (weak, nonatomic) IBOutlet UILabel *sectionLabel;
@@ -27,6 +28,7 @@
 
 @implementation ISSeminarViewController
 
+@synthesize attendSeminarButton = _attendSeminarButton;
 @synthesize seminarName = _seminarName;
 @synthesize seminarDate = _seminarDate;
 @synthesize sectionLabel = _sectionLabel;
@@ -41,25 +43,25 @@
 - (void) recalculateElementsBounds
 {
     // получаем размеры заголовка
+
     CGSize currentSize = self.view.frame.size;
+    [Helper resizeRectButton:self.attendSeminarButton withSize:currentSize];
     CGRect headerRect = [Helper resizeTextView:self.seminarName withSize: currentSize];
     
     // опускаем дату проведения семинара
-    
     CGRect rect = self.seminarDate.frame;
     rect.origin.y = headerRect.origin.y + headerRect.size.height;
     self.seminarDate.frame = rect;
     int height = rect.origin.y + rect.size.height;
     
     // опускаем тип и раздел семинаров на высоту предыдущих двух
-    
     rect = self.sectionLabel.frame;
-    rect.origin.y = height + rect.size.height;
+    rect.origin.y = height + rect.size.height - 20;
     self.sectionLabel.frame = rect;
     
     rect = self.typeLabel.frame;
     //    rect.origin.y = headerRect.origin.y + headerRect.size.height + 20;
-    rect.origin.y = height + rect.size.height;
+    rect.origin.y = height + rect.size.height - 20;
     self.typeLabel.frame = rect;
     
     // получаем общую высоту текущего заголовка: заголовок + тип и секция семинара
@@ -113,6 +115,7 @@
     [self setScrollView:nil];
     [self setSeminarDate:nil];
     [self setSeminarName:nil];
+    [self setAttendSeminarButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

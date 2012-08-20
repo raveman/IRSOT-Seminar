@@ -1,5 +1,5 @@
 //
-//  Type.h
+//  Bookmarks.h
 //  IRSOT Seminars
 //
 //  Created by Bob Ershov on 20.08.12.
@@ -8,16 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "Term.h"
 
 @class Seminar;
 
-@interface Type : Term
+@interface Bookmarks : NSManagedObject
 
 @property (nonatomic, retain) NSSet *seminars;
 @end
 
-@interface Type (CoreDataGeneratedAccessors)
+@interface Bookmarks (CoreDataGeneratedAccessors)
 
 - (void)addSeminarsObject:(Seminar *)value;
 - (void)removeSeminarsObject:(Seminar *)value;

@@ -1,19 +1,17 @@
 //
-//  Term.m
+//  Bookmarks.m
 //  IRSOT Seminars
 //
 //  Created by Bob Ershov on 20.08.12.
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
-#import "Term.h"
+#import "Bookmarks.h"
+#import "Seminar.h"
 
 
-@implementation Term
+@implementation Bookmarks
 
-@dynamic id;
-@dynamic machine_name;
-@dynamic name;
-@dynamic vid;
+@dynamic seminars;
 
 @end

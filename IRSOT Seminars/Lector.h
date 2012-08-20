@@ -2,7 +2,7 @@
 //  Lector.h
 //  IRSOT Seminars
 //
-//  Created by Bob Ershov on 18.08.12.
+//  Created by Bob Ershov on 20.08.12.
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 

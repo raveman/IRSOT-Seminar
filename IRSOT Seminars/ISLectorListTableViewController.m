@@ -14,6 +14,8 @@
 
 #import "Lector+Load_Data.h"
 
+#define CACHE_NAME @"lectors.cache"
+
 @interface ISLectorListTableViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
@@ -117,30 +119,15 @@
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-//    NSMutableArray *titles = [NSMutableArray array];
-//    if ([[self.fetchedResultsController fetchedObjects] count]) {
-//        for (Lector *lector in [self.fetchedResultsController fetchedObjects]) {
-//            NSString *firstLetter = [lector.name substringToIndex:1];
-//            if (![titles containsObject:firstLetter]) {
-//                [titles addObject:firstLetter];
-//            }
-//        }
-//    }
-//    
-    NSArray *titles = [self.fetchedResultsController sectionIndexTitles];
-    
-    return titles;
+    NSArray *sectionIndexTitleLetters = [self.fetchedResultsController sectionIndexTitles];
+    return sectionIndexTitleLetters;
 }
 
 #pragma mark - UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index
 {
     NSInteger newIndex = [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
-    
-    if (!newIndex)
-    {
-        
-    }
+
     return newIndex;
 }
 
@@ -158,12 +145,11 @@
     
     //    [fetchRequest setFetchBatchSize:20];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)];
     NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject: sortDescriptor];
     
     [fetchRequest setSortDescriptors:sortDescriptors];
     
-//    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"lectorNameInitial" cacheName:nil];
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"lectorNameInitial" cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
@@ -236,6 +222,11 @@
 //{
 //    [self.tableView endUpdates];
 //}
+
+- (NSString *)controller:(NSFetchedResultsController *)controller sectionIndexTitleForSectionName:(NSString *)sectionName
+{
+    return sectionName;
+}
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {

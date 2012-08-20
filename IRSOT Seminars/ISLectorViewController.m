@@ -36,17 +36,20 @@
     CGSize size = titleFrame.size;
     // bio
     CGRect rect = [Helper resizeTextView:self.lectorBio withSize:currentSize];
-    size.height += rect.origin.y + rect.size.height;
+    size.height += rect.origin.y + rect.size.height - 40;
     
     // seminars
-    size.height += self.lectorSeminars.frame.size.height;
+//    size.height += self.lectorSeminars.frame.size.height;
     int tableHeight = self.lectorSeminars.rowHeight * [self.lector.seminars count];
     //    CGRectGetMaxY([self.tableView rectForSection:[self.tableView numberOfSections] - 1])
+    
     CGRect tableFrame = self.lectorSeminars.frame;
+    tableFrame.origin.y = size.height;
     tableFrame.size.height += tableHeight;
     self.lectorSeminars.frame = tableFrame;
     
-    size.height += tableHeight;
+    size.height += tableHeight + 80;
+//    size.height += tableFrame.size.height;
     self.scrollView.scrollEnabled = YES;
     self.scrollView.contentSize = size;
 }
@@ -60,6 +63,7 @@
     
     self.title = self.lector.name;
     self.lectorName.text = self.lector.name;
+
 }
 
 - (void)viewDidUnload
@@ -80,6 +84,7 @@
     if (indexPath != nil) {
         [self.lectorSeminars deselectRowAtIndexPath:indexPath animated:YES];
     }
+    [super viewWillAppear:animated];
 }
 
 - (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {

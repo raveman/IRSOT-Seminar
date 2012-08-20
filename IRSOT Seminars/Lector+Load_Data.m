@@ -42,7 +42,11 @@
 
 - (NSString *) lectorNameInitial {
     [self willAccessValueForKey:@"lectorNameInitial"];
-    NSString *initial = [self.name substringToIndex:1];
+
+//    NSString *initial = [self.name substringWithRange:[self.name rangeOfComposedCharacterSequenceAtIndex:1]];
+    NSString *initial = [NSString string];
+    if ([self.name length]) initial = [NSString localizedStringWithFormat:@"%@", [[self.name substringToIndex:1] uppercaseString]];
+
     [self didAccessValueForKey:@"lectorNameInitial"];
     return initial;
 }

@@ -7,6 +7,7 @@
 //
 // TODO: переделать все UILabel в UITextView, чтобы у пользователя была возможность копи-паста
 
+#import "ISAppDelegate.h"
 #import "ISSeminarViewController.h"
 #import "ISWebviewViewController.h"
 #import "Helper.h"
@@ -43,10 +44,10 @@
 @synthesize lectorsLabel = _lectorsLabel;
 @synthesize programTextView = _programTextView;
 @synthesize scrollView = _scrollView;
+@synthesize actionSheet = _actionSheet;
 
 @synthesize seminar = _seminar;
-
-@synthesize actionSheet = _actionSheet;
+@synthesize seminarID = _seminarID;
 
 - (void) recalculateElementsBounds
 {
@@ -98,6 +99,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
+    
+    // we have an ID, which we have to find, not seminar itself.
+    if (self.seminarID) {
+        self.seminar = [self findSeminarWithID:self.seminarID];
+    }
     
     self.title = self.seminar.name;
     
@@ -179,12 +186,47 @@
     } else if ([choice isEqualToString:ADD_BOOKMARK]) {
         NSUbiquitousKeyValueStore *bookmarksStore = [NSUbiquitousKeyValueStore defaultStore];
         NSMutableArray *bookmarksArray = [[bookmarksStore arrayForKey:BOOKMARKS_KEY] mutableCopy];
-        if (bookmarksArray == nil) bookmarksArray = [NSMutableArray array];
-        
-        NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys:self.seminar.name, BOOKMARK_SEMINAR_NAME_KEY, self.seminar.id, BOOKMARK_SEMINAR_ID_KEY, [self.seminar stringWithSeminarDates], BOOKMARK_SEMINAR_DATE_KEY , nil];
-        [bookmarksArray addObject:bookmark];
-        [bookmarksStore setObject:bookmarksArray forKey:BOOKMARKS_KEY];
+        BOOL found = NO;
+        if (bookmarksArray == nil) {
+            bookmarksArray = [NSMutableArray array];
+        } else {
+            for (NSDictionary *item in bookmarksArray) {
+                if ([[item objectForKey:BOOKMARK_SEMINAR_ID_KEY] integerValue] == [self.seminar.id integerValue]) {
+                    found = YES;
+                }
+            }
+        }
+        if (!found) {
+            NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys:self.seminar.name, BOOKMARK_SEMINAR_NAME_KEY, self.seminar.id, BOOKMARK_SEMINAR_ID_KEY, [self.seminar stringWithSeminarDates], BOOKMARK_SEMINAR_DATE_KEY , nil];
+            [bookmarksArray addObject:bookmark];
+            [bookmarksStore setObject:bookmarksArray forKey:BOOKMARKS_KEY];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NSUbiquitousKeyValueStoreDidChangeLocallyNotification object:bookmarksStore userInfo:bookmark];
+        }
     }
+}
+
+#pragma mark - Core Data Fetch
+
+- (Seminar *)findSeminarWithID:(NSInteger)seminarID 
+{
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Seminar"];
+    request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+    // no predicate because we want ALL the Photographers
+    
+    request.predicate = [NSPredicate predicateWithFormat:@"id == %d", seminarID];
+    NSFetchedResultsController *fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+                                                                        managedObjectContext:self.managedObjectContext
+                                                                          sectionNameKeyPath:nil
+                                                                                   cacheName:nil];
+    NSError *error = nil;
+	if (![fetchedResultsController performFetch:&error]) {
+        // TODO: handle error!
+        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+	    abort();
+	}
+    
+    return [[fetchedResultsController fetchedObjects] lastObject];
 }
 
 @end

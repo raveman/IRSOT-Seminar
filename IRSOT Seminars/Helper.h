@@ -10,6 +10,8 @@
 
 #define HORIZONTAL_MARGIN 40
 
+extern NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification;
+
 @interface Helper : NSObject
 + (CGRect) resizeLabel:(UILabel *)label withSize:(CGSize)size;
 + (CGRect) resizeTextView:(UITextView *)textView withSize:(CGSize)size;

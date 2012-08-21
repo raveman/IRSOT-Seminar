@@ -11,6 +11,7 @@
 
 @interface ISSeminarViewController : UIViewController
 @property (nonatomic, strong) Seminar *seminar;
+@property (nonatomic) NSInteger seminarID;
 
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 

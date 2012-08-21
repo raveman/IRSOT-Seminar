@@ -8,6 +8,8 @@
 
 #import "Helper.h"
 
+NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Seminar.Local.Change";
+
 @implementation Helper
 
 + (CGRect) resizeLabel:(UILabel *)label withSize:(CGSize)size

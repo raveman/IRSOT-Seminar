@@ -795,7 +795,7 @@
 				C4C6DD1715E0274E003292C8 /* IRSOT_Seminars 2.xcdatamodel */,
 				C462BDC915C95A8700170E3C /* IRSOT_Seminars.xcdatamodel */,
 			);
-			currentVersion = C43AB40615E28A8F003813DF /* IRSOT_Seminars 3.xcdatamodel */;
+			currentVersion = C4C6DD1715E0274E003292C8 /* IRSOT_Seminars 2.xcdatamodel */;
 			path = IRSOT_Seminars.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

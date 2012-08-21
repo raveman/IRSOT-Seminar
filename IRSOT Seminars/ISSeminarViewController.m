@@ -131,7 +131,6 @@
         self.sectionLabel.text = self.seminar.section.name;
         self.typeLabel.text = self.seminar.type.name;
         self.lectorsLabel.text  = [self.seminar stringWithLectorNames];
-
     }
 }
 

@@ -741,12 +741,12 @@
             </objects>
             <point key="canvasLocation" x="1433" y="-365"/>
         </scene>
-        <!--Navigation Controller - Lectors-->
+        <!--Navigation Controller - Лекторы-->
         <scene sceneID="q7Y-jp-qFF">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0yF-QR-At9" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="wVt-ZX-VzO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Lectors" image="lectors-iPhone.png" id="I3v-YM-Iff"/>
+                    <tabBarItem key="tabBarItem" title="Лекторы" image="lectors-iPhone.png" id="I3v-YM-Iff"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ytB-te-eC4">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -779,12 +779,12 @@
             </objects>
             <point key="canvasLocation" x="470" y="859"/>
         </scene>
-        <!--Navigation Controller - News-->
+        <!--Navigation Controller - Новости-->
         <scene sceneID="eVJ-Oq-EBg">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="f1M-gw-vZ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController id="COB-C0-uHh" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="News" image="twitter-iPhone.png" id="csr-NV-gtj"/>
+                    <tabBarItem key="tabBarItem" title="Новости" image="twitter-iPhone.png" id="csr-NV-gtj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="lCR-x4-ekP">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -860,7 +860,6 @@
         <class className="ISSeminarViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarViewController.h"/>
             <relationships>
-                <relationship kind="action" name="share:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="attendSeminarButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lectorsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="programTextView" candidateClass="UITextView"/>

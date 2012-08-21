@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *refreshButton;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 
 @property (strong, nonatomic) ReachabilityARC * reach;
 
@@ -42,6 +43,7 @@
 @synthesize refreshButton;
 @synthesize deleteButton;
 @synthesize errorLabel;
+@synthesize versionLabel;
 @synthesize delegate = _delegate;
 
 @synthesize emptyStore;
@@ -63,7 +65,8 @@
     self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
     self.iCloudSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USE_ICLOUD_KEY] boolValue];
     
-    errorLabel.text = @"";
+    self.errorLabel.text = @"";
+    self.versionLabel.text = [NSString stringWithFormat:@"Версия: %@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
     
     if (self.emptyStore) self.deleteButton.hidden = NO;
         else self.deleteButton.hidden = YES;
@@ -101,6 +104,7 @@
     [self setErrorLabel:nil];
     [self setReach:nil];
     [self setICloudSwitch:nil];
+    [self setVersionLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

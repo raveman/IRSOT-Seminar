@@ -34,7 +34,10 @@
         seminar = [NSEntityDescription insertNewObjectForEntityForName:@"Seminar" inManagedObjectContext:context];
         seminar.id = [NSNumber numberWithInteger:[[dictionary objectForKey:@"nid"] integerValue]];
         seminar.name = [dictionary objectForKey:SEMINAR_NAME];
-        seminar.ruseminarID = [NSNumber numberWithInteger:[[dictionary objectForKey:SEMINAR_RUSEMINAR_ID] integerValue]];
+        NSString *strRuseminarID = [[dictionary objectForKey:SEMINAR_RUSEMINAR_ID] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+        seminar.ruseminarID = [numberFormatter numberFromString:strRuseminarID];
         
         NSString *dateStartStr = [dictionary valueForKeyPath:SEMINAR_DATE_START];
         NSString *dateEndStr = [dictionary valueForKeyPath:SEMINAR_DATE_END];

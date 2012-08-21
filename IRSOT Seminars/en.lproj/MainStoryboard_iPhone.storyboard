@@ -390,8 +390,15 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="iPJ-Ex-viY">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="9Rn-mZ-Wf3"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="9Rn-mZ-Wf3">
+                            <connections>
+                                <action selector="editButtonPressed:" destination="xDk-YY-uSY" id="5Ze-eO-wYi"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="editButton" destination="9Rn-mZ-Wf3" id="I0V-xN-A84"/>
+                    </connections>
                 </tableViewController>
             </objects>
             <point key="canvasLocation" x="956" y="859"/>
@@ -794,6 +801,10 @@
     <classes>
         <class className="ISBookmarksTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISBookmarksTableViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="editButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
         </class>
         <class className="ISInfoTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISInfoTableViewController.h"/>
@@ -834,7 +845,6 @@
         <class className="ISSeminarListTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarListTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="seminarTypeChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="seminarTypeSwitch" candidateClass="UISegmentedControl"/>
             </relationships>

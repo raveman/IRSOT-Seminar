@@ -106,18 +106,33 @@
         self.seminar = [self findSeminarWithID:self.seminarID];
     }
     
-    self.title = self.seminar.name;
-    
-    if ([[self.seminar.name substringToIndex:1] isEqualToString:@"«"]) {
-            self.seminarName.text = [NSString stringWithFormat:@"%@»", self.seminar.name];
+    if (!self.seminar) {
+        // we have no any seminar, may be it was deleted from main catalog.
+        // we shoud write error
+        self.seminarName.text = @"Такого семинара нет в каталоге!";
+        self.seminarName.textColor = [UIColor redColor];
+
+        self.seminarDate.hidden = YES;
+        self.sectionLabel.hidden = YES;
+        self.typeLabel.hidden = YES;
+        self.lectorsLabel.hidden = YES;
+        self.programTextView.hidden = YES;
+        
     } else {
-        self.seminarName.text = [NSString stringWithFormat:@"«%@»", self.seminar.name];
+        self.title = self.seminar.name;
+        
+        if ([[self.seminar.name substringToIndex:1] isEqualToString:@"«"]) {
+                self.seminarName.text = [NSString stringWithFormat:@"%@»", self.seminar.name];
+        } else {
+            self.seminarName.text = [NSString stringWithFormat:@"«%@»", self.seminar.name];
+        }
+        
+        self.seminarDate.text = [self.seminar stringWithSeminarDates];
+        self.sectionLabel.text = self.seminar.section.name;
+        self.typeLabel.text = self.seminar.type.name;
+        self.lectorsLabel.text  = [self.seminar stringWithLectorNames];
+
     }
-    
-    self.seminarDate.text = [self.seminar stringWithSeminarDates];
-    self.sectionLabel.text = self.seminar.section.name;
-    self.typeLabel.text = self.seminar.type.name;
-    self.lectorsLabel.text  = [self.seminar stringWithLectorNames];
 }
 
 - (void)viewDidUnload

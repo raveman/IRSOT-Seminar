@@ -17,7 +17,7 @@
 
 #import "Type+Load_Data.h"
 #import "Sections+Load_Data.h"
-#import "Seminar+Load_Data.m"
+#import "Seminar+Load_Data.h"
 #import "Lector+Load_Data.h"
 
 @interface ISSettingsViewController ()

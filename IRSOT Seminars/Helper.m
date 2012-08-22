@@ -32,9 +32,9 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
 
 + (CGRect) resizeTextView:(UITextView *)textView withSize:(CGSize)size
 {
-//    CGRect newFrame = textView.frame;
-//    newFrame.size.width = size.width - HORIZONTAL_MARGIN;
-//    textView.frame = newFrame;
+    CGRect newFrame = textView.frame;
+    newFrame.size.width = size.width - HORIZONTAL_MARGIN;
+    textView.frame = newFrame;
     
     CGRect frame = textView.frame;
     frame.size.height = textView.contentSize.height;

@@ -73,6 +73,7 @@
     rect = self.typeLabel.frame;
     //    rect.origin.y = headerRect.origin.y + headerRect.size.height + 20;
     rect.origin.y = height + rect.size.height - 20;
+    rect.origin.x = currentSize.width - rect.size.width - 20;
     self.typeLabel.frame = rect;
     
     // получаем общую высоту текущего заголовка: заголовок + тип и секция семинара
@@ -102,6 +103,7 @@
     
     rect = self.programWebView.frame;
     rect.origin.y = height;
+    rect.size.width = currentSize.width;
 //    CGRect programRect = [Helper resizeTextView:self.programTextView withSize: currentSize];
 //    rect.size.width = programRect.size.width;
     self.programWebView.frame = rect;
@@ -203,7 +205,7 @@
             
             ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
             [dvc setUrl:url];
-            [dvc setWebviewTitle:@"Семинар"];
+            [dvc setWebviewTitle:self.seminar.name];
         }}
 
 - (IBAction)share:(UIBarButtonItem *)sender {
@@ -278,6 +280,9 @@
 {
     NSString *header = @"<html><head> \n"
     "<style type=\"text/css\"> \n"
+    "html {"
+        "-webkit-text-size-adjust: none; "
+    "}   "
     "body {font-family: \"helvetica neue\"; font-size: 14; }\n"
     "ul {\n"
         "list-style-position: outside;\n"
@@ -285,6 +290,7 @@
         "padding-left: 15px;\n"
     "}"
     "</style> \n"
+    "<meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0;'>"
     "</head> \n<body>\n";
     NSString *footer = @"</body></html>";
 
@@ -293,18 +299,29 @@
     return fullHTML;
 }
 
+
+- (void) reloadHtml
+{
+    [self.programWebView stringByEvaluatingJavaScriptFromString:@"var e = document.createEvent('Events'); e.initEvent('orientationchange', true, false); document.dispatchEvent(e);"];
+}
+
 - (void)webViewDidFinishLoad:(UIWebView *)webview
 {
 //    CGRect oldBounds = [webview bounds];
 //    CGFloat height = [[webview stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
 //    [webview setBounds:CGRectMake(oldBounds.origin.x, oldBounds.origin.y, oldBounds.size.width, height)];
+
     CGRect frame = webview.frame;
     frame.size.height = 1;
+    frame.size.width = 1;
     webview.frame = frame;
     CGSize fittingSize = [webview sizeThatFits:CGSizeZero];
     frame.size = fittingSize;
     webview.frame = frame;
+
+//    [webview sizeToFit];
     [self recalculateElementsBounds];
+
 }
 
 @end

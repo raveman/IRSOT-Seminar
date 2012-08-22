@@ -29,12 +29,10 @@
 		C423682D15DEBBF70066B1D7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682C15DEBBF70066B1D7 /* CoreLocation.framework */; };
 		C423682F15DEBBFF0066B1D7 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682E15DEBBFF0066B1D7 /* Twitter.framework */; };
 		C423683215DEBD380066B1D7 /* ReachabilityARC.m in Sources */ = {isa = PBXBuildFile; fileRef = C423683115DEBD380066B1D7 /* ReachabilityARC.m */; };
-		C43AB40C15E28B55003813DF /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C43AB40B15E28B55003813DF /* Seminar.m */; };
-		C43AB40F15E28B55003813DF /* Term.m in Sources */ = {isa = PBXBuildFile; fileRef = C43AB40E15E28B55003813DF /* Term.m */; };
-		C43AB41215E28B55003813DF /* Lector.m in Sources */ = {isa = PBXBuildFile; fileRef = C43AB41115E28B55003813DF /* Lector.m */; };
-		C43AB41515E28B55003813DF /* Sections.m in Sources */ = {isa = PBXBuildFile; fileRef = C43AB41415E28B55003813DF /* Sections.m */; };
-		C43AB41815E28B55003813DF /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = C43AB41715E28B55003813DF /* Type.m */; };
-		C43AB41B15E28B55003813DF /* Bookmarks.m in Sources */ = {isa = PBXBuildFile; fileRef = C43AB41A15E28B55003813DF /* Bookmarks.m */; };
+		C42D425815E3D86D0042E708 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C42D425515E3D8620042E708 /* libTapkuLibrary.a */; };
+		C42D425D15E3D8A10042E708 /* ISCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42D425C15E3D8A10042E708 /* ISCalendarViewController.m */; };
+		C42D425F15E3D9600042E708 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42D425E15E3D9600042E708 /* QuartzCore.framework */; };
+		C42D426115E3D9650042E708 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42D426015E3D9640042E708 /* MapKit.framework */; };
 		C456423715D25924001C4024 /* lectors-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C456423515D25924001C4024 /* lectors-iPhone.png */; };
 		C456423815D25924001C4024 /* lectors-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C456423615D25924001C4024 /* lectors-iPhone@2x.png */; };
 		C456427615D25AE2001C4024 /* gear-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C456427415D25AE2001C4024 /* gear-iPhone.png */; };
@@ -62,6 +60,11 @@
 		C48F96F815CC46D400F4AA51 /* Seminar+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F96F715CC46D400F4AA51 /* Seminar+Load_Data.m */; };
 		C48F971315CC519E00F4AA51 /* Lector+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */; };
 		C48F972215CC663400F4AA51 /* ISSeminarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F972115CC663400F4AA51 /* ISSeminarViewController.m */; };
+		C4B20B7B15E535E300936B32 /* Term.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B20B7A15E535E300936B32 /* Term.m */; };
+		C4B20B7E15E535E400936B32 /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B20B7D15E535E400936B32 /* Seminar.m */; };
+		C4B20B8115E535E400936B32 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B20B8015E535E400936B32 /* Type.m */; };
+		C4B20B8415E535E400936B32 /* Sections.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B20B8315E535E400936B32 /* Sections.m */; };
+		C4B20B8715E535E400936B32 /* Lector.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B20B8615E535E400936B32 /* Lector.m */; };
 		C4D7CEF015D3F1440003F90C /* twitter-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D7CEEE15D3F1440003F90C /* twitter-iPhone.png */; };
 		C4D7CEF115D3F1440003F90C /* twitter-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D7CEEF15D3F1440003F90C /* twitter-iPhone@2x.png */; };
 		C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */; };
@@ -116,6 +119,27 @@
 			remoteGlobalIDString = 7AB5360E1552E26800171BCE;
 			remoteInfo = "Resource Bundle";
 		};
+		C42D425415E3D8620042E708 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C42D424C15E3D8620042E708 /* TapkuLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
+			remoteInfo = TapkuLibrary;
+		};
+		C42D425615E3D8620042E708 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C42D424C15E3D8620042E708 /* TapkuLibrary.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3B45DDF1134C736600D24C1A;
+			remoteInfo = LogicTests;
+		};
+		C42D425915E3D8750042E708 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C42D424C15E3D8620042E708 /* TapkuLibrary.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
+			remoteInfo = TapkuLibrary;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -146,19 +170,12 @@
 		C423682E15DEBBFF0066B1D7 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		C423683015DEBD380066B1D7 /* ReachabilityARC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityARC.h; sourceTree = "<group>"; };
 		C423683115DEBD380066B1D7 /* ReachabilityARC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityARC.m; sourceTree = "<group>"; };
+		C42D424C15E3D8620042E708 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../../libs/tapkulibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
+		C42D425B15E3D8A10042E708 /* ISCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISCalendarViewController.h; sourceTree = "<group>"; };
+		C42D425C15E3D8A10042E708 /* ISCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISCalendarViewController.m; sourceTree = "<group>"; };
+		C42D425E15E3D9600042E708 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		C42D426015E3D9640042E708 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C43AB40615E28A8F003813DF /* IRSOT_Seminars 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "IRSOT_Seminars 3.xcdatamodel"; sourceTree = "<group>"; };
-		C43AB40A15E28B55003813DF /* Seminar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seminar.h; sourceTree = "<group>"; };
-		C43AB40B15E28B55003813DF /* Seminar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seminar.m; sourceTree = "<group>"; };
-		C43AB40D15E28B55003813DF /* Term.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Term.h; sourceTree = "<group>"; };
-		C43AB40E15E28B55003813DF /* Term.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Term.m; sourceTree = "<group>"; };
-		C43AB41015E28B55003813DF /* Lector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lector.h; sourceTree = "<group>"; };
-		C43AB41115E28B55003813DF /* Lector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lector.m; sourceTree = "<group>"; };
-		C43AB41315E28B55003813DF /* Sections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sections.h; sourceTree = "<group>"; };
-		C43AB41415E28B55003813DF /* Sections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sections.m; sourceTree = "<group>"; };
-		C43AB41615E28B55003813DF /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
-		C43AB41715E28B55003813DF /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
-		C43AB41915E28B55003813DF /* Bookmarks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bookmarks.h; sourceTree = "<group>"; };
-		C43AB41A15E28B55003813DF /* Bookmarks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bookmarks.m; sourceTree = "<group>"; };
 		C43AB41C15E2924E003813DF /* IRSOT Seminars.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "IRSOT Seminars.entitlements"; sourceTree = "<group>"; };
 		C456423515D25924001C4024 /* lectors-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lectors-iPhone.png"; path = "icons/lectors-iPhone.png"; sourceTree = "<group>"; };
 		C456423615D25924001C4024 /* lectors-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lectors-iPhone@2x.png"; path = "icons/lectors-iPhone@2x.png"; sourceTree = "<group>"; };
@@ -202,6 +219,16 @@
 		C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Lector+Load_Data.m"; sourceTree = "<group>"; };
 		C48F972015CC663400F4AA51 /* ISSeminarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSeminarViewController.h; sourceTree = "<group>"; };
 		C48F972115CC663400F4AA51 /* ISSeminarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSeminarViewController.m; sourceTree = "<group>"; };
+		C4B20B7915E535E300936B32 /* Term.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Term.h; sourceTree = "<group>"; };
+		C4B20B7A15E535E300936B32 /* Term.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Term.m; sourceTree = "<group>"; };
+		C4B20B7C15E535E400936B32 /* Seminar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seminar.h; sourceTree = "<group>"; };
+		C4B20B7D15E535E400936B32 /* Seminar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seminar.m; sourceTree = "<group>"; };
+		C4B20B7F15E535E400936B32 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
+		C4B20B8015E535E400936B32 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
+		C4B20B8215E535E400936B32 /* Sections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sections.h; sourceTree = "<group>"; };
+		C4B20B8315E535E400936B32 /* Sections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sections.m; sourceTree = "<group>"; };
+		C4B20B8515E535E400936B32 /* Lector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lector.h; sourceTree = "<group>"; };
+		C4B20B8615E535E400936B32 /* Lector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lector.m; sourceTree = "<group>"; };
 		C4C6DD1715E0274E003292C8 /* IRSOT_Seminars 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "IRSOT_Seminars 2.xcdatamodel"; sourceTree = "<group>"; };
 		C4D7CEEE15D3F1440003F90C /* twitter-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "twitter-iPhone.png"; path = "icons/twitter-iPhone.png"; sourceTree = "<group>"; };
 		C4D7CEEF15D3F1440003F90C /* twitter-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "twitter-iPhone@2x.png"; path = "icons/twitter-iPhone@2x.png"; sourceTree = "<group>"; };
@@ -225,6 +252,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C42D426115E3D9650042E708 /* MapKit.framework in Frameworks */,
+				C42D425F15E3D9600042E708 /* QuartzCore.framework in Frameworks */,
 				C46A618215DD2E2D0093C39E /* SystemConfiguration.framework in Frameworks */,
 				C462BDAF15C95A8700170E3C /* UIKit.framework in Frameworks */,
 				C462BDB115C95A8700170E3C /* Foundation.framework in Frameworks */,
@@ -236,6 +265,7 @@
 				C423682915DEBBE70066B1D7 /* MessageUI.framework in Frameworks */,
 				C423682715DEBBDF0066B1D7 /* Security.framework in Frameworks */,
 				C423682415DEBAFE0066B1D7 /* libShareKit.a in Frameworks */,
+				C42D425815E3D86D0042E708 /* libTapkuLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,18 +276,16 @@
 			isa = PBXGroup;
 			children = (
 				C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */,
-				C43AB41915E28B55003813DF /* Bookmarks.h */,
-				C43AB41A15E28B55003813DF /* Bookmarks.m */,
-				C43AB41615E28B55003813DF /* Type.h */,
-				C43AB41715E28B55003813DF /* Type.m */,
-				C43AB41315E28B55003813DF /* Sections.h */,
-				C43AB41415E28B55003813DF /* Sections.m */,
-				C43AB41015E28B55003813DF /* Lector.h */,
-				C43AB41115E28B55003813DF /* Lector.m */,
-				C43AB40D15E28B55003813DF /* Term.h */,
-				C43AB40E15E28B55003813DF /* Term.m */,
-				C43AB40A15E28B55003813DF /* Seminar.h */,
-				C43AB40B15E28B55003813DF /* Seminar.m */,
+				C4B20B8515E535E400936B32 /* Lector.h */,
+				C4B20B8615E535E400936B32 /* Lector.m */,
+				C4B20B8215E535E400936B32 /* Sections.h */,
+				C4B20B8315E535E400936B32 /* Sections.m */,
+				C4B20B7F15E535E400936B32 /* Type.h */,
+				C4B20B8015E535E400936B32 /* Type.m */,
+				C4B20B7C15E535E400936B32 /* Seminar.h */,
+				C4B20B7D15E535E400936B32 /* Seminar.m */,
+				C4B20B7915E535E300936B32 /* Term.h */,
+				C4B20B7A15E535E300936B32 /* Term.m */,
 				C48F971115CC519E00F4AA51 /* Lector+Load_Data.h */,
 				C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */,
 				C40D8F1815CBDBBB0048ABF4 /* Sections+Load_Data.h */,
@@ -343,6 +371,15 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
+		C42D424D15E3D8620042E708 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C42D425515E3D8620042E708 /* libTapkuLibrary.a */,
+				C42D425715E3D8620042E708 /* LogicTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		C456427815D25B53001C4024 /* icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +404,7 @@
 				C4DE788D15C95DE0007FBEC4 /* Trash Views */,
 				C462BDAD15C95A8700170E3C /* Frameworks */,
 				C462BDAB15C95A8700170E3C /* Products */,
+				C42D424C15E3D8620042E708 /* TapkuLibrary.xcodeproj */,
 				C423680C15DEBAB90066B1D7 /* ShareKit.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -382,7 +420,6 @@
 		C462BDAD15C95A8700170E3C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C423682E15DEBBFF0066B1D7 /* Twitter.framework */,
 				C423682C15DEBBF70066B1D7 /* CoreLocation.framework */,
 				C423682A15DEBBEF0066B1D7 /* CFNetwork.framework */,
 				C423682815DEBBE70066B1D7 /* MessageUI.framework */,
@@ -392,6 +429,9 @@
 				C462BDB015C95A8700170E3C /* Foundation.framework */,
 				C462BDB215C95A8700170E3C /* CoreGraphics.framework */,
 				C462BDB415C95A8700170E3C /* CoreData.framework */,
+				C42D426015E3D9640042E708 /* MapKit.framework */,
+				C42D425E15E3D9600042E708 /* QuartzCore.framework */,
+				C423682E15DEBBFF0066B1D7 /* Twitter.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -441,6 +481,8 @@
 			children = (
 				C462BDD915C95B7300170E3C /* ISMainPageViewController.h */,
 				C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */,
+				C42D425B15E3D8A10042E708 /* ISCalendarViewController.h */,
+				C42D425C15E3D8A10042E708 /* ISCalendarViewController.m */,
 				C4DE788815C95D26007FBEC4 /* ISSeminarListTableViewController.h */,
 				C4DE788915C95D26007FBEC4 /* ISSeminarListTableViewController.m */,
 				C48F972015CC663400F4AA51 /* ISSeminarViewController.h */,
@@ -489,6 +531,7 @@
 			);
 			dependencies = (
 				C423682315DEBAED0066B1D7 /* PBXTargetDependency */,
+				C42D425A15E3D8750042E708 /* PBXTargetDependency */,
 				C423682115DEBAE80066B1D7 /* PBXTargetDependency */,
 			);
 			name = "IRSOT Seminars";
@@ -520,6 +563,10 @@
 				{
 					ProductGroup = C423680D15DEBAB90066B1D7 /* Products */;
 					ProjectRef = C423680C15DEBAB90066B1D7 /* ShareKit.xcodeproj */;
+				},
+				{
+					ProductGroup = C42D424D15E3D8620042E708 /* Products */;
+					ProjectRef = C42D424C15E3D8620042E708 /* TapkuLibrary.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -556,6 +603,20 @@
 			fileType = archive.ar;
 			path = libShareKitNoSubmodules.a;
 			remoteRef = C423681D15DEBABA0066B1D7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C42D425515E3D8620042E708 /* libTapkuLibrary.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libTapkuLibrary.a;
+			remoteRef = C42D425415E3D8620042E708 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		C42D425715E3D8620042E708 /* LogicTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = LogicTests.octest;
+			remoteRef = C42D425615E3D8620042E708 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -622,12 +683,12 @@
 				C483E40F15D2C393001A41FB /* Helper.m in Sources */,
 				C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */,
 				C423683215DEBD380066B1D7 /* ReachabilityARC.m in Sources */,
-				C43AB40C15E28B55003813DF /* Seminar.m in Sources */,
-				C43AB40F15E28B55003813DF /* Term.m in Sources */,
-				C43AB41215E28B55003813DF /* Lector.m in Sources */,
-				C43AB41515E28B55003813DF /* Sections.m in Sources */,
-				C43AB41815E28B55003813DF /* Type.m in Sources */,
-				C43AB41B15E28B55003813DF /* Bookmarks.m in Sources */,
+				C42D425D15E3D8A10042E708 /* ISCalendarViewController.m in Sources */,
+				C4B20B7B15E535E300936B32 /* Term.m in Sources */,
+				C4B20B7E15E535E400936B32 /* Seminar.m in Sources */,
+				C4B20B8115E535E400936B32 /* Type.m in Sources */,
+				C4B20B8415E535E400936B32 /* Sections.m in Sources */,
+				C4B20B8715E535E400936B32 /* Lector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,6 +704,11 @@
 			isa = PBXTargetDependency;
 			name = "Resource Bundle";
 			targetProxy = C423682215DEBAED0066B1D7 /* PBXContainerItemProxy */;
+		};
+		C42D425A15E3D8750042E708 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = TapkuLibrary;
+			targetProxy = C42D425915E3D8750042E708 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -744,7 +810,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "EA86F0CC-BC94-4BD2-82DF-A16363D6D708";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EA86F0CC-BC94-4BD2-82DF-A16363D6D708";
-				USER_HEADER_SEARCH_PATHS = "Submodules/*/**";
+				USER_HEADER_SEARCH_PATHS = "Submodules/*/** /Users/raveman/Developer/libs/tapkulibrary/src/*/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -765,7 +831,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "EA86F0CC-BC94-4BD2-82DF-A16363D6D708";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EA86F0CC-BC94-4BD2-82DF-A16363D6D708";
-				USER_HEADER_SEARCH_PATHS = "Submodules/*/**";
+				USER_HEADER_SEARCH_PATHS = "Submodules/*/** /Users/raveman/Developer/libs/tapkulibrary/src/*/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -801,7 +867,7 @@
 				C4C6DD1715E0274E003292C8 /* IRSOT_Seminars 2.xcdatamodel */,
 				C462BDC915C95A8700170E3C /* IRSOT_Seminars.xcdatamodel */,
 			);
-			currentVersion = C4C6DD1715E0274E003292C8 /* IRSOT_Seminars 2.xcdatamodel */;
+			currentVersion = C43AB40615E28A8F003813DF /* IRSOT_Seminars 3.xcdatamodel */;
 			path = IRSOT_Seminars.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

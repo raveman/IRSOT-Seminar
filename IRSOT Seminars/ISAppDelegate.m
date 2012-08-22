@@ -56,7 +56,11 @@
 //        lectorsController.managedObjectContext = self.managedObjectContext;
 //    }
     
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
+    
+    
+//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.94 green:0.51 blue:0.21 alpha:1.0]];
+    
     [[UISearchBar appearance] setBackgroundColor: [UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
 
     self.kvStore = [NSUbiquitousKeyValueStore defaultStore];
@@ -200,13 +204,13 @@
 #pragma mark - updateBookmarks
 - (void)updateBookmarks:(NSNotification *)notification
 {
-    NSDictionary *userInfo = [notification userInfo];
-    NSNumber *reasonForChange = [userInfo objectForKey:NSUbiquitousKeyValueStoreChangeReasonKey];
-    int reason = [reasonForChange integerValue];
-    if ((reason == NSUbiquitousKeyValueStoreServerChange) || (reason == NSUbiquitousKeyValueStoreInitialSyncChange)) {
-        NSArray *changedKeys = [userInfo objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
-        
-    }
+//    NSDictionary *userInfo = [notification userInfo];
+//    NSNumber *reasonForChange = [userInfo objectForKey:NSUbiquitousKeyValueStoreChangeReasonKey];
+//    int reason = [reasonForChange integerValue];
+//    if ((reason == NSUbiquitousKeyValueStoreServerChange) || (reason == NSUbiquitousKeyValueStoreInitialSyncChange)) {
+//        NSArray *changedKeys = [userInfo objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
+//        
+//    }
 }
 
 @end

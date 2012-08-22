@@ -34,6 +34,7 @@
         seminar = [NSEntityDescription insertNewObjectForEntityForName:@"Seminar" inManagedObjectContext:context];
         seminar.id = [NSNumber numberWithInteger:[[dictionary objectForKey:@"nid"] integerValue]];
         seminar.name = [dictionary objectForKey:SEMINAR_NAME];
+
         NSString *strRuseminarID = [[dictionary objectForKey:SEMINAR_RUSEMINAR_ID] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
         numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
@@ -67,6 +68,9 @@
             [lectors addObject:lector];
         }
         seminar.lectors = lectors;
+        seminar.ruseminar_url = [[dictionary objectForKey:SEMINAR_RUSEMINAR_URL] objectForKey:@"url"];
+        seminar.program = [[dictionary objectForKey:SEMINAR_PROGRAM] objectForKey:@"value"];
+        
     } else {
         seminar = [matches lastObject];
     }

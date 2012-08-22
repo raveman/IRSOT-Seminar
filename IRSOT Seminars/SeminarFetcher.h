@@ -22,6 +22,9 @@
 #define SEMINAR_DATE_END @"date_end.value2"
 #define SEMINAR_ONLINE @"online"
 #define SEMINAR_RUSEMINAR_ID @"ruseminar_id"
+#define SEMINAR_RUSEMINAR_URL @"ruseminar_url"
+#define SEMINAR_PROGRAM @"program"
+
 
 #define SEMINAR_DATE_FORMAT @"yyyy-MM-dd HH:mm:ss"
 #define SEMINAR_DATE_FORMAT_DATE @"dd"

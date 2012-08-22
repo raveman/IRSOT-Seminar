@@ -19,7 +19,7 @@
 #define ADD_BOOKMARK @"Добавить закладку"
 #define VIEW_ON_WEB @"Посмотреть полную версию"
 
-@interface ISSeminarViewController () <UIActionSheetDelegate>
+@interface ISSeminarViewController () <UIActionSheetDelegate, UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *attendSeminarButton;
 @property (weak, nonatomic) IBOutlet UITextView *seminarName;
@@ -27,8 +27,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *sectionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *lectorsLabel;
-@property (weak, nonatomic) IBOutlet UITextView *programTextView;
+@property (weak, nonatomic) IBOutlet UILabel *programLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIWebView *programWebView;
 
 @property (weak, nonatomic) UIActionSheet *actionSheet;
 
@@ -42,8 +43,9 @@
 @synthesize sectionLabel = _sectionLabel;
 @synthesize typeLabel = _typeLabel;
 @synthesize lectorsLabel = _lectorsLabel;
-@synthesize programTextView = _programTextView;
+@synthesize programLabel = _programLabel;
 @synthesize scrollView = _scrollView;
+@synthesize programWebView = _programWebView;
 @synthesize actionSheet = _actionSheet;
 
 @synthesize seminar = _seminar;
@@ -82,12 +84,27 @@
     self.lectorsLabel.frame = rect;
     
     height = rect.origin.y + rect.size.height;
+    
+    // опускаем лабел программа
+
+    rect = self.programLabel.frame;
+    rect.origin.y = height + rect.size.height;
+    self.programLabel.frame = rect;
+
+    height = rect.origin.y + rect.size.height;
+
     // осталось опустить описание семинара
-    rect = self.programTextView.frame;
-    rect.origin.y = height + 10;
-    CGRect programRect = [Helper resizeTextView:self.programTextView withSize: currentSize];
-    rect.size.width = programRect.size.width;
-    self.programTextView.frame = rect;
+//    rect = self.programTextView.frame;
+//    rect.origin.y = height + 10;
+//    CGRect programRect = [Helper resizeTextView:self.programTextView withSize: currentSize];
+//    rect.size.width = programRect.size.width;
+//    self.programTextView.frame = rect;
+    
+    rect = self.programWebView.frame;
+    rect.origin.y = height;
+//    CGRect programRect = [Helper resizeTextView:self.programTextView withSize: currentSize];
+//    rect.size.width = programRect.size.width;
+    self.programWebView.frame = rect;
     
     CGSize size = rect.size;
     size.height += height + 20;
@@ -116,7 +133,7 @@
         self.sectionLabel.hidden = YES;
         self.typeLabel.hidden = YES;
         self.lectorsLabel.hidden = YES;
-        self.programTextView.hidden = YES;
+        self.programWebView.hidden = YES;
         
     } else {
         self.title = self.seminar.name;
@@ -131,6 +148,8 @@
         self.sectionLabel.text = self.seminar.section.name;
         self.typeLabel.text = self.seminar.type.name;
         self.lectorsLabel.text  = [self.seminar stringWithLectorNames];
+        [self.programWebView loadHTMLString:[self makeHTMLPageFromString:self.seminar.program] baseURL:[NSURL URLWithString:@""]];
+        self.programWebView.delegate = self;
     }
 }
 
@@ -139,12 +158,13 @@
     [self setSectionLabel:nil];
     [self setTypeLabel:nil];
     [self setLectorsLabel:nil];
-    [self setProgramTextView:nil];
 
     [self setScrollView:nil];
     [self setSeminarDate:nil];
     [self setSeminarName:nil];
     [self setAttendSeminarButton:nil];
+    [self setProgramWebView:nil];
+    [self setProgramLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -160,8 +180,8 @@
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
     [self recalculateElementsBounds];
+    [super viewWillAppear:animated];
 }
 
 - (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
@@ -250,6 +270,41 @@
 	}
     
     return [[fetchedResultsController fetchedObjects] lastObject];
+}
+
+#pragma mark - UIWebViewDelegate
+
+- (NSString *)makeHTMLPageFromString:(NSString *)html
+{
+    NSString *header = @"<html><head> \n"
+    "<style type=\"text/css\"> \n"
+    "body {font-family: \"helvetica neue\"; font-size: 14; }\n"
+    "ul {\n"
+        "list-style-position: outside;\n"
+        "list-style-type: square;\n"
+        "padding-left: 15px;\n"
+    "}"
+    "</style> \n"
+    "</head> \n<body>\n";
+    NSString *footer = @"</body></html>";
+
+    NSString *fullHTML = [NSString stringWithFormat:@"%@\n%@\n%@", header, html, footer];
+    
+    return fullHTML;
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webview
+{
+//    CGRect oldBounds = [webview bounds];
+//    CGFloat height = [[webview stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
+//    [webview setBounds:CGRectMake(oldBounds.origin.x, oldBounds.origin.y, oldBounds.size.width, height)];
+    CGRect frame = webview.frame;
+    frame.size.height = 1;
+    webview.frame = frame;
+    CGSize fittingSize = [webview sizeThatFits:CGSizeZero];
+    frame.size = fittingSize;
+    webview.frame = frame;
+    [self recalculateElementsBounds];
 }
 
 @end

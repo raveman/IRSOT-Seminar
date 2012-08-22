@@ -47,8 +47,22 @@
     self.seminarCategoriesTableView.dataSource = self;
     self.seminarCategoriesTableView.delegate = self;
 
-    self.title = NSLocalizedString(@"Семинары ИРСОТ", @"Main Page Title");
+//    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+//    titleLabel.backgroundColor = [UIColor clearColor];
+//    titleLabel.font = [UIFont boldSystemFontOfSize:20.0];
+//    titleLabel.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+//    titleLabel.textAlignment = UITextAlignmentCenter;
+//
+////    titleLabel.textColor = [UIColor colorWithRed:0.03 green:0.03 blue:0.25 alpha:1.0];
+//    titleLabel.textColor = [UIColor darkTextColor];
     
+
+//    self.navigationItem.titleView = titleLabel;
+//    titleLabel.text = NSLocalizedString(@"Семинары ИРСОТ", @"Main Page Title");
+//    [titleLabel sizeToFit];
+
+    self.title =  NSLocalizedString(@"Семинары ИРСОТ", @"Main Page Title");
+
     self.noDataLabel.shadowColor = [UIColor grayColor];
     self.noDataLabel.shadowOffset = CGSizeMake(1,-1);
     self.noDataLabel.font = [UIFont boldSystemFontOfSize:28.0];

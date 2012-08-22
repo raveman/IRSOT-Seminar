@@ -16,13 +16,15 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
 {
     
     CGSize maximumLabelSize = size;
+    maximumLabelSize.width -= HORIZONTAL_MARGIN;
     
     CGSize expectedLabelSize = [label.text sizeWithFont:label.font constrainedToSize:maximumLabelSize lineBreakMode:label.lineBreakMode];
     
     //adjust the label new height.
     CGRect newFrame = label.frame;
     newFrame.size.height = expectedLabelSize.height;
-    newFrame.size.width = expectedLabelSize.width - HORIZONTAL_MARGIN;
+//    newFrame.size.width = expectedLabelSize.width - HORIZONTAL_MARGIN;
+    newFrame.size.width = maximumLabelSize.width;
     label.frame = newFrame;
     
     return newFrame;
@@ -30,9 +32,9 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
 
 + (CGRect) resizeTextView:(UITextView *)textView withSize:(CGSize)size
 {
-    CGRect newFrame = textView.frame;
-    newFrame.size.width = size.width - HORIZONTAL_MARGIN;
-    textView.frame = newFrame;
+//    CGRect newFrame = textView.frame;
+//    newFrame.size.width = size.width - HORIZONTAL_MARGIN;
+//    textView.frame = newFrame;
     
     CGRect frame = textView.frame;
     frame.size.height = textView.contentSize.height;

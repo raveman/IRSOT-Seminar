@@ -69,7 +69,8 @@
         }
         seminar.lectors = lectors;
         seminar.ruseminar_url = [[dictionary objectForKey:SEMINAR_RUSEMINAR_URL] objectForKey:@"url"];
-        seminar.program = [[dictionary objectForKey:SEMINAR_PROGRAM] objectForKey:@"value"];
+        NSDictionary *program = [dictionary objectForKey:SEMINAR_PROGRAM];
+        if ([program count]) seminar.program = [program objectForKey:@"value"];
         
     } else {
         seminar = [matches lastObject];

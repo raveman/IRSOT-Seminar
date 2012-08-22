@@ -22,7 +22,7 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
     //adjust the label new height.
     CGRect newFrame = label.frame;
     newFrame.size.height = expectedLabelSize.height;
-    newFrame.size.width = expectedLabelSize.width;
+    newFrame.size.width = expectedLabelSize.width - HORIZONTAL_MARGIN;
     label.frame = newFrame;
     
     return newFrame;
@@ -30,8 +30,6 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
 
 + (CGRect) resizeTextView:(UITextView *)textView withSize:(CGSize)size
 {
-    
-    
     CGRect newFrame = textView.frame;
     newFrame.size.width = size.width - HORIZONTAL_MARGIN;
     textView.frame = newFrame;

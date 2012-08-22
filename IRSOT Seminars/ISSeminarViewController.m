@@ -17,7 +17,7 @@
 #import "Seminar+Load_Data.h"
 
 #define ADD_BOOKMARK @"Добавить закладку"
-
+#define VIEW_ON_WEB @"Посмотреть полную версию"
 
 @interface ISSeminarViewController () <UIActionSheetDelegate>
 
@@ -178,15 +178,22 @@
         ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
         [dvc setUrl:url];
         [dvc setWebviewTitle:@"Принять участие"];
-    }
-}
+    } else if ([segue.identifier isEqualToString:@"View On Web"]) {
+            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", self.seminar.ruseminar_url]];
+            
+            ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
+            [dvc setUrl:url];
+            [dvc setWebviewTitle:@"Семинар"];
+        }}
 
 - (IBAction)share:(UIBarButtonItem *)sender {
     if (self.actionSheet) {
         // do nothing
     } else {
         NSString *addBookmarkButton = NSLocalizedString(ADD_BOOKMARK, @"Add seminar bookmark button title");
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Закладки" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, nil];
+        NSString *viewOnWebButton = NSLocalizedString(VIEW_ON_WEB, @"Add seminar bookmark button title");
+        
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Закладки" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, nil];
         [actionSheet showFromBarButtonItem:sender animated:YES];
         self.actionSheet = actionSheet;
     }
@@ -216,6 +223,8 @@
             [bookmarksStore setObject:bookmarksArray forKey:BOOKMARKS_KEY];
             [[NSNotificationCenter defaultCenter] postNotificationName:NSUbiquitousKeyValueStoreDidChangeLocallyNotification object:bookmarksStore userInfo:bookmark];
         }
+    } else if ([choice isEqualToString:VIEW_ON_WEB]) {
+        [self performSegueWithIdentifier:@"View On Web" sender:self];
     }
 }
 

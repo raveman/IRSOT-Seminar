@@ -30,6 +30,9 @@
 @synthesize noDataLabel = _noDataLabel;
 @synthesize seminarCategoriesTableView = _seminarCategoriesTableView;
 
+@synthesize fetchedResultsController = _fetchedResultsController;
+@synthesize managedObjectContext = _managedObjectContext;
+
 #pragma mark - getters and setters
 
 #pragma mark - UIViewController lifecycle

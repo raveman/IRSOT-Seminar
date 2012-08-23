@@ -136,6 +136,9 @@
         self.typeLabel.hidden = YES;
         self.lectorsLabel.hidden = YES;
         self.programWebView.hidden = YES;
+        self.programLabel.hidden = YES;
+        self.attendSeminarButton.enabled = NO;
+        self.navigationItem.rightBarButtonItem.enabled = NO;
         
     } else {
         self.title = self.seminar.name;

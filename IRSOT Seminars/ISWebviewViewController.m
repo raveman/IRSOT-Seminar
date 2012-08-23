@@ -52,8 +52,15 @@
     [self setWebview:nil];
 //    [self setScrollview:nil];
     [self setModalNavigationBar:nil];
+
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
+    // Release any retained subviews of the main view.    
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [SVProgressHUD dismiss];
+    [super viewWillDisappear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

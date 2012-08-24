@@ -87,7 +87,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wn9-3e-uXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="EJV-r4-OVK" customClass="ISLectorViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h2o-GO-luv">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="YZA-G3-pOv">
@@ -167,7 +167,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fkk-C3-hG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="907-pJ-PWX" customClass="ISSeminarViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fcP-m7-ud3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" showsHorizontalScrollIndicator="NO" id="lmO-J5-cdE">
@@ -662,11 +662,10 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.62352941179999999" green="0.80784313730000001" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Обновить данные">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Обновить каталог">
+                                    <color key="titleColor" white="0.14738252739999999" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="disabled" title="Загрузка невозможна"/>
                                 <state key="highlighted">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -679,8 +678,8 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <color key="tintColor" red="0.62352941179999999" green="0.80784313730000001" blue="0.87058823529999996" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="Удалить текущие">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Удалить каталог">
+                                    <color key="titleColor" white="0.14738252739999999" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="highlighted">
@@ -883,7 +882,6 @@
         <class className="ISSeminarViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarViewController.h"/>
             <relationships>
-                <relationship kind="action" name="share:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="attendSeminarButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lectorsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="programLabel" candidateClass="UILabel"/>
@@ -898,6 +896,8 @@
         <class className="ISSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSettingsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="delete:" candidateClass="UIButton"/>
+                <relationship kind="action" name="load:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="iCloudSwitch" candidateClass="UISwitch"/>

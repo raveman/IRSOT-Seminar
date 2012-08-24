@@ -62,6 +62,9 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_texture.png"]];
 
+    self.refreshButton.tintColor = [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0];
+    self.deleteButton.tintColor = [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0];
+    
     self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
     self.iCloudSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USE_ICLOUD_KEY] boolValue];
     
@@ -167,7 +170,7 @@
 
 - (void) loadData {
 
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"Загружаю семинары", @"Loading seminars data from the web")];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"Обновляю каталог", @"Loading catalog data from the web")];
     BOOL __block updated = NO;
     dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
     dispatch_async(fetchQ, ^{
@@ -199,7 +202,7 @@
                 [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Ошибка загрузки %@", [error localizedDescription]]];
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Семинары загружены!", @"Seminars loaded successfully")];
+                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Каталог обновлен!", @"Catalog loaded successfully")];
                     self.deleteButton.hidden = NO;
                     updated = YES;
                     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
@@ -266,7 +269,7 @@
     
     [self.managedObjectContext unlock];
 
-    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Семинары удалены", @"Seminars deleted")];
+    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Каталог удален", @"Seminars deleted")];
     
     //notifying main page view controller about deleted data
     [self.delegate settingsViewController:self didDeletedStore:deleted];

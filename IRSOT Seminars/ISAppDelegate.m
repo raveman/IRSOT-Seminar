@@ -59,9 +59,11 @@
     
     
 //    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.94 green:0.51 blue:0.21 alpha:1.0]];
+//        [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.94 green:0.51 blue:0.21 alpha:1.0]];
+//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
     
-    [[UISearchBar appearance] setBackgroundColor: [UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
+    
+    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:1 green:0.51 blue:0 alpha:1.0]];
 
     self.kvStore = [NSUbiquitousKeyValueStore defaultStore];
     

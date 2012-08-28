@@ -90,62 +90,78 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Лектор И.О.Лектор И.О.Лектор И.О.Лектор И.О." id="jRk-m6-7Lm">
-                                <rect key="frame" x="154" y="20" width="146" height="128"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" id="Eoq-ng-iAC">
-                                <rect key="frame" x="20" y="156" width="280" height="164"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <string key="text">БиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиография</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                            </textView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="VAu-tI-wW7">
-                                <rect key="frame" x="0.0" y="308" width="320" height="137"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Lector Seminar Cell" textLabel="4lX-m3-LfL" detailTextLabel="fp0-kY-2B6" style="IBUITableViewCellStyleSubtitle" id="eha-Yc-TXY">
-                                        <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DY1-qj-vbM">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Лектор И.О.Лектор И.О.Лектор И.О.Лектор И.О." id="Vyu-2W-Yao">
+                                        <rect key="frame" x="154" y="20" width="146" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" id="zvL-FL-xXq">
+                                        <rect key="frame" x="20" y="156" width="280" height="164"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <string key="text">БиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиография</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                    </textView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="yGI-Bh-VWE">
+                                        <rect key="frame" x="0.0" y="264" width="320" height="137"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Lector Seminar Cell" textLabel="QHm-PT-f3p" detailTextLabel="vbx-JR-XMX" style="IBUITableViewCellStyleSubtitle" id="n5L-7P-56S">
+                                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QHm-PT-f3p">
+                                                            <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </label>
+                                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vbx-JR-XMX">
+                                                            <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <connections>
+                                                    <segue destination="907-pJ-PWX" kind="push" identifier="Lector Seminar View" id="O2i-Ja-jpZ"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="profile-icon.png" id="Wf4-2q-w12">
+                                        <rect key="frame" x="20" y="20" width="126" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4lX-m3-LfL">
-                                                    <rect key="frame" x="10" y="2" width="38" height="22"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fp0-kY-2B6">
-                                                    <rect key="frame" x="10" y="24" width="47" height="18"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <color key="textColor" red="0.50196078430000002" green="0.50196078430000002" blue="0.50196078430000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                    </tableViewCell>
-                                </prototypes>
-                            </tableView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="profile-icon.png" id="bLT-MT-5Yo">
-                                <rect key="frame" x="20" y="20" width="126" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                    </imageView>
+                                </subviews>
+                            </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="U1u-XU-aFx"/>
+                    <connections>
+                        <outlet property="lectorBio" destination="zvL-FL-xXq" id="SCY-Dr-lYe"/>
+                        <outlet property="lectorName" destination="Vyu-2W-Yao" id="33N-cn-YdX"/>
+                        <outlet property="lectorPhoto" destination="Wf4-2q-w12" id="ybF-kJ-njY"/>
+                        <outlet property="lectorSeminars" destination="yGI-Bh-VWE" id="lAO-1R-OHO"/>
+                        <outlet property="scrollView" destination="DY1-qj-vbM" id="SpR-6T-k51"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1996" y="1438"/>
@@ -163,40 +179,33 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Раздел" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="845-cE-uCg">
+                                    <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Section" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="845-cE-uCg">
                                         <rect key="frame" x="20" y="121" width="144" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Тип" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="iVH-jy-7Eu">
+                                    <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Type" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="iVH-jy-7Eu">
                                         <rect key="frame" x="172" y="121" width="128" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Дата проведения" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Uea-Wn-VUC">
+                                    <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Uea-Wn-VUC">
                                         <rect key="frame" x="20" y="91" width="280" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="14"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" contentMode="TopLeft" text="Lectors" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="10" id="KwB-nD-wdW">
-                                        <rect key="frame" x="20" y="151" width="280" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vtu-XN-M2c">
-                                        <rect key="frame" x="20" y="10" width="280" height="30"/>
+                                        <rect key="frame" x="20" y="7" width="280" height="35"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <color key="tintColor" red="0.28627450980000002" green="0.6588235294" blue="0.78823529410000004" alpha="1" colorSpace="deviceRGB"/>
-                                        <state key="normal" title="Принять участие">
+                                        <state key="normal" title="Attend">
                                             <color key="titleColor" red="0.94509810209274292" green="0.5215686559677124" blue="0.28235295414924622" alpha="1" colorSpace="deviceRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -207,7 +216,7 @@
                                             <segue destination="2kA-qE-Yhq" kind="modal" identifier="Bill Webview" id="UiY-x5-4jX"/>
                                         </connections>
                                     </button>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Название семинара" textAlignment="center" id="jfs-iB-s1z">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Seminar Name" textAlignment="center" id="jfs-iB-s1z">
                                         <rect key="frame" x="20" y="48" width="280" height="35"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -215,17 +224,36 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Agenda" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="lsA-58-1kl">
-                                        <rect key="frame" x="10" y="196" width="91" height="21"/>
+                                        <rect key="frame" x="10" y="151" width="91" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <webView contentMode="scaleToFill" id="3lc-Yu-Qun">
-                                        <rect key="frame" x="0.0" y="220" width="320" height="147"/>
+                                        <rect key="frame" x="0.0" y="175" width="320" height="91"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </webView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="tyU-1j-131">
+                                        <rect key="frame" x="0.0" y="267" width="320" height="181"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Lector Cell" id="afd-VS-YVW">
+                                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <connections>
+                                                    <segue destination="EJV-r4-OVK" kind="push" identifier="Lector View" id="b9m-e9-TaY"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -240,7 +268,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="attendSeminarButton" destination="vtu-XN-M2c" id="wyy-RV-yuQ"/>
-                        <outlet property="lectorsLabel" destination="KwB-nD-wdW" id="8yf-el-CHC"/>
+                        <outlet property="lectorTableView" destination="tyU-1j-131" id="etD-cM-uld"/>
                         <outlet property="programLabel" destination="lsA-58-1kl" id="PGK-Ny-NoU"/>
                         <outlet property="programWebView" destination="3lc-Yu-Qun" id="4MQ-U7-6IP"/>
                         <outlet property="scrollView" destination="lmO-J5-cdE" id="bGV-ff-Sfs"/>
@@ -873,6 +901,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarViewController.h"/>
             <relationships>
                 <relationship kind="outlet" name="attendSeminarButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lectorTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="lectorsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="programLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="programWebView" candidateClass="UIWebView"/>
@@ -909,8 +938,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="ce4-2g-nyb"/>
-        <segue reference="3dE-kl-7oN"/>
+        <segue reference="O2i-Ja-jpZ"/>
+        <segue reference="b9m-e9-TaY"/>
         <segue reference="Tgl-bc-A5N"/>
     </inferredMetricsTieBreakers>
 </document>

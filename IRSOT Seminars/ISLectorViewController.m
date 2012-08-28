@@ -18,6 +18,9 @@
 @property (weak, nonatomic) IBOutlet UITextView *lectorName;
 @property (weak, nonatomic) IBOutlet UITextView *lectorBio;
 @property (weak, nonatomic) IBOutlet UITableView *lectorSeminars;
+
+@property (strong, nonatomic) NSArray *seminars;
+
 @end
 
 @implementation ISLectorViewController
@@ -27,6 +30,7 @@
 @synthesize lectorBio = _lectorBio;
 @synthesize lectorSeminars = _lectorSeminars;
 
+@synthesize seminars = _seminars;
 @synthesize lector = _lector;
 
 - (void) recalculateElementsBounds
@@ -110,6 +114,12 @@
 
     self.lectorName.text = [NSString stringWithFormat:@"%@ %@ %@", self.lector.lastName, self.lector.firstName, self.lector.fatherName];
     self.lectorBio.text = self.lector.bio;
+    if ([self.lector.seminars count]) {
+        self.seminars = [self.lector.seminars allObjects];
+        NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+        self.seminars = [self.seminars sortedArrayUsingDescriptors:sortDescriptors];
+    }
+    
     if ([self.lector.photo length]) [self loadLectorPhoto];
 }
 

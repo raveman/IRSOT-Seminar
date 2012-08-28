@@ -200,13 +200,6 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" contentMode="TopLeft" text="Lectors" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="6" baselineAdjustment="alignBaselines" minimumFontSize="10" id="KwB-nD-wdW">
-                                        <rect key="frame" x="20" y="151" width="280" height="27"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="15"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="vtu-XN-M2c">
                                         <rect key="frame" x="20" y="10" width="280" height="30"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -231,18 +224,37 @@
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                     <webView contentMode="scaleToFill" id="7Sk-cD-3sF">
-                                        <rect key="frame" x="0.0" y="213" width="320" height="154"/>
+                                        <rect key="frame" x="0.0" y="178" width="320" height="92"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" address="YES"/>
                                     </webView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Программа" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fyg-KO-frE">
-                                        <rect key="frame" x="20" y="186" width="91" height="21"/>
+                                        <rect key="frame" x="20" y="151" width="91" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="15"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="azh-2I-B7i">
+                                        <rect key="frame" x="0.0" y="270" width="320" height="181"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <prototypes>
+                                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Lector Cell" id="zJE-a3-yqv">
+                                                <rect key="frame" x="0.0" y="46" width="320" height="46"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <connections>
+                                                    <segue destination="EJV-r4-OVK" kind="push" identifier="Lector View" id="id4-Pp-vNd"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -257,7 +269,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="attendSeminarButton" destination="vtu-XN-M2c" id="wyy-RV-yuQ"/>
-                        <outlet property="lectorsLabel" destination="KwB-nD-wdW" id="8yf-el-CHC"/>
+                        <outlet property="lectorTableView" destination="azh-2I-B7i" id="Uet-xj-QqA"/>
                         <outlet property="programLabel" destination="fyg-KO-frE" id="Yso-4J-RIA"/>
                         <outlet property="programWebView" destination="7Sk-cD-3sF" id="bg0-iv-Zkh"/>
                         <outlet property="scrollView" destination="lmO-J5-cdE" id="bGV-ff-Sfs"/>
@@ -889,7 +901,9 @@
         <class className="ISSeminarViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarViewController.h"/>
             <relationships>
+                <relationship kind="action" name="share:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="attendSeminarButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lectorTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="lectorsLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="programLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="programWebView" candidateClass="UIWebView"/>
@@ -927,7 +941,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="9u7-eT-DiF"/>
-        <segue reference="3dE-kl-7oN"/>
+        <segue reference="id4-Pp-vNd"/>
         <segue reference="aQv-Eg-GPe"/>
     </inferredMetricsTieBreakers>
 </document>

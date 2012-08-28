@@ -8,8 +8,11 @@
 // TODO: переделать все UILabel в UITextView, чтобы у пользователя была возможность копи-паста
 
 #import "ISAppDelegate.h"
+
 #import "ISSeminarViewController.h"
 #import "ISWebviewViewController.h"
+#import "ISLectorViewController.h"
+
 #import "Helper.h"
 #import "Sections.h"
 #import "Type.h"
@@ -19,7 +22,7 @@
 #define ADD_BOOKMARK @"Добавить закладку"
 #define VIEW_ON_WEB @"Посмотреть полную версию"
 
-@interface ISSeminarViewController () <UIActionSheetDelegate, UIWebViewDelegate>
+@interface ISSeminarViewController () <UIActionSheetDelegate, UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *attendSeminarButton;
 @property (weak, nonatomic) IBOutlet UITextView *seminarName;
@@ -30,8 +33,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *programLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIWebView *programWebView;
+@property (weak, nonatomic) IBOutlet UITableView *lectorTableView;
 
 @property (weak, nonatomic) UIActionSheet *actionSheet;
+
+@property (strong, nonatomic) NSArray *lectors;
 
 @end
 
@@ -46,10 +52,13 @@
 @synthesize programLabel = _programLabel;
 @synthesize scrollView = _scrollView;
 @synthesize programWebView = _programWebView;
+@synthesize lectorTableView = _lectorTableView;
 @synthesize actionSheet = _actionSheet;
 
 @synthesize seminar = _seminar;
 @synthesize seminarID = _seminarID;
+
+@synthesize lectors = _lectors;
 
 - (void) recalculateElementsBounds
 {
@@ -80,11 +89,11 @@
     height = rect.origin.y + rect.size.height;
     
     // опускаем лекторов на текущее смещение
-    rect = [Helper resizeLabel:self.lectorsLabel withSize:currentSize];
-    rect.origin.y = height + 10;
-    self.lectorsLabel.frame = rect;
-    
-    height = rect.origin.y + rect.size.height;
+//    rect = [Helper resizeLabel:self.lectorsLabel withSize:currentSize];
+//    rect.origin.y = height + 10;
+//    self.lectorsLabel.frame = rect;
+//    
+//    height = rect.origin.y + rect.size.height;
     
     // опускаем лабел программа
 
@@ -107,9 +116,16 @@
 //    CGRect programRect = [Helper resizeTextView:self.programTextView withSize: currentSize];
 //    rect.size.width = programRect.size.width;
     self.programWebView.frame = rect;
-    
     CGSize size = rect.size;
     size.height += height + 20;
+    
+    int tableHeight = self.lectorTableView.rowHeight * [self.seminar.lectors count];
+    CGRect tableFrame = self.lectorTableView.frame;
+    tableFrame.origin.y = size.height;
+    tableFrame.size.height += tableHeight;
+    self.lectorTableView.frame = tableFrame;
+
+    size.height += tableHeight + 80;
     
     self.scrollView.scrollEnabled = YES;
     self.scrollView.contentSize = size;
@@ -136,6 +152,7 @@
         self.typeLabel.hidden = YES;
         self.lectorsLabel.hidden = YES;
         self.programWebView.hidden = YES;
+        self.lectorTableView.hidden = YES;
         self.programLabel.hidden = YES;
         self.attendSeminarButton.enabled = NO;
         self.navigationItem.rightBarButtonItem.enabled = NO;
@@ -149,12 +166,19 @@
             self.seminarName.text = [NSString stringWithFormat:@"«%@»", self.seminar.name];
         }
         
+        if ([self.seminar.lectors count]) {
+            NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+            self.lectors = [[self.seminar.lectors allObjects] sortedArrayUsingDescriptors:sortDescriptors];
+        }
+        
         self.seminarDate.text = [self.seminar stringWithSeminarDates];
         self.sectionLabel.text = self.seminar.section.name;
         self.typeLabel.text = self.seminar.type.name;
         self.lectorsLabel.text  = [self.seminar stringWithLectorNames];
         [self.programWebView loadHTMLString:[self makeHTMLPageFromString:self.seminar.program] baseURL:[NSURL URLWithString:@""]];
         self.programWebView.delegate = self;
+        self.lectorTableView.dataSource = self;
+        self.lectorTableView.delegate = self;
     }
 }
 
@@ -170,6 +194,7 @@
     [self setAttendSeminarButton:nil];
     [self setProgramWebView:nil];
     [self setProgramLabel:nil];
+    [self setLectorTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -186,6 +211,11 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [self recalculateElementsBounds];
+    NSIndexPath *indexPath = [self.lectorTableView indexPathForSelectedRow];
+    if (indexPath != nil) {
+        [self.lectorTableView deselectRowAtIndexPath:indexPath animated:YES];
+    }
+    
     [super viewWillAppear:animated];
 }
 
@@ -204,12 +234,20 @@
         [dvc setUrl:url];
         [dvc setWebviewTitle:@"Принять участие"];
     } else if ([segue.identifier isEqualToString:@"View On Web"]) {
-            NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", self.seminar.ruseminar_url]];
-            
-            ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
-            [dvc setUrl:url];
-            [dvc setWebviewTitle:self.seminar.name];
-        }}
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", self.seminar.ruseminar_url]];
+        
+        ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
+        [dvc setUrl:url];
+        [dvc setWebviewTitle:self.seminar.name];
+    } else if ([segue.identifier isEqualToString:@"Lector View"]) {
+        ISLectorViewController *dvc = (ISLectorViewController *)segue.destinationViewController;
+        NSIndexPath *indexPath = [self.lectorTableView indexPathForSelectedRow];
+        Lector *lector = [self.lectors objectAtIndex:indexPath.row];
+        [dvc setLector:lector];
+    }
+}
+
+#pragma mark - Button Actions
 
 - (IBAction)share:(UIBarButtonItem *)sender {
     if (self.actionSheet) {
@@ -326,5 +364,53 @@
     [self recalculateElementsBounds];
 
 }
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [self.seminar.lectors count];
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Lector Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+    
+    if ([self.seminar.lectors count]) {
+        Lector *lector = [self.lectors objectAtIndex:indexPath.row];
+        cell.textLabel.text = lector.name;
+//        cell.detailTextLabel.text = [lector stringWithSeminarDates];
+    }
+    
+    return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSInteger count = [self.seminar.lectors count];
+    NSString *title = [NSString string];
+    
+    switch (count) {
+        case 0:
+            title = @"";
+            break;
+        case 1:
+            title = NSLocalizedString(@"Семинар проводит:", @"Seminar Lectors Table Title");
+            break;
+        default:
+            title = NSLocalizedString(@"Семинар проводят:", @"Seminar Lectors Table Title");
+            break;
+    }
+    return title;
+}
+
+
+
+#pragma mark - UITableViewDelegate
 
 @end

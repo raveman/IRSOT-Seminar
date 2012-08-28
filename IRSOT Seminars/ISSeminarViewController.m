@@ -117,10 +117,14 @@
 //    rect.size.width = programRect.size.width;
     self.programWebView.frame = rect;
     CGSize size = rect.size;
-    size.height += height + 20;
+
+    // берем высоту вебвью и приплюсовываем размер хедера
+    size.height += height;
     
     int tableHeight = self.lectorTableView.rowHeight * [self.seminar.lectors count];
     CGRect tableFrame = self.lectorTableView.frame;
+    tableFrame.size.width = currentSize.width;
+
     tableFrame.origin.y = size.height;
     tableFrame.size.height += tableHeight;
     self.lectorTableView.frame = tableFrame;

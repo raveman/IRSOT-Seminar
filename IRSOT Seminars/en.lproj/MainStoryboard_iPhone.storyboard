@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Xxu-CO-emP">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
@@ -276,7 +275,6 @@
                         <outlet property="seminarDate" destination="Uea-Wn-VUC" id="iVp-QT-Ink"/>
                         <outlet property="seminarName" destination="jfs-iB-s1z" id="QfF-Cg-yn2"/>
                         <outlet property="typeLabel" destination="iVH-jy-7Eu" id="aR2-EZ-Y04"/>
-                        <segue destination="EJV-r4-OVK" kind="push" identifier="Lector View" id="3dE-kl-7oN"/>
                         <segue destination="2kA-qE-Yhq" kind="modal" identifier="View On Web" id="Tgl-bc-A5N"/>
                     </connections>
                 </viewController>

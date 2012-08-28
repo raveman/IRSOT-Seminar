@@ -77,10 +77,14 @@
     return seminars;
 }
 
+
 + (NSArray *)lectors
 {
 
-    return nil;
+    NSString *lectorURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, LECTOR_LIST_URL];
+    NSArray *lectors = [SeminarFetcher executeFetch:lectorURL];
+    
+    return lectors;
 }
 
 @end

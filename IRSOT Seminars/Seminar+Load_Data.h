@@ -18,6 +18,8 @@
 
 + (Seminar *)seminarWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)context;
 
++ (Seminar *)seminarWithDictionary:(NSDictionary *)dictionary lectors:(NSArray *)lectors inManagedObjectContext:(NSManagedObjectContext *)context;
+
 - (NSString *)stringWithLectorNames;
 - (NSString *)stringWithSeminarDates;
 

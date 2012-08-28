@@ -17,13 +17,20 @@
 #define SEMINAR_SECTION @"seminar_section"
 
 #define SEMINAR_NAME @"node_title"
-#define SEMINAR_LECTOR @"lector"
+#define SEMINAR_LECTOR @"lectors"
 #define SEMINAR_DATE_START @"date_start.value"
 #define SEMINAR_DATE_END @"date_end.value2"
 #define SEMINAR_ONLINE @"online"
 #define SEMINAR_RUSEMINAR_ID @"ruseminar_id"
 #define SEMINAR_RUSEMINAR_URL @"ruseminar_url"
 #define SEMINAR_PROGRAM @"program"
+
+#define LECTOR_LIST_URL @"lectors"
+#define LECTOR_NAME @"lector_name"
+#define LECTOR_BIO @"bio"
+#define LECTOR_ID @"nid"
+#define LECTOR_RUSEMINAR_ID @"ruseminar_id"
+#define LECTOR_PHOTO_URL @"photo_url"
 
 
 #define SEMINAR_DATE_FORMAT @"yyyy-MM-dd HH:mm:ss"

@@ -131,6 +131,9 @@
     return initial;
 }
 
-
+- (NSString *)fullName
+{
+    return [NSString stringWithFormat:@"%@ %@ %@", self.lastName, self.firstName, self.fatherName];
+}
 
 @end

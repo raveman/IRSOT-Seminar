@@ -110,7 +110,11 @@
     }
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         Lector *lector = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        cell.textLabel.text = lector.name;
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+            cell.textLabel.text = lector.name;
+        } else {
+            cell.textLabel.text = [lector fullName];
+        }
         cell.detailTextLabel.text = [NSString stringWithFormat:@"Семинаров: %d", [lector.seminars count] ];
     }
     

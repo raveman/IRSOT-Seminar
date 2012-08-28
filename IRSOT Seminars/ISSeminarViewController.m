@@ -387,7 +387,11 @@
     
     if ([self.seminar.lectors count]) {
         Lector *lector = [self.lectors objectAtIndex:indexPath.row];
-        cell.textLabel.text = lector.name;
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+            cell.textLabel.text = lector.name;
+        } else {
+            cell.textLabel.text = [lector fullName];
+        }
 //        cell.detailTextLabel.text = [lector stringWithSeminarDates];
     }
     

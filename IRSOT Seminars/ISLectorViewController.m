@@ -112,7 +112,7 @@
     
     self.title = self.lector.name;
 
-    self.lectorName.text = [NSString stringWithFormat:@"%@ %@ %@", self.lector.lastName, self.lector.firstName, self.lector.fatherName];
+    self.lectorName.text = [self.lector fullName];
     self.lectorBio.text = self.lector.bio;
     if ([self.lector.seminars count]) {
         self.seminars = [self.lector.seminars allObjects];

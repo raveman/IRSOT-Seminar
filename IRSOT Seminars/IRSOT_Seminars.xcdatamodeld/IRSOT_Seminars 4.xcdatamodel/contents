@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="12B19" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Lector" representedClassName="Lector" syncable="YES">
+        <attribute name="bio" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fatherName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ruseminarID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="seminars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Seminar" inverseName="lectors" inverseEntity="Seminar" syncable="YES"/>
+    </entity>
+    <entity name="Section" representedClassName="Sections" parentEntity="Term" syncable="YES">
+        <relationship name="seminars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Seminar" inverseName="section" inverseEntity="Seminar" syncable="YES"/>
+    </entity>
+    <entity name="Seminar" representedClassName="Seminar" syncable="YES">
+        <attribute name="date_end" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="date_start" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="online" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="program" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ruseminar_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="ruseminarID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="lectors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Lector" inverseName="seminars" inverseEntity="Lector" syncable="YES"/>
+        <relationship name="section" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="seminars" inverseEntity="Section" syncable="YES"/>
+        <relationship name="type" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Type" inverseName="seminars" inverseEntity="Type" syncable="YES"/>
+    </entity>
+    <entity name="Term" representedClassName="Term" isAbstract="YES" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="machine_name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vid" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Type" representedClassName="Type" parentEntity="Term" syncable="YES">
+        <relationship name="seminars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Seminar" inverseName="type" inverseEntity="Seminar" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Lector" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="Section" positionX="0" positionY="0" width="128" height="58"/>
+        <element name="Seminar" positionX="0" positionY="0" width="128" height="208"/>
+        <element name="Term" positionX="0" positionY="0" width="128" height="103"/>
+        <element name="Type" positionX="0" positionY="0" width="128" height="58"/>
+    </elements>
+</model>

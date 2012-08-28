@@ -62,8 +62,11 @@
     self.lectorSeminars.delegate = self;
     
     self.title = self.lector.name;
-    self.lectorName.text = self.lector.name;
-
+    self.lectorName.text = [NSString stringWithFormat:@"%@ %@ %@", self.lector.lastName, self.lector.firstName, self.lector.fatherName];
+    self.lectorBio.text = self.lector.bio;
+    if (![self.lector.seminars count]) {
+        
+    }
 }
 
 - (void)viewDidUnload
@@ -139,7 +142,12 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return NSLocalizedString(@"Семинары:", @"Lector Seminar Table Title");
+    if ([self.lector.seminars count]) {
+        return NSLocalizedString(@"Семинары:", @"Lector Seminar Table Title");
+        
+    } else {
+        return @"";
+    }
 }
 
 #pragma mark - UITableViewDelegate

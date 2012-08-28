@@ -190,9 +190,14 @@
                 NSLog(@"Type: %@", [type objectForKey:@"name"]);
             }
 
+            NSArray *lectors = [SeminarFetcher lectors];
+            for (NSDictionary *lectorInfo in lectors) {
+                [Lector lectorWithDictionary:lectorInfo inManagedObjectContext:self.managedObjectContext];
+            }
+
             NSArray *seminars = [SeminarFetcher seminars];
             for (NSDictionary *seminarInfo in seminars) {
-                [Seminar seminarWithDictionary:seminarInfo inManagedObjectContext:self.managedObjectContext];
+                [Seminar seminarWithDictionary:seminarInfo lectors:lectors inManagedObjectContext:self.managedObjectContext];
             }
 
             NSError *error = nil;

@@ -11,6 +11,8 @@
 @interface Lector (Load_Data)
 
 + (Lector *)lectorWithName:(NSString *)name inManagedObjectContext:(NSManagedObjectContext *)context;
++ (Lector *)lectorWithDictionary:(NSDictionary *)dictionary inManagedObjectContext:(NSManagedObjectContext *)context;
++ (Lector *)lectorWithID:(NSInteger)lectorID inManagedObjectContext:(NSManagedObjectContext *)context;
 
 - (NSString *)lectorNameInitial;
 

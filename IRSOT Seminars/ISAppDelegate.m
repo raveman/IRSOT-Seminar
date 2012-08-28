@@ -10,6 +10,8 @@
 
 #import "ISAppDelegate.h"
 
+//#import "LocalyticsSession.h"
+
 #import "ISMainPageViewController.h"
 #import "ISBookmarksTableViewController.h"
 #import "ISLectorListTableViewController.h"
@@ -30,38 +32,12 @@
 #pragma mark - UIApplicationDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
-//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-//        UISplitViewController *splitViewController = (UISplitViewController *)self.window.rootViewController;
-//        UINavigationController *navigationController = [splitViewController.viewControllers lastObject];
-//        splitViewController.delegate = (id)navigationController.topViewController;
-//        
-//        UINavigationController *masterNavigationController = [splitViewController.viewControllers objectAtIndex:0];
-//        ISMainPageViewController *controller = (ISMainPageViewController *)masterNavigationController.topViewController;
-//        controller.managedObjectContext = self.managedObjectContext;
-//    } else {
-//        UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-//        ISMainPageViewController *controller = (ISMainPageViewController *)navigationController.topViewController;
-//        controller.managedObjectContext = self.managedObjectContext;
-        
-        // т.к. корневой контроллер у нас UITabBarViewController, то у него мы спрашиваем на первой закладке первый контроллер,
-        // которым оказывается UINavigationController, а у уже него мы получаем на View Controller
-//        UITabBarController *masterController = (UITabBarController *)self.window.rootViewController;
-//
-//        ISMainPageViewController *mainController = (ISMainPageViewController *)[[masterController.viewControllers objectAtIndex:0] topViewController];
-//        mainController.managedObjectContext = self.managedObjectContext;
-//        ISBookmarksTableViewController *bookmarksController = (ISBookmarksTableViewController *)[[masterController.viewControllers objectAtIndex:1] topViewController];
-//        bookmarksController.managedObjectContext = self.managedObjectContext;
-//        ISLectorListTableViewController *lectorsController = (ISLectorListTableViewController *)[[masterController.viewControllers objectAtIndex:2] topViewController];
-//        lectorsController.managedObjectContext = self.managedObjectContext;
-//    }
-    
-    
-    
+   
 //    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
 //        [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.94 green:0.51 blue:0.21 alpha:1.0]];
 //    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
     
+//    [[LocalyticsSession sharedLocalyticsSession] startSession:@"[[LocalyticsSession sharedLocalyticsSession] startSession:@"APP KEY FROM STEP 2"];"];
     
     [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:1 green:0.51 blue:0 alpha:1.0]];
 
@@ -73,6 +49,8 @@
                                                object:self.kvStore];
     [self.kvStore synchronize];
     
+    
+    
     return YES;
 }
 							
@@ -80,27 +58,41 @@
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+
+//    [[LocalyticsSession sharedLocalyticsSession] close];
+//    [[LocalyticsSession sharedLocalyticsSession] upload];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+//    [[LocalyticsSession sharedLocalyticsSession] close];
+//    [[LocalyticsSession sharedLocalyticsSession] upload];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+//    [[LocalyticsSession sharedLocalyticsSession] resume];
+//    [[LocalyticsSession sharedLocalyticsSession] upload];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+//    [[LocalyticsSession sharedLocalyticsSession] resume];
+//    [[LocalyticsSession sharedLocalyticsSession] upload];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Saves changes in the application's managed object context before the application terminates.
+//    [[LocalyticsSession sharedLocalyticsSession] close];
+//    [[LocalyticsSession sharedLocalyticsSession] upload];
+    
     [self saveContext];
     [self.kvStore synchronize];
 }
@@ -200,7 +192,8 @@
 // Returns the URL to the application's Documents directory.
 - (NSURL *)applicationDocumentsDirectory
 {
-    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+//    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
 }
 
 #pragma mark - updateBookmarks

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Xxu-CO-emP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Xxu-CO-emP">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
@@ -87,22 +87,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wn9-3e-uXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="EJV-r4-OVK" customClass="ISLectorViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h2o-GO-luv">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="YZA-G3-pOv">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Лектор И.О." id="ce4-5w-kED">
-                                        <rect key="frame" x="20" y="20" width="280" height="39"/>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Лектор И.О.Лектор И.О.Лектор И.О.Лектор И.О." id="ce4-5w-kED">
+                                        <rect key="frame" x="154" y="20" width="146" height="128"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <textInputTraits key="textInputTraits"/>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" id="Zv3-Tp-ttp">
-                                        <rect key="frame" x="20" y="67" width="280" height="192"/>
+                                        <rect key="frame" x="20" y="156" width="280" height="164"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <string key="text">БиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиография</string>
@@ -111,7 +111,7 @@
                                         <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                     </textView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="fGS-fC-93I">
-                                        <rect key="frame" x="0.0" y="288" width="320" height="137"/>
+                                        <rect key="frame" x="0.0" y="308" width="320" height="137"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <prototypes>
@@ -145,6 +145,10 @@
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="profile-icon.png" id="yel-dE-gWf">
+                                        <rect key="frame" x="20" y="20" width="126" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -154,6 +158,7 @@
                     <connections>
                         <outlet property="lectorBio" destination="Zv3-Tp-ttp" id="ZAk-Jz-QUu"/>
                         <outlet property="lectorName" destination="ce4-5w-kED" id="4Z1-Ji-BNC"/>
+                        <outlet property="lectorPhoto" destination="yel-dE-gWf" id="dWq-4Q-u99"/>
                         <outlet property="lectorSeminars" destination="fGS-fC-93I" id="sXW-Sc-NYG"/>
                         <outlet property="scrollView" destination="YZA-G3-pOv" id="cF8-2w-IrO"/>
                     </connections>
@@ -167,7 +172,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fkk-C3-hG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="907-pJ-PWX" customClass="ISSeminarViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fcP-m7-ud3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" showsHorizontalScrollIndicator="NO" id="lmO-J5-cdE">
@@ -519,7 +524,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1959" y="2087"/>
+            <point key="canvasLocation" x="2683" y="2081"/>
         </scene>
         <!--News Webview Controller View Controller-->
         <scene sceneID="3e6-Hn-RJF">
@@ -824,6 +829,7 @@
         <image name="forward-iPhone.png" width="20" height="20"/>
         <image name="gear-iPhone.png" width="30" height="30"/>
         <image name="lectors-iPhone.png" width="30" height="30"/>
+        <image name="profile-icon.png" width="128" height="128"/>
         <image name="twitter-iPhone.png" width="30" height="30"/>
     </resources>
     <classes>
@@ -853,6 +859,7 @@
             <relationships>
                 <relationship kind="outlet" name="lectorBio" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="lectorName" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="lectorPhoto" candidateClass="UIImageView"/>
                 <relationship kind="outlet" name="lectorSeminars" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
             </relationships>
@@ -896,8 +903,6 @@
         <class className="ISSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="delete:" candidateClass="UIButton"/>
-                <relationship kind="action" name="load:" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="iCloudSwitch" candidateClass="UISwitch"/>
@@ -921,8 +926,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="aQv-Eg-GPe"/>
         <segue reference="9u7-eT-DiF"/>
         <segue reference="3dE-kl-7oN"/>
+        <segue reference="aQv-Eg-GPe"/>
     </inferredMetricsTieBreakers>
 </document>

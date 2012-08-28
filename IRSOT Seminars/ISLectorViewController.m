@@ -14,6 +14,7 @@
 @interface ISLectorViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIImageView *lectorPhoto;
 @property (weak, nonatomic) IBOutlet UITextView *lectorName;
 @property (weak, nonatomic) IBOutlet UITextView *lectorBio;
 @property (weak, nonatomic) IBOutlet UITableView *lectorSeminars;
@@ -21,6 +22,7 @@
 
 @implementation ISLectorViewController
 @synthesize scrollView = _scrollView;
+@synthesize lectorPhoto = _lectorPhoto;
 @synthesize lectorName = _lectorName;
 @synthesize lectorBio = _lectorBio;
 @synthesize lectorSeminars = _lectorSeminars;
@@ -30,13 +32,41 @@
 - (void) recalculateElementsBounds
 {
     CGSize currentSize = self.view.frame.size;
-    CGRect titleFrame = [Helper resizeTextView:self.lectorName withSize:currentSize];
+    
+    CGRect pictureFrame = self.lectorPhoto.frame;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        pictureFrame.size.width = 192;
+        pictureFrame.size.height = 192;
+        self.lectorPhoto.frame = pictureFrame;
+    }
+    
+    CGSize size = currentSize;
+    size.width = currentSize.width - pictureFrame.size.width;
+    size.height = pictureFrame.size.height;
+    
+    CGRect titleFrame = self.lectorName.frame;
+    titleFrame.origin.x = pictureFrame.origin.x + pictureFrame.size.width;
+    self.lectorName.frame = titleFrame;
+    titleFrame = [Helper resizeTextView:self.lectorName withSize:size];
     
     // header
-    CGSize size = titleFrame.size;
+    size = titleFrame.size;
+
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        CGRect bioFrame = self.lectorBio.frame;
+        bioFrame.origin.x = titleFrame.origin.x;
+        bioFrame.origin.y = titleFrame.origin.y + titleFrame.size.height;
+        self.lectorBio.frame = bioFrame;
+        size.height = pictureFrame.size.height;
+    } else {
+        size.height = pictureFrame.size.height;
+        size.width = currentSize.width;
+    }
+    
     // bio
-    CGRect rect = [Helper resizeTextView:self.lectorBio withSize:currentSize];
-    size.height += rect.origin.y + rect.size.height - 40;
+    CGRect rect = [Helper resizeTextView:self.lectorBio withSize:size];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPad) size.height += rect.size.height + 10;
+        else size.height = pictureFrame.origin.y + pictureFrame.size.height;
     
     // seminars
 //    size.height += self.lectorSeminars.frame.size.height;
@@ -54,6 +84,21 @@
     self.scrollView.contentSize = size;
 }
 
+- (void)loadLectorPhoto
+{
+    dispatch_queue_t fetchQ = dispatch_queue_create("Lector Photo fetcher", NULL);
+    dispatch_async(fetchQ, ^{
+        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: self.lector.photo]];
+        if ( data == nil )
+            return;
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.lectorPhoto.image = [UIImage imageWithData: data];
+        });
+    });
+    
+    dispatch_release(fetchQ);
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -62,11 +107,10 @@
     self.lectorSeminars.delegate = self;
     
     self.title = self.lector.name;
+
     self.lectorName.text = [NSString stringWithFormat:@"%@ %@ %@", self.lector.lastName, self.lector.firstName, self.lector.fatherName];
     self.lectorBio.text = self.lector.bio;
-    if (![self.lector.seminars count]) {
-        
-    }
+    if ([self.lector.photo length]) [self loadLectorPhoto];
 }
 
 - (void)viewDidUnload
@@ -75,6 +119,7 @@
     [self setLectorBio:nil];
     [self setLectorSeminars:nil];
     [self setScrollView:nil];
+    [self setLectorPhoto:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

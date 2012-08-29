@@ -77,7 +77,11 @@
     // if we have no arrived section we need to hide seminar type switch
     // and set currentSeminarType
     if (!self.section) {
-        self.seminarTypeSwitch.hidden = YES;
+//         self.seminarTypeSwitch.hidden = YES;
+        [self.seminarTypeSwitch removeAllSegments];
+        [self.seminarTypeSwitch insertSegmentWithTitle:self.type.name atIndex:0 animated:YES];
+        self.seminarTypeSwitch.momentary = YES;
+//        self.navigationItem.title = self.type.name;
     }
 }
 

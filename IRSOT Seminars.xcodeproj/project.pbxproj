@@ -64,7 +64,6 @@
 		C4B20B7E15E535E400936B32 /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B20B7D15E535E400936B32 /* Seminar.m */; };
 		C4B20B8115E535E400936B32 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B20B8015E535E400936B32 /* Type.m */; };
 		C4B20B8415E535E400936B32 /* Sections.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B20B8315E535E400936B32 /* Sections.m */; };
-		C4B20B8715E535E400936B32 /* Lector.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B20B8615E535E400936B32 /* Lector.m */; };
 		C4D7CEF015D3F1440003F90C /* twitter-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D7CEEE15D3F1440003F90C /* twitter-iPhone.png */; };
 		C4D7CEF115D3F1440003F90C /* twitter-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D7CEEF15D3F1440003F90C /* twitter-iPhone@2x.png */; };
 		C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */; };
@@ -74,6 +73,11 @@
 		C4DE788A15C95D26007FBEC4 /* ISSeminarListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE788915C95D26007FBEC4 /* ISSeminarListTableViewController.m */; };
 		C4DE788F15C95E34007FBEC4 /* Info Links.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4DE788E15C95E34007FBEC4 /* Info Links.plist */; };
 		C4DE789215C96EF3007FBEC4 /* SeminarFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE789115C96EF3007FBEC4 /* SeminarFetcher.m */; };
+		C4F9EEAC15ED08C0008BA56D /* Lector.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F9EEAB15ED08C0008BA56D /* Lector.m */; };
+		C4F9EEB515ED12DA008BA56D /* profile-icon~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F9EEB115ED12DA008BA56D /* profile-icon~iPad.png */; };
+		C4F9EEB615ED12DA008BA56D /* profile-icon@2x~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F9EEB215ED12DA008BA56D /* profile-icon@2x~iPad.png */; };
+		C4F9EEB715ED12DA008BA56D /* profile-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F9EEB315ED12DA008BA56D /* profile-icon.png */; };
+		C4F9EEB815ED12DA008BA56D /* profile-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F9EEB415ED12DA008BA56D /* profile-icon@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,8 +231,6 @@
 		C4B20B8015E535E400936B32 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
 		C4B20B8215E535E400936B32 /* Sections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sections.h; sourceTree = "<group>"; };
 		C4B20B8315E535E400936B32 /* Sections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sections.m; sourceTree = "<group>"; };
-		C4B20B8515E535E400936B32 /* Lector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lector.h; sourceTree = "<group>"; };
-		C4B20B8615E535E400936B32 /* Lector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lector.m; sourceTree = "<group>"; };
 		C4C6DD1715E0274E003292C8 /* IRSOT_Seminars 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "IRSOT_Seminars 2.xcdatamodel"; sourceTree = "<group>"; };
 		C4D7CEEE15D3F1440003F90C /* twitter-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "twitter-iPhone.png"; path = "icons/twitter-iPhone.png"; sourceTree = "<group>"; };
 		C4D7CEEF15D3F1440003F90C /* twitter-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "twitter-iPhone@2x.png"; path = "icons/twitter-iPhone@2x.png"; sourceTree = "<group>"; };
@@ -245,6 +247,13 @@
 		C4DE788E15C95E34007FBEC4 /* Info Links.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Info Links.plist"; sourceTree = "<group>"; };
 		C4DE789015C96EF3007FBEC4 /* SeminarFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SeminarFetcher.h; sourceTree = "<group>"; };
 		C4DE789115C96EF3007FBEC4 /* SeminarFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SeminarFetcher.m; sourceTree = "<group>"; };
+		C4F9EEA315ECF8E3008BA56D /* IRSOT_Seminars 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "IRSOT_Seminars 4.xcdatamodel"; sourceTree = "<group>"; };
+		C4F9EEAA15ED08C0008BA56D /* Lector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lector.h; sourceTree = "<group>"; };
+		C4F9EEAB15ED08C0008BA56D /* Lector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lector.m; sourceTree = "<group>"; };
+		C4F9EEB115ED12DA008BA56D /* profile-icon~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-icon~iPad.png"; path = "icons/profile-icon~iPad.png"; sourceTree = "<group>"; };
+		C4F9EEB215ED12DA008BA56D /* profile-icon@2x~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-icon@2x~iPad.png"; path = "icons/profile-icon@2x~iPad.png"; sourceTree = "<group>"; };
+		C4F9EEB315ED12DA008BA56D /* profile-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-icon.png"; path = "icons/profile-icon.png"; sourceTree = "<group>"; };
+		C4F9EEB415ED12DA008BA56D /* profile-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-icon@2x.png"; path = "icons/profile-icon@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -275,9 +284,9 @@
 		C40D8F1715CBD8730048ABF4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				C4F9EEAA15ED08C0008BA56D /* Lector.h */,
+				C4F9EEAB15ED08C0008BA56D /* Lector.m */,
 				C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */,
-				C4B20B8515E535E400936B32 /* Lector.h */,
-				C4B20B8615E535E400936B32 /* Lector.m */,
 				C4B20B8215E535E400936B32 /* Sections.h */,
 				C4B20B8315E535E400936B32 /* Sections.m */,
 				C4B20B7F15E535E400936B32 /* Type.h */,
@@ -393,6 +402,10 @@
 				C456423615D25924001C4024 /* lectors-iPhone@2x.png */,
 				C4D7CEEE15D3F1440003F90C /* twitter-iPhone.png */,
 				C4D7CEEF15D3F1440003F90C /* twitter-iPhone@2x.png */,
+				C4F9EEB115ED12DA008BA56D /* profile-icon~iPad.png */,
+				C4F9EEB215ED12DA008BA56D /* profile-icon@2x~iPad.png */,
+				C4F9EEB315ED12DA008BA56D /* profile-icon.png */,
+				C4F9EEB415ED12DA008BA56D /* profile-icon@2x.png */,
 			);
 			name = icons;
 			sourceTree = "<group>";
@@ -650,6 +663,10 @@
 				C40F52EC15DD725E0022A9B5 /* back-iPhone@2x.png in Resources */,
 				C40F52ED15DD725E0022A9B5 /* forward-iPhone.png in Resources */,
 				C40F52EE15DD725E0022A9B5 /* forward-iPhone@2x.png in Resources */,
+				C4F9EEB515ED12DA008BA56D /* profile-icon~iPad.png in Resources */,
+				C4F9EEB615ED12DA008BA56D /* profile-icon@2x~iPad.png in Resources */,
+				C4F9EEB715ED12DA008BA56D /* profile-icon.png in Resources */,
+				C4F9EEB815ED12DA008BA56D /* profile-icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,7 +705,7 @@
 				C4B20B7E15E535E400936B32 /* Seminar.m in Sources */,
 				C4B20B8115E535E400936B32 /* Type.m in Sources */,
 				C4B20B8415E535E400936B32 /* Sections.m in Sources */,
-				C4B20B8715E535E400936B32 /* Lector.m in Sources */,
+				C4F9EEAC15ED08C0008BA56D /* Lector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -863,11 +880,12 @@
 		C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C4F9EEA315ECF8E3008BA56D /* IRSOT_Seminars 4.xcdatamodel */,
 				C43AB40615E28A8F003813DF /* IRSOT_Seminars 3.xcdatamodel */,
 				C4C6DD1715E0274E003292C8 /* IRSOT_Seminars 2.xcdatamodel */,
 				C462BDC915C95A8700170E3C /* IRSOT_Seminars.xcdatamodel */,
 			);
-			currentVersion = C43AB40615E28A8F003813DF /* IRSOT_Seminars 3.xcdatamodel */;
+			currentVersion = C4F9EEA315ECF8E3008BA56D /* IRSOT_Seminars 4.xcdatamodel */;
 			path = IRSOT_Seminars.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

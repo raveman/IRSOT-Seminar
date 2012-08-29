@@ -32,7 +32,7 @@
 #pragma mark - UIApplicationDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-   
+
 //    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
 //        [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.94 green:0.51 blue:0.21 alpha:1.0]];
 //    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
@@ -195,6 +195,23 @@
 //    return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
     return [[[NSFileManager defaultManager] URLsForDirectory:NSCachesDirectory inDomains:NSUserDomainMask] lastObject];
 }
+
+- (NSURL *)lectorCacheDirectory
+{
+    
+    NSURL *path = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:LECTOR_PICS_DIR isDirectory:YES];
+    // need to create cache directory for lector's pics
+    BOOL cachePicsDirExists = [[NSFileManager defaultManager] fileExistsAtPath:[path path]];
+    
+    if (!cachePicsDirExists) {
+        NSError *error = nil;
+        [[NSFileManager defaultManager] createDirectoryAtURL:path withIntermediateDirectories:NO attributes:nil error:&error];
+        if (error) NSLog(@"Error creating directory: %@", [error.userInfo objectForKey:NSUnderlyingErrorKey]);
+    }
+    
+    return path;
+}
+
 
 #pragma mark - updateBookmarks
 - (void)updateBookmarks:(NSNotification *)notification

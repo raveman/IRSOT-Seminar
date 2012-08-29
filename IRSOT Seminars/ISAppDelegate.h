@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#define LECTOR_PICS_DIR @"Lector Pics"
+
 @interface ISAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
@@ -20,6 +22,7 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+- (NSURL *)lectorCacheDirectory;
 + (ISAppDelegate *)sharedDelegate;
 
 @end

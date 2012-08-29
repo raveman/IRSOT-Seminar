@@ -5,7 +5,9 @@
 //  Created by Bob Ershov on 04.08.12.
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
+#import <QuartzCore/CALayer.h>
 
+#import "ISAppDelegate.h"
 #import "ISLectorViewController.h"
 #import "ISSeminarViewController.h"
 #import "Seminar+Load_Data.h"
@@ -49,7 +51,7 @@
     size.height = pictureFrame.size.height;
     
     CGRect titleFrame = self.lectorName.frame;
-    titleFrame.origin.x = pictureFrame.origin.x + pictureFrame.size.width;
+    titleFrame.origin.x = pictureFrame.origin.x * 2 + pictureFrame.size.width;
     self.lectorName.frame = titleFrame;
     titleFrame = [Helper resizeTextView:self.lectorName withSize:size];
     
@@ -88,19 +90,41 @@
     self.scrollView.contentSize = size;
 }
 
+
 - (void)loadLectorPhoto
 {
-    dispatch_queue_t fetchQ = dispatch_queue_create("Lector Photo fetcher", NULL);
-    dispatch_async(fetchQ, ^{
-        NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: self.lector.photo]];
-        if ( data == nil )
-            return;
-        dispatch_async(dispatch_get_main_queue(), ^{
-            self.lectorPhoto.image = [UIImage imageWithData: data];
-        });
-    });
+    //TODO: need to check if we have already cached image and load it.
+    NSURL __block *cachedImage = [[ISAppDelegate sharedDelegate] lectorCacheDirectory];
     
-    dispatch_release(fetchQ);
+    NSString *imageName = [self.lector.photo lastPathComponent];
+    
+    cachedImage = [cachedImage URLByAppendingPathComponent:imageName];
+    UIImage *image = [UIImage imageWithContentsOfFile:[cachedImage path]];
+
+    if (image) {
+        self.lectorPhoto.image = image;
+    } else {
+        dispatch_queue_t fetchQ = dispatch_queue_create("Lector Photo fetcher", NULL);
+        dispatch_async(fetchQ, ^{
+            NSData * data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: self.lector.photo]];
+            if ( data == nil ) return;
+            
+            // saving downladed image to cache
+            UIImage *image = [UIImage imageWithData: data];
+            NSError *error = nil;
+            BOOL success = [UIImagePNGRepresentation(image) writeToURL:cachedImage options:NSDataWritingAtomic error:&error];
+            if (!success) NSLog(@"Save image error: %@ %@", error.localizedFailureReason, [error.userInfo objectForKey:NSUnderlyingErrorKey]);
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.lectorPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
+                self.lectorPhoto.layer.borderWidth = 2.0;
+                self.lectorPhoto.image = image;
+            });
+        });
+        
+        dispatch_release(fetchQ);
+    }
+    
 }
 
 - (void)viewDidLoad
@@ -119,6 +143,14 @@
         NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
         self.seminars = [self.seminars sortedArrayUsingDescriptors:sortDescriptors];
     }
+    
+    self.lectorPhoto.layer.masksToBounds = YES;
+    
+    self.lectorPhoto.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.lectorPhoto.layer.shadowOffset = CGSizeMake(0, 1);
+    self.lectorPhoto.layer.shadowOpacity = 1;
+    self.lectorPhoto.layer.shadowRadius = 1.0;
+    self.lectorPhoto.clipsToBounds = NO;
     
     if ([self.lector.photo length]) [self loadLectorPhoto];
 }

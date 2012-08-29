@@ -10,6 +10,7 @@
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "ReachabilityARC.h"
 
+#import "ISAppDelegate.h"
 #import "ISSettingsViewController.h"
 #import "ISMainPageViewController.h"
 #import "SeminarFetcher.h"
@@ -182,19 +183,21 @@
             
             for (NSDictionary *section in sections) {
                 [Sections sectionWithTerm:section inManagedObjectContext:self.managedObjectContext];
-                NSLog(@"Section: %@", [section objectForKey:@"name"]);
+//                NSLog(@"Section: %@", [section objectForKey:@"name"]);
             }
             
             for (NSDictionary *type in types) {
                 [Type typeWithTerm:type inManagedObjectContext:self.managedObjectContext];
-                NSLog(@"Type: %@", [type objectForKey:@"name"]);
+//                NSLog(@"Type: %@", [type objectForKey:@"name"]);
             }
 
+            [SVProgressHUD showWithStatus:@"Обновляю лекторов"];
             NSArray *lectors = [SeminarFetcher lectors];
             for (NSDictionary *lectorInfo in lectors) {
                 [Lector lectorWithDictionary:lectorInfo inManagedObjectContext:self.managedObjectContext];
             }
 
+            [SVProgressHUD showWithStatus:@"Обновляю каталог"];
             NSArray *seminars = [SeminarFetcher seminars];
             for (NSDictionary *seminarInfo in seminars) {
                 [Seminar seminarWithDictionary:seminarInfo lectors:lectors inManagedObjectContext:self.managedObjectContext];
@@ -273,6 +276,10 @@
     }
     
     [self.managedObjectContext unlock];
+    
+    // need to remove Lector Pics cache
+    [[NSFileManager defaultManager] removeItemAtURL:[[ISAppDelegate sharedDelegate] lectorCacheDirectory] error:&error];
+    if (error) NSLog(@"Error creating directory: %@", [error.userInfo objectForKey:NSUnderlyingErrorKey]);
 
     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Каталог удален", @"Seminars deleted")];
     

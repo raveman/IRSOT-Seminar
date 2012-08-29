@@ -52,5 +52,20 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
     return frame;
 }
 
+//- (UIImage *)addBorderToImage:(UIImage *)image
+//{
+//    CGImageRef cgimage = [image CGImage];
+//    float width = CGImageGetWidth(cgimage);
+//    float height = CGImageGetHeight(cgimage);
+//    
+//    // create temp buf
+//    void *data = malloc(width * height * 4);
+//    
+//    // draw image to buf
+//    CGContextRef ctx = CGBitmapContextCreate(data, width, height, 8, width * 4, CGImageGetColorSpace(image.CGImage), kCGImageAlphaPremultipliedLast);
+//    
+//    
+//    return newImage;
+//}
 
 @end

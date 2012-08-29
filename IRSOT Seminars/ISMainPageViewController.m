@@ -9,6 +9,7 @@
 // зеленыйц R: 73, G: 168, B: 201
 // оранжевый R: 208, G: 126, B: 73
 //
+#import <QuartzCore/QuartzCore.h>
 
 #import "ISAppDelegate.h"
 #import "ISMainPageViewController.h"
@@ -20,9 +21,15 @@
 
 #define CACHE_NAME @"Master"
 
+// 255 211 120 134U pantone
+
 @interface ISMainPageViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, ISSettingsViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *noDataLabel;
+@property (nonatomic, strong) UIColor *selectedCellBGColor;
+@property (nonatomic, strong) UIColor *notSelectedCellBGColor;
+
+@property (nonatomic, strong) UITableViewCell *currentSelectedCell;
 
 @end
 
@@ -32,8 +39,20 @@
 
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize managedObjectContext = _managedObjectContext;
+@synthesize selectedCellBGColor = _selectedCellBGColor;
+@synthesize notSelectedCellBGColor = _notSelectedCellBGColor;
+
+@synthesize currentSelectedCell = _currentSelectedCell;
 
 #pragma mark - getters and setters
+- (UIColor *) selectedCellBGColor
+{
+    return [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0];
+}
+- (UIColor *) notSelectedCellBGColor
+{
+    return [UIColor whiteColor];
+}
 
 #pragma mark - UIViewController lifecycle
 - (void)viewDidLoad
@@ -62,11 +81,13 @@
 //    [titleLabel sizeToFit];
 
     self.title =  NSLocalizedString(@"Семинары ИРСОТ", @"Main Page Title");
+    self.tabBarItem.title = NSLocalizedString(@"Каталог", @"TabBar Catalog title");
 
     self.noDataLabel.shadowColor = [UIColor grayColor];
     self.noDataLabel.shadowOffset = CGSizeMake(1,-1);
     self.noDataLabel.font = [UIFont boldSystemFontOfSize:28.0];
     self.noDataLabel.textColor = [UIColor whiteColor];
+    self.noDataLabel.text = NSLocalizedString(@"Нет данных", @"Main Page Categories list no data");
     
     UIBarButtonItem *setupButton = self.navigationItem.rightBarButtonItem;
     setupButton.image = [UIImage imageNamed:@"gear-iPhone.png"];
@@ -75,11 +96,15 @@
     self.seminarCategoriesTableView.backgroundColor = [UIColor clearColor];
     self.seminarCategoriesTableView.opaque = NO;
     self.seminarCategoriesTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-hash-background.png"]];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
 }
 
 - (void)viewDidUnload
 {
-   
+    [[NSNotificationCenter defaultCenter] removeObserver:self];  
     [self setSeminarCategoriesTableView:nil];
     [self setNoDataLabel:nil];
     [super viewDidUnload];
@@ -94,7 +119,9 @@
         // у нас нет еще никаких данных, надо бы их загрузить
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Данные" message:@"У нас нет еще загруженных семинаров" delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:@"Загрузить", nil];
         [alert show];
+        self.noDataLabel.hidden = NO;
     } else {
+        self.noDataLabel.hidden = YES;
         // deselecting previous selected row
         NSIndexPath *indexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
         if (indexPath != nil) {
@@ -118,12 +145,14 @@
         NSIndexPath *indexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
         if (indexPath.section == 0) {
             Sections *section = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-            [segue.destinationViewController setSection:section];
-            [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
+            ISSeminarListTableViewController *dvc = [segue destinationViewController];
+            [dvc setSection:section];
+            [dvc setManagedObjectContext:self.managedObjectContext];
         } else {
             Type *type = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-            [segue.destinationViewController setType:type];
-            [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
+            ISSeminarListTableViewController *dvc = [segue destinationViewController];
+            [dvc setType:type];
+            [dvc setManagedObjectContext:self.managedObjectContext];
         }
     }
     
@@ -140,6 +169,7 @@
 }
 
 #pragma mark - UITableView dataSource and delegate
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return [[self.fetchedResultsController sections] count];
@@ -158,12 +188,6 @@
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
        count = [sectionInfo numberOfObjects];
-//        if (section == SEMINAR_TYPE_SEMINAR_BK) {
-//            count = [sectionInfo numberOfObjects];
-//        } else {
-//            count = [sectionInfo numberOfObjects] - 2;
-//        }
-        
         self.noDataLabel.hidden = YES;
     } else {
         self.noDataLabel.hidden = NO;
@@ -171,6 +195,17 @@
     }
         
     return count;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([self.fetchedResultsController fetchedObjects]) {
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            Sections *section = [[self fetchedResultsController] objectAtIndexPath:indexPath];
+            self.detailViewController.section = section;
+        }
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -181,8 +216,16 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+
+//    UIView *bgColorView = [[UIView alloc] init];
+//    bgColorView.backgroundColor = self.selectedCellBGColor;
+//    [cell setSelectedBackgroundView:bgColorView];
 
     // Configure the cell...
+//    cell.selectedColor = self.selectedCellBGColor;
+//    cell.deselectedColor = self.notSelectedCellBGColor;
+    
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         Sections *section = [self.fetchedResultsController objectAtIndexPath:indexPath];
         NSString *sectionName = [[[section.name substringToIndex:1] uppercaseString] stringByAppendingString:[section.name substringFromIndex:1]];
@@ -191,17 +234,6 @@
     }
     
     return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-    if ([self.fetchedResultsController fetchedObjects]) {
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-            Sections *section = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-            self.detailViewController.section = section;
-        }
-    }
 }
 
 #pragma mark - Fetched results controller
@@ -312,6 +344,7 @@
 - (void) settingsViewController:(ISSettingsViewController *)sender didDeletedStore:(BOOL)deleted
 {
     if (deleted) {
+        self.noDataLabel.hidden = NO;
         self.fetchedResultsController = nil;
         [self.seminarCategoriesTableView reloadData];
     }
@@ -322,6 +355,21 @@
     if (updated) {
         [self.seminarCategoriesTableView reloadData];
     }
+}
+
+#pragma mark - Notification handlers
+
+- (void) seminarDataChanged:(NSNotification *)notification
+{
+    //    notification.name;
+    //    notification.object;
+    //    notification.userInfo;
+    
+    if ([notification.userInfo objectForKey:NSRemovedPersistentStoresKey]) {
+        self.fetchedResultsController = nil;
+    }
+    
+    [self.seminarCategoriesTableView reloadData];
 }
 
 @end

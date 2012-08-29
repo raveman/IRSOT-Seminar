@@ -31,7 +31,7 @@
         [SVProgressHUD showErrorWithStatus:errorMessage];
         NSLog(errorMessage, nil);
     }
-    NSLog(@"[%@ %@] received %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), results);
+//    NSLog(@"[%@ %@] received %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), results);
     return results;
 }
 

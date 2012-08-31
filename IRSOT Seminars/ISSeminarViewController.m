@@ -362,7 +362,7 @@
     CGRect frame =  [[UIScreen mainScreen] bounds];
     int width = 0;
     UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-    if (UIDeviceOrientationIsPortrait(deviceOrientation)) width = frame.size.width - 10;
+    if (deviceOrientation == UIDeviceOrientationPortrait || deviceOrientation == UIDeviceOrientationUnknown || deviceOrientation == UIDeviceOrientationPortraitUpsideDown ) width = frame.size.width - 10;
         else width = frame.size.height - 10;
 
     header = [NSString stringWithFormat:@"%@ #program_page { width: %dpx; font-size: small; margin-left: 5px; }", header, width];

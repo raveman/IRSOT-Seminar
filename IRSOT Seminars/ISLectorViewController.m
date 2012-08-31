@@ -217,6 +217,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
+    
     if ([self.lector.seminars count]) {
         NSArray *seminars = [self.lector.seminars allObjects];
         Seminar *seminar = [seminars objectAtIndex:indexPath.row];

@@ -97,6 +97,8 @@
     self.seminarCategoriesTableView.opaque = NO;
     self.seminarCategoriesTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-hash-background.png"]];
     
+    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
@@ -217,7 +219,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
+//    cell.textLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:15.0];
+    
 //    UIView *bgColorView = [[UIView alloc] init];
 //    bgColorView.backgroundColor = self.selectedCellBGColor;
 //    [cell setSelectedBackgroundView:bgColorView];
@@ -234,6 +238,24 @@
     }
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+
+    NSString *title = [NSString string];
+    switch (section) {
+        case 0:
+            title = NSLocalizedString(@"Разделы", @"Main Page Section Title");
+            break;
+        case 1:
+            title = NSLocalizedString(@"Форматы", @"Main Page Type Title");
+            break;
+        default:
+            break;
+    }
+    
+    return title;
 }
 
 #pragma mark - Fetched results controller

@@ -129,6 +129,10 @@
     // Configure the cell...
     NSDictionary *sectionDictionary = [self getDictionaryFor:self.infoLinks atIndex:indexPath.section];
     NSString *key = [self getKeyForDictionary:sectionDictionary atIndex:indexPath.row];
+
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
+    
     cell.textLabel.text = key;
     cell.detailTextLabel.text = [sectionDictionary objectForKey:key];
     

@@ -76,12 +76,14 @@
     
     // if we have no arrived section we need to hide seminar type switch
     // and set currentSeminarType
+    self.title = self.section.name;
+    
     if (!self.section) {
 //         self.seminarTypeSwitch.hidden = YES;
         [self.seminarTypeSwitch removeAllSegments];
         [self.seminarTypeSwitch insertSegmentWithTitle:self.type.name atIndex:0 animated:YES];
         self.seminarTypeSwitch.momentary = YES;
-//        self.navigationItem.title = self.type.name;
+        self.title = self.type.name;
     }
 }
 
@@ -168,6 +170,10 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
+    
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
+
     
     if (tableView == self.tableView) {
         // Configure the cell...

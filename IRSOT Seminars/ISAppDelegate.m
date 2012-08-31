@@ -16,6 +16,8 @@
 #import "ISBookmarksTableViewController.h"
 #import "ISLectorListTableViewController.h"
 
+#import "SeminarFetcher.h"
+
 @implementation ISAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -198,7 +200,6 @@
 
 - (NSURL *)lectorCacheDirectory
 {
-    
     NSURL *path = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:LECTOR_PICS_DIR isDirectory:YES];
     // need to create cache directory for lector's pics
     BOOL cachePicsDirExists = [[NSFileManager defaultManager] fileExistsAtPath:[path path]];
@@ -212,6 +213,37 @@
     return path;
 }
 
+#pragma mark - cache CSS files
+- (NSURL *)bkCSS
+{
+    NSURL *bkCSSPath = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:[RUSEMINAR_BK_CSS lastPathComponent]];
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:[bkCSSPath path]];
+    if (!exists) {
+        dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
+        dispatch_async(fetchQ, ^{
+            NSData *data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: RUSEMINAR_BK_CSS]];
+            [data writeToURL:bkCSSPath atomically:YES];
+        });
+        dispatch_release(fetchQ);
+    }
+    return bkCSSPath;
+}
+
+- (NSURL *)seminarCSS
+{
+    NSURL *seminarCSSPath = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:[RUSEMINAR_SEMINAR_CSS lastPathComponent]];
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:[seminarCSSPath path]];
+    if (!exists) {
+        dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
+        dispatch_async(fetchQ, ^{
+
+            NSData *data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: RUSEMINAR_SEMINAR_CSS]];
+            [data writeToURL:seminarCSSPath atomically:YES];
+        });
+        dispatch_release(fetchQ);
+    }
+    return seminarCSSPath;
+}
 
 #pragma mark - updateBookmarks
 - (void)updateBookmarks:(NSNotification *)notification

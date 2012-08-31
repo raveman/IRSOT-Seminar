@@ -23,6 +23,9 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 - (NSURL *)lectorCacheDirectory;
+- (NSURL *)bkCSS;
+- (NSURL *)seminarCSS;
+
 + (ISAppDelegate *)sharedDelegate;
 
 @end

@@ -8,6 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
+#define RUSEMINAR_BK_CSS @"http://www.ruseminar.ru/assets/css/bizclass.css"
+#define RUSEMINAR_SEMINAR_CSS @"http://www.ruseminar.ru/assets/css/seminar.css"
+
 #define SEMINAR_SITE @"devedu.ruseminar.ru"
 #define SEMINAR_URL @"http://devedu.ruseminar.ru/api/nonauth/"
 #define SEMINAR_TAXONOMY_URL @"taxonomy_vocabulary"

@@ -179,7 +179,9 @@
         self.sectionLabel.text = self.seminar.section.name;
         self.typeLabel.text = self.seminar.type.name;
         self.lectorsLabel.text  = [self.seminar stringWithLectorNames];
-        [self.programWebView loadHTMLString:[self makeHTMLPageFromString:self.seminar.program] baseURL:[NSURL URLWithString:@""]];
+        [self.programWebView loadHTMLString:[self makeHTMLPageFromString:self.seminar.program] baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];
+        self.programWebView.userInteractionEnabled = YES;
+        self.programWebView.scalesPageToFit = YES;
         self.programWebView.delegate = self;
         self.lectorTableView.dataSource = self;
         self.lectorTableView.delegate = self;
@@ -225,7 +227,9 @@
 
 - (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
 
-    [self recalculateElementsBounds];
+    [self.programWebView loadHTMLString:[self makeHTMLPageFromString:self.seminar.program] baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];
+//    [self.programWebView reload];
+//    [self recalculateElementsBounds];
     [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
 }
 
@@ -323,27 +327,56 @@
 
 - (NSString *)makeHTMLPageFromString:(NSString *)html
 {
-    NSString *header = @"<html><head> \n"
-    "<style type=\"text/css\"> \n"
+    NSString *header = @"<!doctype html>\n<html>\n<head> \n";
+
+    NSError *error = nil;
+    NSString *seminarCSSData = [NSString stringWithContentsOfURL:[[ISAppDelegate sharedDelegate] seminarCSS] encoding:NSUTF8StringEncoding error:&error];
+    NSString *bkCSSData = [NSString stringWithContentsOfURL:[[ISAppDelegate sharedDelegate] bkCSS] encoding:NSUTF8StringEncoding error:&error];
+    
+    header = [NSString stringWithFormat:@"%@\n <style type=\"text/css\">\n %@\n", header, seminarCSSData];
+    header = [NSString stringWithFormat:@"%@\n%@", header, bkCSSData];
+    header = [NSString stringWithFormat:@"%@\n</style>", header];
+    
+    header = [NSString stringWithFormat:@"%@\n %@", header, @"<style type=\"text/css\"> \n"
     "html {"
         "-webkit-text-size-adjust: none; "
-    "}   "
+    "}\n"
     "body {font-family: \"helvetica neue\"; font-size: 14; }\n"
     "ul {\n"
         "list-style-position: outside;\n"
         "list-style-type: square;\n"
         "padding-left: 15px;\n"
-    "}"
-    "</style> \n"
-    "<meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0;'>"
-    "</head> \n<body>\n";
-    NSString *footer = @"</body></html>";
+    "}\n"];
+//    "ul {\n"
+//        "width: 100% !important\n"
+//    "}\n"
+    
+//    CGSize size = [[UIScreen mainScreen] bounds].size;
+//    int width = 0;
+//    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationPortrait) {
+//        width = size.width;
+//    } else {
+//        width = size.height;
+//    }
+
+    CGRect frame =  [[UIScreen mainScreen] bounds];
+    int width = 0;
+    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+    if (UIDeviceOrientationIsPortrait(deviceOrientation)) width = frame.size.width - 10;
+        else width = frame.size.height - 10;
+
+    header = [NSString stringWithFormat:@"%@ #program_page { width: %dpx; font-size: small; margin-left: 5px; }", header, width];
+
+    header = [NSString stringWithFormat:@"%@ %@", header, @"</style> \n"
+    "<meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0;'>\n"
+    "</head> \n<body>\n<div id=\"program_page\">\n"];
+
+    NSString *footer = @"</div>\n</body>\n</html>";
 
     NSString *fullHTML = [NSString stringWithFormat:@"%@\n%@\n%@", header, html, footer];
     
     return fullHTML;
 }
-
 
 - (void) reloadHtml
 {
@@ -357,14 +390,24 @@
 //    [webview setBounds:CGRectMake(oldBounds.origin.x, oldBounds.origin.y, oldBounds.size.width, height)];
 
     CGRect frame = webview.frame;
-    frame.size.height = 1;
-    frame.size.width = 1;
-    webview.frame = frame;
+//    frame.size.height = 1;
+//    frame.size.width = 1;
+//    webview.frame = frame;
     CGSize fittingSize = [webview sizeThatFits:CGSizeZero];
     frame.size = fittingSize;
+    frame.size.width = self.view.frame.size.width;
     webview.frame = frame;
-
+    
 //    [webview sizeToFit];
+//    NSString *output = [webview stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"program_page\").offsetHeight;"];
+//    NSString *output = [webview stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
+//
+//    NSLog(@"height: %@", output);
+
+//    CGRect frame = webview.frame;
+//    frame.size.height = [output integerValue];
+//    webview.frame = frame;
+        
     [self recalculateElementsBounds];
 
 }
@@ -384,6 +427,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
+    
+    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
+    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
     
     if ([self.seminar.lectors count]) {
         Lector *lector = [self.lectors objectAtIndex:indexPath.row];

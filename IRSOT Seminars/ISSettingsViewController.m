@@ -175,6 +175,8 @@
     BOOL __block updated = NO;
     dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
     dispatch_async(fetchQ, ^{
+        
+        // downloading section and types
         NSDictionary *sectionsAndTypes = [SeminarFetcher sectionsAndTypes];
         
         [self.managedObjectContext performBlock:^{

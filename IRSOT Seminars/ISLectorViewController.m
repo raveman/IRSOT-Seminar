@@ -117,7 +117,7 @@
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.lectorPhoto.layer.borderColor = [UIColor whiteColor].CGColor;
-                self.lectorPhoto.layer.borderWidth = 2.0;
+                self.lectorPhoto.layer.borderWidth = 1.0;
                 self.lectorPhoto.image = image;
             });
         });
@@ -146,7 +146,7 @@
     
     self.lectorPhoto.layer.masksToBounds = YES;
     
-    self.lectorPhoto.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.lectorPhoto.layer.shadowColor = [UIColor grayColor].CGColor;
     self.lectorPhoto.layer.shadowOffset = CGSizeMake(0, 1);
     self.lectorPhoto.layer.shadowOpacity = 1;
     self.lectorPhoto.layer.shadowRadius = 1.0;

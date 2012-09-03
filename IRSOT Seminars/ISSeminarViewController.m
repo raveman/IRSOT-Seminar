@@ -19,6 +19,14 @@
 #import "Lector.h"
 #import "Seminar+Load_Data.h"
 
+#import "SHK.h"
+#import "SHKItem.h"
+#import "SHKFacebook.h"
+#import "SHKTwitter.h"
+#import "SHKEvernote.h"
+#import "SHKMail.h"
+#import "SHKVkontakte.h"
+
 #define ADD_BOOKMARK @"Добавить закладку"
 #define VIEW_ON_WEB @"Посмотреть полную версию"
 
@@ -264,8 +272,21 @@
     } else {
         NSString *addBookmarkButton = NSLocalizedString(ADD_BOOKMARK, @"Add seminar bookmark button title");
         NSString *viewOnWebButton = NSLocalizedString(VIEW_ON_WEB, @"Add seminar bookmark button title");
+        NSString *evernoteButton = NSLocalizedString(@"Сохранить в Evernote", @"Share on Evernote");
+        NSString *twitterButton = NSLocalizedString(@"Отправить в Twitter", @"Share on twitter");
+        NSString *facebookButton = NSLocalizedString(@"Отправить в Facebook", @"Share on Facebook");
+        NSString *emailButton = NSLocalizedString(@"Отправить по почте", @"Share via E-Mail");
+        NSString *vkontakteButton = NSLocalizedString(@"Отправить в Вконтакте", @"Share on Vkontakte");
+//        NSString *odnoklassnikiButton = NSLocalizedString(@"Отправить в Одноклассники", @"Share on Odnoklassniki");
         
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Закладки" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, nil];
+        UIActionSheet *actionSheet = nil;
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+            actionSheet = [[UIActionSheet alloc] initWithTitle:@"Закладки" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, emailButton, evernoteButton, twitterButton, facebookButton, nil];
+        } else {
+            actionSheet = [[UIActionSheet alloc] initWithTitle:@"Закладки" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, emailButton, evernoteButton, twitterButton, facebookButton, vkontakteButton, nil];
+        }
+        
         [actionSheet showFromBarButtonItem:sender animated:YES];
         self.actionSheet = actionSheet;
     }
@@ -288,7 +309,7 @@
                     found = YES;
                 }
             }
-        }
+        } 
         if (!found) {
             NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys:self.seminar.name, BOOKMARK_SEMINAR_NAME_KEY, self.seminar.id, BOOKMARK_SEMINAR_ID_KEY, [self.seminar stringWithSeminarDates], BOOKMARK_SEMINAR_DATE_KEY , nil];
             [bookmarksArray addObject:bookmark];
@@ -297,6 +318,29 @@
         }
     } else if ([choice isEqualToString:VIEW_ON_WEB]) {
         [self performSegueWithIdentifier:@"View On Web" sender:self];
+    } else if (buttonIndex == 2) {
+        //share to mail
+        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
+        [SHKMail shareItem:item];
+    } else if (buttonIndex == 3) {
+        //share to evernote
+        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
+        [SHKEvernote shareItem:item];
+    } else if (buttonIndex == 4) {
+        //share to twitter
+        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
+        [SHKTwitter shareItem:item];
+    } else if (buttonIndex == 5) {
+        //share to facebook
+        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
+        [SHKFacebook shareItem:item];
+    }
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        if (buttonIndex == 6) {
+            //share to vkontakte
+            SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
+            [SHKVkontakte shareItem:item];
+        }
     }
 }
 

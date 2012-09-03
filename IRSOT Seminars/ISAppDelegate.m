@@ -18,6 +18,9 @@
 
 #import "SeminarFetcher.h"
 
+#import "SHKConfiguration.h"
+#import "ISSHKConfigurator.h"
+
 @implementation ISAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -51,7 +54,8 @@
                                                object:self.kvStore];
     [self.kvStore synchronize];
     
-    
+    DefaultSHKConfigurator *configurator = [[ISSHKConfigurator alloc] init];
+    [SHKConfiguration sharedInstanceWithConfigurator:configurator];
     
     return YES;
 }

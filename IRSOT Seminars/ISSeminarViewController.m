@@ -180,7 +180,8 @@
         self.typeLabel.text = self.seminar.type.name;
         self.lectorsLabel.text  = [self.seminar stringWithLectorNames];
         [self.programWebView loadHTMLString:[self makeHTMLPageFromString:self.seminar.program] baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];
-        self.programWebView.userInteractionEnabled = YES;
+        self.programWebView.userInteractionEnabled = NO;
+        self.programWebView.scrollView.scrollEnabled = NO;
         self.programWebView.scalesPageToFit = YES;
         self.programWebView.delegate = self;
         self.lectorTableView.dataSource = self;
@@ -365,7 +366,7 @@
     if (deviceOrientation == UIDeviceOrientationPortrait || deviceOrientation == UIDeviceOrientationUnknown || deviceOrientation == UIDeviceOrientationPortraitUpsideDown ) width = frame.size.width - 10;
         else width = frame.size.height - 10;
 
-    header = [NSString stringWithFormat:@"%@ #program_page { width: %dpx; font-size: small; margin-left: 5px; }", header, width];
+    header = [NSString stringWithFormat:@"%@ #program_page { width: %dpx; font-size: small; margin: 5px; }", header, width];
 
     header = [NSString stringWithFormat:@"%@ %@", header, @"</style> \n"
     "<meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0;'>\n"
@@ -375,7 +376,13 @@
 
     NSString *fullHTML = [NSString stringWithFormat:@"%@\n%@\n%@", header, html, footer];
     
-    return fullHTML;
+    // delete all width 500px/600px
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"width:.[0-9]+px;" options:NSRegularExpressionCaseInsensitive error:nil];
+    
+    NSString *modifiedString = [regex stringByReplacingMatchesInString:fullHTML options:0 range:NSMakeRange(0, [fullHTML length]) withTemplate:@"width: 95%;"];
+
+    
+    return modifiedString;
 }
 
 - (void) reloadHtml

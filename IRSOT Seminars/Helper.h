@@ -16,4 +16,7 @@ extern NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification;
 + (CGRect) resizeLabel:(UILabel *)label withSize:(CGSize)size;
 + (CGRect) resizeTextView:(UITextView *)textView withSize:(CGSize)size;
 + (CGRect) resizeRectButton:(UIButton *)button withSize:(CGSize)size;
+
++ (void)makeButtonShiny:(UIButton*)button withBackgroundColor:(UIColor*)backgroundColor;
+
 @end

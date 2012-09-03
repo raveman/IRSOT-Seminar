@@ -17,6 +17,7 @@
 		C40F52EE15DD725E0022A9B5 /* forward-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C40F52EA15DD725E0022A9B5 /* forward-iPhone@2x.png */; };
 		C415A30215CC95A0004BCD79 /* ISBookmarksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C415A30115CC95A0004BCD79 /* ISBookmarksTableViewController.m */; };
 		C415A30B15CC9952004BCD79 /* ISLectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C415A30A15CC9952004BCD79 /* ISLectorViewController.m */; };
+		C41B5C7F15F4ECA20079D940 /* ISSHKConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = C41B5C7E15F4ECA20079D940 /* ISSHKConfigurator.m */; };
 		C4228C5C15D12ED500960BBA /* irsot-icon-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4228C5B15D12ED500960BBA /* irsot-icon-iPhone@2x.png */; };
 		C4228C5F15D12EEF00960BBA /* irsot-icon-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4228C5E15D12EEF00960BBA /* irsot-icon-iPhone.png */; };
 		C4228C6115D12F0D00960BBA /* irsot-icon-iPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4228C6015D12F0D00960BBA /* irsot-icon-iPad@2x.png */; };
@@ -162,6 +163,8 @@
 		C415A30115CC95A0004BCD79 /* ISBookmarksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISBookmarksTableViewController.m; sourceTree = "<group>"; };
 		C415A30915CC9952004BCD79 /* ISLectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorViewController.h; sourceTree = "<group>"; };
 		C415A30A15CC9952004BCD79 /* ISLectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorViewController.m; sourceTree = "<group>"; };
+		C41B5C7D15F4ECA20079D940 /* ISSHKConfigurator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSHKConfigurator.h; sourceTree = "<group>"; };
+		C41B5C7E15F4ECA20079D940 /* ISSHKConfigurator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSHKConfigurator.m; sourceTree = "<group>"; };
 		C4228C5B15D12ED500960BBA /* irsot-icon-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "irsot-icon-iPhone@2x.png"; path = "../irsot-icon-iPhone@2x.png"; sourceTree = "<group>"; };
 		C4228C5E15D12EEF00960BBA /* irsot-icon-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "irsot-icon-iPhone.png"; path = "../irsot-icon-iPhone.png"; sourceTree = "<group>"; };
 		C4228C6015D12F0D00960BBA /* irsot-icon-iPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "irsot-icon-iPad@2x.png"; path = "../irsot-icon-iPad@2x.png"; sourceTree = "<group>"; };
@@ -347,6 +350,15 @@
 			name = "Lector Views";
 			sourceTree = "<group>";
 		};
+		C41B5C7C15F4EC780079D940 /* Share */ = {
+			isa = PBXGroup;
+			children = (
+				C41B5C7D15F4ECA20079D940 /* ISSHKConfigurator.h */,
+				C41B5C7E15F4ECA20079D940 /* ISSHKConfigurator.m */,
+			);
+			name = Share;
+			sourceTree = "<group>";
+		};
 		C4228C6415D1805600960BBA /* app icon */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,6 +474,7 @@
 				C415A30415CC95B0004BCD79 /* Bookmarks */,
 				C415A30C15CC996A004BCD79 /* Lector Views */,
 				C4DE788C15C95DCA007FBEC4 /* Info */,
+				C41B5C7C15F4EC780079D940 /* Share */,
 				C4D7CEF315D3F1A60003F90C /* ISNewsWebviewControllerViewController.h */,
 				C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */,
 				C462BDB715C95A8700170E3C /* Supporting Files */,
@@ -706,6 +719,7 @@
 				C4B20B8115E535E400936B32 /* Type.m in Sources */,
 				C4B20B8415E535E400936B32 /* Sections.m in Sources */,
 				C4F9EEAC15ED08C0008BA56D /* Lector.m in Sources */,
+				C41B5C7F15F4ECA20079D940 /* ISSHKConfigurator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -827,7 +841,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "D9E21BA4-2B19-4AC3-9DAB-CCDEAFC46146";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D9E21BA4-2B19-4AC3-9DAB-CCDEAFC46146";
-				USER_HEADER_SEARCH_PATHS = "Submodules/*/** /Users/raveman/Developer/libs/tapkulibrary/src/*/**";
+				USER_HEADER_SEARCH_PATHS = "Submodules/** /Users/raveman/Developer/libs/tapkulibrary/src/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -848,7 +862,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "D9E21BA4-2B19-4AC3-9DAB-CCDEAFC46146";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "D9E21BA4-2B19-4AC3-9DAB-CCDEAFC46146";
-				USER_HEADER_SEARCH_PATHS = "Submodules/*/** /Users/raveman/Developer/libs/tapkulibrary/src/*/**";
+				USER_HEADER_SEARCH_PATHS = "Submodules/** /Users/raveman/Developer/libs/tapkulibrary/src/**";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

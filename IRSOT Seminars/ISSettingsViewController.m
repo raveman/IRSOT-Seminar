@@ -7,6 +7,8 @@
 //
 // TODO: add error checking: no network, broken data transfer, etc...
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "ReachabilityARC.h"
 
@@ -64,7 +66,17 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_texture.png"]];
 
     self.refreshButton.tintColor = [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0];
+    self.refreshButton.layer.cornerRadius = 8.0f;
+    self.refreshButton.layer.borderWidth = 1.0f;
+    self.refreshButton.layer.borderColor = [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0].CGColor;
+    self.refreshButton.backgroundColor = [UIColor colorWithRed:252/255.0 green:165/255.0 blue:101/255.0 alpha:1.0];
+    
     self.deleteButton.tintColor = [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0];
+    self.deleteButton.layer.cornerRadius = 8.0f;
+    self.deleteButton.layer.borderWidth = 1.0f;
+    self.deleteButton.layer.borderColor = [UIColor colorWithRed:222/255.0 green:118/255.0 blue:102/255.0 alpha:1.0].CGColor;
+    self.deleteButton.backgroundColor = [UIColor colorWithRed:255/255.0 green:42/255.0 blue:8/255.0 alpha:1.0];
+
     
     self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
     self.iCloudSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USE_ICLOUD_KEY] boolValue];

@@ -134,7 +134,7 @@
     self.lectorSeminars.dataSource = self;
     self.lectorSeminars.delegate = self;
     
-    self.title = self.lector.name;
+    self.title = [self.lector fullName];
 
     self.lectorName.text = [self.lector fullName];
     self.lectorBio.text = self.lector.bio;

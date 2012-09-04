@@ -178,6 +178,14 @@
             self.seminarName.text = [NSString stringWithFormat:@"«%@»", self.seminar.name];
         }
         
+        UIImage *whiteButton = [UIImage imageNamed:@"whiteButton.png"];
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+            whiteButton = [whiteButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
+        } else {
+            whiteButton = [whiteButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+        }
+        [self.attendSeminarButton setBackgroundImage:whiteButton forState:UIControlStateNormal];
+        
         if ([self.seminar.lectors count]) {
             NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
             self.lectors = [[self.seminar.lectors allObjects] sortedArrayUsingDescriptors:sortDescriptors];

@@ -59,24 +59,22 @@
     return _reach;
 }
 
-- (void)redrawButtons
-{
-    [Helper makeButtonShiny:self.refreshButton withBackgroundColor:self.refreshButton.backgroundColor];
-    [Helper makeButtonShiny:self.deleteButton withBackgroundColor:self.deleteButton.backgroundColor];
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_texture.png"]];
 
-//    self.refreshButton.tintColor = [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0];
-//    self.refreshButton.layer.borderColor = [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0].CGColor;
-//    self.refreshButton.backgroundColor = [UIColor colorWithRed:252/255.0 green:165/255.0 blue:101/255.0 alpha:1.0];
-//    
-//    self.deleteButton.tintColor = [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0];
-//    self.deleteButton.layer.borderColor = [UIColor colorWithRed:222/255.0 green:118/255.0 blue:102/255.0 alpha:1.0].CGColor;
-//    self.deleteButton.backgroundColor = [UIColor colorWithRed:255/255.0 green:42/255.0 blue:8/255.0 alpha:1.0];
+    UIImage *greenButton = [UIImage imageNamed:@"greenButton.png"];
+    UIImage *redButton = [UIImage imageNamed:@"orangeButton.png"];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        greenButton = [greenButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
+        redButton = [redButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
+    } else {
+        greenButton = [greenButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+        redButton = [redButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+    }
+    [self.refreshButton setBackgroundImage:greenButton forState:UIControlStateNormal];
+    [self.deleteButton setBackgroundImage:redButton forState:UIControlStateNormal];
     
     self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
     self.iCloudSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USE_ICLOUD_KEY] boolValue];
@@ -86,7 +84,6 @@
     
     if (self.emptyStore) self.deleteButton.enabled = YES;
         else self.deleteButton.enabled = NO;
-    
     
     self.reach.reachableBlock = ^(ReachabilityARC * reachability)
     {
@@ -107,7 +104,6 @@
     };
     
     [self.reach startNotifier];
-//    [self redrawButtons];
 }
 
 - (void)viewDidUnload

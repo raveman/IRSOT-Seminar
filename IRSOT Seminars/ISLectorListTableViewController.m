@@ -111,7 +111,8 @@
     
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
     cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         Lector *lector = [self.fetchedResultsController objectAtIndexPath:indexPath];
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {

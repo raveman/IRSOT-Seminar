@@ -132,7 +132,8 @@
 
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
     cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+
     cell.textLabel.text = key;
     cell.detailTextLabel.text = [sectionDictionary objectForKey:key];
     

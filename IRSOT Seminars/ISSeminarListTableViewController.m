@@ -153,7 +153,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSInteger count = 0;
+    NSInteger count = 1;
     
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
@@ -173,7 +173,7 @@
     
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
     cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
-
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
     if (tableView == self.tableView) {
         // Configure the cell...
@@ -190,6 +190,12 @@
             cell.detailTextLabel.text =[NSString stringWithFormat:@"%@\n%@", lectors, [seminar stringWithSeminarDates]];
             cell.detailTextLabel.numberOfLines = 2;
             cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+        } else {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
+            cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
+            cell.textLabel.text = NSLocalizedString(@"Нет семинаров", @"No seminars");
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.detailTextLabel.text = @"";
         }
     } else {
         if ([[self.fetchedResultsController fetchedObjects] count]) {

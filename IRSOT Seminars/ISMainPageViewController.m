@@ -218,7 +218,7 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
 //    cell.textLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:15.0];
     

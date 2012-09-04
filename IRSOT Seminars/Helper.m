@@ -80,7 +80,8 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
     
     // Create a shiny layer that goes on top of the button
     CAGradientLayer *shineLayer = [CAGradientLayer layer];
-    shineLayer.frame = button.layer.bounds;
+    CGRect buttonSize = button.layer.bounds;
+    shineLayer.frame = buttonSize;
     // Set the gradient colors
     shineLayer.colors = [NSArray arrayWithObjects:
                          (id)[UIColor colorWithWhite:1.0f alpha:0.4f].CGColor,
@@ -92,7 +93,7 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
     // Set the relative positions of the gradien stops
     shineLayer.locations = [NSArray arrayWithObjects:
                             [NSNumber numberWithFloat:0.0f],
-                            [NSNumber numberWithFloat:0.5f],
+                            [NSNumber numberWithFloat:0.3f],
                             [NSNumber numberWithFloat:0.5f],
                             [NSNumber numberWithFloat:0.8f],
                             [NSNumber numberWithFloat:1.0f],

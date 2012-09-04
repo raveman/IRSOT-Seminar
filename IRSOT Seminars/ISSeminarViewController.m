@@ -328,11 +328,11 @@
         [SHKEvernote shareItem:item];
     } else if (buttonIndex == 4) {
         //share to twitter
-        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
+        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар @irsot: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
         [SHKTwitter shareItem:item];
     } else if (buttonIndex == 5) {
         //share to facebook
-        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
+        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"«%@»", self.seminar.name] contentType:SHKShareTypeURL];
         [SHKFacebook shareItem:item];
     }
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {

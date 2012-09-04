@@ -59,6 +59,10 @@
 {
     return @"96f96d1c2b5d21e0";
 }
+- (NSString *)evernoteHost
+{
+    return @"http://www.evernote.com";
+}
 
 
 @end

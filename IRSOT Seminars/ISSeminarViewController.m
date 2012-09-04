@@ -246,6 +246,13 @@
     [super viewWillAppear:animated];
 }
 
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [self.actionSheet dismissWithClickedButtonIndex:[self.actionSheet destructiveButtonIndex] animated:YES];
+    
+    [super viewWillDisappear:animated];
+}
+
 - (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
 
     [self.programWebView loadHTMLString:[self makeHTMLPageFromString:self.seminar.program] baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];

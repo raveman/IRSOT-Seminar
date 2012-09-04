@@ -18,6 +18,7 @@
 #import "Type.h"
 #import "Lector.h"
 #import "Seminar+Load_Data.h"
+#import "Sections+Load_Data.h"
 
 #import "SHK.h"
 #import "SHKItem.h"
@@ -196,9 +197,12 @@
         }
         
         self.seminarDate.text = [self.seminar stringWithSeminarDates];
-        self.sectionLabel.text = self.seminar.section.name;
+        
+        self.sectionLabel.text = [[[self.seminar.section.name substringToIndex:1] uppercaseString] stringByAppendingString:[self.seminar.section.name  substringFromIndex:1]];
+        self.sectionLabel.textColor = [self.seminar.section sectionColor];
+
         self.typeLabel.text = self.seminar.type.name;
-        self.lectorsLabel.text  = [self.seminar stringWithLectorNames];
+
         [self.programWebView loadHTMLString:[self makeHTMLPageFromString:self.seminar.program] baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];
         self.programWebView.userInteractionEnabled = NO;
         self.programWebView.scrollView.scrollEnabled = NO;
@@ -411,17 +415,6 @@
         "list-style-type: square;\n"
         "padding-left: 15px;\n"
     "}\n"];
-//    "ul {\n"
-//        "width: 100% !important\n"
-//    "}\n"
-    
-//    CGSize size = [[UIScreen mainScreen] bounds].size;
-//    int width = 0;
-//    if ([[UIDevice currentDevice] orientation] == UIDeviceOrientationPortrait) {
-//        width = size.width;
-//    } else {
-//        width = size.height;
-//    }
 
     CGRect frame =  [[UIScreen mainScreen] bounds];
     int width = 0;

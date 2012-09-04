@@ -184,7 +184,7 @@
                                     <label opaque="NO" clipsSubviews="YES" contentMode="left" text="Раздел" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="K8A-8N-5Fw">
                                         <rect key="frame" x="20" y="121" width="144" height="22"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" name="Georgia-Italic" family="Georgia" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Georgia-BoldItalic" family="Georgia" pointSize="16"/>
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>

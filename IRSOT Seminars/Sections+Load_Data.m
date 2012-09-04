@@ -62,4 +62,34 @@
     return section;
 }
 
+- (UIColor *)sectionColor
+{
+ 
+    NSInteger sectionID = [self.id integerValue];
+    UIColor *color = nil;
+    
+    switch (sectionID) {
+        case 6: // бух-учет
+            color = [UIColor colorWithRed:62/255.0 green:157/255.0 blue:30/255.0 alpha:1.0];
+            break;
+        case 7: // финансы
+            color = [UIColor colorWithRed:52/255.0 green:168/255.0 blue:210/255.0 alpha:1.0];
+            break;
+        case 10: // управление
+            color = [UIColor colorWithRed:243/255.0 green:91/255.0 blue:30/255.0 alpha:1.0];
+            break;
+        case 8: // право
+            color = [UIColor colorWithRed:199/255.0 green:179/255.0 blue:38/255.0 alpha:1.0];
+            break;
+        case 9: // кадры
+            color = [UIColor colorWithRed:201/255.0 green:66/255.0 blue:137/255.0 alpha:1.0];
+            break;
+        default:
+            break;
+    }
+    
+    
+    return color;
+}
+
 @end

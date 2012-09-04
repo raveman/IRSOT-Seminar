@@ -13,5 +13,6 @@
 + (Sections *)sectionWithTerm:(NSDictionary *)termInfo inManagedObjectContext:(NSManagedObjectContext *)context;
 + (Sections *)sectionWithId:(NSInteger)sectionId inManagedObjectContext:(NSManagedObjectContext *)context;
 
+- (UIColor *)sectionColor;
 
 @end

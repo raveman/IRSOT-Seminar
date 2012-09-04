@@ -16,8 +16,8 @@
 #import "ISSeminarListTableViewController.h"
 #import "ISSettingsViewController.h"
 
-#import "Sections.h"
 #import "Type+Load_Data.h"
+#import "Sections+Load_Data.h"
 
 #define CACHE_NAME @"Master"
 
@@ -90,14 +90,12 @@
     self.noDataLabel.text = NSLocalizedString(@"Нет данных", @"Main Page Categories list no data");
     
     UIBarButtonItem *setupButton = self.navigationItem.rightBarButtonItem;
-    setupButton.image = [UIImage imageNamed:@"gear-iPhone.png"];
+    setupButton.image = [UIImage imageNamed:@"gear-iPhone"];
     setupButton.title = @"";
     
     self.seminarCategoriesTableView.backgroundColor = [UIColor clearColor];
     self.seminarCategoriesTableView.opaque = NO;
-    self.seminarCategoriesTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-hash-background.png"]];
-    
-    
+    self.seminarCategoriesTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-hash-background"]];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
     
@@ -220,21 +218,14 @@
     }
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
-//    cell.textLabel.font = [UIFont fontWithName:@"Arial Rounded MT Bold" size:15.0];
-    
-//    UIView *bgColorView = [[UIView alloc] init];
-//    bgColorView.backgroundColor = self.selectedCellBGColor;
-//    [cell setSelectedBackgroundView:bgColorView];
-
-    // Configure the cell...
-//    cell.selectedColor = self.selectedCellBGColor;
-//    cell.deselectedColor = self.notSelectedCellBGColor;
     
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         Sections *section = [self.fetchedResultsController objectAtIndexPath:indexPath];
         NSString *sectionName = [[[section.name substringToIndex:1] uppercaseString] stringByAppendingString:[section.name substringFromIndex:1]];
         
         cell.textLabel.text = sectionName;
+        if ([section isKindOfClass:[Sections class]])  cell.textLabel.textColor = [section sectionColor];
+            else cell.textLabel.textColor = [UIColor blackColor];
     }
     
     return cell;

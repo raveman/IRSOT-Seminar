@@ -42,16 +42,12 @@
 		C45C865015F61C9D00108749 /* bg_texture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C864415F61C9D00108749 /* bg_texture@2x.png */; };
 		C45C865915F61C9D00108749 /* light-hash-background.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C864D15F61C9D00108749 /* light-hash-background.png */; };
 		C45C865A15F61C9D00108749 /* light-hash-background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C864E15F61C9D00108749 /* light-hash-background@2x.png */; };
-		C45C867115F6259000108749 /* button-green.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C866715F6259000108749 /* button-green.png */; };
-		C45C867215F6259000108749 /* button-green@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C866815F6259000108749 /* button-green@2x.png */; };
-		C45C867315F6259000108749 /* button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C866915F6259000108749 /* button-red.png */; };
-		C45C867415F6259000108749 /* button-red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C866A15F6259000108749 /* button-red@2x.png */; };
-		C45C867515F6259000108749 /* ipad-button-green-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C866B15F6259000108749 /* ipad-button-green-pressed.png */; };
-		C45C867615F6259000108749 /* ipad-button-green-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C866C15F6259000108749 /* ipad-button-green-pressed@2x.png */; };
-		C45C867715F6259000108749 /* ipad-button-green.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C866D15F6259000108749 /* ipad-button-green.png */; };
-		C45C867815F6259000108749 /* ipad-button-red-pressed.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C866E15F6259000108749 /* ipad-button-red-pressed.png */; };
-		C45C867915F6259000108749 /* ipad-button-red-pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C866F15F6259000108749 /* ipad-button-red-pressed@2x.png */; };
-		C45C867A15F6259000108749 /* ipad-button-red.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C867015F6259000108749 /* ipad-button-red.png */; };
+		C45C868915F6388C00108749 /* whiteButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C868715F6388C00108749 /* whiteButton.png */; };
+		C45C868A15F6388C00108749 /* whiteButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C868815F6388C00108749 /* whiteButton@2x.png */; };
+		C45C868D15F638B600108749 /* greenButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C868B15F638B600108749 /* greenButton.png */; };
+		C45C868E15F638B600108749 /* greenButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C868C15F638B600108749 /* greenButton@2x.png */; };
+		C45C869115F638BE00108749 /* orangeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C868F15F638BE00108749 /* orangeButton.png */; };
+		C45C869215F638BE00108749 /* orangeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C869015F638BE00108749 /* orangeButton@2x.png */; };
 		C462BDAF15C95A8700170E3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDAE15C95A8700170E3C /* UIKit.framework */; };
 		C462BDB115C95A8700170E3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB015C95A8700170E3C /* Foundation.framework */; };
 		C462BDB315C95A8700170E3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB215C95A8700170E3C /* CoreGraphics.framework */; };
@@ -202,16 +198,12 @@
 		C45C864415F61C9D00108749 /* bg_texture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "bg_texture@2x.png"; path = "Resources/bg_texture@2x.png"; sourceTree = "<group>"; };
 		C45C864D15F61C9D00108749 /* light-hash-background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "light-hash-background.png"; path = "Resources/light-hash-background.png"; sourceTree = "<group>"; };
 		C45C864E15F61C9D00108749 /* light-hash-background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "light-hash-background@2x.png"; path = "Resources/light-hash-background@2x.png"; sourceTree = "<group>"; };
-		C45C866715F6259000108749 /* button-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-green.png"; path = "Resources/button-green.png"; sourceTree = "<group>"; };
-		C45C866815F6259000108749 /* button-green@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-green@2x.png"; path = "Resources/button-green@2x.png"; sourceTree = "<group>"; };
-		C45C866915F6259000108749 /* button-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-red.png"; path = "Resources/button-red.png"; sourceTree = "<group>"; };
-		C45C866A15F6259000108749 /* button-red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-red@2x.png"; path = "Resources/button-red@2x.png"; sourceTree = "<group>"; };
-		C45C866B15F6259000108749 /* ipad-button-green-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ipad-button-green-pressed.png"; path = "Resources/ipad-button-green-pressed.png"; sourceTree = "<group>"; };
-		C45C866C15F6259000108749 /* ipad-button-green-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ipad-button-green-pressed@2x.png"; path = "Resources/ipad-button-green-pressed@2x.png"; sourceTree = "<group>"; };
-		C45C866D15F6259000108749 /* ipad-button-green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ipad-button-green.png"; path = "Resources/ipad-button-green.png"; sourceTree = "<group>"; };
-		C45C866E15F6259000108749 /* ipad-button-red-pressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ipad-button-red-pressed.png"; path = "Resources/ipad-button-red-pressed.png"; sourceTree = "<group>"; };
-		C45C866F15F6259000108749 /* ipad-button-red-pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ipad-button-red-pressed@2x.png"; path = "Resources/ipad-button-red-pressed@2x.png"; sourceTree = "<group>"; };
-		C45C867015F6259000108749 /* ipad-button-red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "ipad-button-red.png"; path = "Resources/ipad-button-red.png"; sourceTree = "<group>"; };
+		C45C868715F6388C00108749 /* whiteButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButton.png; sourceTree = "<group>"; };
+		C45C868815F6388C00108749 /* whiteButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteButton@2x.png"; sourceTree = "<group>"; };
+		C45C868B15F638B600108749 /* greenButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenButton.png; sourceTree = "<group>"; };
+		C45C868C15F638B600108749 /* greenButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greenButton@2x.png"; sourceTree = "<group>"; };
+		C45C868F15F638BE00108749 /* orangeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeButton.png; sourceTree = "<group>"; };
+		C45C869015F638BE00108749 /* orangeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orangeButton@2x.png"; sourceTree = "<group>"; };
 		C462BDAA15C95A8700170E3C /* IRSOT Seminars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IRSOT Seminars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C462BDAE15C95A8700170E3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C462BDB015C95A8700170E3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -445,16 +437,12 @@
 		C45C864215F61C5900108749 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C45C866715F6259000108749 /* button-green.png */,
-				C45C866815F6259000108749 /* button-green@2x.png */,
-				C45C866915F6259000108749 /* button-red.png */,
-				C45C866A15F6259000108749 /* button-red@2x.png */,
-				C45C866B15F6259000108749 /* ipad-button-green-pressed.png */,
-				C45C866C15F6259000108749 /* ipad-button-green-pressed@2x.png */,
-				C45C866D15F6259000108749 /* ipad-button-green.png */,
-				C45C866E15F6259000108749 /* ipad-button-red-pressed.png */,
-				C45C866F15F6259000108749 /* ipad-button-red-pressed@2x.png */,
-				C45C867015F6259000108749 /* ipad-button-red.png */,
+				C45C868715F6388C00108749 /* whiteButton.png */,
+				C45C868815F6388C00108749 /* whiteButton@2x.png */,
+				C45C868B15F638B600108749 /* greenButton.png */,
+				C45C868C15F638B600108749 /* greenButton@2x.png */,
+				C45C868F15F638BE00108749 /* orangeButton.png */,
+				C45C869015F638BE00108749 /* orangeButton@2x.png */,
 				C45C864315F61C9D00108749 /* bg_texture.png */,
 				C45C864415F61C9D00108749 /* bg_texture@2x.png */,
 				C45C864D15F61C9D00108749 /* light-hash-background.png */,
@@ -718,16 +706,12 @@
 				C45C865015F61C9D00108749 /* bg_texture@2x.png in Resources */,
 				C45C865915F61C9D00108749 /* light-hash-background.png in Resources */,
 				C45C865A15F61C9D00108749 /* light-hash-background@2x.png in Resources */,
-				C45C867115F6259000108749 /* button-green.png in Resources */,
-				C45C867215F6259000108749 /* button-green@2x.png in Resources */,
-				C45C867315F6259000108749 /* button-red.png in Resources */,
-				C45C867415F6259000108749 /* button-red@2x.png in Resources */,
-				C45C867515F6259000108749 /* ipad-button-green-pressed.png in Resources */,
-				C45C867615F6259000108749 /* ipad-button-green-pressed@2x.png in Resources */,
-				C45C867715F6259000108749 /* ipad-button-green.png in Resources */,
-				C45C867815F6259000108749 /* ipad-button-red-pressed.png in Resources */,
-				C45C867915F6259000108749 /* ipad-button-red-pressed@2x.png in Resources */,
-				C45C867A15F6259000108749 /* ipad-button-red.png in Resources */,
+				C45C868915F6388C00108749 /* whiteButton.png in Resources */,
+				C45C868A15F6388C00108749 /* whiteButton@2x.png in Resources */,
+				C45C868D15F638B600108749 /* greenButton.png in Resources */,
+				C45C868E15F638B600108749 /* greenButton@2x.png in Resources */,
+				C45C869115F638BE00108749 /* orangeButton.png in Resources */,
+				C45C869215F638BE00108749 /* orangeButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

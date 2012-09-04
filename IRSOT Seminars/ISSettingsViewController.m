@@ -59,20 +59,24 @@
     return _reach;
 }
 
+- (void)redrawButtons
+{
+    [Helper makeButtonShiny:self.refreshButton withBackgroundColor:self.refreshButton.backgroundColor];
+    [Helper makeButtonShiny:self.deleteButton withBackgroundColor:self.deleteButton.backgroundColor];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_texture.png"]];
 
-    self.refreshButton.tintColor = [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0];
-    self.refreshButton.layer.borderColor = [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0].CGColor;
-    self.refreshButton.backgroundColor = [UIColor colorWithRed:252/255.0 green:165/255.0 blue:101/255.0 alpha:1.0];
-    [Helper makeButtonShiny:self.refreshButton withBackgroundColor:self.refreshButton.backgroundColor];
-    
-    self.deleteButton.tintColor = [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0];
-    self.deleteButton.layer.borderColor = [UIColor colorWithRed:222/255.0 green:118/255.0 blue:102/255.0 alpha:1.0].CGColor;
-    self.deleteButton.backgroundColor = [UIColor colorWithRed:255/255.0 green:42/255.0 blue:8/255.0 alpha:1.0];
-    [Helper makeButtonShiny:self.deleteButton withBackgroundColor:self.deleteButton.backgroundColor];
+//    self.refreshButton.tintColor = [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0];
+//    self.refreshButton.layer.borderColor = [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0].CGColor;
+//    self.refreshButton.backgroundColor = [UIColor colorWithRed:252/255.0 green:165/255.0 blue:101/255.0 alpha:1.0];
+//    
+//    self.deleteButton.tintColor = [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0];
+//    self.deleteButton.layer.borderColor = [UIColor colorWithRed:222/255.0 green:118/255.0 blue:102/255.0 alpha:1.0].CGColor;
+//    self.deleteButton.backgroundColor = [UIColor colorWithRed:255/255.0 green:42/255.0 blue:8/255.0 alpha:1.0];
     
     self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
     self.iCloudSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USE_ICLOUD_KEY] boolValue];
@@ -80,8 +84,8 @@
     self.errorLabel.text = @"";
     self.versionLabel.text = [NSString stringWithFormat:@"Версия: %@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
     
-    if (self.emptyStore) self.deleteButton.hidden = NO;
-        else self.deleteButton.hidden = YES;
+    if (self.emptyStore) self.deleteButton.enabled = YES;
+        else self.deleteButton.enabled = NO;
     
     
     self.reach.reachableBlock = ^(ReachabilityARC * reachability)
@@ -103,6 +107,7 @@
     };
     
     [self.reach startNotifier];
+//    [self redrawButtons];
 }
 
 - (void)viewDidUnload
@@ -221,7 +226,7 @@
             } else {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Каталог обновлен!", @"Catalog loaded successfully")];
-                    self.deleteButton.hidden = NO;
+                    self.deleteButton.enabled = YES;
                     updated = YES;
                     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
                     //                NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatFromTemplate:@"HH:MM dd.mm.yyyy" options:nil locale:nil];
@@ -278,7 +283,7 @@
         }
 
         deleted = YES;
-        self.deleteButton.hidden = YES;
+        self.deleteButton.enabled = NO;
         self.updateDateLabel.text = @"Данных нет";
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:@"" forKey:UPDATE_DATE_KEY];

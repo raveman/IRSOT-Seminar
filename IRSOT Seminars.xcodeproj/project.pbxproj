@@ -48,6 +48,12 @@
 		C45C868E15F638B600108749 /* greenButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C868C15F638B600108749 /* greenButton@2x.png */; };
 		C45C869115F638BE00108749 /* orangeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C868F15F638BE00108749 /* orangeButton.png */; };
 		C45C869215F638BE00108749 /* orangeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C869015F638BE00108749 /* orangeButton@2x.png */; };
+		C45C869915F63AF700108749 /* greenButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C869315F63AF700108749 /* greenButtonHighlight.png */; };
+		C45C869A15F63AF700108749 /* greenButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C869415F63AF700108749 /* greenButtonHighlight@2x.png */; };
+		C45C869B15F63AF700108749 /* orangeButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C869515F63AF700108749 /* orangeButtonHighlight.png */; };
+		C45C869C15F63AF700108749 /* orangeButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C869615F63AF700108749 /* orangeButtonHighlight@2x.png */; };
+		C45C869D15F63AF700108749 /* whiteButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C869715F63AF700108749 /* whiteButtonHighlight.png */; };
+		C45C869E15F63AF700108749 /* whiteButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C869815F63AF700108749 /* whiteButtonHighlight@2x.png */; };
 		C462BDAF15C95A8700170E3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDAE15C95A8700170E3C /* UIKit.framework */; };
 		C462BDB115C95A8700170E3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB015C95A8700170E3C /* Foundation.framework */; };
 		C462BDB315C95A8700170E3C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB215C95A8700170E3C /* CoreGraphics.framework */; };
@@ -204,6 +210,12 @@
 		C45C868C15F638B600108749 /* greenButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greenButton@2x.png"; sourceTree = "<group>"; };
 		C45C868F15F638BE00108749 /* orangeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeButton.png; sourceTree = "<group>"; };
 		C45C869015F638BE00108749 /* orangeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orangeButton@2x.png"; sourceTree = "<group>"; };
+		C45C869315F63AF700108749 /* greenButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenButtonHighlight.png; sourceTree = "<group>"; };
+		C45C869415F63AF700108749 /* greenButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "greenButtonHighlight@2x.png"; sourceTree = "<group>"; };
+		C45C869515F63AF700108749 /* orangeButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = orangeButtonHighlight.png; sourceTree = "<group>"; };
+		C45C869615F63AF700108749 /* orangeButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "orangeButtonHighlight@2x.png"; sourceTree = "<group>"; };
+		C45C869715F63AF700108749 /* whiteButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = whiteButtonHighlight.png; sourceTree = "<group>"; };
+		C45C869815F63AF700108749 /* whiteButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whiteButtonHighlight@2x.png"; sourceTree = "<group>"; };
 		C462BDAA15C95A8700170E3C /* IRSOT Seminars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IRSOT Seminars.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C462BDAE15C95A8700170E3C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C462BDB015C95A8700170E3C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -443,6 +455,12 @@
 				C45C868C15F638B600108749 /* greenButton@2x.png */,
 				C45C868F15F638BE00108749 /* orangeButton.png */,
 				C45C869015F638BE00108749 /* orangeButton@2x.png */,
+				C45C869315F63AF700108749 /* greenButtonHighlight.png */,
+				C45C869415F63AF700108749 /* greenButtonHighlight@2x.png */,
+				C45C869515F63AF700108749 /* orangeButtonHighlight.png */,
+				C45C869615F63AF700108749 /* orangeButtonHighlight@2x.png */,
+				C45C869715F63AF700108749 /* whiteButtonHighlight.png */,
+				C45C869815F63AF700108749 /* whiteButtonHighlight@2x.png */,
 				C45C864315F61C9D00108749 /* bg_texture.png */,
 				C45C864415F61C9D00108749 /* bg_texture@2x.png */,
 				C45C864D15F61C9D00108749 /* light-hash-background.png */,
@@ -712,6 +730,12 @@
 				C45C868E15F638B600108749 /* greenButton@2x.png in Resources */,
 				C45C869115F638BE00108749 /* orangeButton.png in Resources */,
 				C45C869215F638BE00108749 /* orangeButton@2x.png in Resources */,
+				C45C869915F63AF700108749 /* greenButtonHighlight.png in Resources */,
+				C45C869A15F63AF700108749 /* greenButtonHighlight@2x.png in Resources */,
+				C45C869B15F63AF700108749 /* orangeButtonHighlight.png in Resources */,
+				C45C869C15F63AF700108749 /* orangeButtonHighlight@2x.png in Resources */,
+				C45C869D15F63AF700108749 /* whiteButtonHighlight.png in Resources */,
+				C45C869E15F63AF700108749 /* whiteButtonHighlight@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

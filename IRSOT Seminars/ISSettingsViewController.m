@@ -65,16 +65,26 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_texture.png"]];
 
     UIImage *greenButton = [UIImage imageNamed:@"greenButton.png"];
+    UIImage *greenButtonHighlight = [UIImage imageNamed:@"greenButtonHighlight.png"];
+    
     UIImage *redButton = [UIImage imageNamed:@"orangeButton.png"];
+    UIImage *redButtonHighlight = [UIImage imageNamed:@"orangeButtonHighlight.png"];
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         greenButton = [greenButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
         redButton = [redButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
+        greenButtonHighlight = [greenButtonHighlight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
+        redButtonHighlight = [redButtonHighlight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
     } else {
         greenButton = [greenButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
         redButton = [redButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+        greenButtonHighlight = [greenButtonHighlight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+        redButtonHighlight = [redButtonHighlight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
     }
     [self.refreshButton setBackgroundImage:greenButton forState:UIControlStateNormal];
     [self.deleteButton setBackgroundImage:redButton forState:UIControlStateNormal];
+    [self.refreshButton setBackgroundImage:greenButtonHighlight forState:UIControlStateHighlighted];
+    [self.deleteButton setBackgroundImage:redButtonHighlight forState:UIControlStateHighlighted];
     
     self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
     self.iCloudSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USE_ICLOUD_KEY] boolValue];

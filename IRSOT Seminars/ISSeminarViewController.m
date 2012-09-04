@@ -179,12 +179,16 @@
         }
         
         UIImage *whiteButton = [UIImage imageNamed:@"whiteButton.png"];
+        UIImage *whiteButtonHighlight = [UIImage imageNamed:@"whiteButtonHighlight.png"];
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
             whiteButton = [whiteButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
+            whiteButtonHighlight = [whiteButtonHighlight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
         } else {
             whiteButton = [whiteButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+            whiteButtonHighlight = [whiteButtonHighlight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
         }
         [self.attendSeminarButton setBackgroundImage:whiteButton forState:UIControlStateNormal];
+        [self.attendSeminarButton setBackgroundImage:whiteButtonHighlight forState:UIControlStateHighlighted];
         
         if ([self.seminar.lectors count]) {
             NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];

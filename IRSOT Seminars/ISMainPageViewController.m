@@ -224,8 +224,6 @@
         NSString *sectionName = [[[section.name substringToIndex:1] uppercaseString] stringByAppendingString:[section.name substringFromIndex:1]];
         
         cell.textLabel.text = sectionName;
-        if ([section isKindOfClass:[Sections class]])  cell.textLabel.textColor = [section sectionColor];
-            else cell.textLabel.textColor = [UIColor blackColor];
     }
     
     return cell;

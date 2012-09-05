@@ -199,7 +199,6 @@
         self.seminarDate.text = [self.seminar stringWithSeminarDates];
         
         self.sectionLabel.text = [[[self.seminar.section.name substringToIndex:1] uppercaseString] stringByAppendingString:[self.seminar.section.name  substringFromIndex:1]];
-        self.sectionLabel.textColor = [self.seminar.section sectionColor];
 
         self.typeLabel.text = self.seminar.type.name;
 
@@ -493,6 +492,7 @@
     
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
     cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
     if ([self.seminar.lectors count]) {
         Lector *lector = [self.lectors objectAtIndex:indexPath.row];

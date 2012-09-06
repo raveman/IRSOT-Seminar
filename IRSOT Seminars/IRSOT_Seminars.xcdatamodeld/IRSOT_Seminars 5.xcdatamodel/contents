@@ -15,6 +15,8 @@
         <relationship name="seminars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Seminar" inverseName="section" inverseEntity="Seminar" syncable="YES"/>
     </entity>
     <entity name="Seminar" representedClassName="Seminar" syncable="YES">
+        <attribute name="cost_discount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="cost_full" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="date_end" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="date_start" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
@@ -39,7 +41,7 @@
     <elements>
         <element name="Lector" positionX="0" positionY="0" width="128" height="180"/>
         <element name="Section" positionX="0" positionY="0" width="128" height="58"/>
-        <element name="Seminar" positionX="0" positionY="0" width="128" height="208"/>
+        <element name="Seminar" positionX="0" positionY="0" width="128" height="240"/>
         <element name="Term" positionX="0" positionY="0" width="128" height="103"/>
         <element name="Type" positionX="0" positionY="0" width="128" height="58"/>
     </elements>

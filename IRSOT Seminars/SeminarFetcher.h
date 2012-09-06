@@ -27,6 +27,8 @@
 #define SEMINAR_RUSEMINAR_ID @"ruseminar_id"
 #define SEMINAR_RUSEMINAR_URL @"ruseminar_url"
 #define SEMINAR_PROGRAM @"program"
+#define SEMINAR_COST_FULL @"cost_full"
+#define SEMINAR_COST_DISCOUNT @"cost_discount"
 
 #define LECTOR_LIST_URL @"lectors"
 #define LECTOR_NAME @"lector_name"
@@ -34,7 +36,6 @@
 #define LECTOR_ID @"nid"
 #define LECTOR_RUSEMINAR_ID @"ruseminar_id"
 #define LECTOR_PHOTO_URL @"photo_url"
-
 
 #define SEMINAR_DATE_FORMAT @"yyyy-MM-dd HH:mm:ss"
 #define SEMINAR_DATE_FORMAT_DATE @"dd"

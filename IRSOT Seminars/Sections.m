@@ -2,7 +2,7 @@
 //  Sections.m
 //  IRSOT Seminars
 //
-//  Created by Bob Ershov on 22.08.12.
+//  Created by Bob Ershov on 06.09.12.
 //  Copyright (c) 2012 IRSOT. All rights reserved.
 //
 

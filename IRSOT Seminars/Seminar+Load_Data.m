@@ -136,6 +136,10 @@
         seminar.ruseminar_url = [[dictionary objectForKey:SEMINAR_RUSEMINAR_URL] objectForKey:@"url"];
         NSDictionary *program = [dictionary objectForKey:SEMINAR_PROGRAM];
         if ([program count]) seminar.program = [program objectForKey:@"value"];
+        NSNumber *cost_full = [NSNumber numberWithInteger:[[[dictionary objectForKey:SEMINAR_COST_FULL] objectForKey:@"value"] integerValue]];
+        NSNumber *cost_discount = [NSNumber numberWithInteger:[[[dictionary objectForKey:SEMINAR_COST_DISCOUNT] objectForKey:@"value"] integerValue]];
+        seminar.cost_full = cost_full;
+        seminar.cost_discount = cost_discount;
         
     } else {
         seminar = [matches lastObject];

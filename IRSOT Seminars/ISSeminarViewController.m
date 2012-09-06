@@ -19,6 +19,7 @@
 #import "Lector.h"
 #import "Seminar+Load_Data.h"
 #import "Sections+Load_Data.h"
+#import "Type+Load_Data.h"
 
 #import "SHK.h"
 #import "SHKItem.h"
@@ -427,6 +428,24 @@
     "<meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0;'>\n"
     "</head> \n<body>\n<div id=\"program_page\">\n"];
 
+    // constructing seminar attending cost
+    if ([self.seminar.type.id integerValue] != SEMINAR_TYPE_BK) {
+        NSString *cost = [NSString stringWithFormat:@"<p>Регистрационный взнос составляет <strong>%@</strong> руб.<br>\nобеспечивает обед в ресторане отеля, кофе-паузы, раздаточные материалы</p>", self.seminar.cost_full];
+        
+        // constructing discounts
+        NSString *cost_discount = [NSString string];
+        if ([self.seminar.cost_discount integerValue] != 0) {
+            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            [dateFormatter setDateFormat:@"d MMMM"];
+            NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
+            [dateFormatter setLocale:locale];
+            NSDate *discount_date = [self.seminar.date_start dateByAddingTimeInterval:-864000]; // 10 days in seconds: 18*24*60*60
+            
+            cost_discount = [NSString stringWithFormat:@"<p>При оплате <span style=\"color: #d71632;\"><strong>до %@ </strong></span><br>\n СПЕЦИАЛЬНАЯ ЦЕНА %@ руб.</p>\n", [dateFormatter stringFromDate:discount_date], self.seminar.cost_discount];
+        }
+        html = [NSString stringWithFormat:@"%@\n <p></p><hr>%@ %@<hr>\n", html, cost, cost_discount];
+    }
+    
     NSString *footer = @"</div>\n</body>\n</html>";
 
     NSString *fullHTML = [NSString stringWithFormat:@"%@\n%@\n%@", header, html, footer];
@@ -436,7 +455,6 @@
     
     NSString *modifiedString = [regex stringByReplacingMatchesInString:fullHTML options:0 range:NSMakeRange(0, [fullHTML length]) withTemplate:@"width: 95%;"];
 
-    
     return modifiedString;
 }
 

@@ -67,16 +67,17 @@
 		C462BDCD15C95A8700170E3C /* ISMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCC15C95A8700170E3C /* ISMasterViewController.m */; };
 		C462BDD015C95A8700170E3C /* ISDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCF15C95A8700170E3C /* ISDetailViewController.m */; };
 		C462BDDB15C95B7300170E3C /* ISMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */; };
+		C465875E15F9001800AA2B6B /* Lector.m in Sources */ = {isa = PBXBuildFile; fileRef = C465875D15F9001800AA2B6B /* Lector.m */; };
+		C465876115F9001800AA2B6B /* Term.m in Sources */ = {isa = PBXBuildFile; fileRef = C465876015F9001800AA2B6B /* Term.m */; };
+		C465876415F9001800AA2B6B /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = C465876315F9001800AA2B6B /* Type.m */; };
+		C465876715F9001800AA2B6B /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C465876615F9001800AA2B6B /* Seminar.m */; };
+		C465876A15F9001800AA2B6B /* Sections.m in Sources */ = {isa = PBXBuildFile; fileRef = C465876915F9001800AA2B6B /* Sections.m */; };
 		C46A618215DD2E2D0093C39E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46A618115DD2E2D0093C39E /* SystemConfiguration.framework */; };
 		C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */; };
 		C483E40F15D2C393001A41FB /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40E15D2C393001A41FB /* Helper.m */; };
 		C48F96F815CC46D400F4AA51 /* Seminar+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F96F715CC46D400F4AA51 /* Seminar+Load_Data.m */; };
 		C48F971315CC519E00F4AA51 /* Lector+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */; };
 		C48F972215CC663400F4AA51 /* ISSeminarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F972115CC663400F4AA51 /* ISSeminarViewController.m */; };
-		C4B20B7B15E535E300936B32 /* Term.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B20B7A15E535E300936B32 /* Term.m */; };
-		C4B20B7E15E535E400936B32 /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B20B7D15E535E400936B32 /* Seminar.m */; };
-		C4B20B8115E535E400936B32 /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B20B8015E535E400936B32 /* Type.m */; };
-		C4B20B8415E535E400936B32 /* Sections.m in Sources */ = {isa = PBXBuildFile; fileRef = C4B20B8315E535E400936B32 /* Sections.m */; };
 		C4D7CEF015D3F1440003F90C /* twitter-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D7CEEE15D3F1440003F90C /* twitter-iPhone.png */; };
 		C4D7CEF115D3F1440003F90C /* twitter-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D7CEEF15D3F1440003F90C /* twitter-iPhone@2x.png */; };
 		C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */; };
@@ -88,7 +89,6 @@
 		C4DE789215C96EF3007FBEC4 /* SeminarFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE789115C96EF3007FBEC4 /* SeminarFetcher.m */; };
 		C4E5122B15F680E9007DD40E /* light-hash-background@2x~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E5122915F680E9007DD40E /* light-hash-background@2x~iPad.png */; };
 		C4E5122C15F680E9007DD40E /* light-hash-background~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E5122A15F680E9007DD40E /* light-hash-background~iPad.png */; };
-		C4F9EEAC15ED08C0008BA56D /* Lector.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F9EEAB15ED08C0008BA56D /* Lector.m */; };
 		C4F9EEB515ED12DA008BA56D /* profile-icon~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F9EEB115ED12DA008BA56D /* profile-icon~iPad.png */; };
 		C4F9EEB615ED12DA008BA56D /* profile-icon@2x~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F9EEB215ED12DA008BA56D /* profile-icon@2x~iPad.png */; };
 		C4F9EEB715ED12DA008BA56D /* profile-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F9EEB315ED12DA008BA56D /* profile-icon.png */; };
@@ -238,6 +238,17 @@
 		C462BDCF15C95A8700170E3C /* ISDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISDetailViewController.m; sourceTree = "<group>"; };
 		C462BDD915C95B7300170E3C /* ISMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMainPageViewController.h; sourceTree = "<group>"; };
 		C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMainPageViewController.m; sourceTree = "<group>"; };
+		C465875B15F8FFDD00AA2B6B /* IRSOT_Seminars 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IRSOT_Seminars 5.xcdatamodel"; sourceTree = "<group>"; };
+		C465875C15F9001800AA2B6B /* Lector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lector.h; sourceTree = "<group>"; };
+		C465875D15F9001800AA2B6B /* Lector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lector.m; sourceTree = "<group>"; };
+		C465875F15F9001800AA2B6B /* Term.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Term.h; sourceTree = "<group>"; };
+		C465876015F9001800AA2B6B /* Term.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Term.m; sourceTree = "<group>"; };
+		C465876215F9001800AA2B6B /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
+		C465876315F9001800AA2B6B /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
+		C465876515F9001800AA2B6B /* Seminar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seminar.h; sourceTree = "<group>"; };
+		C465876615F9001800AA2B6B /* Seminar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seminar.m; sourceTree = "<group>"; };
+		C465876815F9001800AA2B6B /* Sections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sections.h; sourceTree = "<group>"; };
+		C465876915F9001800AA2B6B /* Sections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sections.m; sourceTree = "<group>"; };
 		C46A618115DD2E2D0093C39E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C483E40A15D2ADD1001A41FB /* ISLectorListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorListTableViewController.h; sourceTree = "<group>"; };
 		C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorListTableViewController.m; sourceTree = "<group>"; };
@@ -252,14 +263,6 @@
 		C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Lector+Load_Data.m"; sourceTree = "<group>"; };
 		C48F972015CC663400F4AA51 /* ISSeminarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSeminarViewController.h; sourceTree = "<group>"; };
 		C48F972115CC663400F4AA51 /* ISSeminarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSeminarViewController.m; sourceTree = "<group>"; };
-		C4B20B7915E535E300936B32 /* Term.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Term.h; sourceTree = "<group>"; };
-		C4B20B7A15E535E300936B32 /* Term.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Term.m; sourceTree = "<group>"; };
-		C4B20B7C15E535E400936B32 /* Seminar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seminar.h; sourceTree = "<group>"; };
-		C4B20B7D15E535E400936B32 /* Seminar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seminar.m; sourceTree = "<group>"; };
-		C4B20B7F15E535E400936B32 /* Type.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Type.h; sourceTree = "<group>"; };
-		C4B20B8015E535E400936B32 /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Type.m; sourceTree = "<group>"; };
-		C4B20B8215E535E400936B32 /* Sections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sections.h; sourceTree = "<group>"; };
-		C4B20B8315E535E400936B32 /* Sections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sections.m; sourceTree = "<group>"; };
 		C4C6DD1715E0274E003292C8 /* IRSOT_Seminars 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "IRSOT_Seminars 2.xcdatamodel"; sourceTree = "<group>"; };
 		C4D7CEEE15D3F1440003F90C /* twitter-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "twitter-iPhone.png"; path = "icons/twitter-iPhone.png"; sourceTree = "<group>"; };
 		C4D7CEEF15D3F1440003F90C /* twitter-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "twitter-iPhone@2x.png"; path = "icons/twitter-iPhone@2x.png"; sourceTree = "<group>"; };
@@ -279,8 +282,6 @@
 		C4E5122915F680E9007DD40E /* light-hash-background@2x~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "light-hash-background@2x~iPad.png"; path = "Resources/light-hash-background@2x~iPad.png"; sourceTree = "<group>"; };
 		C4E5122A15F680E9007DD40E /* light-hash-background~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "light-hash-background~iPad.png"; path = "Resources/light-hash-background~iPad.png"; sourceTree = "<group>"; };
 		C4F9EEA315ECF8E3008BA56D /* IRSOT_Seminars 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "IRSOT_Seminars 4.xcdatamodel"; sourceTree = "<group>"; };
-		C4F9EEAA15ED08C0008BA56D /* Lector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lector.h; sourceTree = "<group>"; };
-		C4F9EEAB15ED08C0008BA56D /* Lector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Lector.m; sourceTree = "<group>"; };
 		C4F9EEB115ED12DA008BA56D /* profile-icon~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-icon~iPad.png"; path = "icons/profile-icon~iPad.png"; sourceTree = "<group>"; };
 		C4F9EEB215ED12DA008BA56D /* profile-icon@2x~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-icon@2x~iPad.png"; path = "icons/profile-icon@2x~iPad.png"; sourceTree = "<group>"; };
 		C4F9EEB315ED12DA008BA56D /* profile-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-icon.png"; path = "icons/profile-icon.png"; sourceTree = "<group>"; };
@@ -315,17 +316,17 @@
 		C40D8F1715CBD8730048ABF4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				C4F9EEAA15ED08C0008BA56D /* Lector.h */,
-				C4F9EEAB15ED08C0008BA56D /* Lector.m */,
 				C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */,
-				C4B20B8215E535E400936B32 /* Sections.h */,
-				C4B20B8315E535E400936B32 /* Sections.m */,
-				C4B20B7F15E535E400936B32 /* Type.h */,
-				C4B20B8015E535E400936B32 /* Type.m */,
-				C4B20B7C15E535E400936B32 /* Seminar.h */,
-				C4B20B7D15E535E400936B32 /* Seminar.m */,
-				C4B20B7915E535E300936B32 /* Term.h */,
-				C4B20B7A15E535E300936B32 /* Term.m */,
+				C465875C15F9001800AA2B6B /* Lector.h */,
+				C465875D15F9001800AA2B6B /* Lector.m */,
+				C465876815F9001800AA2B6B /* Sections.h */,
+				C465876915F9001800AA2B6B /* Sections.m */,
+				C465876515F9001800AA2B6B /* Seminar.h */,
+				C465876615F9001800AA2B6B /* Seminar.m */,
+				C465876215F9001800AA2B6B /* Type.h */,
+				C465876315F9001800AA2B6B /* Type.m */,
+				C465875F15F9001800AA2B6B /* Term.h */,
+				C465876015F9001800AA2B6B /* Term.m */,
 				C48F971115CC519E00F4AA51 /* Lector+Load_Data.h */,
 				C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */,
 				C40D8F1815CBDBBB0048ABF4 /* Sections+Load_Data.h */,
@@ -778,12 +779,12 @@
 				C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */,
 				C423683215DEBD380066B1D7 /* ReachabilityARC.m in Sources */,
 				C42D425D15E3D8A10042E708 /* ISCalendarViewController.m in Sources */,
-				C4B20B7B15E535E300936B32 /* Term.m in Sources */,
-				C4B20B7E15E535E400936B32 /* Seminar.m in Sources */,
-				C4B20B8115E535E400936B32 /* Type.m in Sources */,
-				C4B20B8415E535E400936B32 /* Sections.m in Sources */,
-				C4F9EEAC15ED08C0008BA56D /* Lector.m in Sources */,
 				C41B5C7F15F4ECA20079D940 /* ISSHKConfigurator.m in Sources */,
+				C465875E15F9001800AA2B6B /* Lector.m in Sources */,
+				C465876115F9001800AA2B6B /* Term.m in Sources */,
+				C465876415F9001800AA2B6B /* Type.m in Sources */,
+				C465876715F9001800AA2B6B /* Seminar.m in Sources */,
+				C465876A15F9001800AA2B6B /* Sections.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -958,12 +959,13 @@
 		C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C465875B15F8FFDD00AA2B6B /* IRSOT_Seminars 5.xcdatamodel */,
 				C4F9EEA315ECF8E3008BA56D /* IRSOT_Seminars 4.xcdatamodel */,
 				C43AB40615E28A8F003813DF /* IRSOT_Seminars 3.xcdatamodel */,
 				C4C6DD1715E0274E003292C8 /* IRSOT_Seminars 2.xcdatamodel */,
 				C462BDC915C95A8700170E3C /* IRSOT_Seminars.xcdatamodel */,
 			);
-			currentVersion = C4F9EEA315ECF8E3008BA56D /* IRSOT_Seminars 4.xcdatamodel */;
+			currentVersion = C465875B15F8FFDD00AA2B6B /* IRSOT_Seminars 5.xcdatamodel */;
 			path = IRSOT_Seminars.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

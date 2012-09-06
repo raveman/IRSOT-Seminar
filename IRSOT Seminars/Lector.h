@@ -2,7 +2,7 @@
 //  Lector.h
 //  IRSOT Seminars
 //
-//  Created by Bob Ershov on 28.08.12.
+//  Created by Bob Ershov on 06.09.12.
 //  Copyright (c) 2012 IRSOT. All rights reserved.
 //
 
@@ -14,13 +14,13 @@
 @interface Lector : NSManagedObject
 
 @property (nonatomic, retain) NSString * bio;
+@property (nonatomic, retain) NSString * fatherName;
 @property (nonatomic, retain) NSString * firstName;
 @property (nonatomic, retain) NSNumber * id;
 @property (nonatomic, retain) NSString * lastName;
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * photo;
 @property (nonatomic, retain) NSNumber * ruseminarID;
-@property (nonatomic, retain) NSString * fatherName;
 @property (nonatomic, retain) NSSet *seminars;
 @end
 

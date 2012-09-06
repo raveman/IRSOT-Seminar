@@ -49,7 +49,8 @@
 @synthesize versionLabel;
 @synthesize delegate = _delegate;
 
-@synthesize emptyStore;
+@synthesize emptyStore = _emptyStore;
+@synthesize changedTime = _changedTime;
 @synthesize reach = _reach;
 
 - (ReachabilityARC *)reach
@@ -95,6 +96,8 @@
     if (self.emptyStore) self.deleteButton.enabled = YES;
         else self.deleteButton.enabled = NO;
     
+    // we need to force downloading of the catalog
+    
     self.reach.reachableBlock = ^(ReachabilityARC * reachability)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -113,13 +116,10 @@
         });
     };
     
-    [self.reach startNotifier];
 }
 
 - (void)viewDidUnload
 {
-    [self.reach stopNotifier];
-    
     [self setUpdateDateLabel:nil];
     [self setDeleteButton:nil];
     [self setRefreshButton:nil];
@@ -135,8 +135,14 @@
 - (void) viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+    [self.reach startNotifier];
     self.updateDateLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:UPDATE_DATE_KEY];
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [self.reach stopNotifier];
+    [super viewWillDisappear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -190,6 +196,8 @@
 
 - (void) loadData {
 
+    [self deleteData];
+    
     [SVProgressHUD showWithStatus:NSLocalizedString(@"Обновляю каталог", @"Loading catalog data from the web")];
     BOOL __block updated = NO;
     dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
@@ -247,6 +255,8 @@
                     self.updateDateLabel.text = dateUpdated;
                     
                     [defaults setObject:dateUpdated forKey:UPDATE_DATE_KEY];
+                    
+                    [defaults setInteger:self.changedTime forKey:CATALOG_CHANGED_KEY];
                     [defaults synchronize];
                     
                     [self.delegate settingsViewController:self didUpdatedStore:updated];

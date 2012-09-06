@@ -87,4 +87,18 @@
     return lectors;
 }
 
+// проверяем наличие обновлений на сайте
++ (NSInteger)checkUpdates
+{
+    NSInteger catalogChanged = 0;
+    
+    NSString *updatesURL = [NSString stringWithFormat:@"%@/%@",SEMINAR_URL, UPDATE_NODE];
+    NSDictionary *updateNode = (NSDictionary *)[SeminarFetcher executeFetch:updatesURL];
+    if (updateNode) {
+        catalogChanged = [[updateNode objectForKey:@"changed"] integerValue];
+    }
+    
+    return catalogChanged;
+}
+
 @end

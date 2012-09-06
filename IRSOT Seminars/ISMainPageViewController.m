@@ -16,10 +16,14 @@
 #import "ISSeminarListTableViewController.h"
 #import "ISSettingsViewController.h"
 
+#import "SeminarFetcher.h"
+
 #import "Type+Load_Data.h"
 #import "Sections+Load_Data.h"
 
 #define CACHE_NAME @"Master"
+
+
 
 // 255 211 120 134U pantone
 
@@ -30,6 +34,7 @@
 @property (nonatomic, strong) UIColor *notSelectedCellBGColor;
 
 @property (nonatomic, strong) UITableViewCell *currentSelectedCell;
+@property (nonatomic) NSInteger changedTime;
 
 @end
 
@@ -43,6 +48,7 @@
 @synthesize notSelectedCellBGColor = _notSelectedCellBGColor;
 
 @synthesize currentSelectedCell = _currentSelectedCell;
+@synthesize changedTime = _changedTime;
 
 #pragma mark - getters and setters
 - (UIColor *) selectedCellBGColor
@@ -100,6 +106,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
+    [self checkUpdates];
 }
 
 - (void)viewDidUnload
@@ -117,7 +124,7 @@
     NSInteger count = [[self.fetchedResultsController fetchedObjects] count];
     if (!count) {
         // у нас нет еще никаких данных, надо бы их загрузить
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Данные" message:@"У нас нет еще загруженных семинаров" delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:@"Загрузить", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Каталог" message:@"У нас нет еще загруженных семинаров" delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:@"Загрузить", nil];
         [alert show];
         self.noDataLabel.hidden = NO;
     } else {
@@ -165,6 +172,7 @@
         }
         [dvc setManagedObjectContext:self.managedObjectContext];
         [dvc setDelegate:self];
+        [dvc setChangedTime:self.changedTime];
     }
 }
 
@@ -191,7 +199,7 @@
         self.noDataLabel.hidden = YES;
     } else {
         self.noDataLabel.hidden = NO;
-        self.noDataLabel.text = NSLocalizedString(@"Нет данных", @"Main Page Categories list no data");
+        self.noDataLabel.text = NSLocalizedString(@"Нет данных в каталоге", @"Main Page Categories list no data");
     }
         
     return count;
@@ -381,6 +389,29 @@
     }
     
     [self.seminarCategoriesTableView reloadData];
+}
+
+#pragma mark - check for updates
+- (void) checkUpdates
+{
+    dispatch_queue_t checkQ = dispatch_queue_create("Update Checker", NULL);
+    dispatch_async(checkQ, ^{
+        NSInteger changeTime = [SeminarFetcher checkUpdates];
+        if (changeTime) {
+            
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            NSInteger savedChangeTime = [[defaults objectForKey:CATALOG_CHANGED_KEY] integerValue];
+            if (savedChangeTime != changeTime) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.changedTime = changeTime;
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Каталог" message:@"Есть обновления каталога. Загрузить ?" delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:@"Загрузить", nil];
+                    [alert show];
+                });
+
+            }
+        }
+    });
+    dispatch_release(checkQ);
 }
 
 @end

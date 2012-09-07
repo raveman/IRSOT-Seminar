@@ -148,8 +148,21 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return [[self.fetchedResultsController sections] count];
+//    return 1;
 }
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+    Seminar *seminar = [[sectionInfo objects] objectAtIndex:section];
+  
+    return  seminar.section.name;
+//    return [sectionInfo name];
+}
+
+//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
+//    return [self. sectionIndexTitles];
+//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -161,6 +174,23 @@
     }
     
     return count;
+}
+
+- (NSString *)truncateLectorNames:(NSString *)lectors
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        if ([lectors length] > 36) {
+            lectors = [lectors substringToIndex:36];
+            lectors = [lectors stringByAppendingString:@"…"];
+        }
+    } else {
+        if ([lectors length] > 100) {
+            lectors = [lectors substringToIndex:100];
+            lectors = [lectors stringByAppendingString:@"…"];
+        }
+    }
+    
+    return lectors;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -182,10 +212,7 @@
             cell.textLabel.text = seminar.name;
             
             NSString *lectors = [seminar stringWithLectorNames];
-            if ([lectors length] > 36) {
-                lectors = [lectors substringToIndex:36];
-                lectors = [lectors stringByAppendingString:@"…"];
-            }
+            lectors = [self truncateLectorNames:lectors];
             
             cell.detailTextLabel.text =[NSString stringWithFormat:@"%@\n%@", lectors, [seminar stringWithSeminarDates]];
             cell.detailTextLabel.numberOfLines = 2;
@@ -203,17 +230,13 @@
             cell.textLabel.text = seminar.name;
             
             NSString *lectors = [seminar stringWithLectorNames];
-            if ([lectors length] > 36) {
-                lectors = [lectors substringToIndex:36];
-                lectors = [lectors stringByAppendingString:@"…"];
-            }
+            lectors = [self truncateLectorNames:lectors];
             
             cell.detailTextLabel.text =[NSString stringWithFormat:@"%@\n%@", lectors, [seminar stringWithSeminarDates]];
             cell.detailTextLabel.numberOfLines = 2;
             cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         }
     }
-    
     
     return cell;
 }
@@ -256,16 +279,25 @@
     
 //    [fetchRequest setFetchBatchSize:20];
     
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject: sortDescriptor];
+    NSSortDescriptor *nameSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+    NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject: nameSortDescriptor];
     if (self.sortByDate) {
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date_start" ascending:YES];
         [sortDescriptors insertObject:sortDescriptor atIndex:0];
     }
-    
+
+    NSString *sectionNameKeyPath = [NSString string];
+    if (self.section) {
+        sectionNameKeyPath = nil;
+    } else {
+        NSSortDescriptor *sectionSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"section" ascending:YES];
+        [sortDescriptors insertObject:sectionSortDescriptor atIndex:0];
+        sectionNameKeyPath = @"section";
+    }
+
     [fetchRequest setSortDescriptors:sortDescriptors];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:sectionNameKeyPath cacheName:nil];
     
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
     aFetchedResultsController.delegate = self;
     self.fetchedResultsController = aFetchedResultsController;
     

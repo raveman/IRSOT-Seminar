@@ -170,20 +170,25 @@
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
-    NSMutableArray *sectionIndexTitleLetters = [NSMutableArray array];
-    NSArray *sections = [self.fetchedResultsController sections];
-    int count = [sections count];
-    if (count) {
-        for (int i=0; i < count; i++) {
-            id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:i];
-            NSArray *objects = [sectionInfo objects];
-            Seminar *seminar = nil;
-            if ([objects count]) seminar = [objects objectAtIndex:i];
-            [sectionIndexTitleLetters addObject: [seminar.section.name substringToIndex:1]];
+    if (!self.searchIsActive) {
+        if (!self.section) {
+            NSMutableArray *sectionIndexTitleLetters = [NSMutableArray array];
+            NSArray *sections = [self.fetchedResultsController sections];
+            int count = [sections count];
+            if (count) {
+                for (int i=0; i < count; i++) {
+                    id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:i];
+                    NSArray *objects = [sectionInfo objects];
+                    Seminar *seminar = nil;
+                    if ([objects count]) seminar = [objects objectAtIndex:i];
+                    [sectionIndexTitleLetters addObject: [seminar.section.name substringToIndex:1]];
+                }
+            }
+            return sectionIndexTitleLetters;
         }
     }
     
-    return sectionIndexTitleLetters;
+    return nil;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

@@ -156,15 +156,16 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 
     NSString *title = [NSString string];
-    NSArray *sections = [self.fetchedResultsController sections];
-    if ([sections count]) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
-        NSArray *objects = [sectionInfo objects];
-        Seminar *seminar = nil;
-        if ([objects count]) seminar = [objects objectAtIndex:section];
-        title = seminar.section.name;
+    if (!self.searchIsActive) {
+        NSArray *sections = [self.fetchedResultsController sections];
+        if ([sections count]) {
+            id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
+            NSArray *objects = [sectionInfo objects];
+            Seminar *seminar = nil;
+            if ([objects count]) seminar = [objects objectAtIndex:section];
+            title = seminar.section.name;
+        }
     }
-  
     return  title;
 }
 
@@ -233,6 +234,7 @@
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
     cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     if (tableView == self.tableView) {
         // Configure the cell...
@@ -261,7 +263,7 @@
             NSString *lectors = [seminar stringWithLectorNames];
             lectors = [self truncateLectorNames:lectors];
             
-            cell.detailTextLabel.text =[NSString stringWithFormat:@"%@\n%@", lectors, [seminar stringWithSeminarDates]];
+            cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n%@", lectors, [seminar stringWithSeminarDates]];
             cell.detailTextLabel.numberOfLines = 2;
             cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         }

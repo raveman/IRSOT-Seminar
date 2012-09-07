@@ -96,7 +96,7 @@
     self.typeLabel.frame = rect;
     
     // получаем общую высоту текущего заголовка: заголовок + тип и секция семинара
-    height = rect.origin.y + rect.size.height;
+    height = rect.origin.y + rect.size.height - 10;
     
     // опускаем лекторов на текущее смещение
 //    rect = [Helper resizeLabel:self.lectorsLabel withSize:currentSize];

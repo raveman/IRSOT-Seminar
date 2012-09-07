@@ -148,21 +148,43 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return [[self.fetchedResultsController sections] count];
-//    return 1;
+    NSInteger count = [[self.fetchedResultsController sections] count];
+    if (!count) count = 1;
+    return count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-    Seminar *seminar = [[sectionInfo objects] objectAtIndex:section];
+
+    NSString *title = [NSString string];
+    NSArray *sections = [self.fetchedResultsController sections];
+    if ([sections count]) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
+        NSArray *objects = [sectionInfo objects];
+        Seminar *seminar = nil;
+        if ([objects count]) seminar = [objects objectAtIndex:section];
+        title = seminar.section.name;
+    }
   
-    return  seminar.section.name;
-//    return [sectionInfo name];
+    return  title;
 }
 
-//- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView {
-//    return [self. sectionIndexTitles];
-//}
+- (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
+{
+    NSMutableArray *sectionIndexTitleLetters = [NSMutableArray array];
+    NSArray *sections = [self.fetchedResultsController sections];
+    int count = [sections count];
+    if (count) {
+        for (int i=0; i < count; i++) {
+            id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:i];
+            NSArray *objects = [sectionInfo objects];
+            Seminar *seminar = nil;
+            if ([objects count]) seminar = [objects objectAtIndex:i];
+            [sectionIndexTitleLetters addObject: [seminar.section.name substringToIndex:1]];
+        }
+    }
+    
+    return sectionIndexTitleLetters;
+}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -171,6 +193,8 @@
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
         count = [sectionInfo numberOfObjects];
+    } else {
+        if (self.searchIsActive) count = 0;
     }
     
     return count;

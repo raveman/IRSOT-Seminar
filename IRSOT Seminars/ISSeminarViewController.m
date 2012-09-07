@@ -396,6 +396,34 @@
 - (NSString *)makeHTMLPageFromString:(NSString *)html
 {
     NSString *header = @"<!doctype html>\n<html>\n<head> \n";
+    
+    header = [NSString stringWithFormat:@"%@\n %@", header, @"<style type=\"text/css\"> \n"
+    "html {"
+        "-webkit-text-size-adjust: none; "
+    "}\n" ];
+//    "body {font-family: \"helvetica neue\"; "];
+
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+//        header = [NSString stringWithFormat:@"%@ font-size: %dpt; !important }\n", header, 16];
+//    } else {
+//        header = [NSString stringWithFormat:@"%@ font-size: %dpt; !important }\n", header, 16];
+//    }
+    header = [NSString stringWithFormat:@"%@ %@", header, @"ul {\n"
+        "list-style-position: outside;\n"
+        "list-style-type: square;\n"
+        "padding-left: 15px;\n"
+    "}\n"];
+    
+
+    CGRect frame =  [[UIScreen mainScreen] bounds];
+    int width = 0;
+    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+    if (deviceOrientation == UIDeviceOrientationPortrait || deviceOrientation == UIDeviceOrientationUnknown || deviceOrientation == UIDeviceOrientationPortraitUpsideDown ) width = frame.size.width - 10;
+        else width = frame.size.height - 10;
+
+    header = [NSString stringWithFormat:@"%@ #program_page { width: %dpx; font-size: 11pt; margin: 5px; }", header, width];
+
+    header = [NSString stringWithFormat:@"%@ %@", header, @"</style> \n"];
 
     NSError *error = nil;
     NSString *seminarCSSData = [NSString stringWithContentsOfURL:[[ISAppDelegate sharedDelegate] seminarCSS] encoding:NSUTF8StringEncoding error:&error];
@@ -404,28 +432,8 @@
     header = [NSString stringWithFormat:@"%@\n <style type=\"text/css\">\n %@\n", header, seminarCSSData];
     header = [NSString stringWithFormat:@"%@\n%@", header, bkCSSData];
     header = [NSString stringWithFormat:@"%@\n</style>", header];
-    
-    header = [NSString stringWithFormat:@"%@\n %@", header, @"<style type=\"text/css\"> \n"
-    "html {"
-        "-webkit-text-size-adjust: none; "
-    "}\n"
-    "body {font-family: \"helvetica neue\"; font-size: 14; }\n"
-    "ul {\n"
-        "list-style-position: outside;\n"
-        "list-style-type: square;\n"
-        "padding-left: 15px;\n"
-    "}\n"];
-
-    CGRect frame =  [[UIScreen mainScreen] bounds];
-    int width = 0;
-    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-    if (deviceOrientation == UIDeviceOrientationPortrait || deviceOrientation == UIDeviceOrientationUnknown || deviceOrientation == UIDeviceOrientationPortraitUpsideDown ) width = frame.size.width - 10;
-        else width = frame.size.height - 10;
-
-    header = [NSString stringWithFormat:@"%@ #program_page { width: %dpx; font-size: small; margin: 5px; }", header, width];
-
-    header = [NSString stringWithFormat:@"%@ %@", header, @"</style> \n"
-    "<meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0;'>\n"
+              
+    header = [NSString stringWithFormat:@"%@ %@", header, @"<meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0;'>\n"
     "</head> \n<body>\n<div id=\"program_page\">\n"];
 
     // constructing seminar attending cost
@@ -498,7 +506,6 @@
 {
     return [self.seminar.lectors count];
 }
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

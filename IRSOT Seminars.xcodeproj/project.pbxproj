@@ -73,6 +73,7 @@
 		C465876715F9001800AA2B6B /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C465876615F9001800AA2B6B /* Seminar.m */; };
 		C465876A15F9001800AA2B6B /* Sections.m in Sources */ = {isa = PBXBuildFile; fileRef = C465876915F9001800AA2B6B /* Sections.m */; };
 		C46A618215DD2E2D0093C39E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46A618115DD2E2D0093C39E /* SystemConfiguration.framework */; };
+		C46E89B71610C83E00D5CAEE /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C46E89B61610C83E00D5CAEE /* Default-568h@2x.png */; };
 		C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */; };
 		C483E40F15D2C393001A41FB /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40E15D2C393001A41FB /* Helper.m */; };
 		C48F96F815CC46D400F4AA51 /* Seminar+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F96F715CC46D400F4AA51 /* Seminar+Load_Data.m */; };
@@ -191,6 +192,8 @@
 		C423682E15DEBBFF0066B1D7 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		C423683015DEBD380066B1D7 /* ReachabilityARC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityARC.h; sourceTree = "<group>"; };
 		C423683115DEBD380066B1D7 /* ReachabilityARC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityARC.m; sourceTree = "<group>"; };
+		C423BC1516121940005C5A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		C423BC1616121940005C5A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		C42D424C15E3D8620042E708 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../../libs/tapkulibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		C42D425B15E3D8A10042E708 /* ISCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISCalendarViewController.h; sourceTree = "<group>"; };
 		C42D425C15E3D8A10042E708 /* ISCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISCalendarViewController.m; sourceTree = "<group>"; };
@@ -250,12 +253,11 @@
 		C465876815F9001800AA2B6B /* Sections.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sections.h; sourceTree = "<group>"; };
 		C465876915F9001800AA2B6B /* Sections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sections.m; sourceTree = "<group>"; };
 		C46A618115DD2E2D0093C39E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C46E89B61610C83E00D5CAEE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		C483E40A15D2ADD1001A41FB /* ISLectorListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorListTableViewController.h; sourceTree = "<group>"; };
 		C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorListTableViewController.m; sourceTree = "<group>"; };
 		C483E40D15D2C393001A41FB /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
 		C483E40E15D2C393001A41FB /* Helper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Helper.m; sourceTree = "<group>"; };
-		C4871E1715E3CFB60003F0D5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		C4871E1815E3CFB60003F0D5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		C4871E1915E3CFB60003F0D5 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C48F96F615CC46D400F4AA51 /* Seminar+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Seminar+Load_Data.h"; sourceTree = "<group>"; };
 		C48F96F715CC46D400F4AA51 /* Seminar+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Seminar+Load_Data.m"; sourceTree = "<group>"; };
@@ -543,6 +545,7 @@
 				C456427815D25B53001C4024 /* icons */,
 				C4228C6415D1805600960BBA /* app icon */,
 				C4DE788E15C95E34007FBEC4 /* Info Links.plist */,
+				C46E89B61610C83E00D5CAEE /* Default-568h@2x.png */,
 				C462BDB815C95A8700170E3C /* IRSOT Seminars-Info.plist */,
 				C462BDB915C95A8700170E3C /* InfoPlist.strings */,
 				C462BDBF15C95A8700170E3C /* ISAppDelegate.h */,
@@ -632,6 +635,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = C462BD9F15C95A8700170E3C;
 			productRefGroup = C462BDAB15C95A8700170E3C /* Products */;
@@ -745,6 +749,7 @@
 				C45C86B615F63DAE00108749 /* greenButtonHighlight@2x.png in Resources */,
 				C4E5122B15F680E9007DD40E /* light-hash-background@2x~iPad.png in Resources */,
 				C4E5122C15F680E9007DD40E /* light-hash-background~iPad.png in Resources */,
+				C46E89B71610C83E00D5CAEE /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -822,7 +827,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C462BDC315C95A8700170E3C /* en */,
-				C4871E1715E3CFB60003F0D5 /* ru */,
+				C423BC1516121940005C5A26 /* Base */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
@@ -831,7 +836,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C462BDC615C95A8700170E3C /* en */,
-				C4871E1815E3CFB60003F0D5 /* ru */,
+				C423BC1616121940005C5A26 /* Base */,
 			);
 			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
@@ -899,13 +904,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
 				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B8AA51A6-8AB4-44F7-AA23-4C72D2D99128";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B8AA51A6-8AB4-44F7-AA23-4C72D2D99128";
+				PROVISIONING_PROFILE = "9EE3C2BA-F906-4365-9BAA-547E381A4AA6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9EE3C2BA-F906-4365-9BAA-547E381A4AA6";
 				USER_HEADER_SEARCH_PATHS = "Submodules/** /Users/raveman/Developer/libs/tapkulibrary/src/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -920,13 +926,14 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
 				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B8AA51A6-8AB4-44F7-AA23-4C72D2D99128";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B8AA51A6-8AB4-44F7-AA23-4C72D2D99128";
+				PROVISIONING_PROFILE = "9EE3C2BA-F906-4365-9BAA-547E381A4AA6";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9EE3C2BA-F906-4365-9BAA-547E381A4AA6";
 				USER_HEADER_SEARCH_PATHS = "Submodules/** /Users/raveman/Developer/libs/tapkulibrary/src/**";
 				WRAPPER_EXTENSION = app;
 			};

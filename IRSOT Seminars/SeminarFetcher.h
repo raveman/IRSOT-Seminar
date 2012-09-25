@@ -12,7 +12,7 @@
 #define RUSEMINAR_SEMINAR_CSS @"http://www.ruseminar.ru/assets/css/seminar.css"
 
 #define SEMINAR_SITE @"devedu.ruseminar.ru"
-#define SEMINAR_URL @"http://devedu.ruseminar.ru/api/nonauth"
+#define SEMINAR_URL @"http://mobile.ruseminar.ru/api/nonauth"
 #define UPDATE_NODE @"node/100"
 #define SEMINAR_TAXONOMY_URL @"taxonomy_vocabulary"
 #define SEMINAR_TERM_URL @"taxonomy_term"

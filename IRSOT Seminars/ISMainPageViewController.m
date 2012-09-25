@@ -205,7 +205,6 @@
     return count;
 }
 
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([self.fetchedResultsController fetchedObjects]) {
@@ -398,16 +397,14 @@
     dispatch_async(checkQ, ^{
         NSInteger changeTime = [SeminarFetcher checkUpdates];
         if (changeTime) {
-            
             NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
             NSInteger savedChangeTime = [[defaults objectForKey:CATALOG_CHANGED_KEY] integerValue];
             if (savedChangeTime != changeTime) {
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.changedTime = changeTime;
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Каталог" message:@"Есть обновления каталога. Загрузить ?" delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:@"Загрузить", nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Каталог", @"Catalog updated alert") message:NSLocalizedString(@"Есть обновления каталога. Загрузить ?", @"There are updates message")  delegate:self cancelButtonTitle:NSLocalizedString(@"Не сейчас", @"Not now button") otherButtonTitles:NSLocalizedString(@"Загрузить", @"Download button"), nil];
                     [alert show];
                 });
-
             }
         }
     });

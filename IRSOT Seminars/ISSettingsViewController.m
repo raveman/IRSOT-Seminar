@@ -243,10 +243,13 @@
                 [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
                 
                 [dateFormatter setLocale:locale];
-                NSString *dateUpdated = [dateFormatter stringFromDate:[NSDate date]];
+                NSDate *dateChanged = [NSDate date];
+                NSString *dateUpdated = [dateFormatter stringFromDate:dateChanged];
+                self.changedTime = [dateChanged timeIntervalSince1970];
 
                 NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
                 [defaults setObject:dateUpdated forKey:UPDATE_DATE_KEY];
+                
                 [defaults setInteger:self.changedTime forKey:CATALOG_CHANGED_KEY];
                 [defaults synchronize];
 

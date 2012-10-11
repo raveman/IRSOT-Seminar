@@ -252,7 +252,7 @@
         } else {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
-            cell.textLabel.text = NSLocalizedString(@"Нет семинаров", @"No seminars");
+            cell.textLabel.text = NSLocalizedString(@"Нет мероприятий", @"No seminars");
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.detailTextLabel.text = @"";
         }

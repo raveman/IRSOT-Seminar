@@ -183,15 +183,6 @@
     [defaults synchronize];
 }
 
-- (IBAction)iCloudSwithPressed:(UISwitch *)sender
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *useiCloud = [NSNumber numberWithBool:sender.on];
-    
-    [defaults setObject:useiCloud forKey:USE_ICLOUD_KEY];
-    [defaults synchronize];
-}
-
 #pragma mark - Loading staff from website
 
 - (void) loadData {
@@ -199,14 +190,15 @@
     [self deleteData];
     
     [SVProgressHUD showWithStatus:NSLocalizedString(@"Обновляю каталог", @"Loading catalog data from the web")];
-    BOOL __block updated = NO;
+    
     dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
     dispatch_async(fetchQ, ^{
-        
+    
         // downloading section and types
-        NSDictionary *sectionsAndTypes = [SeminarFetcher sectionsAndTypes];
-        
-        [self.managedObjectContext performBlock:^{
+    
+        [self.managedObjectContext performBlockAndWait:^{
+            NSDictionary  *sectionsAndTypes = [SeminarFetcher sectionsAndTypes];
+    
             NSArray *sections = [sectionsAndTypes valueForKey:@"sections"];
             NSArray *types = [sectionsAndTypes valueForKey:@"types"];
             
@@ -221,13 +213,16 @@
             }
 
             [SVProgressHUD showWithStatus:@"Обновляю лекторов"];
+            
             NSArray *lectors = [SeminarFetcher lectors];
             for (NSDictionary *lectorInfo in lectors) {
                 [Lector lectorWithDictionary:lectorInfo inManagedObjectContext:self.managedObjectContext];
             }
 
             [SVProgressHUD showWithStatus:@"Обновляю каталог"];
+    
             NSArray *seminars = [SeminarFetcher seminars];
+    
             for (NSDictionary *seminarInfo in seminars) {
                 [Seminar seminarWithDictionary:seminarInfo lectors:lectors inManagedObjectContext:self.managedObjectContext];
             }
@@ -238,35 +233,33 @@
                 
                 [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Ошибка загрузки %@", [error localizedDescription]]];
             } else {
+                [self.delegate settingsViewController:self didUpdatedStore:YES];
+//                [self.delegate performSelector:@selector(reloadData)];
+                
+                NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
+                //                NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatFromTemplate:@"HH:MM dd.mm.yyyy" options:nil locale:nil];
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+                [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+                
+                [dateFormatter setLocale:locale];
+                NSString *dateUpdated = [dateFormatter stringFromDate:[NSDate date]];
+
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                [defaults setObject:dateUpdated forKey:UPDATE_DATE_KEY];
+                [defaults setInteger:self.changedTime forKey:CATALOG_CHANGED_KEY];
+                [defaults synchronize];
+
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Каталог обновлен!", @"Catalog loaded successfully")];
+                    
                     self.deleteButton.enabled = YES;
-                    updated = YES;
-                    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
-                    //                NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatFromTemplate:@"HH:MM dd.mm.yyyy" options:nil locale:nil];
-                    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-                    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-                    
-                    [dateFormatter setLocale:locale];
-                    NSString *dateUpdated = [dateFormatter stringFromDate:[NSDate date]];
-                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                    
                     self.updateDateLabel.text = dateUpdated;
-                    
-                    [defaults setObject:dateUpdated forKey:UPDATE_DATE_KEY];
-                    
-                    [defaults setInteger:self.changedTime forKey:CATALOG_CHANGED_KEY];
-                    [defaults synchronize];
-                    
-                    [self.delegate settingsViewController:self didUpdatedStore:updated];
                 });
             }
-
         }]; // end managedObjectContext performBlock
     }); // end dispatch_async(fetchQ) block
     dispatch_release(fetchQ);
-
 }
 
 // удаляем все данные из приложения
@@ -300,7 +293,7 @@
 
         deleted = YES;
         self.deleteButton.enabled = NO;
-        self.updateDateLabel.text = @"Данных нет";
+        self.updateDateLabel.text = NSLocalizedString(@"нет данных", @"No data about update");
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:@"" forKey:UPDATE_DATE_KEY];
         [defaults synchronize];

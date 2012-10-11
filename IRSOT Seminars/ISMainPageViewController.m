@@ -23,11 +23,12 @@
 
 #define CACHE_NAME @"Master"
 
-
-
 // 255 211 120 134U pantone
 
-@interface ISMainPageViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, ISSettingsViewControllerDelegate>
+@interface ISMainPageViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, ISSettingsViewControllerDelegate> {
+    BOOL checkUpdates;
+    int count;
+}
 
 @property (weak, nonatomic) IBOutlet UILabel *noDataLabel;
 @property (nonatomic, strong) UIColor *selectedCellBGColor;
@@ -106,7 +107,13 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
-    [self checkUpdates];
+
+    count = [[self.fetchedResultsController fetchedObjects] count];
+    if (!count) {
+    } else {
+        checkUpdates = YES;
+        [self checkUpdates];
+    }
 }
 
 - (void)viewDidUnload
@@ -121,11 +128,12 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
-    NSInteger count = [[self.fetchedResultsController fetchedObjects] count];
+    count = [[self.fetchedResultsController fetchedObjects] count];
     if (!count) {
         // у нас нет еще никаких данных, надо бы их загрузить
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Каталог" message:@"У нас нет еще загруженных семинаров" delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:@"Загрузить", nil];
         [alert show];
+        checkUpdates = NO;
         self.noDataLabel.hidden = NO;
     } else {
         self.noDataLabel.hidden = YES;
@@ -191,18 +199,18 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    NSInteger count = 0;
+    NSInteger rowsInSection = 0;
     
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-       count = [sectionInfo numberOfObjects];
+       rowsInSection = [sectionInfo numberOfObjects];
         self.noDataLabel.hidden = YES;
     } else {
         self.noDataLabel.hidden = NO;
         self.noDataLabel.text = NSLocalizedString(@"Нет данных в каталоге", @"Main Page Categories list no data");
     }
         
-    return count;
+    return rowsInSection;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -212,17 +220,18 @@
             Sections *section = [[self fetchedResultsController] objectAtIndexPath:indexPath];
             self.detailViewController.section = section;
         }
+        [self performSegueWithIdentifier:@"Seminar List For Section or Type" sender:indexPath];
     }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Education Types Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    }
+//    if (cell == nil) {
+        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//    }
     cell.selectionStyle = UITableViewCellSelectionStyleGray;
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
     
@@ -371,7 +380,7 @@
 - (void) settingsViewController:(ISSettingsViewController *)sender didUpdatedStore:(BOOL)updated
 {
     if (updated) {
-        [self.seminarCategoriesTableView reloadData];
+        [self.seminarCategoriesTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }
 }
 
@@ -386,29 +395,39 @@
     if ([notification.userInfo objectForKey:NSRemovedPersistentStoresKey]) {
         self.fetchedResultsController = nil;
     }
-    
-    [self.seminarCategoriesTableView reloadData];
+
+    [self.seminarCategoriesTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+//    [self.view performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:NO];
+//    [self.view setNeedsDisplay];
 }
 
 #pragma mark - check for updates
 - (void) checkUpdates
 {
-    dispatch_queue_t checkQ = dispatch_queue_create("Update Checker", NULL);
-    dispatch_async(checkQ, ^{
-        NSInteger changeTime = [SeminarFetcher checkUpdates];
-        if (changeTime) {
-            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-            NSInteger savedChangeTime = [[defaults objectForKey:CATALOG_CHANGED_KEY] integerValue];
-            if (savedChangeTime != changeTime) {
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    self.changedTime = changeTime;
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Каталог", @"Catalog updated alert") message:NSLocalizedString(@"Есть обновления каталога. Загрузить ?", @"There are updates message")  delegate:self cancelButtonTitle:NSLocalizedString(@"Не сейчас", @"Not now button") otherButtonTitles:NSLocalizedString(@"Загрузить", @"Download button"), nil];
-                    [alert show];
-                });
+    if (checkUpdates) {
+        dispatch_queue_t checkQ = dispatch_queue_create("Update Checker", NULL);
+        dispatch_async(checkQ, ^{
+            NSInteger changeTime = [SeminarFetcher checkUpdates];
+            if (changeTime) {
+                checkUpdates = NO;
+                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                NSInteger savedChangeTime = [[defaults objectForKey:CATALOG_CHANGED_KEY] integerValue];
+                if (savedChangeTime < changeTime) {
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.changedTime = changeTime;
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Каталог", @"Catalog updated alert") message:NSLocalizedString(@"Есть обновления каталога. Загрузить ?", @"There are updates message")  delegate:self cancelButtonTitle:NSLocalizedString(@"Не сейчас", @"Not now button") otherButtonTitles:NSLocalizedString(@"Загрузить", @"Download button"), nil];
+                        [alert show];
+                    });
+                }
             }
-        }
-    });
-    dispatch_release(checkQ);
+        });
+        dispatch_release(checkQ);
+    }
+}
+
+- (void) reloadData
+{
+    [self.seminarCategoriesTableView reloadData];
 }
 
 @end

@@ -14,10 +14,10 @@
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>irsot-icon-iPhone@2x.png</string>
-				<string>irsot-icon-iPhone.png</string>
-				<string>irsot-icon-iPad@2x.png</string>
 				<string>irsot-icon-iPad.png</string>
+				<string>irsot-icon-iPad@2x.png</string>
+				<string>irsot-icon-iPhone.png</string>
+				<string>irsot-icon-iPhone@2x.png</string>
 			</array>
 			<key>UIPrerenderedIcon</key>
 			<true/>

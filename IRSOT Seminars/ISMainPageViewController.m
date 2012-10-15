@@ -87,11 +87,12 @@
 //    titleLabel.text = NSLocalizedString(@"Семинары ИРСОТ", @"Main Page Title");
 //    [titleLabel sizeToFit];
 
-    self.title =  NSLocalizedString(@"Семинары ИРСОТ", @"Main Page Title");
-    self.tabBarItem.title = NSLocalizedString(@"Каталог", @"TabBar Catalog title");
-
+    self.title =  NSLocalizedString(@"Каталог", @"Main Page Title");
+//    self.tabBarItem.title = NSLocalizedString(@"Каталог", @"TabBar Catalog title");
+//    self.navigationItem.title = NSLocalizedString(@"Каталог", @"TabBar Catalog title");
+    
     self.noDataLabel.shadowColor = [UIColor grayColor];
-    self.noDataLabel.shadowOffset = CGSizeMake(1,-1);
+    self.noDataLabel.shadowOffset = CGSizeMake(0,-1);
     self.noDataLabel.font = [UIFont boldSystemFontOfSize:28.0];
     self.noDataLabel.textColor = [UIColor whiteColor];
     self.noDataLabel.text = NSLocalizedString(@"Нет данных", @"Main Page Categories list no data");

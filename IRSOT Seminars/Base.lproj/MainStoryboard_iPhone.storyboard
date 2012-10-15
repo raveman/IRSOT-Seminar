@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2840" systemVersion="12C54" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Xxu-CO-emP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Xxu-CO-emP">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1926"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -54,7 +54,7 @@
                                 </prototypes>
                             </tableView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Bge-gu-1YN">
-                                <rect key="frame" x="20" y="173" width="280" height="21"/>
+                                <rect key="frame" x="0.0" y="160" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="28"/>
                                 <color key="textColor" red="0.62352941176470589" green="0.80784313725490198" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
@@ -423,11 +423,11 @@
             </objects>
             <point key="canvasLocation" x="956" y="859"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Каталог-->
         <scene sceneID="74o-AY-3Eu">
             <objects>
                 <navigationController id="Ycv-0g-Mlc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="MJn-jh-3W8"/>
+                    <tabBarItem key="tabBarItem" title="Каталог" image="catalog3-iPhone.png" id="MJn-jh-3W8"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2s2-Ng-Yes">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -812,6 +812,7 @@
     </scenes>
     <resources>
         <image name="back-iPhone.png" width="20" height="20"/>
+        <image name="catalog3-iPhone.png" width="30" height="30"/>
         <image name="forward-iPhone.png" width="20" height="20"/>
         <image name="gear-iPhone.png" width="30" height="30"/>
         <image name="lectors-iPhone.png" width="30" height="30"/>
@@ -887,6 +888,11 @@
         <class className="ISSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSettingsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="delete:" candidateClass="UIButton"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="load:" candidateClass="UIButton"/>
+                <relationship kind="action" name="sortSwitchPressed:" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="iCloudSwitch" candidateClass="UISwitch"/>

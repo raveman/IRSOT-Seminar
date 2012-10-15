@@ -31,6 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 @property (weak, nonatomic) IBOutlet UILabel *errorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *closeButton;
 
 @property (strong, nonatomic) ReachabilityARC * reach;
 
@@ -88,8 +89,9 @@
     [self.deleteButton setBackgroundImage:redButtonHighlight forState:UIControlStateHighlighted];
     
     self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
-    self.iCloudSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USE_ICLOUD_KEY] boolValue];
+//    self.iCloudSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USE_ICLOUD_KEY] boolValue];
     
+    self.closeButton.title = @"abracadabra";
     self.errorLabel.text = @"";
     self.versionLabel.text = [NSString stringWithFormat:@"Версия: %@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
     
@@ -128,6 +130,7 @@
     [self setReach:nil];
     [self setICloudSwitch:nil];
     [self setVersionLabel:nil];
+    [self setCloseButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -190,13 +193,20 @@
     [self deleteData];
     
     [SVProgressHUD showWithStatus:NSLocalizedString(@"Обновляю каталог", @"Loading catalog data from the web")];
-    
+
     dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
     dispatch_async(fetchQ, ^{
     
         // downloading section and types
     
         [self.managedObjectContext performBlockAndWait:^{
+            
+            // disabling "close" button
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.closeButton.enabled = NO;
+            });
+            
             NSDictionary  *sectionsAndTypes = [SeminarFetcher sectionsAndTypes];
     
             NSArray *sections = [sectionsAndTypes valueForKey:@"sections"];
@@ -232,6 +242,10 @@
                 NSLog(@"Could'not save: %@", [error localizedDescription]);
                 
                 [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Ошибка загрузки %@", [error localizedDescription]]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.closeButton.enabled = YES;
+                });
+                
             } else {
                 [self.delegate settingsViewController:self didUpdatedStore:YES];
 //                [self.delegate performSelector:@selector(reloadData)];
@@ -258,6 +272,7 @@
                     
                     self.deleteButton.enabled = YES;
                     self.updateDateLabel.text = dateUpdated;
+                    self.closeButton.enabled = YES;
                 });
             }
         }]; // end managedObjectContext performBlock

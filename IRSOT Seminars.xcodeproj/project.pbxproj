@@ -79,6 +79,12 @@
 		C48F96F815CC46D400F4AA51 /* Seminar+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F96F715CC46D400F4AA51 /* Seminar+Load_Data.m */; };
 		C48F971315CC519E00F4AA51 /* Lector+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */; };
 		C48F972215CC663400F4AA51 /* ISSeminarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F972115CC663400F4AA51 /* ISSeminarViewController.m */; };
+		C4A37C8E162742EF00DBE6E8 /* catalog1-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4A37C88162742EF00DBE6E8 /* catalog1-iPhone.png */; };
+		C4A37C8F162742EF00DBE6E8 /* catalog1-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4A37C89162742EF00DBE6E8 /* catalog1-iPhone@2x.png */; };
+		C4A37C90162742EF00DBE6E8 /* catalog2-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4A37C8A162742EF00DBE6E8 /* catalog2-iPhone.png */; };
+		C4A37C91162742EF00DBE6E8 /* catalog2-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4A37C8B162742EF00DBE6E8 /* catalog2-iPhone@2x.png */; };
+		C4A37C92162742EF00DBE6E8 /* catalog3-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4A37C8C162742EF00DBE6E8 /* catalog3-iPhone.png */; };
+		C4A37C93162742EF00DBE6E8 /* catalog3-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4A37C8D162742EF00DBE6E8 /* catalog3-iPhone@2x.png */; };
 		C4D7CEF015D3F1440003F90C /* twitter-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D7CEEE15D3F1440003F90C /* twitter-iPhone.png */; };
 		C4D7CEF115D3F1440003F90C /* twitter-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D7CEEF15D3F1440003F90C /* twitter-iPhone@2x.png */; };
 		C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */; };
@@ -261,6 +267,12 @@
 		C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Lector+Load_Data.m"; sourceTree = "<group>"; };
 		C48F972015CC663400F4AA51 /* ISSeminarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSeminarViewController.h; sourceTree = "<group>"; };
 		C48F972115CC663400F4AA51 /* ISSeminarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSeminarViewController.m; sourceTree = "<group>"; };
+		C4A37C88162742EF00DBE6E8 /* catalog1-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catalog1-iPhone.png"; path = "icons/catalog1-iPhone.png"; sourceTree = "<group>"; };
+		C4A37C89162742EF00DBE6E8 /* catalog1-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catalog1-iPhone@2x.png"; path = "icons/catalog1-iPhone@2x.png"; sourceTree = "<group>"; };
+		C4A37C8A162742EF00DBE6E8 /* catalog2-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catalog2-iPhone.png"; path = "icons/catalog2-iPhone.png"; sourceTree = "<group>"; };
+		C4A37C8B162742EF00DBE6E8 /* catalog2-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catalog2-iPhone@2x.png"; path = "icons/catalog2-iPhone@2x.png"; sourceTree = "<group>"; };
+		C4A37C8C162742EF00DBE6E8 /* catalog3-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catalog3-iPhone.png"; path = "icons/catalog3-iPhone.png"; sourceTree = "<group>"; };
+		C4A37C8D162742EF00DBE6E8 /* catalog3-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catalog3-iPhone@2x.png"; path = "icons/catalog3-iPhone@2x.png"; sourceTree = "<group>"; };
 		C4C6DD1715E0274E003292C8 /* IRSOT_Seminars 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "IRSOT_Seminars 2.xcdatamodel"; sourceTree = "<group>"; };
 		C4D7CEEE15D3F1440003F90C /* twitter-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "twitter-iPhone.png"; path = "icons/twitter-iPhone.png"; sourceTree = "<group>"; };
 		C4D7CEEF15D3F1440003F90C /* twitter-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "twitter-iPhone@2x.png"; path = "icons/twitter-iPhone@2x.png"; sourceTree = "<group>"; };
@@ -424,6 +436,12 @@
 		C456427815D25B53001C4024 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				C4A37C88162742EF00DBE6E8 /* catalog1-iPhone.png */,
+				C4A37C89162742EF00DBE6E8 /* catalog1-iPhone@2x.png */,
+				C4A37C8A162742EF00DBE6E8 /* catalog2-iPhone.png */,
+				C4A37C8B162742EF00DBE6E8 /* catalog2-iPhone@2x.png */,
+				C4A37C8C162742EF00DBE6E8 /* catalog3-iPhone.png */,
+				C4A37C8D162742EF00DBE6E8 /* catalog3-iPhone@2x.png */,
 				C4E3A9EA1612304300CFF725 /* irsot-icon-iPad@2x.png */,
 				C4E3A9E81612303F00CFF725 /* irsot-icon-iPad.png */,
 				C4E3A9E61612303A00CFF725 /* irsot-icon-iPhone@2x.png */,
@@ -742,6 +760,12 @@
 				C45036BE161245A000E4B642 /* irsot-icon-iPad@2x.png in Resources */,
 				C45036C31612470500E4B642 /* irsot-icon-iPhone.png in Resources */,
 				C45036C41612470E00E4B642 /* irsot-icon-iPhone@2x.png in Resources */,
+				C4A37C8E162742EF00DBE6E8 /* catalog1-iPhone.png in Resources */,
+				C4A37C8F162742EF00DBE6E8 /* catalog1-iPhone@2x.png in Resources */,
+				C4A37C90162742EF00DBE6E8 /* catalog2-iPhone.png in Resources */,
+				C4A37C91162742EF00DBE6E8 /* catalog2-iPhone@2x.png in Resources */,
+				C4A37C92162742EF00DBE6E8 /* catalog3-iPhone.png in Resources */,
+				C4A37C93162742EF00DBE6E8 /* catalog3-iPhone@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

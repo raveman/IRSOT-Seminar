@@ -168,7 +168,7 @@
         self.programWebView.hidden = YES;
         self.lectorTableView.hidden = YES;
         self.programLabel.hidden = YES;
-        self.attendSeminarButton.enabled = NO;
+        self.attendSeminarButton.hidden = YES;
         self.navigationItem.rightBarButtonItem.enabled = NO;
         
     } else {

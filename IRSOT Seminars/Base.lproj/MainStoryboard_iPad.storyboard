@@ -429,11 +429,11 @@
             </objects>
             <point key="canvasLocation" x="1740" y="595"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Каталог-->
         <scene sceneID="tZe-XE-5xD">
             <objects>
                 <navigationController id="NQX-hn-ukl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="cSv-Qu-hXQ"/>
+                    <tabBarItem key="tabBarItem" title="Каталог" image="catalog3-iPhone.png" id="cSv-Qu-hXQ"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="CC1-yD-Zup">
@@ -786,11 +786,11 @@
             </objects>
             <point key="canvasLocation" x="898" y="1858"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Закладки-->
         <scene sceneID="rwF-A6-1ex">
             <objects>
                 <navigationController id="09j-8x-RQ7" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="Dwg-ER-ECN"/>
+                    <tabBarItem key="tabBarItem" title="Закладки" image="bookmarks-iPhone.png" id="Dwg-ER-ECN"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Cgh-oy-Scm">
@@ -829,6 +829,8 @@
     </scenes>
     <resources>
         <image name="back-iPhone.png" width="20" height="20"/>
+        <image name="bookmarks-iPhone.png" width="30" height="30"/>
+        <image name="catalog3-iPhone.png" width="30" height="30"/>
         <image name="forward-iPhone.png" width="20" height="20"/>
         <image name="gear-iPhone.png" width="30" height="30"/>
         <image name="lectors-iPhone.png" width="30" height="30"/>
@@ -907,6 +909,7 @@
                 <relationship kind="action" name="delete:" candidateClass="UIButton"/>
                 <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="load:" candidateClass="UIButton"/>
+                <relationship kind="action" name="sortSwitchPressed:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>

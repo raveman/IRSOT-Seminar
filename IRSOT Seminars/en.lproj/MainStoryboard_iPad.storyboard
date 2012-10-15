@@ -428,11 +428,11 @@
             </objects>
             <point key="canvasLocation" x="1908" y="671"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Catalog-->
         <scene sceneID="Lym-DT-WWZ">
             <objects>
                 <navigationController id="lXx-vE-nHl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="cxh-eK-9Xm"/>
+                    <tabBarItem key="tabBarItem" title="Catalog" image="catalog3-iPhone.png" id="cxh-eK-9Xm"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s9p-gE-vht">
@@ -778,11 +778,11 @@
             </objects>
             <point key="canvasLocation" x="822" y="1850"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Bookmarks-->
         <scene sceneID="8dw-C7-w72">
             <objects>
                 <navigationController id="u8i-gs-cdF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="Roc-Ve-Xso"/>
+                    <tabBarItem key="tabBarItem" title="Bookmarks" image="bookmarks-iPhone.png" id="Roc-Ve-Xso"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="T6G-ox-uYN">
@@ -821,6 +821,8 @@
     </scenes>
     <resources>
         <image name="back-iPhone.png" width="20" height="20"/>
+        <image name="bookmarks-iPhone.png" width="30" height="30"/>
+        <image name="catalog3-iPhone.png" width="30" height="30"/>
         <image name="forward-iPhone.png" width="20" height="20"/>
         <image name="gear-iPhone.png" width="30" height="30"/>
         <image name="lectors-iPhone.png" width="30" height="30"/>
@@ -881,7 +883,6 @@
         <class className="ISSeminarViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarViewController.h"/>
             <relationships>
-                <relationship kind="action" name="share:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="attendSeminarButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lectorTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="lectorsLabel" candidateClass="UILabel"/>
@@ -898,7 +899,9 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSettingsViewController.h"/>
             <relationships>
                 <relationship kind="action" name="delete:" candidateClass="UIButton"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="action" name="load:" candidateClass="UIButton"/>
+                <relationship kind="action" name="sortSwitchPressed:" candidateClass="UISwitch"/>
                 <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>

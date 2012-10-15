@@ -771,11 +771,11 @@
             </objects>
             <point key="canvasLocation" x="470" y="1466"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Navigation Controller - Закладки-->
         <scene sceneID="tJu-Zn-Gs6">
             <objects>
                 <navigationController id="Zxi-AR-pyA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="bookmarks" id="dJB-d8-dMU"/>
+                    <tabBarItem key="tabBarItem" title="Закладки" image="bookmarks-iPhone.png" id="dJB-d8-dMU"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="NSQ-fd-JQf">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -812,6 +812,7 @@
     </scenes>
     <resources>
         <image name="back-iPhone.png" width="20" height="20"/>
+        <image name="bookmarks-iPhone.png" width="30" height="30"/>
         <image name="catalog3-iPhone.png" width="30" height="30"/>
         <image name="forward-iPhone.png" width="20" height="20"/>
         <image name="gear-iPhone.png" width="30" height="30"/>

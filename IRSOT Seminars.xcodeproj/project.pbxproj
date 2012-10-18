@@ -26,7 +26,6 @@
 		C423682D15DEBBF70066B1D7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682C15DEBBF70066B1D7 /* CoreLocation.framework */; };
 		C423682F15DEBBFF0066B1D7 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682E15DEBBFF0066B1D7 /* Twitter.framework */; };
 		C423683215DEBD380066B1D7 /* ReachabilityARC.m in Sources */ = {isa = PBXBuildFile; fileRef = C423683115DEBD380066B1D7 /* ReachabilityARC.m */; };
-		C42D425815E3D86D0042E708 /* libTapkuLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C42D425515E3D8620042E708 /* libTapkuLibrary.a */; };
 		C42D425D15E3D8A10042E708 /* ISCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42D425C15E3D8A10042E708 /* ISCalendarViewController.m */; };
 		C42D425F15E3D9600042E708 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42D425E15E3D9600042E708 /* QuartzCore.framework */; };
 		C42D426115E3D9650042E708 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42D426015E3D9640042E708 /* MapKit.framework */; };
@@ -147,27 +146,6 @@
 			remoteGlobalIDString = 7AB5360E1552E26800171BCE;
 			remoteInfo = "Resource Bundle";
 		};
-		C42D425415E3D8620042E708 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C42D424C15E3D8620042E708 /* TapkuLibrary.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = TapkuLibrary;
-		};
-		C42D425615E3D8620042E708 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C42D424C15E3D8620042E708 /* TapkuLibrary.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 3B45DDF1134C736600D24C1A;
-			remoteInfo = LogicTests;
-		};
-		C42D425915E3D8750042E708 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C42D424C15E3D8620042E708 /* TapkuLibrary.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = TapkuLibrary;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -198,7 +176,6 @@
 		C423683115DEBD380066B1D7 /* ReachabilityARC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityARC.m; sourceTree = "<group>"; };
 		C423BC1516121940005C5A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		C423BC1616121940005C5A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		C42D424C15E3D8620042E708 /* TapkuLibrary.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = TapkuLibrary.xcodeproj; path = ../../libs/tapkulibrary/src/TapkuLibrary.xcodeproj; sourceTree = "<group>"; };
 		C42D425B15E3D8A10042E708 /* ISCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISCalendarViewController.h; sourceTree = "<group>"; };
 		C42D425C15E3D8A10042E708 /* ISCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISCalendarViewController.m; sourceTree = "<group>"; };
 		C42D425E15E3D9600042E708 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -324,7 +301,6 @@
 				C423682915DEBBE70066B1D7 /* MessageUI.framework in Frameworks */,
 				C423682715DEBBDF0066B1D7 /* Security.framework in Frameworks */,
 				C423682415DEBAFE0066B1D7 /* libShareKit.a in Frameworks */,
-				C42D425815E3D86D0042E708 /* libTapkuLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,15 +404,6 @@
 			name = Helpers;
 			sourceTree = "<group>";
 		};
-		C42D424D15E3D8620042E708 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C42D425515E3D8620042E708 /* libTapkuLibrary.a */,
-				C42D425715E3D8620042E708 /* LogicTests.octest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		C456427815D25B53001C4024 /* icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,7 +469,6 @@
 				C4DE788D15C95DE0007FBEC4 /* Trash Views */,
 				C462BDAD15C95A8700170E3C /* Frameworks */,
 				C462BDAB15C95A8700170E3C /* Products */,
-				C42D424C15E3D8620042E708 /* TapkuLibrary.xcodeproj */,
 				C423680C15DEBAB90066B1D7 /* ShareKit.xcodeproj */,
 			);
 			sourceTree = "<group>";
@@ -627,7 +593,6 @@
 			);
 			dependencies = (
 				C423682315DEBAED0066B1D7 /* PBXTargetDependency */,
-				C42D425A15E3D8750042E708 /* PBXTargetDependency */,
 				C423682115DEBAE80066B1D7 /* PBXTargetDependency */,
 			);
 			name = "IRSOT Seminars";
@@ -660,10 +625,6 @@
 				{
 					ProductGroup = C423680D15DEBAB90066B1D7 /* Products */;
 					ProjectRef = C423680C15DEBAB90066B1D7 /* ShareKit.xcodeproj */;
-				},
-				{
-					ProductGroup = C42D424D15E3D8620042E708 /* Products */;
-					ProjectRef = C42D424C15E3D8620042E708 /* TapkuLibrary.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -700,20 +661,6 @@
 			fileType = archive.ar;
 			path = libShareKitNoSubmodules.a;
 			remoteRef = C423681D15DEBABA0066B1D7 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C42D425515E3D8620042E708 /* libTapkuLibrary.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libTapkuLibrary.a;
-			remoteRef = C42D425415E3D8620042E708 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C42D425715E3D8620042E708 /* LogicTests.octest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = LogicTests.octest;
-			remoteRef = C42D425615E3D8620042E708 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -829,11 +776,6 @@
 			isa = PBXTargetDependency;
 			name = "Resource Bundle";
 			targetProxy = C423682215DEBAED0066B1D7 /* PBXContainerItemProxy */;
-		};
-		C42D425A15E3D8750042E708 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = TapkuLibrary;
-			targetProxy = C42D425915E3D8750042E708 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

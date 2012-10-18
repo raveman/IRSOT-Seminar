@@ -162,7 +162,7 @@
             id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
             NSArray *objects = [sectionInfo objects];
             Seminar *seminar = nil;
-            if ([objects count]) seminar = [objects objectAtIndex:section];
+            if ([objects count]) seminar = [objects objectAtIndex:0]; // выбираем любой семинар из массива и спрашиваем его о названии секции
             title = seminar.section.name;
         }
     }
@@ -181,7 +181,7 @@
                     id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:i];
                     NSArray *objects = [sectionInfo objects];
                     Seminar *seminar = nil;
-                    if ([objects count]) seminar = [objects objectAtIndex:i];
+                    if ([objects count]) seminar = [objects objectAtIndex:0]; // выбираем любой семинар из массива и спрашиваем его о названии секции
                     [sectionIndexTitleLetters addObject: [seminar.section.name substringToIndex:1]];
                 }
             }

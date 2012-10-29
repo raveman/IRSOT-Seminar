@@ -293,8 +293,8 @@
     if (self.actionSheet) {
         // do nothing
     } else {
-        NSString *addBookmarkButton = NSLocalizedString(ADD_BOOKMARK, @"Add seminar bookmark button title");
-        NSString *viewOnWebButton = NSLocalizedString(VIEW_ON_WEB, @"Add seminar bookmark button title");
+        NSString *addBookmarkButton = NSLocalizedString(@"Добавить закладку", @"Add seminar bookmark button title");
+        NSString *viewOnWebButton = NSLocalizedString(@"Посмотреть полную версию", @"Add seminar bookmark button title");
         NSString *evernoteButton = NSLocalizedString(@"Сохранить в Evernote", @"Share on Evernote");
         NSString *twitterButton = NSLocalizedString(@"Отправить в Twitter", @"Share on twitter");
         NSString *facebookButton = NSLocalizedString(@"Отправить в Facebook", @"Share on Facebook");

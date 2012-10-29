@@ -876,6 +876,8 @@
         <class className="ISNewsWebviewControllerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISNewsWebviewControllerViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="forwardButtonPressed:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="forwardButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
@@ -891,6 +893,7 @@
         <class className="ISSeminarViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarViewController.h"/>
             <relationships>
+                <relationship kind="action" name="share:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="attendSeminarButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lectorTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="lectorsLabel" candidateClass="UILabel"/>

@@ -132,7 +132,7 @@
     count = [[self.fetchedResultsController fetchedObjects] count];
     if (!count) {
         // у нас нет еще никаких данных, надо бы их загрузить
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Каталог" message:@"У нас нет еще загруженных семинаров" delegate:self cancelButtonTitle:@"Отмена" otherButtonTitles:@"Загрузить", nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Каталог", @"Catalog") message:NSLocalizedString(@"У нас нет еще загруженных семинаров", @"No downloaded data") delegate:self cancelButtonTitle:NSLocalizedString(@"Отмена", @"Cancel") otherButtonTitles:NSLocalizedString(@"Загрузить", @"Download"), nil];
         [alert show];
         checkUpdates = NO;
         self.noDataLabel.hidden = NO;
@@ -417,7 +417,7 @@
                 if (savedChangeTime < changeTime) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         self.changedTime = changeTime;
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Каталог", @"Catalog updated alert") message:NSLocalizedString(@"Есть обновления каталога. Загрузить ?", @"There are updates message")  delegate:self cancelButtonTitle:NSLocalizedString(@"Не сейчас", @"Not now button") otherButtonTitles:NSLocalizedString(@"Загрузить", @"Download button"), nil];
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Каталог", @"Catalog") message:NSLocalizedString(@"Есть обновления каталога. Загрузить ?", @"There are updates message")  delegate:self cancelButtonTitle:NSLocalizedString(@"Не сейчас", @"Not now button") otherButtonTitles:NSLocalizedString(@"Загрузить", @"Download button"), nil];
                         [alert show];
                     });
                 }

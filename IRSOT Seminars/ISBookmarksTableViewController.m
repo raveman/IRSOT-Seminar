@@ -187,7 +187,7 @@
     }
     cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
     cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
 
     NSDictionary *bookmark = [self.bookmarks objectAtIndex:indexPath.row];
     cell.textLabel.text = [bookmark objectForKey:BOOKMARK_SEMINAR_NAME_KEY];

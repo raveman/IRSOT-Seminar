@@ -46,8 +46,8 @@
     
     // orange IRSOT toolbar color
     //    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:1 green:0.51 blue:0 alpha:1.0]];
-//    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:8/255.0 green:86/255.0 blue:126/255.0 alpha:1.0]];
-    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:8/255.0 green:111/255.0 blue:152/255.0 alpha:1.0]];
+    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:8/255.0 green:86/255.0 blue:126/255.0 alpha:1.0]];
+//    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:8/255.0 green:111/255.0 blue:152/255.0 alpha:1.0]];
     
 
     self.kvStore = [NSUbiquitousKeyValueStore defaultStore];

@@ -296,6 +296,9 @@
         NSString *addBookmarkButton = NSLocalizedString(@"Добавить закладку", @"Add seminar bookmark button title");
         NSString *viewOnWebButton = NSLocalizedString(@"Посмотреть полную версию", @"Add seminar bookmark button title");
         NSString *evernoteButton = NSLocalizedString(@"Сохранить в Evernote", @"Share on Evernote");
+        NSString *pocketButton = NSLocalizedString(@"Сохранить в Pocket", @"Share on Pocket");
+        NSString *readItLaterButton = NSLocalizedString(@"Сохранить в Read it Later", @"Share on Read it Later");
+        
         NSString *twitterButton = NSLocalizedString(@"Отправить в Twitter", @"Share on twitter");
         NSString *facebookButton = NSLocalizedString(@"Отправить в Facebook", @"Share on Facebook");
         NSString *emailButton = NSLocalizedString(@"Отправить по почте", @"Share via E-Mail");
@@ -305,9 +308,9 @@
         UIActionSheet *actionSheet = nil;
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            actionSheet = [[UIActionSheet alloc] initWithTitle:@"Закладки" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, emailButton, evernoteButton, twitterButton, facebookButton, nil];
+            actionSheet = [[UIActionSheet alloc] initWithTitle:@"Закладки" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
         } else {
-            actionSheet = [[UIActionSheet alloc] initWithTitle:@"Закладки" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, emailButton, evernoteButton, twitterButton, facebookButton, vkontakteButton, nil];
+            actionSheet = [[UIActionSheet alloc] initWithTitle:@"Закладки" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
         }
         
         [actionSheet showFromBarButtonItem:sender animated:YES];
@@ -346,25 +349,24 @@
         SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
         [SHKMail shareItem:item];
     } else if (buttonIndex == 3) {
-        //share to evernote
-        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
-        [SHKEvernote shareItem:item];
-    } else if (buttonIndex == 4) {
         //share to twitter
         SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар @irsot: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
         [SHKTwitter shareItem:item];
-    } else if (buttonIndex == 5) {
+    } else if (buttonIndex == 4) {
         //share to facebook
         SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"«%@»", self.seminar.name] contentType:SHKShareTypeURL];
         [SHKFacebook shareItem:item];
     }
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        if (buttonIndex == 6) {
+//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+       else if (buttonIndex == 5) {
             //share to vkontakte
             SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
             [SHKVkontakte shareItem:item];
-        }
     }
+    
+    //share to evernote
+//    SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
+//    [SHKEvernote shareItem:item];
 }
 
 #pragma mark - Core Data Fetch

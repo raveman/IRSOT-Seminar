@@ -388,8 +388,6 @@
 		C423682E15DEBBFF0066B1D7 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		C423683015DEBD380066B1D7 /* ReachabilityARC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityARC.h; sourceTree = "<group>"; };
 		C423683115DEBD380066B1D7 /* ReachabilityARC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityARC.m; sourceTree = "<group>"; };
-		C423BC1516121940005C5A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		C423BC1616121940005C5A26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		C42D425B15E3D8A10042E708 /* ISCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISCalendarViewController.h; sourceTree = "<group>"; };
 		C42D425C15E3D8A10042E708 /* ISCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISCalendarViewController.m; sourceTree = "<group>"; };
 		C42D425E15E3D9600042E708 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -468,6 +466,8 @@
 		C4A37C8B162742EF00DBE6E8 /* catalog2-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catalog2-iPhone@2x.png"; path = "icons/catalog2-iPhone@2x.png"; sourceTree = "<group>"; };
 		C4A37C8C162742EF00DBE6E8 /* catalog3-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catalog3-iPhone.png"; path = "icons/catalog3-iPhone.png"; sourceTree = "<group>"; };
 		C4A37C8D162742EF00DBE6E8 /* catalog3-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catalog3-iPhone@2x.png"; path = "icons/catalog3-iPhone@2x.png"; sourceTree = "<group>"; };
+		C4B095FC1688CE9F00F26CA2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		C4B095FD1688CEA500F26CA2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		C4C4C9B9163EA76E0080BF70 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C4C4C9BB163EA7720080BF70 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C4C66E1D1674F49B00B0885F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -1265,7 +1265,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C462BDC315C95A8700170E3C /* en */,
-				C423BC1516121940005C5A26 /* Base */,
+				C4B095FC1688CE9F00F26CA2 /* ru */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
 			sourceTree = "<group>";
@@ -1274,7 +1274,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				C462BDC615C95A8700170E3C /* en */,
-				C423BC1616121940005C5A26 /* Base */,
+				C4B095FD1688CEA500F26CA2 /* ru */,
 			);
 			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
@@ -1357,8 +1357,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9EE3C2BA-F906-4365-9BAA-547E381A4AA6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9EE3C2BA-F906-4365-9BAA-547E381A4AA6";
+				PROVISIONING_PROFILE = "F76F08D0-D88B-4098-9189-95D87E52924F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F76F08D0-D88B-4098-9189-95D87E52924F";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1379,8 +1379,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "9EE3C2BA-F906-4365-9BAA-547E381A4AA6";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9EE3C2BA-F906-4365-9BAA-547E381A4AA6";
+				PROVISIONING_PROFILE = "F76F08D0-D88B-4098-9189-95D87E52924F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F76F08D0-D88B-4098-9189-95D87E52924F";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};

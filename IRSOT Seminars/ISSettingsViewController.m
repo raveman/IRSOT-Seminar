@@ -93,7 +93,8 @@
     
     self.closeButton.title = @"abracadabra";
     self.errorLabel.text = @"";
-    self.versionLabel.text = [NSString stringWithFormat:@"Версия: %@", [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
+    NSString *versionLabelText = NSLocalizedString(@"Версия", @"Version label");
+    self.versionLabel.text = [NSString stringWithFormat:@"%@: %@", versionLabelText, [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
     
     if (self.emptyStore) self.deleteButton.enabled = YES;
         else self.deleteButton.enabled = NO;

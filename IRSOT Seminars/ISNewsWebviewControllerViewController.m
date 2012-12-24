@@ -73,7 +73,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [SVProgressHUD dismiss];
-    self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+//    self.navigationItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
     
     if (webview.canGoBack) self.backButton.enabled = YES;
         else self.backButton.enabled = NO;

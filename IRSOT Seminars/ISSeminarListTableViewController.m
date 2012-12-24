@@ -15,6 +15,8 @@
 #import "Lector.h"
 #import "ISSettingsViewController.h"
 
+#import "Helper.h"
+
 //#define CACHE_NAME_SEMINAR @"Seminar List"
 //#define CACHE_NAME_BK @"BK List"
 #define CACHE_NAME_SEMINAR nil
@@ -231,10 +233,10 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
-    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
-//    cell.detailTextLabel.textColor = [UIColor colorWithRed:0.35 green:0.35 blue:0.35 alpha:1];
-    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    cell.textLabel.font = [Helper cellMainFont];
+    cell.detailTextLabel.font = [Helper cellDetailFont];
+
+    cell.selectionStyle = [Helper cellSelectionStyle];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     if (tableView == self.tableView) {
@@ -251,7 +253,7 @@
             cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
         } else {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-            cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
+            cell.textLabel.font = [Helper cellMainFont];
             cell.textLabel.text = NSLocalizedString(@"Нет мероприятий", @"No seminars");
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.detailTextLabel.text = @"";

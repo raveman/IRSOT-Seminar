@@ -21,6 +21,8 @@
 #import "Type+Load_Data.h"
 #import "Sections+Load_Data.h"
 
+#import "Helper.h"
+
 #define CACHE_NAME @"Master"
 
 // 255 211 120 134U pantone
@@ -233,10 +235,9 @@
 //    if (cell == nil) {
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 //    }
-    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    cell.selectionStyle = [Helper cellSelectionStyle];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
-    
+    cell.textLabel.font = [Helper cellMainFont];
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         Sections *section = [self.fetchedResultsController objectAtIndexPath:indexPath];
         NSString *sectionName = [[[section.name substringToIndex:1] uppercaseString] stringByAppendingString:[section.name substringFromIndex:1]];

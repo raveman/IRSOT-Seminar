@@ -53,7 +53,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = NSLocalizedString(@"Закладки", @"Bookmarks List View Title");
+    self.title = NSLocalizedString(@"Избранное", @"Favorites List View Title");
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -185,9 +185,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
-    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
-    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    cell.textLabel.font = [Helper cellMainFont];
+    cell.detailTextLabel.font = [Helper cellDetailFont];
+    cell.selectionStyle = [Helper cellSelectionStyle];
 
     NSDictionary *bookmark = [self.bookmarks objectAtIndex:indexPath.row];
     cell.textLabel.text = [bookmark objectForKey:BOOKMARK_SEMINAR_NAME_KEY];

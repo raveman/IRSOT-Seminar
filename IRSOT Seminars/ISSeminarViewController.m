@@ -295,9 +295,11 @@
     } else {
         NSString *addBookmarkButton = NSLocalizedString(@"Добавить закладку", @"Add seminar bookmark button title");
         NSString *viewOnWebButton = NSLocalizedString(@"Посмотреть полную версию", @"Add seminar bookmark button title");
-        NSString *evernoteButton = NSLocalizedString(@"Сохранить в Evernote", @"Share on Evernote");
-        NSString *pocketButton = NSLocalizedString(@"Сохранить в Pocket", @"Share on Pocket");
-        NSString *readItLaterButton = NSLocalizedString(@"Сохранить в Read it Later", @"Share on Read it Later");
+
+        // unused buttons for now
+//        NSString *evernoteButton = NSLocalizedString(@"Сохранить в Evernote", @"Share on Evernote");
+//        NSString *pocketButton = NSLocalizedString(@"Сохранить в Pocket", @"Share on Pocket");
+//        NSString *readItLaterButton = NSLocalizedString(@"Сохранить в Read it Later", @"Share on Read it Later");
         
         NSString *twitterButton = NSLocalizedString(@"Отправить в Twitter", @"Share on twitter");
         NSString *facebookButton = NSLocalizedString(@"Отправить в Facebook", @"Share on Facebook");
@@ -517,9 +519,9 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
-    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
-    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    cell.textLabel.font = [Helper cellMainFont];
+    cell.detailTextLabel.font = [Helper cellDetailFont];
+    cell.selectionStyle = [Helper cellSelectionStyle];
     
     if ([self.seminar.lectors count]) {
         Lector *lector = [self.lectors objectAtIndex:indexPath.row];

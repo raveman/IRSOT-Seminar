@@ -105,4 +105,19 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
     [button setBackgroundColor:backgroundColor];
 }
 
++ (UIFont *) cellMainFont
+{
+    return [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
+}
+
++ (UIFont *) cellDetailFont
+{
+    return [UIFont fontWithName:@"Helvetica Neue" size:13.0];
+}
+
++ (UITableViewCellSelectionStyle) cellSelectionStyle
+{
+    return UITableViewCellSelectionStyleBlue;
+}
+
 @end

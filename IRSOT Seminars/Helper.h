@@ -19,4 +19,8 @@ extern NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification;
 
 + (void)makeButtonShiny:(UIButton*)button withBackgroundColor:(UIColor*)backgroundColor;
 
++ (UIFont *) cellMainFont; // returns font for all cells in project
++ (UIFont *) cellDetailFont; // returns font for all cells in project
++ (UITableViewCellSelectionStyle) cellSelectionStyle;
+
 @end

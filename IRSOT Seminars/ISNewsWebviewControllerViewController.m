@@ -83,8 +83,7 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    [SVProgressHUD showErrorWithStatus:@"Ошибка загрузки :-("];
-    
+    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Ошибка загрузки :-(", @"Error load :-(")];
 }
 
 @end

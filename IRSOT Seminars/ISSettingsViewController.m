@@ -69,24 +69,24 @@
     UIImage *greenButtonImage = [UIImage imageNamed:@"greenButton.png"];
     UIImage *greenButtonHighlightImage = [UIImage imageNamed:@"greenButtonHighlight.png"];
     
-    UIImage *redButton = [UIImage imageNamed:@"orangeButton.png"];
-    UIImage *redButtonHighlight = [UIImage imageNamed:@"orangeButtonHighlight.png"];
+    UIImage *redButtonImage = [UIImage imageNamed:@"orangeButton.png"];
+    UIImage *redButtonHighlightImage = [UIImage imageNamed:@"orangeButtonHighlight.png"];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         greenButtonImage = [greenButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
-        redButton = [redButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
+        redButtonImage = [redButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
         greenButtonHighlightImage = [greenButtonHighlightImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
-        redButtonHighlight = [redButtonHighlight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
+        redButtonHighlightImage = [redButtonHighlightImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
     } else {
         greenButtonImage = [greenButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
-        redButton = [redButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+        redButtonImage = [redButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
         greenButtonHighlightImage = [greenButtonHighlightImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
-        redButtonHighlight = [redButtonHighlight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+        redButtonHighlightImage = [redButtonHighlightImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
     }
     [self.refreshButton setBackgroundImage:greenButtonImage forState:UIControlStateNormal];
-    [self.deleteButton setBackgroundImage:redButton forState:UIControlStateNormal];
+    [self.deleteButton setBackgroundImage:redButtonImage forState:UIControlStateNormal];
     [self.refreshButton setBackgroundImage:greenButtonHighlightImage forState:UIControlStateHighlighted];
-    [self.deleteButton setBackgroundImage:redButtonHighlight forState:UIControlStateHighlighted];
+    [self.deleteButton setBackgroundImage:redButtonHighlightImage forState:UIControlStateHighlighted];
     
     self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
 //    self.iCloudSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USE_ICLOUD_KEY] boolValue];

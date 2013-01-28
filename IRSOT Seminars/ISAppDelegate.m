@@ -299,9 +299,9 @@
 {
     NSError *error = nil;
     NSMutableArray *cssData = [NSMutableArray array];
-    [cssData addObject:[NSString stringWithContentsOfURL:[self myCSS] encoding:NSUTF8StringEncoding error:&error]];
-    [cssData addObject:[NSString stringWithContentsOfURL:[self bkCSS] encoding:NSUTF8StringEncoding error:&error]];
-    [cssData addObject:[NSString stringWithContentsOfURL:[self seminarCSS] encoding:NSUTF8StringEncoding error:&error]];
+    [cssData addObject:[NSString stringWithContentsOfURL:[self myCSSURL] encoding:NSUTF8StringEncoding error:&error]];
+    [cssData addObject:[NSString stringWithContentsOfURL:[self bkCSSURL] encoding:NSUTF8StringEncoding error:&error]];
+    [cssData addObject:[NSString stringWithContentsOfURL:[self seminarCSSURL] encoding:NSUTF8StringEncoding error:&error]];
     
     return cssData;
 }

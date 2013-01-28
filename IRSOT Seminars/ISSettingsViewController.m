@@ -11,6 +11,7 @@
 
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "ReachabilityARC.h"
+#import "NVUIGradientButton.h"
 
 #import "ISAppDelegate.h"
 #import "ISSettingsViewController.h"
@@ -189,6 +190,30 @@
 
 #pragma mark - Loading staff from website
 
+- (void) loadCSSFiles {
+    
+    NSError *error = nil;
+    // Deleting CSS cache data
+    
+    NSArray *cssFilesArray = [[ISAppDelegate sharedDelegate] ruseminarCSSFilesURLs];
+    for (NSDictionary *cssFileDict in cssFilesArray ) {
+        NSURL *localURL = [cssFileDict objectForKey:@"localURL"];
+        NSURL *remoteURL = [NSURL URLWithString:[cssFileDict objectForKey:@"remoteURL"]];
+        BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[localURL path]];
+        if (fileExists) {
+            [[NSFileManager defaultManager] removeItemAtURL:localURL error:&error];
+        } else {
+            dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
+            dispatch_async(fetchQ, ^{
+                
+                NSData *data = [[NSData alloc] initWithContentsOfURL: remoteURL];
+                [data writeToURL:localURL atomically:YES];
+            });
+            dispatch_release(fetchQ);
+        }
+    }
+}
+
 - (void) loadData {
 
     [self deleteData];
@@ -284,6 +309,9 @@
 // удаляем все данные из приложения
 - (void) deleteData
 {
+
+    [self loadCSSFiles];
+
     NSError *error = nil;
     
     NSPersistentStoreCoordinator *persistentCoordinator = [self.managedObjectContext persistentStoreCoordinator];

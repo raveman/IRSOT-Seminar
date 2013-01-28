@@ -107,7 +107,7 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
 
 + (UIFont *) cellMainFont
 {
-    return [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
+    return [UIFont fontWithName:@"Helvetica Neue Bold" size:15.0];
 }
 
 + (UIFont *) cellDetailFont

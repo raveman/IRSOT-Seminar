@@ -429,14 +429,19 @@
 
     header = [NSString stringWithFormat:@"%@ %@", header, @"</style> \n"];
 
-    NSError *error = nil;
-    NSString *seminarCSSData = [NSString stringWithContentsOfURL:[[ISAppDelegate sharedDelegate] seminarCSS] encoding:NSUTF8StringEncoding error:&error];
-    NSString *bkCSSData = [NSString stringWithContentsOfURL:[[ISAppDelegate sharedDelegate] bkCSS] encoding:NSUTF8StringEncoding error:&error];
-    
-    header = [NSString stringWithFormat:@"%@\n <style type=\"text/css\">\n %@\n", header, seminarCSSData];
-    header = [NSString stringWithFormat:@"%@\n%@", header, bkCSSData];
+//    NSString *seminarCSSData = [NSString stringWithContentsOfURL:[[ISAppDelegate sharedDelegate] seminarCSS] encoding:NSUTF8StringEncoding error:&error];
+//    NSString *bkCSSData = [NSString stringWithContentsOfURL:[[ISAppDelegate sharedDelegate] bkCSS] encoding:NSUTF8StringEncoding error:&error];
+
+    NSArray *cssDataArray = [[ISAppDelegate sharedDelegate] ruseminarCSSFilesData];
+    header = [NSString stringWithFormat:@"%@\n <style type=\"text/css\">\n ", header];
+    for (NSString *cssData in cssDataArray) {
+        header = [NSString stringWithFormat:@"%@\n%@ ", header, cssData];
+    }
     header = [NSString stringWithFormat:@"%@\n</style>", header];
-              
+
+//    header = [NSString stringWithFormat:@"%@\n <style type=\"text/css\">\n %@\n", header, seminarCSSData];
+//    header = [NSString stringWithFormat:@"%@\n%@", header, bkCSSData];
+    
     header = [NSString stringWithFormat:@"%@ %@", header, @"<meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0;'>\n"
     "</head> \n<body>\n<div id=\"program_page\">\n"];
 

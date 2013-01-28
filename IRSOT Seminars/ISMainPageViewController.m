@@ -74,8 +74,7 @@
     self.seminarCategoriesTableView.delegate = self;
 
     self.title =  NSLocalizedString(@"Каталог", @"Main Page Title");
-    self.seminarCategoriesTableView.bounces = NO;
-   
+    
     self.noDataLabel.shadowColor = [UIColor grayColor];
     self.noDataLabel.shadowOffset = CGSizeMake(0,-1);
     self.noDataLabel.font = [UIFont boldSystemFontOfSize:28.0];

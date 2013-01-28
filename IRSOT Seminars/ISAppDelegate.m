@@ -45,8 +45,9 @@
     // orange IRSOT toolbar color
     //    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:1 green:0.51 blue:0 alpha:1.0]];
 //    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:8/255.0 green:86/255.0 blue:126/255.0 alpha:1.0]];
+//    UIColor *appColor = [UIColor colorWithRed:53/255.0 green:167/255.0 blue:240/255.0 alpha:1.0];
     
-    UIColor *appColor = [UIColor colorWithRed:53/255.0 green:167/255.0 blue:240/255.0 alpha:1.0];
+    UIColor *appColor = [UIColor colorWithRed:47/255.0 green:158/255.0 blue:227/255.0 alpha:1.0];
     
     [[UINavigationBar appearance] setTintColor: appColor];
 //    [[UITabBar appearance] setTintColor:appColor];

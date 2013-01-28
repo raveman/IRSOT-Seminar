@@ -5,7 +5,7 @@
 //  Created by Bob Ershov on 08.08.12.
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
-// TODO: fix index titles
+
 #import "SVProgressHUD/SVProgressHUD.h"
 
 #import "ISAppDelegate.h"

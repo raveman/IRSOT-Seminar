@@ -11,6 +11,7 @@
 
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "ReachabilityARC.h"
+#import "NVUIGradientButton.h"
 
 #import "ISAppDelegate.h"
 #import "ISSettingsViewController.h"
@@ -66,27 +67,27 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_texture.png"]];
 
-    UIImage *greenButton = [UIImage imageNamed:@"greenButton.png"];
-    UIImage *greenButtonHighlight = [UIImage imageNamed:@"greenButtonHighlight.png"];
+    UIImage *greenButtonImage = [UIImage imageNamed:@"greenButton.png"];
+    UIImage *greenButtonHighlightImage = [UIImage imageNamed:@"greenButtonHighlight.png"];
     
-    UIImage *redButton = [UIImage imageNamed:@"orangeButton.png"];
-    UIImage *redButtonHighlight = [UIImage imageNamed:@"orangeButtonHighlight.png"];
+    UIImage *redButtonImage = [UIImage imageNamed:@"orangeButton.png"];
+    UIImage *redButtonHighlightImage = [UIImage imageNamed:@"orangeButtonHighlight.png"];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        greenButton = [greenButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
-        redButton = [redButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
-        greenButtonHighlight = [greenButtonHighlight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
-        redButtonHighlight = [redButtonHighlight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
+        greenButtonImage = [greenButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
+        redButtonImage = [redButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
+        greenButtonHighlightImage = [greenButtonHighlightImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
+        redButtonHighlightImage = [redButtonHighlightImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
     } else {
-        greenButton = [greenButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
-        redButton = [redButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
-        greenButtonHighlight = [greenButtonHighlight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
-        redButtonHighlight = [redButtonHighlight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+        greenButtonImage = [greenButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+        redButtonImage = [redButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+        greenButtonHighlightImage = [greenButtonHighlightImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
+        redButtonHighlightImage = [redButtonHighlightImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
     }
-    [self.refreshButton setBackgroundImage:greenButton forState:UIControlStateNormal];
-    [self.deleteButton setBackgroundImage:redButton forState:UIControlStateNormal];
-    [self.refreshButton setBackgroundImage:greenButtonHighlight forState:UIControlStateHighlighted];
-    [self.deleteButton setBackgroundImage:redButtonHighlight forState:UIControlStateHighlighted];
+    [self.refreshButton setBackgroundImage:greenButtonImage forState:UIControlStateNormal];
+    [self.deleteButton setBackgroundImage:redButtonImage forState:UIControlStateNormal];
+    [self.refreshButton setBackgroundImage:greenButtonHighlightImage forState:UIControlStateHighlighted];
+    [self.deleteButton setBackgroundImage:redButtonHighlightImage forState:UIControlStateHighlighted];
     
     self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
 //    self.iCloudSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USE_ICLOUD_KEY] boolValue];
@@ -189,6 +190,30 @@
 
 #pragma mark - Loading staff from website
 
+- (void) loadCSSFiles {
+    
+    NSError *error = nil;
+    // Deleting CSS cache data
+    
+    NSArray *cssFilesArray = [[ISAppDelegate sharedDelegate] ruseminarCSSFilesURLs];
+    for (NSDictionary *cssFileDict in cssFilesArray ) {
+        NSURL *localURL = [cssFileDict objectForKey:@"localURL"];
+        NSURL *remoteURL = [NSURL URLWithString:[cssFileDict objectForKey:@"remoteURL"]];
+        BOOL fileExists = [[NSFileManager defaultManager] fileExistsAtPath:[localURL path]];
+        if (fileExists) {
+            [[NSFileManager defaultManager] removeItemAtURL:localURL error:&error];
+        } else {
+            dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
+            dispatch_async(fetchQ, ^{
+                
+                NSData *data = [[NSData alloc] initWithContentsOfURL: remoteURL];
+                [data writeToURL:localURL atomically:YES];
+            });
+            dispatch_release(fetchQ);
+        }
+    }
+}
+
 - (void) loadData {
 
     [self deleteData];
@@ -284,6 +309,9 @@
 // удаляем все данные из приложения
 - (void) deleteData
 {
+
+    [self loadCSSFiles];
+
     NSError *error = nil;
     
     NSPersistentStoreCoordinator *persistentCoordinator = [self.managedObjectContext persistentStoreCoordinator];

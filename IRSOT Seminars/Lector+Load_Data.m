@@ -67,12 +67,16 @@
         lector = [NSEntityDescription insertNewObjectForEntityForName:@"Lector" inManagedObjectContext:context];
         lector.id = [NSNumber numberWithInteger:nid];
         NSString *str = [[[dictionary objectForKey:LECTOR_NAME] objectForKey:@"value"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        
+        // strip excessive whitespaces from string
+        str = [str stringByReplacingOccurrencesOfString:@" +" withString:@" " options:NSRegularExpressionSearch range:NSMakeRange(0, str.length)];
+        
         NSArray *lectorNames = [str componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         lector.lastName = [lectorNames objectAtIndex:2];
         lector.firstName = [lectorNames objectAtIndex:0];
         lector.fatherName = [lectorNames objectAtIndex:1];
 
-        lector.name = [NSString stringWithFormat:@"%@ %@.%@.",lector.lastName, [lector.firstName substringToIndex:1], [lector.fatherName substringToIndex:1]];
+        lector.name = [NSString stringWithFormat:@"%@ %@. %@.",lector.lastName, [lector.firstName substringToIndex:1], [lector.fatherName substringToIndex:1]];
         
         NSString *strRuseminarID = [[[dictionary objectForKey:LECTOR_RUSEMINAR_ID] objectForKey:@"value" ]stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];

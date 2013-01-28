@@ -6,8 +6,6 @@
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
-// TODO: do something when model changed!!!!
-
 #import "ISAppDelegate.h"
 
 //#import "LocalyticsSession.h"
@@ -46,7 +44,13 @@
     
     // orange IRSOT toolbar color
     //    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:1 green:0.51 blue:0 alpha:1.0]];
-    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:8/255.0 green:86/255.0 blue:126/255.0 alpha:1.0]];
+//    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:8/255.0 green:86/255.0 blue:126/255.0 alpha:1.0]];
+    
+    UIColor *appColor = [UIColor colorWithRed:53/255.0 green:167/255.0 blue:240/255.0 alpha:1.0];
+    
+    [[UINavigationBar appearance] setTintColor: appColor];
+//    [[UITabBar appearance] setTintColor:appColor];
+    
 //    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:8/255.0 green:111/255.0 blue:152/255.0 alpha:1.0]];
     
 
@@ -222,36 +226,86 @@
 }
 
 #pragma mark - cache CSS files
+- (NSURL *)bkCSSURL
+{
+    return [[self applicationDocumentsDirectory] URLByAppendingPathComponent:[RUSEMINAR_BK_CSS lastPathComponent]];
+}
+
 - (NSURL *)bkCSS
 {
-    NSURL *bkCSSPath = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:[RUSEMINAR_BK_CSS lastPathComponent]];
-    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:[bkCSSPath path]];
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:[[self bkCSSURL] path]];
     if (!exists) {
         dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
         dispatch_async(fetchQ, ^{
             NSData *data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: RUSEMINAR_BK_CSS]];
-            [data writeToURL:bkCSSPath atomically:YES];
+            [data writeToURL:[self bkCSSURL] atomically:YES];
         });
         dispatch_release(fetchQ);
     }
-    return bkCSSPath;
+    return [self bkCSSURL];
 }
+
+- (NSURL *)seminarCSSURL
+{
+    return [[self applicationDocumentsDirectory] URLByAppendingPathComponent:[RUSEMINAR_SEMINAR_CSS lastPathComponent]];
+}
+
 
 - (NSURL *)seminarCSS
 {
-    NSURL *seminarCSSPath = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:[RUSEMINAR_SEMINAR_CSS lastPathComponent]];
-    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:[seminarCSSPath path]];
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:[[self seminarCSSURL] path]];
     if (!exists) {
         dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
         dispatch_async(fetchQ, ^{
 
             NSData *data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: RUSEMINAR_SEMINAR_CSS]];
-            [data writeToURL:seminarCSSPath atomically:YES];
+            [data writeToURL:[self seminarCSSURL]  atomically:YES];
         });
         dispatch_release(fetchQ);
     }
-    return seminarCSSPath;
+    return [self seminarCSSURL];
 }
+
+- (NSURL *)myCSSURL
+{
+    return [[self applicationDocumentsDirectory] URLByAppendingPathComponent:[RUSEMINAR_MY_CSS lastPathComponent]];
+}
+
+- (NSURL *)myCSS
+{
+    BOOL exists = [[NSFileManager defaultManager] fileExistsAtPath:[[self myCSSURL] path]];
+    if (!exists) {
+        dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
+        dispatch_async(fetchQ, ^{
+            
+            NSData *data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: RUSEMINAR_MY_CSS]];
+            [data writeToURL:[self myCSSURL]  atomically:YES];
+        });
+        dispatch_release(fetchQ);
+    }
+    return [self myCSSURL];
+}
+
+- (NSArray *)ruseminarCSSFilesURLs
+{
+    NSDictionary *bkCSSURLs = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[self bkCSSURL], RUSEMINAR_BK_CSS, nil] forKeys:[NSArray arrayWithObjects:@"localURL", @"remoteURL", nil]];
+    NSDictionary *myCSSURLs = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[self myCSSURL], RUSEMINAR_MY_CSS, nil] forKeys:[NSArray arrayWithObjects:@"localURL", @"remoteURL", nil]];
+    NSDictionary *seminarCSSURLs = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[self seminarCSSURL], RUSEMINAR_SEMINAR_CSS, nil] forKeys:[NSArray arrayWithObjects:@"localURL", @"remoteURL", nil]];
+    
+    return [NSArray arrayWithObjects:bkCSSURLs, myCSSURLs, seminarCSSURLs, nil];
+}
+
+- (NSArray *)ruseminarCSSFilesData
+{
+    NSError *error = nil;
+    NSMutableArray *cssData = [NSMutableArray array];
+    [cssData addObject:[NSString stringWithContentsOfURL:[self myCSS] encoding:NSUTF8StringEncoding error:&error]];
+    [cssData addObject:[NSString stringWithContentsOfURL:[self bkCSS] encoding:NSUTF8StringEncoding error:&error]];
+    [cssData addObject:[NSString stringWithContentsOfURL:[self seminarCSS] encoding:NSUTF8StringEncoding error:&error]];
+    
+    return cssData;
+}
+
 
 #pragma mark - updateBookmarks
 - (void)updateBookmarks:(NSNotification *)notification

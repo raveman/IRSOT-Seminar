@@ -364,6 +364,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C403AD0816AED8A7001908E5 /* NVUIGradientButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NVUIGradientButton.h; sourceTree = "<group>"; };
+		C403AD0916AED8A7001908E5 /* NVUIGradientButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NVUIGradientButton.m; sourceTree = "<group>"; };
 		C40D8F1815CBDBBB0048ABF4 /* Sections+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Sections+Load_Data.h"; sourceTree = "<group>"; };
 		C40D8F1915CBDBBB0048ABF4 /* Sections+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Sections+Load_Data.m"; sourceTree = "<group>"; };
 		C40D8F1B15CBDFB30048ABF4 /* Type+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Type+Load_Data.h"; sourceTree = "<group>"; };
@@ -561,6 +563,8 @@
 		C40D8F1E15CBEA350048ABF4 /* Contrib */ = {
 			isa = PBXGroup;
 			children = (
+				C403AD0816AED8A7001908E5 /* NVUIGradientButton.h */,
+				C403AD0916AED8A7001908E5 /* NVUIGradientButton.m */,
 				C423683015DEBD380066B1D7 /* ReachabilityARC.h */,
 				C423683115DEBD380066B1D7 /* ReachabilityARC.m */,
 				C40D8F1F15CBEA5D0048ABF4 /* SVProgressHUD */,
@@ -848,6 +852,7 @@
 				C462BDA615C95A8700170E3C /* Sources */,
 				C462BDA715C95A8700170E3C /* Frameworks */,
 				C462BDA815C95A8700170E3C /* Resources */,
+				C483AB3716B0203500C33A8A /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1197,6 +1202,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C483AB3716B0203500C33A8A /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "KEYWORDS=\"TODO:|FIXME:|\\?\\?\\?:|\\!\\!\\!:\"\nfind \"${SRCROOT}\" \\( -name \"*.h\" -or -name \"*.m\" \\) -print0 | xargs -0 egrep --with-filename --line-number --only-matching \"($KEYWORDS).*\\$\" | perl -p -e \"s/($KEYWORDS)/ warning: \\$1/\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C462BDA615C95A8700170E3C /* Sources */ = {

@@ -107,12 +107,13 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
 
 + (UIFont *) cellMainFont
 {
-    return [UIFont fontWithName:@"Helvetica Neue Bold" size:15.0];
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:17.0];
+    return font;
 }
 
 + (UIFont *) cellDetailFont
 {
-    return [UIFont fontWithName:@"Helvetica Neue" size:13.0];
+    return [UIFont fontWithName:@"HelveticaNeue" size:14.0];
 }
 
 + (UITableViewCellSelectionStyle) cellSelectionStyle

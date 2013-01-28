@@ -290,19 +290,19 @@
 - (NSArray *)ruseminarCSSFilesURLs
 {
     NSDictionary *bkCSSURLs = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[self bkCSSURL], RUSEMINAR_BK_CSS, nil] forKeys:[NSArray arrayWithObjects:@"localURL", @"remoteURL", nil]];
-    NSDictionary *myCSSURLs = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[self myCSSURL], RUSEMINAR_MY_CSS, nil] forKeys:[NSArray arrayWithObjects:@"localURL", @"remoteURL", nil]];
     NSDictionary *seminarCSSURLs = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[self seminarCSSURL], RUSEMINAR_SEMINAR_CSS, nil] forKeys:[NSArray arrayWithObjects:@"localURL", @"remoteURL", nil]];
+    NSDictionary *myCSSURLs = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[self myCSSURL], RUSEMINAR_MY_CSS, nil] forKeys:[NSArray arrayWithObjects:@"localURL", @"remoteURL", nil]];
     
-    return [NSArray arrayWithObjects:bkCSSURLs, myCSSURLs, seminarCSSURLs, nil];
-}
+    return [NSArray arrayWithObjects:bkCSSURLs, seminarCSSURLs, myCSSURLs, nil];
+    }
 
 - (NSArray *)ruseminarCSSFilesData
 {
     NSError *error = nil;
     NSMutableArray *cssData = [NSMutableArray array];
-    [cssData addObject:[NSString stringWithContentsOfURL:[self myCSSURL] encoding:NSUTF8StringEncoding error:&error]];
     [cssData addObject:[NSString stringWithContentsOfURL:[self bkCSSURL] encoding:NSUTF8StringEncoding error:&error]];
     [cssData addObject:[NSString stringWithContentsOfURL:[self seminarCSSURL] encoding:NSUTF8StringEncoding error:&error]];
+    [cssData addObject:[NSString stringWithContentsOfURL:[self myCSSURL] encoding:NSUTF8StringEncoding error:&error]];
     
     return cssData;
 }

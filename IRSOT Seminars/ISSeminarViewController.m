@@ -425,7 +425,7 @@
     if (deviceOrientation == UIDeviceOrientationPortrait || deviceOrientation == UIDeviceOrientationUnknown || deviceOrientation == UIDeviceOrientationPortraitUpsideDown ) width = frame.size.width - 10;
         else width = frame.size.height - 10;
 
-    header = [NSString stringWithFormat:@"%@ #program_page { width: %dpx; font-size: 11pt; margin: 5px; }", header, width];
+    header = [NSString stringWithFormat:@"%@ #program_page { width: %dpx; font-size: 11pt; margin: 5px; } !important", header, width];
 
     header = [NSString stringWithFormat:@"%@ %@", header, @"</style> \n"];
 
@@ -443,7 +443,7 @@
 //    header = [NSString stringWithFormat:@"%@\n%@", header, bkCSSData];
     
     header = [NSString stringWithFormat:@"%@ %@", header, @"<meta name='viewport' content='width=device-width; initial-scale=1.0; maximum-scale=1.0;'>\n"
-    "</head> \n<body>\n<div id=\"program_page\">\n"];
+    "</head> \n<body>\n<div id=\"program_page\">\n<div class=\"cat_program\">\n"];
 
     // constructing seminar attending cost
     if ([self.seminar.type.id integerValue] != SEMINAR_TYPE_BK) {
@@ -463,7 +463,7 @@
         html = [NSString stringWithFormat:@"%@\n <p></p><hr>%@ %@<hr>\n", html, cost, cost_discount];
     }
     
-    NSString *footer = @"</div>\n</body>\n</html>";
+    NSString *footer = @"</div></div>\n</body>\n</html>";
 
     NSString *fullHTML = [NSString stringWithFormat:@"%@\n%@\n%@", header, html, footer];
     

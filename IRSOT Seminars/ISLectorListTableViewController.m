@@ -13,6 +13,7 @@
 #import "ISLectorViewController.h"
 
 #import "Lector+Load_Data.h"
+#import "Helper.h"
 
 #define CACHE_NAME @"lectors.cache"
 
@@ -109,8 +110,8 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
-    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
+    cell.textLabel.font = [Helper cellMainFont];
+    cell.detailTextLabel.font = [Helper cellDetailFont];
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
 
     if ([[self.fetchedResultsController fetchedObjects] count]) {

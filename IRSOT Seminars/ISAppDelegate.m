@@ -57,10 +57,10 @@
 
     self.kvStore = [NSUbiquitousKeyValueStore defaultStore];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateBookmarks:)
-                                                 name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification
-                                               object:self.kvStore];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(updateBookmarks:)
+//                                                 name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification
+//                                               object:self.kvStore];
     [self.kvStore synchronize];
     
     DefaultSHKConfigurator *configurator = [[ISSHKConfigurator alloc] init];
@@ -193,11 +193,11 @@
 
 //        If you encounter schema incompatibility errors during development, you can reduce their frequency by:
 //        * Simply deleting the existing store:
-//        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
+        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
 
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
-    }    
+//        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+//        abort();
+    }
     
     return _persistentStoreCoordinator;
 }
@@ -309,14 +309,31 @@
 
 
 #pragma mark - updateBookmarks
+- (void)updateBookmarksWithKeyArray:(NSArray *)changedKeys
+{
+    
+//    for (NSString *key in changedKeys) {
+//        if ([key isEqualToString:BOOKMARKS_KEY]) {
+//            NSMutableArray *newBookmarks = (NSMutableArray *)[self.kvStore arrayForKey:key];
+//            //    [newBookmarks addObjectsFromArray:bookmarks];
+//            self.bookmarks = newBookmarks;
+//        }
+//    }
+    
+}
+
 - (void)updateBookmarks:(NSNotification *)notification
 {
 //    NSDictionary *userInfo = [notification userInfo];
-//    NSNumber *reasonForChange = [userInfo objectForKey:NSUbiquitousKeyValueStoreChangeReasonKey];
-//    int reason = [reasonForChange integerValue];
-//    if ((reason == NSUbiquitousKeyValueStoreServerChange) || (reason == NSUbiquitousKeyValueStoreInitialSyncChange)) {
-//        NSArray *changedKeys = [userInfo objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
-//        
+//    if ([notification.name isEqualToString:NSUbiquitousKeyValueStoreDidChangeExternallyNotification]) {
+//        NSNumber *reasonForChange = [userInfo objectForKey:NSUbiquitousKeyValueStoreChangeReasonKey];
+//        int reason = [reasonForChange integerValue];
+//        if ((reason == NSUbiquitousKeyValueStoreServerChange) || (reason == NSUbiquitousKeyValueStoreInitialSyncChange)) {
+//            NSArray *changedKeys = [userInfo objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
+//            if ([changedKeys count]) {
+//                [self updateBookmarksWithKeyArray:changedKeys];
+//            }
+//        }
 //    }
 }
 

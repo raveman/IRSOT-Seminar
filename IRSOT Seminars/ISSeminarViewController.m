@@ -339,6 +339,7 @@
             for (NSDictionary *item in bookmarksArray) {
                 if ([[item objectForKey:BOOKMARK_SEMINAR_ID_KEY] integerValue] == [self.seminar.id integerValue]) {
                     found = YES;
+                    break;
                 }
             }
         } 
@@ -346,7 +347,7 @@
             NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys:self.seminar.name, BOOKMARK_SEMINAR_NAME_KEY, self.seminar.id, BOOKMARK_SEMINAR_ID_KEY, [self.seminar stringWithSeminarDates], BOOKMARK_SEMINAR_DATE_KEY , nil];
             [bookmarksArray addObject:bookmark];
             [bookmarksStore setObject:bookmarksArray forKey:BOOKMARKS_KEY];
-//            [[NSNotificationCenter defaultCenter] postNotificationName:NSUbiquitousKeyValueStoreDidChangeLocallyNotification object:bookmarksStore userInfo:bookmark];
+            [[NSNotificationCenter defaultCenter] postNotificationName:NSUbiquitousKeyValueStoreDidChangeLocallyNotification object:bookmarksStore userInfo:bookmark];
         }
     } else if ([choice isEqualToString:VIEW_ON_WEB]) {
         [self performSegueWithIdentifier:@"View On Web" sender:self];

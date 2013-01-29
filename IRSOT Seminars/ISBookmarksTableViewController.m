@@ -13,7 +13,7 @@
 
 @interface ISBookmarksTableViewController ()
 
-@property (nonatomic, strong) NSMutableArray *bookmarks;
+@property (nonatomic, strong) NSArray *bookmarks;
 @property (nonatomic, strong) NSUbiquitousKeyValueStore *bookmarkStore;
 @property (nonatomic) BOOL isBookmarksEditing;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
@@ -30,7 +30,7 @@
 - (NSArray *)bookmarks
 {
     if (!_bookmarks) {
-        _bookmarks = (NSMutableArray *)[self.bookmarkStore arrayForKey:BOOKMARKS_KEY];
+        _bookmarks = (NSArray *)[self.bookmarkStore arrayForKey:BOOKMARKS_KEY];
     }
     return _bookmarks;
 }
@@ -129,12 +129,20 @@
 
 - (void)updateBookmarks:(NSNotification *)notification
 {
-    
     NSDictionary *userInfo = [notification userInfo];
     if ([notification.name isEqualToString:NSUbiquitousKeyValueStoreDidChangeLocallyNotification]) {
         NSMutableArray *newBookmarks = [self.bookmarks mutableCopy];
-        [newBookmarks addObject:userInfo];
-        self.bookmarks = newBookmarks;
+        BOOL found = NO;
+        for (NSDictionary *item in newBookmarks) {
+            if ([[item objectForKey:BOOKMARK_SEMINAR_ID_KEY] integerValue] == [[userInfo objectForKey:BOOKMARK_SEMINAR_ID_KEY] integerValue]) {
+                found = YES;
+                break;
+            }
+        }
+        if (!found) {
+            [newBookmarks addObject:userInfo];
+            self.bookmarks = newBookmarks;
+        }
         [self.tableView reloadData];
     } else {
         NSNumber *reasonForChange = [userInfo objectForKey:NSUbiquitousKeyValueStoreChangeReasonKey];

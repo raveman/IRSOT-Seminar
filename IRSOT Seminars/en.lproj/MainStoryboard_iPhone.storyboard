@@ -484,7 +484,7 @@
             <objects>
                 <viewController id="2kA-qE-Yhq" customClass="ISWebviewViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="niK-jU-zPM">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="wNf-fY-mdc">
@@ -501,7 +501,7 @@
                                 </items>
                             </navigationBar>
                             <webView contentMode="scaleToFill" id="yeg-FU-DkF">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes"/>

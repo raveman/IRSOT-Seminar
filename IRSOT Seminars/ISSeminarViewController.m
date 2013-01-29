@@ -29,8 +29,12 @@
 #import "SHKMail.h"
 #import "SHKVkontakte.h"
 
-#define ADD_BOOKMARK @"Добавить закладку"
-#define VIEW_ON_WEB @"Посмотреть полную версию"
+//#define ADD_BOOKMARK @"Добавить закладку"
+//#define VIEW_ON_WEB @"Посмотреть полную версию"
+
+#define ADD_BOOKMARK NSLocalizedString(@"Добавить закладку", @"Add bookmark")
+#define VIEW_ON_WEB NSLocalizedString(@"Посмотреть полную версию", @"View on web site")
+
 
 @interface ISSeminarViewController () <UIActionSheetDelegate, UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -342,7 +346,7 @@
             NSDictionary *bookmark = [NSDictionary dictionaryWithObjectsAndKeys:self.seminar.name, BOOKMARK_SEMINAR_NAME_KEY, self.seminar.id, BOOKMARK_SEMINAR_ID_KEY, [self.seminar stringWithSeminarDates], BOOKMARK_SEMINAR_DATE_KEY , nil];
             [bookmarksArray addObject:bookmark];
             [bookmarksStore setObject:bookmarksArray forKey:BOOKMARKS_KEY];
-            [[NSNotificationCenter defaultCenter] postNotificationName:NSUbiquitousKeyValueStoreDidChangeLocallyNotification object:bookmarksStore userInfo:bookmark];
+//            [[NSNotificationCenter defaultCenter] postNotificationName:NSUbiquitousKeyValueStoreDidChangeLocallyNotification object:bookmarksStore userInfo:bookmark];
         }
     } else if ([choice isEqualToString:VIEW_ON_WEB]) {
         [self performSegueWithIdentifier:@"View On Web" sender:self];

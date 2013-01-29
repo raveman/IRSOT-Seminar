@@ -305,10 +305,9 @@
     [fetchRequest setEntity:entity];
 
     if (self.section) {
-
-        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %d AND type.id == %d", [self.section.id integerValue], self.currentSeminarType];
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %d AND type.id == %d AND date_start > %@", [self.section.id integerValue], self.currentSeminarType, [NSDate date]];
     } else {
-        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"type.id == %d", self.currentSeminarType];
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"type.id == %d  AND date_start > %@", self.currentSeminarType, [NSDate date]];
     }
     
 //    [fetchRequest setFetchBatchSize:20];

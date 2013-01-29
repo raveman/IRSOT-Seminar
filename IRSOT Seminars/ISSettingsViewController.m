@@ -102,20 +102,22 @@
     
     // we need to force downloading of the catalog
     
+    UIButton __block *blockRefreshButton = self.refreshButton;
+    UILabel __block *blockErrorLabel = self.errorLabel;
     self.reach.reachableBlock = ^(ReachabilityARC * reachability)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            refreshButton.enabled = YES;
-            errorLabel.text = @"";
+            blockRefreshButton.enabled = YES;
+            blockErrorLabel.text = @"";
         });
     };
     
     self.reach.unreachableBlock = ^(ReachabilityARC * reachability)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            refreshButton.enabled = NO;
+            blockRefreshButton.enabled = NO;
             NSString *noInternetText = NSLocalizedString(@"Нет доступа к интернету", @"No network access");
-            errorLabel.text = noInternetText;
+            blockErrorLabel.text = noInternetText;
             [SVProgressHUD showErrorWithStatus:noInternetText];
         });
     };

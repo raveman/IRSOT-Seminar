@@ -93,7 +93,6 @@
 
 - (void)loadLectorPhoto
 {
-    //TODO: need to check if we have already cached image and load it.
     NSURL __block *cachedImage = [[ISAppDelegate sharedDelegate] lectorCacheDirectory];
     
     NSString *imageName = [self.lector.photo lastPathComponent];
@@ -124,7 +123,6 @@
         
         dispatch_release(fetchQ);
     }
-    
 }
 
 - (void)viewDidLoad
@@ -139,9 +137,10 @@
     self.lectorName.text = [self.lector fullName];
     self.lectorBio.text = self.lector.bio;
     if ([self.lector.seminars count]) {
-        self.seminars = [self.lector.seminars allObjects];
+        NSArray *lectorSeminars = [self.lector.seminars allObjects];
         NSArray *sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
-        self.seminars = [self.seminars sortedArrayUsingDescriptors:sortDescriptors];
+        lectorSeminars = [lectorSeminars sortedArrayUsingDescriptors:sortDescriptors];
+        self.seminars = lectorSeminars;
     }
     
     self.lectorPhoto.layer.masksToBounds = YES;
@@ -168,7 +167,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
- 
     [self recalculateElementsBounds];
     NSIndexPath *indexPath = [self.lectorSeminars indexPathForSelectedRow];
     if (indexPath != nil) {
@@ -196,7 +194,7 @@
 {
     if ([segue.identifier isEqualToString:@"Lector Seminar View"]) {
         NSIndexPath *indexPath = self.lectorSeminars.indexPathForSelectedRow;
-        Seminar *seminar = [[self.lector.seminars allObjects] objectAtIndex:indexPath.row];
+        Seminar *seminar = [self.seminars objectAtIndex:indexPath.row];
         ISSeminarViewController *dvc = (ISSeminarViewController *)segue.destinationViewController;
         [dvc setSeminar:seminar];
     }
@@ -205,7 +203,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.lector.seminars count];
+    return [self.seminars count];
 }
 
 
@@ -221,9 +219,8 @@
     cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
 
-    if ([self.lector.seminars count]) {
-        NSArray *seminars = [self.lector.seminars allObjects];
-        Seminar *seminar = [seminars objectAtIndex:indexPath.row];
+    if ([self.seminars count]) {
+        Seminar *seminar = [self.seminars objectAtIndex:indexPath.row];
         cell.textLabel.text = seminar.name;
         cell.detailTextLabel.text = [seminar stringWithSeminarDates];
     }
@@ -233,9 +230,8 @@
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    if ([self.lector.seminars count]) {
+    if ([self.seminars count]) {
         return NSLocalizedString(@"Семинары:", @"Lector Seminar Table Title");
-        
     } else {
         return @"";
     }

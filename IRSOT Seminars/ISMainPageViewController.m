@@ -87,7 +87,9 @@
     
     self.seminarCategoriesTableView.backgroundColor = [UIColor clearColor];
     self.seminarCategoriesTableView.opaque = NO;
-    self.seminarCategoriesTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-hash-background"]];
+    UIImage *backgroundImage = [UIImage imageNamed:@"light-hash-background.png"];
+    UIImageView *backgroundImageView = [[UIImageView alloc]initWithImage:backgroundImage];
+    self.seminarCategoriesTableView.backgroundView=backgroundImageView;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
     

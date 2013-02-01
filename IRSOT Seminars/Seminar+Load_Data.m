@@ -116,7 +116,15 @@
         seminar.date_start = dateStart;
         seminar.date_end = dateEnd;
         
-        seminar.online = [NSNumber numberWithInteger:[[[dictionary objectForKey:SEMINAR_ONLINE] objectForKey:@"value"] integerValue]];
+        NSDictionary *buf = [dictionary objectForKey:SEMINAR_ONLINE];
+        if ([buf count] >0 ) {
+            NSString *bufString = [buf objectForKey:@"value"];
+//            if ([bufString length] > 0) {
+                seminar.online = [NSNumber numberWithInteger:[bufString integerValue]];
+//            } else {
+//                seminar.online = [NSNumber numberWithInteger:0];
+//            }
+        }
         
         NSInteger sectionId = [[[dictionary objectForKey:SEMINAR_SECTION] objectForKey:@"tid"] integerValue];
         Sections *section = [Sections sectionWithId:sectionId inManagedObjectContext:context];

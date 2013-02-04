@@ -23,7 +23,6 @@
 		C423682B15DEBBEF0066B1D7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682A15DEBBEF0066B1D7 /* CFNetwork.framework */; };
 		C423682D15DEBBF70066B1D7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682C15DEBBF70066B1D7 /* CoreLocation.framework */; };
 		C423682F15DEBBFF0066B1D7 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682E15DEBBFF0066B1D7 /* Twitter.framework */; };
-		C423683215DEBD380066B1D7 /* ReachabilityARC.m in Sources */ = {isa = PBXBuildFile; fileRef = C423683115DEBD380066B1D7 /* ReachabilityARC.m */; };
 		C42D425D15E3D8A10042E708 /* ISCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42D425C15E3D8A10042E708 /* ISCalendarViewController.m */; };
 		C42D425F15E3D9600042E708 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42D425E15E3D9600042E708 /* QuartzCore.framework */; };
 		C42D426115E3D9650042E708 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42D426015E3D9640042E708 /* MapKit.framework */; };
@@ -388,8 +387,8 @@
 		C423682A15DEBBEF0066B1D7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C423682C15DEBBF70066B1D7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C423682E15DEBBFF0066B1D7 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
-		C423683015DEBD380066B1D7 /* ReachabilityARC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReachabilityARC.h; sourceTree = "<group>"; };
-		C423683115DEBD380066B1D7 /* ReachabilityARC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReachabilityARC.m; sourceTree = "<group>"; };
+		C425DFCE16C00617002338E3 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Submodules/Reachability/Reachability.h; sourceTree = SOURCE_ROOT; };
+		C425DFCF16C00617002338E3 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Submodules/Reachability/Reachability.m; sourceTree = SOURCE_ROOT; };
 		C42D425B15E3D8A10042E708 /* ISCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISCalendarViewController.h; sourceTree = "<group>"; };
 		C42D425C15E3D8A10042E708 /* ISCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISCalendarViewController.m; sourceTree = "<group>"; };
 		C42D425E15E3D9600042E708 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -563,10 +562,10 @@
 		C40D8F1E15CBEA350048ABF4 /* Contrib */ = {
 			isa = PBXGroup;
 			children = (
+				C425DFCE16C00617002338E3 /* Reachability.h */,
+				C425DFCF16C00617002338E3 /* Reachability.m */,
 				C403AD0816AED8A7001908E5 /* NVUIGradientButton.h */,
 				C403AD0916AED8A7001908E5 /* NVUIGradientButton.m */,
-				C423683015DEBD380066B1D7 /* ReachabilityARC.h */,
-				C423683115DEBD380066B1D7 /* ReachabilityARC.m */,
 				C40D8F1F15CBEA5D0048ABF4 /* SVProgressHUD */,
 			);
 			name = Contrib;
@@ -1229,7 +1228,6 @@
 				C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */,
 				C483E40F15D2C393001A41FB /* Helper.m in Sources */,
 				C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */,
-				C423683215DEBD380066B1D7 /* ReachabilityARC.m in Sources */,
 				C42D425D15E3D8A10042E708 /* ISCalendarViewController.m in Sources */,
 				C41B5C7F15F4ECA20079D940 /* ISSHKConfigurator.m in Sources */,
 				C465875E15F9001800AA2B6B /* Lector.m in Sources */,

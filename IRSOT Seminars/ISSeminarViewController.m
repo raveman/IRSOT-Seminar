@@ -451,7 +451,7 @@
     "</head> \n<body>\n<div id=\"program_page\">\n<div class=\"cat_program\">\n"];
 
     // constructing seminar attending cost
-    if ([self.seminar.type.id integerValue] != SEMINAR_TYPE_BK) {
+    if ([self.seminar.type.id integerValue] != SEMINAR_TYPE_BK && [self.seminar.type.id integerValue] != SEMINAR_TYPE_COURSE) {
         NSString *cost = [NSString stringWithFormat:@"<p>Регистрационный взнос составляет <strong>%@</strong> руб.<br>\nобеспечивает обед в ресторане отеля, кофе-паузы, раздаточные материалы</p>", self.seminar.cost_full];
         
         // constructing discounts

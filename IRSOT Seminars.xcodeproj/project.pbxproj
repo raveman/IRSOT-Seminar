@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		C40D8F1A15CBDBBB0048ABF4 /* Sections+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1915CBDBBB0048ABF4 /* Sections+Load_Data.m */; };
 		C40D8F1D15CBDFB30048ABF4 /* Type+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1C15CBDFB30048ABF4 /* Type+Load_Data.m */; };
-		C40D8F2315CBEA5D0048ABF4 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C40D8F2015CBEA5D0048ABF4 /* SVProgressHUD.bundle */; };
-		C40D8F2415CBEA5D0048ABF4 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F2215CBEA5D0048ABF4 /* SVProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		C40F52EB15DD725E0022A9B5 /* back-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C40F52E715DD725E0022A9B5 /* back-iPhone.png */; };
 		C40F52EC15DD725E0022A9B5 /* back-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C40F52E815DD725E0022A9B5 /* back-iPhone@2x.png */; };
 		C40F52ED15DD725E0022A9B5 /* forward-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C40F52E915DD725E0022A9B5 /* forward-iPhone.png */; };
@@ -23,6 +21,8 @@
 		C423682B15DEBBEF0066B1D7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682A15DEBBEF0066B1D7 /* CFNetwork.framework */; };
 		C423682D15DEBBF70066B1D7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682C15DEBBF70066B1D7 /* CoreLocation.framework */; };
 		C423682F15DEBBFF0066B1D7 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682E15DEBBFF0066B1D7 /* Twitter.framework */; };
+		C425DFD816C00853002338E3 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C425DFD516C00853002338E3 /* SVProgressHUD.bundle */; };
+		C425DFD916C00853002338E3 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C425DFD716C00853002338E3 /* SVProgressHUD.m */; };
 		C42D425D15E3D8A10042E708 /* ISCalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42D425C15E3D8A10042E708 /* ISCalendarViewController.m */; };
 		C42D425F15E3D9600042E708 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42D425E15E3D9600042E708 /* QuartzCore.framework */; };
 		C42D426115E3D9650042E708 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42D426015E3D9640042E708 /* MapKit.framework */; };
@@ -108,6 +108,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		C425DFD216C00827002338E3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C4FDF9E61674C9DD00040E43 /* ShareKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7A49DBC316BC193E004B7E78;
+			remoteInfo = Readability;
+		};
 		C4C66E171674CA1D00B0885F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C4FDF9E61674C9DD00040E43 /* ShareKit.xcodeproj */;
@@ -369,9 +376,6 @@
 		C40D8F1915CBDBBB0048ABF4 /* Sections+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Sections+Load_Data.m"; sourceTree = "<group>"; };
 		C40D8F1B15CBDFB30048ABF4 /* Type+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Type+Load_Data.h"; sourceTree = "<group>"; };
 		C40D8F1C15CBDFB30048ABF4 /* Type+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Type+Load_Data.m"; sourceTree = "<group>"; };
-		C40D8F2015CBEA5D0048ABF4 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		C40D8F2115CBEA5D0048ABF4 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		C40D8F2215CBEA5D0048ABF4 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		C40F52E715DD725E0022A9B5 /* back-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-iPhone.png"; path = "icons/back-iPhone.png"; sourceTree = "<group>"; };
 		C40F52E815DD725E0022A9B5 /* back-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-iPhone@2x.png"; path = "icons/back-iPhone@2x.png"; sourceTree = "<group>"; };
 		C40F52E915DD725E0022A9B5 /* forward-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "forward-iPhone.png"; path = "icons/forward-iPhone.png"; sourceTree = "<group>"; };
@@ -389,6 +393,9 @@
 		C423682E15DEBBFF0066B1D7 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		C425DFCE16C00617002338E3 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Submodules/Reachability/Reachability.h; sourceTree = SOURCE_ROOT; };
 		C425DFCF16C00617002338E3 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Submodules/Reachability/Reachability.m; sourceTree = SOURCE_ROOT; };
+		C425DFD516C00853002338E3 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		C425DFD616C00853002338E3 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		C425DFD716C00853002338E3 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		C42D425B15E3D8A10042E708 /* ISCalendarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISCalendarViewController.h; sourceTree = "<group>"; };
 		C42D425C15E3D8A10042E708 /* ISCalendarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISCalendarViewController.m; sourceTree = "<group>"; };
 		C42D425E15E3D9600042E708 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -562,23 +569,13 @@
 		C40D8F1E15CBEA350048ABF4 /* Contrib */ = {
 			isa = PBXGroup;
 			children = (
+				C425DFD416C00853002338E3 /* SVProgressHUD */,
 				C425DFCE16C00617002338E3 /* Reachability.h */,
 				C425DFCF16C00617002338E3 /* Reachability.m */,
 				C403AD0816AED8A7001908E5 /* NVUIGradientButton.h */,
 				C403AD0916AED8A7001908E5 /* NVUIGradientButton.m */,
-				C40D8F1F15CBEA5D0048ABF4 /* SVProgressHUD */,
 			);
 			name = Contrib;
-			sourceTree = "<group>";
-		};
-		C40D8F1F15CBEA5D0048ABF4 /* SVProgressHUD */ = {
-			isa = PBXGroup;
-			children = (
-				C40D8F2015CBEA5D0048ABF4 /* SVProgressHUD.bundle */,
-				C40D8F2115CBEA5D0048ABF4 /* SVProgressHUD.h */,
-				C40D8F2215CBEA5D0048ABF4 /* SVProgressHUD.m */,
-			);
-			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		C415A30415CC95B0004BCD79 /* Bookmarks */ = {
@@ -608,6 +605,17 @@
 				C41B5C7E15F4ECA20079D940 /* ISSHKConfigurator.m */,
 			);
 			name = Share;
+			sourceTree = "<group>";
+		};
+		C425DFD416C00853002338E3 /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				C425DFD516C00853002338E3 /* SVProgressHUD.bundle */,
+				C425DFD616C00853002338E3 /* SVProgressHUD.h */,
+				C425DFD716C00853002338E3 /* SVProgressHUD.m */,
+			);
+			name = SVProgressHUD;
+			path = ../Submodules/SVProgressHUD/SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		C42B777A15D02CE500835E9F /* Helpers */ = {
@@ -837,6 +845,7 @@
 				C4FDFA531674C9DE00040E43 /* libTumblr.a */,
 				C4FDFA551674C9DE00040E43 /* libTwitter.a */,
 				C4FDFA571674C9DE00040E43 /* libSina Weibo.a */,
+				C425DFD316C00827002338E3 /* libReadability.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -899,6 +908,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		C425DFD316C00827002338E3 /* libReadability.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReadability.a;
+			remoteRef = C425DFD216C00827002338E3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		C4FDFA151674C9DE00040E43 /* ShareKitDemo.app */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.application;
@@ -1148,7 +1164,6 @@
 				C462BDC415C95A8700170E3C /* MainStoryboard_iPhone.storyboard in Resources */,
 				C462BDC715C95A8700170E3C /* MainStoryboard_iPad.storyboard in Resources */,
 				C4DE788F15C95E34007FBEC4 /* Info Links.plist in Resources */,
-				C40D8F2315CBEA5D0048ABF4 /* SVProgressHUD.bundle in Resources */,
 				C4C66E1C1674CA5F00B0885F /* ShareKit.bundle in Resources */,
 				C456423715D25924001C4024 /* lectors-iPhone.png in Resources */,
 				C456423815D25924001C4024 /* lectors-iPhone@2x.png in Resources */,
@@ -1196,6 +1211,7 @@
 				C493E593162C2967002A7E57 /* bookmarks-iPhone.png in Resources */,
 				C493E594162C2967002A7E57 /* bookmarks-iPhone@2x.png in Resources */,
 				C4C4C9B8163EA76E0080BF70 /* Localizable.strings in Resources */,
+				C425DFD816C00853002338E3 /* SVProgressHUD.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1219,7 +1235,6 @@
 				C4DE789215C96EF3007FBEC4 /* SeminarFetcher.m in Sources */,
 				C40D8F1A15CBDBBB0048ABF4 /* Sections+Load_Data.m in Sources */,
 				C40D8F1D15CBDFB30048ABF4 /* Type+Load_Data.m in Sources */,
-				C40D8F2415CBEA5D0048ABF4 /* SVProgressHUD.m in Sources */,
 				C48F96F815CC46D400F4AA51 /* Seminar+Load_Data.m in Sources */,
 				C48F971315CC519E00F4AA51 /* Lector+Load_Data.m in Sources */,
 				C48F972215CC663400F4AA51 /* ISSeminarViewController.m in Sources */,
@@ -1235,6 +1250,7 @@
 				C465876415F9001800AA2B6B /* Type.m in Sources */,
 				C465876715F9001800AA2B6B /* Seminar.m in Sources */,
 				C465876A15F9001800AA2B6B /* Sections.m in Sources */,
+				C425DFD916C00853002338E3 /* SVProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

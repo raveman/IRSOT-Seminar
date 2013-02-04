@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Xxu-CO-emP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Xxu-CO-emP">
     <dependencies>
         <deployment version="1296" identifier="iOS"/>
         <development version="4500" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -230,10 +230,11 @@
                                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <webView contentMode="scaleToFill" id="3lc-Yu-Qun">
+                                    <webView multipleTouchEnabled="YES" contentMode="scaleToFill" id="3lc-Yu-Qun">
                                         <rect key="frame" x="0.0" y="175" width="320" height="91"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" calendarEvent="YES"/>
                                     </webView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="tyU-1j-131">
                                         <rect key="frame" x="0.0" y="267" width="320" height="181"/>
@@ -484,7 +485,7 @@
             <objects>
                 <viewController id="2kA-qE-Yhq" customClass="ISWebviewViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="niK-jU-zPM">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" id="wNf-fY-mdc">
@@ -501,7 +502,7 @@
                                 </items>
                             </navigationBar>
                             <webView contentMode="scaleToFill" id="yeg-FU-DkF">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
@@ -509,12 +510,44 @@
                                     <outlet property="delegate" destination="2kA-qE-Yhq" id="lM2-wz-XH5"/>
                                 </connections>
                             </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="2er-aQ-Csa">
+                                <rect key="frame" x="0.0" y="416" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="back-iPhone.png" id="HDK-g2-dIF">
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="2kA-qE-Yhq" id="Ik5-an-geO"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="forward-iPhone.png" id="La5-0M-lOY">
+                                        <connections>
+                                            <action selector="forwardButtonPressed:" destination="2kA-qE-Yhq" id="Uue-hb-fus"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="refresh" id="uvJ-2j-2Lx">
+                                        <connections>
+                                            <action selector="reloadButtonPressed:" destination="2kA-qE-Yhq" id="gKs-wP-edF"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="4HB-Yw-DA6"/>
+                                    <barButtonItem systemItem="action" id="75y-zp-W3x">
+                                        <connections>
+                                            <action selector="share:" destination="2kA-qE-Yhq" id="2WJ-eo-HUE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="ogw-aX-x52"/>
                     <connections>
+                        <outlet property="actionButton" destination="75y-zp-W3x" id="uMO-St-Fo5"/>
+                        <outlet property="backButton" destination="HDK-g2-dIF" id="IkL-2O-0af"/>
+                        <outlet property="forwardButton" destination="La5-0M-lOY" id="yrv-1b-9Rw"/>
                         <outlet property="modalNavigationBar" destination="wNf-fY-mdc" id="KSn-SH-AaK"/>
+                        <outlet property="modalWebToolBar" destination="2er-aQ-Csa" id="FWc-zh-XhH"/>
+                        <outlet property="reloadButton" destination="uvJ-2j-2Lx" id="NKI-S5-Kcs"/>
                         <outlet property="webview" destination="yeg-FU-DkF" id="fFM-CQ-9st"/>
                     </connections>
                 </viewController>
@@ -816,6 +849,102 @@
         <image name="profile-icon.png" width="128" height="128"/>
         <image name="twitter-iPhone.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="ISBookmarksTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISBookmarksTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ISInfoTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISInfoTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ISLectorListTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISLectorListTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ISLectorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISLectorViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lectorBio" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="lectorName" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="lectorPhoto" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lectorSeminars" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="ISMainPageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISMainPageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="noDataLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="seminarCategoriesTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ISNewsWebviewControllerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISNewsWebviewControllerViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="forwardButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="ISSeminarListTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarListTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="seminarTypeSwitch" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="ISSeminarViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="share:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="attendSeminarButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lectorTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="lectorsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="programLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="programWebView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="sectionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="seminarDate" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="seminarName" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="typeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ISSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iCloudSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="refreshButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sortSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="updateDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ISWebviewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISWebviewViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="backButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="reloadButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="actionButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="forwardButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="modalNavigationBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="modalWebToolBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="reloadButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
@@ -823,7 +952,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="3oy-ME-Oje"/>
-        <segue reference="Ned-0r-ScQ"/>
-        <segue reference="kks-Rh-JSv"/>
+        <segue reference="UiY-x5-4jX"/>
+        <segue reference="b9m-e9-TaY"/>
     </inferredMetricsTieBreakers>
 </document>

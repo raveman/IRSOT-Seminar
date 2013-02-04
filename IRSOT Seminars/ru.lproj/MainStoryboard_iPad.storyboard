@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2844" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="SDO-f5-Zha">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="12C60" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="SDO-f5-Zha">
     <dependencies>
         <deployment version="1296" identifier="iOS"/>
         <development version="4500" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1930"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -516,13 +516,45 @@
                                     <outlet property="delegate" destination="SBq-1l-4kx" id="Ssc-L3-38h"/>
                                 </connections>
                             </webView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" barStyle="blackTranslucent" id="NmC-8M-5EF">
+                                <rect key="frame" x="0.0" y="960" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem image="back-iPhone.png" id="hKa-km-bQp">
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="SBq-1l-4kx" id="d6Z-15-1PE"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem image="forward-iPhone.png" id="a2P-8G-dgT">
+                                        <connections>
+                                            <action selector="forwardButtonPressed:" destination="SBq-1l-4kx" id="PFE-jF-SUU"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="refresh" id="54m-ap-qv5">
+                                        <connections>
+                                            <action selector="reloadButtonPressed:" destination="SBq-1l-4kx" id="o1H-66-H1k"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="7pL-o7-5V5"/>
+                                    <barButtonItem systemItem="action" id="FuD-WY-UAO">
+                                        <connections>
+                                            <action selector="share:" destination="SBq-1l-4kx" id="T5b-ZH-1uI"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="MMV-75-jTM"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <connections>
+                        <outlet property="actionButton" destination="FuD-WY-UAO" id="RV6-Fp-k6X"/>
+                        <outlet property="backButton" destination="hKa-km-bQp" id="Pej-0T-Lrh"/>
+                        <outlet property="forwardButton" destination="a2P-8G-dgT" id="dt1-Ns-2MI"/>
                         <outlet property="modalNavigationBar" destination="6ek-5s-OTY" id="r7t-zc-Hlf"/>
+                        <outlet property="modalWebToolBar" destination="NmC-8M-5EF" id="6Vh-Uv-IdX"/>
+                        <outlet property="reloadButton" destination="54m-ap-qv5" id="Gqh-Bs-zRW"/>
                         <outlet property="webview" destination="AtR-aD-z5O" id="7AA-BH-7DM"/>
                     </connections>
                 </viewController>
@@ -885,6 +917,7 @@
         <class className="ISSeminarViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarViewController.h"/>
             <relationships>
+                <relationship kind="action" name="share:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="attendSeminarButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lectorTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="lectorsLabel" candidateClass="UILabel"/>
@@ -913,7 +946,17 @@
         <class className="ISWebviewViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISWebviewViewController.h"/>
             <relationships>
+                <relationship kind="action" name="backButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="forwardButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="reloadButtonPressed:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="action" name="share:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="actionButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="forwardButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="modalNavigationBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="modalWebToolBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="reloadButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
             </relationships>
         </class>

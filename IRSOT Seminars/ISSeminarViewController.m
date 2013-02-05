@@ -175,7 +175,7 @@ const NSUInteger sectionHeaderHeight = 30;
 //    [webview stringByEvaluatingJavaScriptFromString:@"var e = document.createEvent('Events'); e.initEvent('orientationchange', true, false); document.dispatchEvent(e);"];
     
     CGFloat height = [[webview stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
-    NSLog(@"Height: %f", height);
+//    NSLog(@"Height: %f", height);
     [webview setBounds:CGRectMake(oldBounds.origin.x, oldBounds.origin.y, oldBounds.size.width, height)];
     
 //    [self recalculateElementsBounds];
@@ -540,7 +540,7 @@ const NSUInteger sectionHeaderHeight = 30;
 
     NSString *output = [webview stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"program_page\").offsetHeight;"];
 //    NSString *output = [webview stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
-    NSLog(@"program_page height: %@", output);
+//    NSLog(@"program_page height: %@", output);
 
 //    CGRect frame = webview.frame;
     frame.size.height = [output integerValue];

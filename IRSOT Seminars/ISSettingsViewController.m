@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "SVProgressHUD/SVProgressHUD.h"
-#import "Reachability.h"
+#import "ReachabilityARC.h"
 #import "NVUIGradientButton.h"
 
 #import "ISAppDelegate.h"
@@ -34,7 +34,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *closeButton;
 
-@property (strong, nonatomic) Reachability * reach;
+@property (strong, nonatomic) ReachabilityARC * reach;
 
 - (void) loadData;
 - (void) deleteData;
@@ -55,9 +55,9 @@
 @synthesize changedTime = _changedTime;
 @synthesize reach = _reach;
 
-- (Reachability *)reach
+- (ReachabilityARC *)reach
 {
-    if (_reach == nil) _reach = [Reachability reachabilityWithHostname:SEMINAR_SITE];
+    if (_reach == nil) _reach = [ReachabilityARC reachabilityWithHostname:SEMINAR_SITE];
     
     return _reach;
 }
@@ -104,7 +104,7 @@
     
     UIButton __block *blockRefreshButton = self.refreshButton;
     UILabel __block *blockErrorLabel = self.errorLabel;
-    self.reach.reachableBlock = ^(Reachability * reachability)
+    self.reach.reachableBlock = ^(ReachabilityARC * reachability)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             blockRefreshButton.enabled = YES;
@@ -112,7 +112,7 @@
         });
     };
     
-    self.reach.unreachableBlock = ^(Reachability * reachability)
+    self.reach.unreachableBlock = ^(ReachabilityARC * reachability)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
             blockRefreshButton.enabled = NO;

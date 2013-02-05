@@ -93,6 +93,7 @@
 		C4D7CEF015D3F1440003F90C /* twitter-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D7CEEE15D3F1440003F90C /* twitter-iPhone.png */; };
 		C4D7CEF115D3F1440003F90C /* twitter-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4D7CEEF15D3F1440003F90C /* twitter-iPhone@2x.png */; };
 		C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */; };
+		C4DCB69416C1534F00519F6A /* ReachabilityARC.m in Sources */ = {isa = PBXBuildFile; fileRef = C425DFCF16C00617002338E3 /* ReachabilityARC.m */; };
 		C4DE788015C95C02007FBEC4 /* ISInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE787F15C95C02007FBEC4 /* ISInfoTableViewController.m */; };
 		C4DE788415C95C42007FBEC4 /* ISWebviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE788315C95C42007FBEC4 /* ISWebviewViewController.m */; };
 		C4DE788715C95C96007FBEC4 /* ISSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE788615C95C96007FBEC4 /* ISSettingsViewController.m */; };
@@ -391,8 +392,8 @@
 		C423682A15DEBBEF0066B1D7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		C423682C15DEBBF70066B1D7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C423682E15DEBBFF0066B1D7 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
-		C425DFCE16C00617002338E3 /* Reachability.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = Submodules/Reachability/Reachability.h; sourceTree = SOURCE_ROOT; };
-		C425DFCF16C00617002338E3 /* Reachability.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = Submodules/Reachability/Reachability.m; sourceTree = SOURCE_ROOT; };
+		C425DFCE16C00617002338E3 /* ReachabilityARC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ReachabilityARC.h; path = Submodules/Reachability/ReachabilityARC.h; sourceTree = SOURCE_ROOT; };
+		C425DFCF16C00617002338E3 /* ReachabilityARC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ReachabilityARC.m; path = Submodules/Reachability/ReachabilityARC.m; sourceTree = SOURCE_ROOT; };
 		C425DFD516C00853002338E3 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
 		C425DFD616C00853002338E3 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		C425DFD716C00853002338E3 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
@@ -570,8 +571,8 @@
 			isa = PBXGroup;
 			children = (
 				C425DFD416C00853002338E3 /* SVProgressHUD */,
-				C425DFCE16C00617002338E3 /* Reachability.h */,
-				C425DFCF16C00617002338E3 /* Reachability.m */,
+				C425DFCE16C00617002338E3 /* ReachabilityARC.h */,
+				C425DFCF16C00617002338E3 /* ReachabilityARC.m */,
 				C403AD0816AED8A7001908E5 /* NVUIGradientButton.h */,
 				C403AD0916AED8A7001908E5 /* NVUIGradientButton.m */,
 			);
@@ -879,7 +880,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = IS;
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = IRSOT;
 			};
 			buildConfigurationList = C462BDA415C95A8700170E3C /* Build configuration list for PBXProject "IRSOT Seminars" */;
@@ -1222,6 +1223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4DCB69416C1534F00519F6A /* ReachabilityARC.m in Sources */,
 				C462BDBD15C95A8700170E3C /* main.m in Sources */,
 				C462BDC115C95A8700170E3C /* ISAppDelegate.m in Sources */,
 				C462BDCA15C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld in Sources */,
@@ -1316,6 +1318,9 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
@@ -1344,6 +1349,9 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;

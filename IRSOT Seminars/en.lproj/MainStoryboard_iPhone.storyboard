@@ -87,7 +87,7 @@
             <objects>
                 <viewController id="EJV-r4-OVK" customClass="ISLectorViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="h2o-GO-luv">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="DY1-qj-vbM">
@@ -172,7 +172,7 @@
             <objects>
                 <viewController id="907-pJ-PWX" customClass="ISSeminarViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fcP-m7-ud3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView autoresizesSubviews="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" showsHorizontalScrollIndicator="NO" id="lmO-J5-cdE">
@@ -849,6 +849,99 @@
         <image name="profile-icon.png" width="128" height="128"/>
         <image name="twitter-iPhone.png" width="30" height="30"/>
     </resources>
+    <classes>
+        <class className="ISBookmarksTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISBookmarksTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="editButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ISInfoTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISInfoTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ISLectorListTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISLectorListTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ISLectorViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISLectorViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="lectorBio" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="lectorName" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="lectorPhoto" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="lectorSeminars" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+            </relationships>
+        </class>
+        <class className="ISMainPageViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISMainPageViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="noDataLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="seminarCategoriesTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+        <class className="ISNewsWebviewControllerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISNewsWebviewControllerViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="forwardButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="ISSeminarListTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarListTableViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
+                <relationship kind="outlet" name="seminarTypeSwitch" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="ISSeminarViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="share:" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="attendSeminarButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="lectorTableView" candidateClass="UITableView"/>
+                <relationship kind="outlet" name="lectorsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="programLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="programWebView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="sectionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="seminarDate" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="seminarName" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="typeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ISSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSettingsViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="deleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="errorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="iCloudSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="refreshButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="sortSwitch" candidateClass="UISwitch"/>
+                <relationship kind="outlet" name="updateDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ISWebviewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ISWebviewViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="actionButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="forwardButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="modalNavigationBar" candidateClass="UINavigationBar"/>
+                <relationship kind="outlet" name="modalWebToolBar" candidateClass="UIToolbar"/>
+                <relationship kind="outlet" name="reloadButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="webview" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

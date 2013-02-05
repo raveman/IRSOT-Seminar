@@ -22,5 +22,6 @@ extern NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification;
 + (UIFont *) cellMainFont; // returns font for all cells in project
 + (UIFont *) cellDetailFont; // returns font for all cells in project
 + (UITableViewCellSelectionStyle) cellSelectionStyle;
++ (UIFont *)labelFont;
 
 @end

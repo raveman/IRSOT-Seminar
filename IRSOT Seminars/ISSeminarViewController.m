@@ -351,9 +351,9 @@ const NSUInteger sectionHeaderHeight = 30;
         UIActionSheet *actionSheet = nil;
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            actionSheet = [[UIActionSheet alloc] initWithTitle:@"Закладки" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
+            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Избранное", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Отмена", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
         } else {
-            actionSheet = [[UIActionSheet alloc] initWithTitle:@"Закладки" delegate:self cancelButtonTitle:@"Отмена" destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
+            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Избранное", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Отмена", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
         }
         
         [actionSheet showFromBarButtonItem:sender animated:YES];

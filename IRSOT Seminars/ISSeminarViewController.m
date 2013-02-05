@@ -32,6 +32,8 @@
 //#define ADD_BOOKMARK @"Добавить закладку"
 //#define VIEW_ON_WEB @"Посмотреть полную версию"
 
+const NSUInteger sectionHeaderHeight = 30;
+
 #define ADD_BOOKMARK NSLocalizedString(@"Добавить закладку", @"Add bookmark")
 #define VIEW_ON_WEB NSLocalizedString(@"Посмотреть полную версию", @"View on web site")
 
@@ -53,6 +55,8 @@
 
 @property (strong, nonatomic) NSArray *lectors;
 
+@property (strong, nonatomic) NSString *html;
+
 @end
 
 @implementation ISSeminarViewController
@@ -73,6 +77,17 @@
 @synthesize seminarID = _seminarID;
 
 @synthesize lectors = _lectors;
+
+@synthesize html = _html;
+
+- (NSString *) html
+{
+    if (!_html) {
+        _html = [self makeHTMLPageFromString:self.seminar.program];
+    }
+    
+    return _html;
+}
 
 - (void) recalculateElementsBounds
 {
@@ -109,44 +124,61 @@
 //    
 //    height = rect.origin.y + rect.size.height;
     
-    // опускаем лабел программа
 
-    rect = self.programLabel.frame;
-    rect.origin.y = height + rect.size.height;
-    self.programLabel.frame = rect;
-
-    height = rect.origin.y + rect.size.height;
-
-    // осталось опустить описание семинара
 //    rect = self.programTextView.frame;
 //    rect.origin.y = height + 10;
 //    CGRect programRect = [Helper resizeTextView:self.programTextView withSize: currentSize];
 //    rect.size.width = programRect.size.width;
 //    self.programTextView.frame = rect;
-    
-    rect = self.programWebView.frame;
-    rect.origin.y = height;
-    rect.size.width = currentSize.width;
-//    CGRect programRect = [Helper resizeTextView:self.programTextView withSize: currentSize];
-//    rect.size.width = programRect.size.width;
-    self.programWebView.frame = rect;
-    CGSize size = rect.size;
 
-    // берем высоту вебвью и приплюсовываем размер хедера
-    size.height += height;
+    CGSize size = rect.size;
+    size.height = height + 10;
     
     int tableHeight = self.lectorTableView.rowHeight * [self.seminar.lectors count];
+    tableHeight = tableHeight + sectionHeaderHeight + 25;
     CGRect tableFrame = self.lectorTableView.frame;
     tableFrame.size.width = currentSize.width;
 
     tableFrame.origin.y = size.height;
-    tableFrame.size.height += tableHeight;
+    tableFrame.size.height = tableHeight;
     self.lectorTableView.frame = tableFrame;
 
-    size.height += tableHeight + 80;
+    size.height += tableHeight;// + 40;
+
+    // опускаем лабел программа
+    
+    rect = self.programLabel.frame;
+    rect.origin.y = size.height + rect.size.height;
+    self.programLabel.frame = rect;
+    
+    height = rect.origin.y + rect.size.height;
+
+    size.height = height;
+    // осталось опустить описание семинара
+
+    rect = self.programWebView.frame;
+    rect.origin.y = size.height;
+    rect.size.width = currentSize.width;
+    self.programWebView.frame = rect;
+    
+    // берем высоту вебвью и приплюсовываем размер хедера
+    size.height += rect.size.height;
     
     self.scrollView.scrollEnabled = YES;
     self.scrollView.contentSize = size;
+}
+
+- (void) resizeWebview:(UIWebView *)webview
+{
+    CGRect oldBounds = webview.bounds;
+    //in the document you can use your string ... ans set theheight
+//    [webview stringByEvaluatingJavaScriptFromString:@"var e = document.createEvent('Events'); e.initEvent('orientationchange', true, false); document.dispatchEvent(e);"];
+    
+    CGFloat height = [[webview stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
+    NSLog(@"Height: %f", height);
+    [webview setBounds:CGRectMake(oldBounds.origin.x, oldBounds.origin.y, oldBounds.size.width, height)];
+    
+//    [self recalculateElementsBounds];
 }
 
 - (void)viewDidLoad
@@ -207,7 +239,7 @@
 
         self.typeLabel.text = self.seminar.type.name;
 
-        [self.programWebView loadHTMLString:[self makeHTMLPageFromString:self.seminar.program] baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];
+        [self.programWebView loadHTMLString:self.html baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];
         self.programWebView.userInteractionEnabled = NO;
         self.programWebView.scrollView.scrollEnabled = NO;
         self.programWebView.scalesPageToFit = YES;
@@ -234,18 +266,11 @@
     // Release any retained subviews of the main view.
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
-    } else {
-        return YES;
-    }
-}
-
 - (void) viewWillAppear:(BOOL)animated
 {
-    [self recalculateElementsBounds];
+
+//    [self recalculateElementsBounds];
+
     NSIndexPath *indexPath = [self.lectorTableView indexPathForSelectedRow];
     if (indexPath != nil) {
         [self.lectorTableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -261,14 +286,26 @@
     [super viewWillDisappear:animated];
 }
 
-- (void) willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
-
-    [self.programWebView loadHTMLString:[self makeHTMLPageFromString:self.seminar.program] baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];
-//    [self.programWebView reload];
-//    [self recalculateElementsBounds];
-    [super willAnimateRotationToInterfaceOrientation:toInterfaceOrientation duration:duration];
+#pragma mark - View Rotation
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
+    } else {
+        return YES;
+    }
 }
 
+- (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
+{
+    [self recalculateElementsBounds];
+//   [self.programWebView loadHTMLString:self.html baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];
+    [self.programWebView stringByEvaluatingJavaScriptFromString:@"var e = document.createEvent('Events'); "
+     @"e.initEvent('orientationchange', true, false);"
+     @"document.dispatchEvent(e); "];
+}
+
+#pragma mark - View Segue
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Bill Webview"]) {
@@ -406,10 +443,13 @@
 {
     NSString *header = @"<!doctype html>\n<html>\n<head> \n";
     
-    header = [NSString stringWithFormat:@"%@\n %@", header, @"<style type=\"text/css\"> \n"
-    "html {"
-        "-webkit-text-size-adjust: none; "
+    header = [NSString stringWithFormat:@"%@\n %@", header, @"<style type=\"text/css\"> \n"];
+    
+    header = [NSString stringWithFormat:@"%@\n %@", header,
+    @"html {"
+        "-webkit-text-size-adjust: none;"
     "}\n" ];
+    
 //    "body {font-family: \"helvetica neue\"; "];
 
 //    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -422,15 +462,15 @@
         "list-style-type: square;\n"
         "padding-left: 15px;\n"
     "}\n"];
-    
 
-    CGRect frame =  [[UIScreen mainScreen] bounds];
-    int width = 0;
-    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
-    if (deviceOrientation == UIDeviceOrientationPortrait || deviceOrientation == UIDeviceOrientationUnknown || deviceOrientation == UIDeviceOrientationPortraitUpsideDown ) width = frame.size.width - 10;
-        else width = frame.size.height - 10;
+//    CGRect frame =  [[UIScreen mainScreen] bounds];
+//    int width = 0;
+//    UIDeviceOrientation deviceOrientation = [UIDevice currentDevice].orientation;
+//    if (deviceOrientation == UIDeviceOrientationPortrait || deviceOrientation == UIDeviceOrientationUnknown || deviceOrientation == UIDeviceOrientationPortraitUpsideDown ) width = frame.size.width - 10;
+//        else width = frame.size.height - 10;
 
-    header = [NSString stringWithFormat:@"%@ #program_page { width: %dpx; font-size: 11pt; margin: 5px; } !important", header, width];
+//    header = [NSString stringWithFormat:@"%@ #program_page { width: %dpx; font-size: 11pt; margin: 5px; } !important", header, width];
+    header = [NSString stringWithFormat:@"%@ #program_page { font-size: 11pt; margin: 5px; } !important", header];
 
     header = [NSString stringWithFormat:@"%@ %@", header, @"</style> \n"];
 
@@ -451,7 +491,7 @@
     "</head> \n<body>\n<div id=\"program_page\">\n<div class=\"cat_program\">\n"];
 
     // constructing seminar attending cost
-    if ([self.seminar.type.id integerValue] != SEMINAR_TYPE_BK && [self.seminar.type.id integerValue] != SEMINAR_TYPE_COURSE) {
+    if (([self.seminar.type.id integerValue] != SEMINAR_TYPE_BK) && ([self.seminar.type.id integerValue] != SEMINAR_TYPE_COURSE)) {
         NSString *cost = [NSString stringWithFormat:@"<p>Регистрационный взнос составляет <strong>%@</strong> руб.<br>\nобеспечивает обед в ресторане отеля, кофе-паузы, раздаточные материалы</p>", self.seminar.cost_full];
         
         // constructing discounts
@@ -480,16 +520,13 @@
     return modifiedString;
 }
 
-- (void) reloadHtml
-{
-    [self.programWebView stringByEvaluatingJavaScriptFromString:@"var e = document.createEvent('Events'); e.initEvent('orientationchange', true, false); document.dispatchEvent(e);"];
-}
-
 - (void)webViewDidFinishLoad:(UIWebView *)webview
 {
+
 //    CGRect oldBounds = [webview bounds];
 //    CGFloat height = [[webview stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
 //    [webview setBounds:CGRectMake(oldBounds.origin.x, oldBounds.origin.y, oldBounds.size.width, height)];
+    
 
     CGRect frame = webview.frame;
 //    frame.size.height = 1;
@@ -498,20 +535,19 @@
     CGSize fittingSize = [webview sizeThatFits:CGSizeZero];
     frame.size = fittingSize;
     frame.size.width = self.view.frame.size.width;
-    webview.frame = frame;
     
-//    [webview sizeToFit];
-//    NSString *output = [webview stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"program_page\").offsetHeight;"];
+   [webview sizeToFit];
+
+    NSString *output = [webview stringByEvaluatingJavaScriptFromString:@"document.getElementById(\"program_page\").offsetHeight;"];
 //    NSString *output = [webview stringByEvaluatingJavaScriptFromString:@"document.body.offsetHeight;"];
-//
-//    NSLog(@"height: %@", output);
+    NSLog(@"program_page height: %@", output);
 
 //    CGRect frame = webview.frame;
-//    frame.size.height = [output integerValue];
-//    webview.frame = frame;
-        
+    frame.size.height = [output integerValue];
+    webview.frame = frame;
+    
+    [self resizeWebview:webview];
     [self recalculateElementsBounds];
-
 }
 
 #pragma mark - UITableViewDataSource
@@ -565,8 +601,21 @@
     return title;
 }
 
-
-
 #pragma mark - UITableViewDelegate
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, sectionHeaderHeight)];
+    [headerView setBackgroundColor:[UIColor clearColor]];
+
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(18, 3, tableView.bounds.size.width - 18, 18)];
+    label.text = [self tableView:tableView titleForHeaderInSection:section];
+    label.textColor = [UIColor blackColor];
+    label.font = [Helper labelFont];
+    label.backgroundColor = [UIColor clearColor];
+    [headerView addSubview:label];
+    
+    return headerView;
+}
+
 
 @end

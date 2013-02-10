@@ -246,6 +246,8 @@ const NSUInteger sectionHeaderHeight = 30;
         self.programWebView.delegate = self;
         self.lectorTableView.dataSource = self;
         self.lectorTableView.delegate = self;
+        
+        self.scrollView.scrollsToTop = YES;
     }
 }
 
@@ -303,6 +305,9 @@ const NSUInteger sectionHeaderHeight = 30;
     [self.programWebView stringByEvaluatingJavaScriptFromString:@"var e = document.createEvent('Events'); "
      @"e.initEvent('orientationchange', true, false);"
      @"document.dispatchEvent(e); "];
+
+    [self.scrollView scrollRectToVisible:self.view.bounds animated:YES];
+
 }
 
 #pragma mark - View Segue
@@ -526,7 +531,6 @@ const NSUInteger sectionHeaderHeight = 30;
 //    CGRect oldBounds = [webview bounds];
 //    CGFloat height = [[webview stringByEvaluatingJavaScriptFromString:@"document.height"] floatValue];
 //    [webview setBounds:CGRectMake(oldBounds.origin.x, oldBounds.origin.y, oldBounds.size.width, height)];
-    
 
     CGRect frame = webview.frame;
 //    frame.size.height = 1;

@@ -1,9 +1,9 @@
-[submodule "Submodules/ShareKit"]
-	path = Submodules/ShareKit
-	url = git://github.com/ShareKit/ShareKit.git
 [submodule "Submodules/Reachability"]
 	path = Submodules/Reachability
 	url = https://github.com/tonymillion/Reachability.git
 [submodule "Submodules/SVProgressHUD"]
 	path = Submodules/SVProgressHUD
 	url = https://github.com/samvermette/SVProgressHUD.git
+[submodule "Submodules/ShareKIT"]
+	path = Submodules/ShareKIT
+	url = https://github.com/ShareKit/ShareKit.git

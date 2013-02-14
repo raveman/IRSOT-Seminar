@@ -19,6 +19,8 @@
 #import "SHKConfiguration.h"
 #import "ISSHKConfigurator.h"
 
+#import "ADVTheme.h"
+
 @implementation ISAppDelegate
 
 @synthesize managedObjectContext = _managedObjectContext;
@@ -35,25 +37,11 @@
 #pragma mark - UIApplicationDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-
-//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
-//        [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.94 green:0.51 blue:0.21 alpha:1.0]];
-//    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.28 green:0.66 blue:0.79 alpha:1.0]];
-    
-//    [[LocalyticsSession sharedLocalyticsSession] startSession:@"[[LocalyticsSession sharedLocalyticsSession] startSession:@"APP KEY FROM STEP 2"];"];
-    
-    // orange IRSOT toolbar color
-    //    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:1 green:0.51 blue:0 alpha:1.0]];
-//    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:8/255.0 green:86/255.0 blue:126/255.0 alpha:1.0]];
-//    UIColor *appColor = [UIColor colorWithRed:53/255.0 green:167/255.0 blue:240/255.0 alpha:1.0];
-    
     UIColor *appColor = [UIColor colorWithRed:47/255.0 green:158/255.0 blue:227/255.0 alpha:1.0];
     
     [[UINavigationBar appearance] setTintColor: appColor];
-//    [[UITabBar appearance] setTintColor:appColor];
     
-//    [[UINavigationBar appearance] setTintColor: [UIColor colorWithRed:8/255.0 green:111/255.0 blue:152/255.0 alpha:1.0]];
-    
+    [ADVThemeManager customizeAppAppearance];
 
     self.kvStore = [NSUbiquitousKeyValueStore defaultStore];
     

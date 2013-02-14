@@ -9,6 +9,7 @@
 #import "ISInfoTableViewController.h"
 #import "ISWebviewViewController.h"
 #import "Helper.h"
+#import "ADVTheme.h"
 
 @interface ISInfoTableViewController ()
 @property (nonatomic, strong) NSDictionary *infoLinks;
@@ -71,9 +72,11 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     self.navigationItem.title = NSLocalizedString(@"Условия участия", @"Info page title");
 
-    [super viewDidLoad];
+    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
@@ -83,7 +86,7 @@
     
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.opaque = NO;
-    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"light-hash-background.png"]];
+    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[theme viewBackground]];
 }
 
 - (void)viewDidUnload

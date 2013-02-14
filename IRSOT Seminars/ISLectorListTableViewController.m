@@ -14,6 +14,7 @@
 
 #import "Lector+Load_Data.h"
 #import "Helper.h"
+#import "ADVTheme.h"
 
 #define CACHE_NAME @"lectors.cache"
 
@@ -28,6 +29,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
 
     self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
     self.title = NSLocalizedString(@"Лекторы", @"Lector List View Title");

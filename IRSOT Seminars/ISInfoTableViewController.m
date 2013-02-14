@@ -8,11 +8,12 @@
 
 #import "ISInfoTableViewController.h"
 #import "ISWebviewViewController.h"
+#import "ISInfoDictionary.h"
 #import "Helper.h"
 #import "ADVTheme.h"
 
 @interface ISInfoTableViewController ()
-@property (nonatomic, strong) NSDictionary *infoLinks;
+@property (nonatomic, strong) NSArray *infoLinks;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
@@ -26,46 +27,12 @@
 
 #pragma mark - variable instantiation
 
-- (NSDictionary *) infoLinks
+- (NSArray *) infoLinks
 {
     if (_infoLinks == nil) {
-        
-        NSBundle *bundle = [NSBundle mainBundle];
-        NSString *plistPath = [bundle pathForResource:@"Info Links" ofType:@"plist"];
-        _infoLinks = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+        _infoLinks = [ISInfoDictionary infoArray];
     }
-    
     return _infoLinks;
-}
-
-
-// helper methods
-- (NSDictionary *) getDictionaryFor: (NSDictionary *)dictionary atIndex: (NSInteger)index
-{
-    int i = 0;
-    NSDictionary *resultDictionary = [NSDictionary dictionary];
-    
-    for (id key in dictionary) {
-        if (i == index) {
-            resultDictionary = [dictionary objectForKey:key];
-        }
-        i++;
-    }
-    
-    return resultDictionary;
-}
-
-- (NSString *) getKeyForDictionary: (NSDictionary *) dictionary atIndex: (NSInteger) index
-{
-    int i = 0;
-    NSString *key = [[NSString alloc] init];
-    for (id k in dictionary) {
-        if (i == index) {
-            key = k;
-        }
-        i++;
-    }
-    return key;
 }
 
 #pragma mark - UIViewController lifecycle
@@ -84,9 +51,10 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    self.tableView.backgroundColor = [UIColor clearColor];
-    self.tableView.opaque = NO;
-    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[theme viewBackground]];
+//    self.tableView.backgroundColor = [UIColor clearColor];
+//    self.tableView.opaque = NO;
+//    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[theme viewBackground]];
+    [ADVThemeManager customizeTableView:self.tableView];
 }
 
 - (void)viewDidUnload
@@ -111,18 +79,31 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return [self.infoLinks count];
+    NSInteger sections = [self.infoLinks count] / 2;
+    return sections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return [[self getDictionaryFor:self.infoLinks atIndex:section] count];
+    NSInteger count = 0;
+    
+    id arr1 = [self.infoLinks objectAtIndex:section*2];
+    if ([arr1 isKindOfClass:[NSArray class]] ) {
+        id arr2 = [arr1 objectAtIndex:0];
+        if ([arr1 isKindOfClass:[NSArray class]]) {
+            count = [arr2 count];
+        }
+    }
+    
+    return count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-    return [self getKeyForDictionary:self.infoLinks atIndex:section];
+    NSInteger s = section * 2 + 1;
+    NSString *title = [self.infoLinks objectAtIndex:s];
+    return title;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -131,15 +112,17 @@
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
-    NSDictionary *sectionDictionary = [self getDictionaryFor:self.infoLinks atIndex:indexPath.section];
-    NSString *key = [self getKeyForDictionary:sectionDictionary atIndex:indexPath.row];
+    
+//    NSDictionary *sectionDictionary = [self getDictionaryFor:self.infoLinks atIndex:indexPath.section];
+//    NSString *key = [self getKeyForDictionary:sectionDictionary atIndex:indexPath.row];
 
+//    NSString *url = [[[self.infoLinks objectAtIndex:indexPath.section] objectAtIndex:0] objectAtIndex:indexPath.row];
+    NSString *key = [[[self.infoLinks objectAtIndex:indexPath.section*2] objectAtIndex:1] objectAtIndex:indexPath.row];
+    
     cell.textLabel.font = [Helper cellMainFont];
-    cell.detailTextLabel.font = [Helper cellDetailFont];
     cell.selectionStyle = [Helper cellSelectionStyle];
 
     cell.textLabel.text = key;
-    cell.detailTextLabel.text = [sectionDictionary objectForKey:key];
     
     return cell;
 }
@@ -150,8 +133,7 @@
 {
     if ([segue.identifier isEqualToString:@"Web View"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForCell:sender];
-        NSDictionary *dictionary = [self getDictionaryFor:self.infoLinks atIndex:indexPath.section];
-        NSURL *url = [NSURL URLWithString:[dictionary objectForKey:[self getKeyForDictionary:dictionary atIndex:indexPath.row]]];
+        NSURL *url = [NSURL URLWithString:[[[self.infoLinks objectAtIndex:indexPath.section*2] objectAtIndex:0] objectAtIndex:indexPath.row]];
         ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
         [dvc setUrl:url];
         UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];

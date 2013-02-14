@@ -12,6 +12,7 @@
 #import "ISSeminarViewController.h"
 #import "Seminar+Load_Data.h"
 #import "Helper.h"
+#import "ADVTheme.h"
 
 @interface ISLectorViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -129,6 +130,10 @@
 {
     [super viewDidLoad];
 	// view additional setups
+
+    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    
     self.lectorSeminars.dataSource = self;
     self.lectorSeminars.delegate = self;
     

@@ -22,6 +22,7 @@
 #import "Sections+Load_Data.h"
 
 #import "Helper.h"
+#import "ADVTheme.h"
 
 #define CACHE_NAME @"Master"
 
@@ -67,6 +68,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    
     self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
     
     // setting categories list tableview datasource and delegate
@@ -87,10 +92,8 @@
     
     self.seminarCategoriesTableView.backgroundColor = [UIColor clearColor];
     self.seminarCategoriesTableView.opaque = NO;
-    UIImage *backgroundImage = [UIImage imageNamed:@"light-hash-background.png"];
-    UIImageView *backgroundImageView = [[UIImageView alloc]initWithImage:backgroundImage];
-    self.seminarCategoriesTableView.backgroundView=backgroundImageView;
-    
+    self.seminarCategoriesTableView.backgroundView = [[UIImageView alloc]initWithImage:[theme viewBackground]];
+
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];

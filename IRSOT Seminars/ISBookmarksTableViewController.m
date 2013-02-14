@@ -9,6 +9,7 @@
 #import "ISBookmarksTableViewController.h"
 #import "ISSeminarViewController.h"
 #import "Helper.h"
+#import "ADVTheme.h"
 #import "Sections+Load_Data.h"
 
 @interface ISBookmarksTableViewController ()
@@ -53,6 +54,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+
     self.title = NSLocalizedString(@"Избранное", @"Favorites List View Title");
 
     // Uncomment the following line to preserve selection between presentations.

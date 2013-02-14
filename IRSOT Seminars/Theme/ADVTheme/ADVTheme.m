@@ -126,7 +126,7 @@
         CGSize shadowOffset = [theme shadowOffset];
         [titleTextAttributes setObject:[NSValue valueWithCGSize:shadowOffset] forKey:UITextAttributeTextShadowOffset];
     }
-    [segmentedAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
+//    [segmentedAppearance setTitleTextAttributes:titleTextAttributes forState:UIControlStateNormal];
     
     NSMutableDictionary *titleTextAttributesH = [[NSMutableDictionary alloc] init];
     UIColor *highlightShadowColor = [theme highlightShadowColor];
@@ -145,13 +145,13 @@
     [searchBarAppearance setScopeBarButtonTitleTextAttributes:titleTextAttributesH forState:UIControlStateHighlighted];
     
 //    UILabel *headerLabelAppearance = [UILabel appearanceWhenContainedIn:[UITableViewHeaderFooterView class], nil];
-//    UIColor *accentTintColor = [theme accentTintColor];
-//    if (accentTintColor) {
-//        [sliderAppearance setMaximumTrackTintColor:accentTintColor];
-//        [progressAppearance setTrackTintColor:accentTintColor];
-//        UIBarButtonItem *toolbarBarButtonItemAppearance = [UIBarButtonItem appearanceWhenContainedIn:[UIToolbar class], nil];
-//        [toolbarBarButtonItemAppearance setTintColor:accentTintColor];
-//    }
+    UIColor *accentTintColor = [theme accentTintColor];
+    if (accentTintColor) {
+        [sliderAppearance setMaximumTrackTintColor:accentTintColor];
+        [progressAppearance setTrackTintColor:accentTintColor];
+        UIBarButtonItem *toolbarBarButtonItemAppearance = [UIBarButtonItem appearanceWhenContainedIn:[UIToolbar class], nil];
+        [toolbarBarButtonItemAppearance setTintColor:accentTintColor];
+    }
     
     UIColor *selectedTabbarItemTintColor = [theme selectedTabbarItemTintColor];
     if (selectedTabbarItemTintColor) {
@@ -163,13 +163,13 @@
         [navigationBarAppearance setTintColor:baseTintColor];
         [barButtonItemAppearance setTintColor:baseTintColor];
         [segmentedAppearance setTintColor:baseTintColor];
-        [tabBarAppearance setTintColor:baseTintColor];
+//        [tabBarAppearance setTintColor:baseTintColor];
         [toolbarAppearance setTintColor:baseTintColor];
         [searchBarAppearance setTintColor:baseTintColor];
         [sliderAppearance setThumbTintColor:baseTintColor];
         [sliderAppearance setMinimumTrackTintColor:baseTintColor];
         [progressAppearance setProgressTintColor:baseTintColor];
-        //[stepperAppearance setTintColor:baseTintColor];
+//        [stepperAppearance setTintColor:baseTintColor];
 
     } else if (mainColor) {
 

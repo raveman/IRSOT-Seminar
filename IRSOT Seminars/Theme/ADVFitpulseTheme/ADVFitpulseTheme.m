@@ -56,18 +56,21 @@
 
 - (UIColor *)baseTintColor
 {
-    return nil;
+//    return nil;
+//    return [UIColor colorWithRed:47/255.0 green:158/255.0 blue:227/255.0 alpha:1.0];
+    return [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
 }
 
 - (UIColor *)accentTintColor
 {
-    return nil;
+//    return nil;
+    return [UIColor colorWithRed:47/255.0 green:158/255.0 blue:227/255.0 alpha:1.0];
 }
 
 - (UIColor *)selectedTabbarItemTintColor
 {
     //    return [UIColor colorWithRed:0.50f green:0.84f blue:0.06f alpha:1.00f];
-    return nil;
+    return [self baseTintColor];
 }
 
 - (UIColor *)switchThumbColor
@@ -207,25 +210,27 @@
 
 - (UIImage *)segmentedBackgroundForState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics;
 {
-    NSString *name = @"segmentedBackground";
-    if (barMetrics == UIBarMetricsLandscapePhone) {
-        name = [name stringByAppendingString:@"Landscape"];
-    }
-    if (state == UIControlStateSelected) {
-        name = [name stringByAppendingString:@"Selected"];
-    }
-    UIImage *image = [UIImage imageNamed:name];
-    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0)];
-    return image;
+//    NSString *name = @"segmentedBackground";
+//    if (barMetrics == UIBarMetricsLandscapePhone) {
+//        name = [name stringByAppendingString:@"Landscape"];
+//    }
+//    if (state == UIControlStateSelected) {
+//        name = [name stringByAppendingString:@"Selected"];
+//    }
+//    UIImage *image = [UIImage imageNamed:name];
+//    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0)];
+//    return image;
+    return nil;
 }
 
 - (UIImage *)segmentedDividerForBarMetrics:(UIBarMetrics)barMetrics
 {
-    NSString *name = @"segmentedDivider";
-    if (barMetrics == UIBarMetricsLandscapePhone) {
-        name = [name stringByAppendingString:@"Landscape"];
-    }
-    return [UIImage imageNamed:name];
+//    NSString *name = @"segmentedDivider";
+//    if (barMetrics == UIBarMetricsLandscapePhone) {
+//        name = [name stringByAppendingString:@"Landscape"];
+//    }
+//    return [UIImage imageNamed:name];
+    return nil;
 }
 
 - (UIImage *)tableBackground

@@ -37,9 +37,9 @@
 #pragma mark - UIApplicationDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    UIColor *appColor = [UIColor colorWithRed:47/255.0 green:158/255.0 blue:227/255.0 alpha:1.0];
-    
-    [[UINavigationBar appearance] setTintColor: appColor];
+//    UIColor *appColor = [UIColor colorWithRed:47/255.0 green:158/255.0 blue:227/255.0 alpha:1.0];
+//    
+//    [[UINavigationBar appearance] setTintColor: appColor];
     
     [ADVThemeManager customizeAppAppearance];
 

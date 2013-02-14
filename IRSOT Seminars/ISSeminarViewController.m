@@ -395,21 +395,21 @@ const NSUInteger sectionHeaderHeight = 30;
         [self performSegueWithIdentifier:@"View On Web" sender:self];
     } else if (buttonIndex == 2) {
         //share to mail
-        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
+        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKURLContentTypeWebpage];
         [SHKMail shareItem:item];
     } else if (buttonIndex == 3) {
         //share to twitter
-        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар @irsot: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
+        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар @irsot: «%@»", self.seminar.name] contentType:SHKURLContentTypeWebpage];
         [SHKTwitter shareItem:item];
     } else if (buttonIndex == 4) {
         //share to facebook
-        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"«%@»", self.seminar.name] contentType:SHKShareTypeURL];
+        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"«%@»", self.seminar.name] contentType:SHKURLContentTypeWebpage];
         [SHKFacebook shareItem:item];
     }
 //    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
        else if (buttonIndex == 5) {
             //share to vkontakte
-            SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
+            SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKURLContentTypeWebpage];
             [SHKVkontakte shareItem:item];
     }
     

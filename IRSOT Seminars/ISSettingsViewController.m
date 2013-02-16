@@ -90,11 +90,14 @@ const NSInteger settingsSections = 2;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationItem.title = NSLocalizedString(@"Settings", @"Settings page title");
 
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
     self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
+    
     
     NSString *versionLabelText = NSLocalizedString(@"Версия", @"Version label");
     self.versionLabel.text = [NSString stringWithFormat:@"%@: %@", versionLabelText, [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
@@ -379,7 +382,7 @@ const NSInteger settingsSections = 2;
         // sorting switch
         case settingsSortSection:
             
-            cell.textLabel.text = NSLocalizedString(@"Sort catalog by date", @"Sort catalog by date");
+            cell.textLabel.text = NSLocalizedString(@"Sort catalog by date or seminar name", @"Sort catalog by date");
             cell.accessoryView = self.sortSwitch;
 
             cell.selectionStyle = UITableViewCellSelectionStyleNone;

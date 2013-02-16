@@ -86,8 +86,6 @@
 		C462BDC415C95A8700170E3C /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C462BDC215C95A8700170E3C /* MainStoryboard_iPhone.storyboard */; };
 		C462BDC715C95A8700170E3C /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C462BDC515C95A8700170E3C /* MainStoryboard_iPad.storyboard */; };
 		C462BDCA15C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */; };
-		C462BDCD15C95A8700170E3C /* ISMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCC15C95A8700170E3C /* ISMasterViewController.m */; };
-		C462BDD015C95A8700170E3C /* ISDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDCF15C95A8700170E3C /* ISDetailViewController.m */; };
 		C462BDDB15C95B7300170E3C /* ISMainPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */; };
 		C465875E15F9001800AA2B6B /* Lector.m in Sources */ = {isa = PBXBuildFile; fileRef = C465875D15F9001800AA2B6B /* Lector.m */; };
 		C465876115F9001800AA2B6B /* Term.m in Sources */ = {isa = PBXBuildFile; fileRef = C465876015F9001800AA2B6B /* Term.m */; };
@@ -493,10 +491,6 @@
 		C462BDC315C95A8700170E3C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		C462BDC615C95A8700170E3C /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		C462BDC915C95A8700170E3C /* IRSOT_Seminars.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = IRSOT_Seminars.xcdatamodel; sourceTree = "<group>"; };
-		C462BDCB15C95A8700170E3C /* ISMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISMasterViewController.h; sourceTree = "<group>"; };
-		C462BDCC15C95A8700170E3C /* ISMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISMasterViewController.m; sourceTree = "<group>"; };
-		C462BDCE15C95A8700170E3C /* ISDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISDetailViewController.h; sourceTree = "<group>"; };
-		C462BDCF15C95A8700170E3C /* ISDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISDetailViewController.m; sourceTree = "<group>"; };
 		C462BDD915C95B7300170E3C /* ISMainPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISMainPageViewController.h; sourceTree = "<group>"; };
 		C462BDDA15C95B7300170E3C /* ISMainPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISMainPageViewController.m; sourceTree = "<group>"; };
 		C465875B15F8FFDD00AA2B6B /* IRSOT_Seminars 5.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "IRSOT_Seminars 5.xcdatamodel"; sourceTree = "<group>"; };
@@ -747,6 +741,8 @@
 		C45D3CED16CD4D9700877F94 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
+				C4D7CEF315D3F1A60003F90C /* ISNewsWebviewControllerViewController.h */,
+				C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */,
 				C4DE788215C95C42007FBEC4 /* ISWebviewViewController.h */,
 				C4DE788315C95C42007FBEC4 /* ISWebviewViewController.m */,
 			);
@@ -890,8 +886,6 @@
 				C4DE788C15C95DCA007FBEC4 /* Info */,
 				C45D3CED16CD4D9700877F94 /* WebView */,
 				C41B5C7C15F4EC780079D940 /* Share */,
-				C4D7CEF315D3F1A60003F90C /* ISNewsWebviewControllerViewController.h */,
-				C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */,
 				C462BDB715C95A8700170E3C /* Supporting Files */,
 			);
 			path = "IRSOT Seminars";
@@ -942,10 +936,6 @@
 		C4DE788D15C95DE0007FBEC4 /* Trash Views */ = {
 			isa = PBXGroup;
 			children = (
-				C462BDCB15C95A8700170E3C /* ISMasterViewController.h */,
-				C462BDCC15C95A8700170E3C /* ISMasterViewController.m */,
-				C462BDCE15C95A8700170E3C /* ISDetailViewController.h */,
-				C462BDCF15C95A8700170E3C /* ISDetailViewController.m */,
 			);
 			name = "Trash Views";
 			path = "IRSOT Seminars";
@@ -1391,8 +1381,6 @@
 				C462BDBD15C95A8700170E3C /* main.m in Sources */,
 				C462BDC115C95A8700170E3C /* ISAppDelegate.m in Sources */,
 				C462BDCA15C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld in Sources */,
-				C462BDCD15C95A8700170E3C /* ISMasterViewController.m in Sources */,
-				C462BDD015C95A8700170E3C /* ISDetailViewController.m in Sources */,
 				C462BDDB15C95B7300170E3C /* ISMainPageViewController.m in Sources */,
 				C4DE788015C95C02007FBEC4 /* ISInfoTableViewController.m in Sources */,
 				C4DE788415C95C42007FBEC4 /* ISWebviewViewController.m in Sources */,
@@ -1540,7 +1528,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "IRSOT Seminars/IRSOT Seminars.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
@@ -1551,8 +1539,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "58995ABC-78F9-429D-BC81-B8A342C3D7F5";
+				PROVISIONING_PROFILE = "08026D54-1B29-4C99-B52A-27C5ABD3DEBD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08026D54-1B29-4C99-B52A-27C5ABD3DEBD";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1562,7 +1550,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "IRSOT Seminars/IRSOT Seminars.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
@@ -1573,8 +1561,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "58995ABC-78F9-429D-BC81-B8A342C3D7F5";
+				PROVISIONING_PROFILE = "08026D54-1B29-4C99-B52A-27C5ABD3DEBD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08026D54-1B29-4C99-B52A-27C5ABD3DEBD";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};

@@ -896,7 +896,6 @@
         <class className="ISSeminarListTableViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarListTableViewController.h"/>
             <relationships>
-                <relationship kind="action" name="seminarTypeChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="searchBar" candidateClass="UISearchBar"/>
                 <relationship kind="outlet" name="seminarTypeSwitch" candidateClass="UISegmentedControl"/>
             </relationships>

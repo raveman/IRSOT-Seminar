@@ -775,6 +775,7 @@
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="mea-Z7-mys" id="blV-cT-IPN"/>
+                        <outlet property="navigationBar" destination="hoU-6Y-Jlt" id="Qu7-Sl-UaE"/>
                         <outlet property="tableView" destination="qfo-GD-6RB" id="eXM-n2-TQD"/>
                         <outlet property="versionLabel" destination="WvV-K2-dwv" id="ciA-6e-oWc"/>
                     </connections>
@@ -865,6 +866,7 @@
             <relationships>
                 <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="versionLabel" candidateClass="UILabel"/>
             </relationships>

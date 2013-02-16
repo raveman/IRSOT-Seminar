@@ -31,7 +31,7 @@ const NSInteger settingsSections = 2;
 @interface ISSettingsViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSString *updateDateLabel;
 @property (strong, nonatomic) UISwitch *sortSwitch;
-@property (strong, nonatomic) UILabel *errorLabel;
+@property (strong, nonatomic) NSString *errorLabel;
 @property (strong, nonatomic) UILabel *refreshButtonLabel;
 
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
@@ -47,10 +47,11 @@ const NSInteger settingsSections = 2;
 @end    
 
 @implementation ISSettingsViewController
-@synthesize updateDateLabel;
+@synthesize updateDateLabel = _updateDateLabel;
 @synthesize sortSwitch = _sortSwitch;
+@synthesize refreshButtonLabel = _refreshButtonLabel;
 
-@synthesize errorLabel;
+@synthesize errorLabel = _errorLabel;
 @synthesize versionLabel;
 @synthesize delegate = _delegate;
 
@@ -66,6 +67,14 @@ const NSInteger settingsSections = 2;
     }
 
     return _sortSwitch;
+}
+
+- (NSString *)errorLabel {
+    
+    if (!_errorLabel) {
+        _errorLabel = NSLocalizedString(@"No internet access", @"No network access");
+    }
+    return _errorLabel;
 }
 
 - (ReachabilityARC *)reach
@@ -89,25 +98,30 @@ const NSInteger settingsSections = 2;
       
     // checking network availability and enabling or disabling update button.
     
-//    UIButton __block *blockRefreshButton = self.refreshButton;
-//    UILabel __block *blockErrorLabel = self.errorLabel;
-//    self.reach.reachableBlock = ^(ReachabilityARC * reachability)
-//    {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            blockRefreshButton.enabled = YES;
-//            blockErrorLabel.text = @"";
-//        });
-//    };
-//    
-//    self.reach.unreachableBlock = ^(ReachabilityARC * reachability)
-//    {
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            blockRefreshButton.enabled = NO;
-//            NSString *noInternetText = NSLocalizedString(@"Нет доступа к интернету", @"No network access");
-//            blockErrorLabel.text = noInternetText;
-//            [SVProgressHUD showErrorWithStatus:noInternetText];
-//        });
-//    };
+    ISSettingsViewController __block *weakSelf = self;
+    self.reach.reachableBlock = ^(ReachabilityARC * reachability)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:settingsUpdateSection];
+            UITableViewCell *refreshCell = [weakSelf.tableView cellForRowAtIndexPath:indexPath];
+            refreshCell.selectionStyle = UITableViewCellSelectionStyleBlue;
+            refreshCell.textLabel.enabled = YES;
+            refreshCell.userInteractionEnabled = YES;
+        });
+    };
+    
+    self.reach.unreachableBlock = ^(ReachabilityARC * reachability)
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD showErrorWithStatus:weakSelf.errorLabel];
+
+            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:settingsUpdateSection];
+            UITableViewCell *refreshCell = [weakSelf.tableView cellForRowAtIndexPath:indexPath];
+            refreshCell.selectionStyle = UITableViewCellSelectionStyleNone;
+            refreshCell.textLabel.enabled = NO;
+            refreshCell.userInteractionEnabled = NO;
+        });
+    };
     
 }
 
@@ -146,6 +160,7 @@ const NSInteger settingsSections = 2;
     }
 }
 
+
 #pragma mark - UI interactions
 
 // done button pressed
@@ -179,7 +194,8 @@ const NSInteger settingsSections = 2;
     }
 }
 
-- (void) loadData {
+- (void) loadData
+{
 
     [self deleteData];
     
@@ -348,6 +364,7 @@ const NSInteger settingsSections = 2;
     return rows;
 }
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Setup Cell";
@@ -371,9 +388,14 @@ const NSInteger settingsSections = 2;
         case settingsUpdateSection:
             cell.textLabel.text = NSLocalizedString(@"Refresh catalog", @"Refresh catalog");
             cell.textLabel.textAlignment = UITextAlignmentCenter;
+
+            if (![self.reach isReachable]) {
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                cell.textLabel.enabled = NO;
+                cell.userInteractionEnabled = NO;
+            }
             
             break;
-
             
         default:
             break;

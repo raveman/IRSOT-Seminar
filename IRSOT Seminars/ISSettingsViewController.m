@@ -38,6 +38,7 @@ const NSInteger settingsSections = 2;
 
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *closeButton;
+@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
 
 
 
@@ -91,7 +92,7 @@ const NSInteger settingsSections = 2;
 {
     [super viewDidLoad];
     
-    self.navigationItem.title = NSLocalizedString(@"Settings", @"Settings page title");
+    self.navigationBar.topItem.title = NSLocalizedString(@"Settings", @"Settings page title");
 
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
@@ -139,15 +140,16 @@ const NSInteger settingsSections = 2;
     [self setVersionLabel:nil];
     [self setCloseButton:nil];
     [self setTableView:nil];
+    [self setNavigationBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
+    self.updateDateLabel = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Last update", @"Last catalog update") ,[[NSUserDefaults standardUserDefaults] objectForKey:UPDATE_DATE_KEY]];
     [self.reach startNotifier];
-    self.updateDateLabel = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Date updated", @"Date catalog updated") ,[[NSUserDefaults standardUserDefaults] objectForKey:UPDATE_DATE_KEY]];
+    [super viewWillAppear:animated];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -233,14 +235,14 @@ const NSInteger settingsSections = 2;
 //                NSLog(@"Type: %@", [type objectForKey:@"name"]);
             }
 
-            [SVProgressHUD showWithStatus:@"Обновляю лекторов"];
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"Updating lectors", @"Updating lectors message")];
             
             NSArray *lectors = [SeminarFetcher lectors];
             for (NSDictionary *lectorInfo in lectors) {
                 [Lector lectorWithDictionary:lectorInfo inManagedObjectContext:self.managedObjectContext];
             }
 
-            [SVProgressHUD showWithStatus:@"Обновляю каталог"];
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"Updating catalog", @"Updating catalog message")];
     
             NSArray *seminars = [SeminarFetcher seminars];
     
@@ -252,7 +254,7 @@ const NSInteger settingsSections = 2;
             if (![self.managedObjectContext save:&error]) {
                 NSLog(@"Could'not save: %@", [error localizedDescription]);
                 
-                [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"Ошибка загрузки %@", [error localizedDescription]]];
+                [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Load errror", @"Load error message"),[error localizedDescription]]];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.closeButton.enabled = YES;
                 });
@@ -281,7 +283,7 @@ const NSInteger settingsSections = 2;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Каталог обновлен!", @"Catalog loaded successfully")];
                     
-                    self.updateDateLabel = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Date updated", @"Date catalog updated") ,dateUpdated];
+                    self.updateDateLabel = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Last update", @"Last catalog update") ,dateUpdated];
                     self.closeButton.enabled = YES;
                     [self.tableView reloadData];
                 });

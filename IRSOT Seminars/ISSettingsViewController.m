@@ -24,29 +24,32 @@
 #import "Seminar+Load_Data.h"
 #import "Lector+Load_Data.h"
 
-@interface ISSettingsViewController ()
-@property (weak, nonatomic) IBOutlet UILabel *updateDateLabel;
-@property (weak, nonatomic) IBOutlet UISwitch *sortSwitch;
-@property (weak, nonatomic) IBOutlet UISwitch *iCloudSwitch;
-@property (weak, nonatomic) IBOutlet UIButton *refreshButton;
-@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
-@property (weak, nonatomic) IBOutlet UILabel *errorLabel;
+const NSInteger settingsSortSection = 0;
+const NSInteger settingsUpdateSection = 1;
+const NSInteger settingsSections = 2;
+
+@interface ISSettingsViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (strong, nonatomic) UILabel *updateDateLabel;
+@property (strong, nonatomic) UISwitch *sortSwitch;
+@property (strong, nonatomic) UILabel *errorLabel;
+@property (strong, nonatomic) UILabel *refreshButtonLabel;
+
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *closeButton;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) ReachabilityARC * reach;
 
 - (void) loadData;
 - (void) deleteData;
 
-@end
+@end    
 
 @implementation ISSettingsViewController
 @synthesize updateDateLabel;
-@synthesize sortSwitch;
-@synthesize iCloudSwitch;
-@synthesize refreshButton;
-@synthesize deleteButton;
+@synthesize sortSwitch = _sortSwitch;
+
 @synthesize errorLabel;
 @synthesize versionLabel;
 @synthesize delegate = _delegate;
@@ -54,6 +57,16 @@
 @synthesize emptyStore = _emptyStore;
 @synthesize changedTime = _changedTime;
 @synthesize reach = _reach;
+
+- (UISwitch *) sortSwitch
+{
+    if (!_sortSwitch) {
+        _sortSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
+        [_sortSwitch addTarget:self action:@selector(updateSwitchAtIndexPath) forControlEvents:UIControlEventTouchUpInside];
+    }
+
+    return _sortSwitch;
+}
 
 - (ReachabilityARC *)reach
 {
@@ -65,76 +78,48 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_texture.png"]];
 
-    UIImage *greenButtonImage = [UIImage imageNamed:@"greenButton.png"];
-    UIImage *greenButtonHighlightImage = [UIImage imageNamed:@"greenButtonHighlight.png"];
-    
-    UIImage *redButtonImage = [UIImage imageNamed:@"orangeButton.png"];
-    UIImage *redButtonHighlightImage = [UIImage imageNamed:@"orangeButtonHighlight.png"];
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        greenButtonImage = [greenButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
-        redButtonImage = [redButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
-        greenButtonHighlightImage = [greenButtonHighlightImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
-        redButtonHighlightImage = [redButtonHighlightImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
-    } else {
-        greenButtonImage = [greenButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
-        redButtonImage = [redButtonImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
-        greenButtonHighlightImage = [greenButtonHighlightImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
-        redButtonHighlightImage = [redButtonHighlightImage resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
-    }
-    [self.refreshButton setBackgroundImage:greenButtonImage forState:UIControlStateNormal];
-    [self.deleteButton setBackgroundImage:redButtonImage forState:UIControlStateNormal];
-    [self.refreshButton setBackgroundImage:greenButtonHighlightImage forState:UIControlStateHighlighted];
-    [self.deleteButton setBackgroundImage:redButtonHighlightImage forState:UIControlStateHighlighted];
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
     
     self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
-//    self.iCloudSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:USE_ICLOUD_KEY] boolValue];
     
-    self.closeButton.title = @"abracadabra";
-    self.errorLabel.text = @"";
     NSString *versionLabelText = NSLocalizedString(@"Версия", @"Version label");
     self.versionLabel.text = [NSString stringWithFormat:@"%@: %@", versionLabelText, [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
+      
+    // checking network availability and enabling or disabling update button.
     
-    if (self.emptyStore) self.deleteButton.enabled = YES;
-        else self.deleteButton.enabled = NO;
-    
-    // we need to force downloading of the catalog
-    
-    UIButton __block *blockRefreshButton = self.refreshButton;
-    UILabel __block *blockErrorLabel = self.errorLabel;
-    self.reach.reachableBlock = ^(ReachabilityARC * reachability)
-    {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            blockRefreshButton.enabled = YES;
-            blockErrorLabel.text = @"";
-        });
-    };
-    
-    self.reach.unreachableBlock = ^(ReachabilityARC * reachability)
-    {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            blockRefreshButton.enabled = NO;
-            NSString *noInternetText = NSLocalizedString(@"Нет доступа к интернету", @"No network access");
-            blockErrorLabel.text = noInternetText;
-            [SVProgressHUD showErrorWithStatus:noInternetText];
-        });
-    };
+//    UIButton __block *blockRefreshButton = self.refreshButton;
+//    UILabel __block *blockErrorLabel = self.errorLabel;
+//    self.reach.reachableBlock = ^(ReachabilityARC * reachability)
+//    {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            blockRefreshButton.enabled = YES;
+//            blockErrorLabel.text = @"";
+//        });
+//    };
+//    
+//    self.reach.unreachableBlock = ^(ReachabilityARC * reachability)
+//    {
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            blockRefreshButton.enabled = NO;
+//            NSString *noInternetText = NSLocalizedString(@"Нет доступа к интернету", @"No network access");
+//            blockErrorLabel.text = noInternetText;
+//            [SVProgressHUD showErrorWithStatus:noInternetText];
+//        });
+//    };
     
 }
 
 - (void)viewDidUnload
 {
     [self setUpdateDateLabel:nil];
-    [self setDeleteButton:nil];
-    [self setRefreshButton:nil];
     [self setSortSwitch:nil];
     [self setErrorLabel:nil];
     [self setReach:nil];
-    [self setICloudSwitch:nil];
     [self setVersionLabel:nil];
     [self setCloseButton:nil];
+    [self setTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -143,7 +128,7 @@
 {
     [super viewWillAppear:animated];
     [self.reach startNotifier];
-    self.updateDateLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:UPDATE_DATE_KEY];
+//    self.updateDateLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:UPDATE_DATE_KEY];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -167,27 +152,6 @@
 - (IBAction)done:(UIBarButtonItem *)sender
 {
     [[self presentingViewController] dismissModalViewControllerAnimated:YES];
-}
-
-// load button pressed
-- (IBAction)load:(UIButton *)sender
-{
-    [self loadData];
-}
-
-// delete button pressed
-- (IBAction)delete:(UIButton *)sender
-{
-    [self deleteData];
-}
-
-- (IBAction)sortSwitchPressed:(UISwitch *)sender
-{
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *sortByDate = [NSNumber numberWithBool:sender.on];
-    
-    [defaults setObject:sortByDate forKey:SORT_KEY];
-    [defaults synchronize];
 }
 
 #pragma mark - Loading staff from website
@@ -297,7 +261,6 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Каталог обновлен!", @"Catalog loaded successfully")];
                     
-                    self.deleteButton.enabled = YES;
                     self.updateDateLabel.text = dateUpdated;
                     self.closeButton.enabled = YES;
                 });
@@ -340,7 +303,6 @@
         }
 
         deleted = YES;
-        self.deleteButton.enabled = NO;
         self.updateDateLabel.text = NSLocalizedString(@"нет данных", @"No data about update");
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:@"" forKey:UPDATE_DATE_KEY];
@@ -359,5 +321,130 @@
     [self.delegate settingsViewController:self didDeletedStore:deleted];
 }
 
+
+#pragma mark - UITableView Datasource
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return settingsSections;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    NSInteger rows = 0;
+    switch (section) {
+        case settingsSortSection:
+            rows = 1;
+            break;
+
+        case settingsUpdateSection:
+            rows = 1;
+            break;
+            
+        default:
+            break;
+    }
+    
+    return rows;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Setup Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
+
+    switch (indexPath.section) {
+        // sorting switch
+        case settingsSortSection:
+            
+            cell.textLabel.text = NSLocalizedString(@"Sort catalog by date", @"Sort catalog by date");
+            cell.accessoryView = self.sortSwitch;
+
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            break;
+
+        // catalog update setup
+        case settingsUpdateSection:
+            cell.textLabel.text = NSLocalizedString(@"Refresh catalog", @"Refresh catalog");
+            
+            break;
+
+            
+        default:
+            break;
+    }
+    
+    return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    NSString *title = [NSString string];
+    
+    switch (section) {
+        case settingsSortSection:
+            break;
+            
+        case settingsUpdateSection:
+            break;
+            
+        default:
+            break;
+    }
+    
+    return title;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section
+{
+    NSString *title = [NSString string];
+    
+    switch (section) {
+        case settingsSortSection:
+            title = NSLocalizedString(@"Sort catalog by date", @"Sort description");
+            break;
+            
+        case settingsUpdateSection:
+            title = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"", @""), self.changedTime];
+            break;
+
+        default:
+            break;
+    }
+    
+    return title;
+}
+
+#pragma mark - UITableView Delegate
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    
+//}
+//
+//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
+//{
+//        
+//}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == settingsUpdateSection) {
+        [self loadData];
+    }
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)updateSwitchAtIndexPath
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *sortByDate = [NSNumber numberWithBool:self.sortSwitch.on];
+    
+    [defaults setObject:sortByDate forKey:SORT_KEY];
+    [defaults synchronize];
+}
 
 @end

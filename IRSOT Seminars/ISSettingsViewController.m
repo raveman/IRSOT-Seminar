@@ -30,14 +30,16 @@ const NSInteger settingsSections = 2;
 
 @interface ISSettingsViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) NSString *updateDateLabel;
+@property (strong, nonatomic) NSString *errorText;
+
 @property (strong, nonatomic) UISwitch *sortSwitch;
-@property (strong, nonatomic) NSString *errorLabel;
-@property (strong, nonatomic) UILabel *refreshButtonLabel;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *closeButton;
 
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 
 @property (strong, nonatomic) ReachabilityARC * reach;
 
@@ -49,9 +51,8 @@ const NSInteger settingsSections = 2;
 @implementation ISSettingsViewController
 @synthesize updateDateLabel = _updateDateLabel;
 @synthesize sortSwitch = _sortSwitch;
-@synthesize refreshButtonLabel = _refreshButtonLabel;
+@synthesize errorText = _errorText;
 
-@synthesize errorLabel = _errorLabel;
 @synthesize versionLabel;
 @synthesize delegate = _delegate;
 
@@ -69,13 +70,15 @@ const NSInteger settingsSections = 2;
     return _sortSwitch;
 }
 
-- (NSString *)errorLabel {
+- (NSString *)errorText
+{
     
-    if (!_errorLabel) {
-        _errorLabel = NSLocalizedString(@"No internet access", @"No network access");
+    if (!_errorText) {
+        _errorText = NSLocalizedString(@"No internet access", @"No network access");
     }
-    return _errorLabel;
+    return _errorText;
 }
+
 
 - (ReachabilityARC *)reach
 {
@@ -113,7 +116,7 @@ const NSInteger settingsSections = 2;
     self.reach.unreachableBlock = ^(ReachabilityARC * reachability)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD showErrorWithStatus:weakSelf.errorLabel];
+            [SVProgressHUD showErrorWithStatus:weakSelf.errorText];
 
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:settingsUpdateSection];
             UITableViewCell *refreshCell = [weakSelf.tableView cellForRowAtIndexPath:indexPath];
@@ -129,7 +132,6 @@ const NSInteger settingsSections = 2;
 {
     [self setUpdateDateLabel:nil];
     [self setSortSwitch:nil];
-    [self setErrorLabel:nil];
     [self setReach:nil];
     [self setVersionLabel:nil];
     [self setCloseButton:nil];
@@ -159,7 +161,6 @@ const NSInteger settingsSections = 2;
         return YES;
     }
 }
-
 
 #pragma mark - UI interactions
 

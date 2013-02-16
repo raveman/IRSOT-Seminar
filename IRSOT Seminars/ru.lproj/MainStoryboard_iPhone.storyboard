@@ -864,7 +864,6 @@
         <class className="ISSettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="done:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="closeButton" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="navigationBar" candidateClass="UINavigationBar"/>
                 <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>

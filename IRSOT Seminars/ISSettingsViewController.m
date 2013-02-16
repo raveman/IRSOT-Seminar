@@ -29,7 +29,7 @@ const NSInteger settingsUpdateSection = 1;
 const NSInteger settingsSections = 2;
 
 @interface ISSettingsViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (strong, nonatomic) UILabel *updateDateLabel;
+@property (strong, nonatomic) NSString *updateDateLabel;
 @property (strong, nonatomic) UISwitch *sortSwitch;
 @property (strong, nonatomic) UILabel *errorLabel;
 @property (strong, nonatomic) UILabel *refreshButtonLabel;
@@ -128,7 +128,7 @@ const NSInteger settingsSections = 2;
 {
     [super viewWillAppear:animated];
     [self.reach startNotifier];
-//    self.updateDateLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:UPDATE_DATE_KEY];
+    self.updateDateLabel = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Date updated", @"Date catalog updated") ,[[NSUserDefaults standardUserDefaults] objectForKey:UPDATE_DATE_KEY]];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -261,8 +261,9 @@ const NSInteger settingsSections = 2;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Каталог обновлен!", @"Catalog loaded successfully")];
                     
-                    self.updateDateLabel.text = dateUpdated;
+                    self.updateDateLabel = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Date updated", @"Date catalog updated") ,dateUpdated];
                     self.closeButton.enabled = YES;
+                    [self.tableView reloadData];
                 });
             }
         }]; // end managedObjectContext performBlock
@@ -303,7 +304,7 @@ const NSInteger settingsSections = 2;
         }
 
         deleted = YES;
-        self.updateDateLabel.text = NSLocalizedString(@"нет данных", @"No data about update");
+        self.updateDateLabel = NSLocalizedString(@"нет данных", @"No data about update");
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:@"" forKey:UPDATE_DATE_KEY];
         [defaults synchronize];
@@ -369,6 +370,7 @@ const NSInteger settingsSections = 2;
         // catalog update setup
         case settingsUpdateSection:
             cell.textLabel.text = NSLocalizedString(@"Refresh catalog", @"Refresh catalog");
+            cell.textLabel.textAlignment = UITextAlignmentCenter;
             
             break;
 
@@ -408,7 +410,7 @@ const NSInteger settingsSections = 2;
             break;
             
         case settingsUpdateSection:
-            title = [NSString stringWithFormat:@"%@: %d", NSLocalizedString(@"", @""), self.changedTime];
+            title = self.updateDateLabel;
             break;
 
         default:

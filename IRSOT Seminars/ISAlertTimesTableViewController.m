@@ -7,9 +7,7 @@
 //
 
 #import "ISAlertTimesTableViewController.h"
-
-
-const int timeInMinutes[] = {0, 5, 15, 30, 60, 120, 1440, 2880};
+#import "ISAlertTimes.h"
 
 @interface ISAlertTimesTableViewController ()
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
@@ -59,45 +57,8 @@ const int timeInMinutes[] = {0, 5, 15, 30, 60, 120, 1440, 2880};
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    switch (indexPath.row) {
-        case 0:
-            cell.textLabel.text = NSLocalizedString(@"None", @"None");
-            break;
+    cell.textLabel.text = [[ISAlertTimes alerTimesArray] objectAtIndex:indexPath.row];
 
-        case 1:
-            cell.textLabel.text = NSLocalizedString(@"At time of event", @"At time of event");
-            break;
-            
-        case 2:
-            cell.textLabel.text = NSLocalizedString(@"5 minutes before", @"5 minutes before");
-            break;
-
-        case 3:
-            cell.textLabel.text = NSLocalizedString(@"15 minutes before", @"15 minutes before");
-            break;
-
-        case 4:
-            cell.textLabel.text = NSLocalizedString(@"30 minutes before", @"30 minutes beforet");
-            break;
-        case 5:
-            cell.textLabel.text = NSLocalizedString(@"1 hour before", @"1 hour before");
-            break;
-
-        case 6:
-            cell.textLabel.text = NSLocalizedString(@"2 hours before", @"2 hours before");
-            break;
-
-        case 7:
-            cell.textLabel.text = NSLocalizedString(@"1 day before", @"1 day before");
-            break;
-
-        case 8:
-            cell.textLabel.text = NSLocalizedString(@"2 days before", @"1 days before");
-            break;
-
-        default:
-            break;
-    }
     return cell;
 }
 

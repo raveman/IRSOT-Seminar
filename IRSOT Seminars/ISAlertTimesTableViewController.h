@@ -8,17 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-//typedef enum {
-//    tNow = 0,
-//    t5Minutes = 5,
-//    t15Minutes = 15,
-//    t30Minutes = 30,
-//    t1Hour = 60,
-//    t2Hours = 120,
-//    t1Day = 1440,
-//    t2Days = 2880
-//} times;
-
 @class ISAlertTimesTableViewController;
 
 @protocol ISAlertTimesTableViewControllerDelegate <NSObject>

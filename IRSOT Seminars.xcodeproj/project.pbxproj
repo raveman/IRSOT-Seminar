@@ -92,7 +92,6 @@
 		C465876715F9001800AA2B6B /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C465876615F9001800AA2B6B /* Seminar.m */; };
 		C465876A15F9001800AA2B6B /* Sections.m in Sources */ = {isa = PBXBuildFile; fileRef = C465876915F9001800AA2B6B /* Sections.m */; };
 		C46A618215DD2E2D0093C39E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46A618115DD2E2D0093C39E /* SystemConfiguration.framework */; };
-		C46F62E116D01972008A1250 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C46F62E316D01972008A1250 /* Localizable.strings */; };
 		C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */; };
 		C483E40F15D2C393001A41FB /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40E15D2C393001A41FB /* Helper.m */; };
 		C48F96F815CC46D400F4AA51 /* Seminar+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F96F715CC46D400F4AA51 /* Seminar+Load_Data.m */; };
@@ -108,6 +107,7 @@
 		C4A37C93162742EF00DBE6E8 /* catalog3-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4A37C8D162742EF00DBE6E8 /* catalog3-iPhone@2x.png */; };
 		C4B7563116D2434D00C23950 /* navigationBackground@2x~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4B7562F16D2434D00C23950 /* navigationBackground@2x~iPad.png */; };
 		C4B7563216D2434D00C23950 /* navigationBackground~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4B7563016D2434D00C23950 /* navigationBackground~iPad.png */; };
+		C4B7563516D24D5300C23950 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4B7563716D24D5300C23950 /* Localizable.strings */; };
 		C4C66E1B1674CA3900B0885F /* libShareKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4FDFA171674C9DE00040E43 /* libShareKit.a */; };
 		C4C66E1C1674CA5F00B0885F /* ShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C4FDFA191674C9DE00040E43 /* ShareKit.bundle */; };
 		C4C66E1E1674F49B00B0885F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C66E1D1674F49B00B0885F /* libsqlite3.dylib */; };
@@ -504,8 +504,6 @@
 		C465876915F9001800AA2B6B /* Sections.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sections.m; sourceTree = "<group>"; };
 		C46A618115DD2E2D0093C39E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C46E89B61610C83E00D5CAEE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
-		C46F62E216D01972008A1250 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C46F62E416D01976008A1250 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C483E40A15D2ADD1001A41FB /* ISLectorListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorListTableViewController.h; sourceTree = "<group>"; };
 		C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorListTableViewController.m; sourceTree = "<group>"; };
 		C483E40D15D2C393001A41FB /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
@@ -529,6 +527,8 @@
 		C4B095FD1688CEA500F26CA2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		C4B7562F16D2434D00C23950 /* navigationBackground@2x~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navigationBackground@2x~iPad.png"; path = "Resources/navigationBackground@2x~iPad.png"; sourceTree = "<group>"; };
 		C4B7563016D2434D00C23950 /* navigationBackground~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navigationBackground~iPad.png"; path = "Resources/navigationBackground~iPad.png"; sourceTree = "<group>"; };
+		C4B7563616D24D5300C23950 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C4B7563816D24D5600C23950 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C4C66E1D1674F49B00B0885F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		C4C66E1F1674F4A000B0885F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		C4C66E211674F4AF00B0885F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -888,7 +888,7 @@
 		C462BDB715C95A8700170E3C /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C46F62E316D01972008A1250 /* Localizable.strings */,
+				C4B7563716D24D5300C23950 /* Localizable.strings */,
 				C45C864215F61C5900108749 /* Resources */,
 				C456427815D25B53001C4024 /* icons */,
 				C4DE788E15C95E34007FBEC4 /* Info Links.plist */,
@@ -1341,7 +1341,6 @@
 				C493E593162C2967002A7E57 /* bookmarks-iPhone.png in Resources */,
 				C493E594162C2967002A7E57 /* bookmarks-iPhone@2x.png in Resources */,
 				C425DFD816C00853002338E3 /* SVProgressHUD.bundle in Resources */,
-				C46F62E116D01972008A1250 /* Localizable.strings in Resources */,
 				C40813F416D232CE000857F4 /* background.png in Resources */,
 				C40813F516D232CE000857F4 /* background@2x.png in Resources */,
 				C40813F816D232DB000857F4 /* backButton.png in Resources */,
@@ -1367,6 +1366,7 @@
 				C408141F16D2424D000857F4 /* navigationBackground@2x.png in Resources */,
 				C4B7563116D2434D00C23950 /* navigationBackground@2x~iPad.png in Resources */,
 				C4B7563216D2434D00C23950 /* navigationBackground~iPad.png in Resources */,
+				C4B7563516D24D5300C23950 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1455,11 +1455,11 @@
 			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
-		C46F62E316D01972008A1250 /* Localizable.strings */ = {
+		C4B7563716D24D5300C23950 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C46F62E216D01972008A1250 /* en */,
-				C46F62E416D01976008A1250 /* ru */,
+				C4B7563616D24D5300C23950 /* en */,
+				C4B7563816D24D5600C23950 /* ru */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";

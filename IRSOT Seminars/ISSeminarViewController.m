@@ -318,7 +318,7 @@ const NSUInteger sectionHeaderHeight = 30;
         
         ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
         [dvc setUrl:url];
-        [dvc setWebviewTitle:@"Принять участие"];
+        [dvc setWebviewTitle:NSLocalizedString(@"Принять участие", @"Attend seminar")];
     } else if ([segue.identifier isEqualToString:@"View On Web"]) {
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", self.seminar.ruseminar_url]];
         
@@ -590,18 +590,54 @@ const NSUInteger sectionHeaderHeight = 30;
 {
     NSInteger count = [self.seminar.lectors count];
     NSString *title = [NSString string];
+    NSInteger seminarType = [self.seminar.type.id integerValue];
     
-    switch (count) {
-        case 0:
-            title = @"";
+    switch (seminarType) {
+        case SEMINAR_TYPE_SEMINAR:
+            if (count == 1) {
+                title = NSLocalizedString(@"Семинар проводит:", @"Seminar Lector Table Title");
+            } else {
+                title = NSLocalizedString(@"Семинар проводят:", @"Seminar Lectors Table Title");
+            }
             break;
-        case 1:
-            title = NSLocalizedString(@"Семинар проводит:", @"Seminar Lectors Table Title");
+        case SEMINAR_TYPE_BK:
+            if (count == 1) {
+                title = NSLocalizedString(@"Бизнесс-класс проводит:", @"BK Lector Table Title");
+            } else {
+                title = NSLocalizedString(@"Бизнесс-класс проводят:", @"BK Lectors Table Title");
+            }
+            break;
+        case SEMINAR_TYPE_COURSE:
+            if (count == 1) {
+                title = NSLocalizedString(@"Курс проводит:", @"Course Lector Table Title");
+            } else {
+                title = NSLocalizedString(@"Курс проводят:", @"Course Lectors Table Title");
+            }
+            break;
+        case SEMINAR_TYPE_CONFERENCE:
+            if (count == 1) {
+                title = NSLocalizedString(@"Конференцию проводит:", @"Conference Lector Table Title");
+            } else {
+                title = NSLocalizedString(@"Конференцию проводят:", @"Conference Lectors Table Title");
+            }
+            break;
+        case SEMINAR_TYPE_MASTER_CLASS:
+            if (count == 1) {
+                title = NSLocalizedString(@"Мастер-класс проводит:", @"Master class Lector Table Title");
+            } else {
+                title = NSLocalizedString(@"Мастер-класс проводят:", @"Master class Lectors Table Title");
+            }
+            break;
+        case SEMINAR_TYPE_THEMATIC_WEEK:
+            title = NSLocalizedString(@"Лекторы:", @"Thematic week Lectors Table Title");
+            break;
+        case SEMINAR_TYPE_NBU:
+            title = NSLocalizedString(@"Лекторы:", @"NBU Lectors Table Title");
             break;
         default:
-            title = NSLocalizedString(@"Семинар проводят:", @"Seminar Lectors Table Title");
             break;
     }
+    
     return title;
 }
 

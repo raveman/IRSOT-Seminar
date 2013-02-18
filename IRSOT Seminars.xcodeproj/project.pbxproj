@@ -672,7 +672,6 @@
 		C42B777A15D02CE500835E9F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				C45E6C9016CD34820024EC39 /* Theme */,
 				C4DE789015C96EF3007FBEC4 /* SeminarFetcher.h */,
 				C4DE789115C96EF3007FBEC4 /* SeminarFetcher.m */,
 				C483E40D15D2C393001A41FB /* Helper.h */,
@@ -824,7 +823,6 @@
 			isa = PBXGroup;
 			children = (
 				C462BDB615C95A8700170E3C /* IRSOT Seminars */,
-				C4DE788D15C95DE0007FBEC4 /* Trash Views */,
 				C462BDAD15C95A8700170E3C /* Frameworks */,
 				C462BDAB15C95A8700170E3C /* Products */,
 				C4FDF9E61674C9DD00040E43 /* ShareKit.xcodeproj */,
@@ -880,6 +878,7 @@
 				C4DE788C15C95DCA007FBEC4 /* Info */,
 				C45D3CED16CD4D9700877F94 /* WebView */,
 				C41B5C7C15F4EC780079D940 /* Share */,
+				C45E6C9016CD34820024EC39 /* Theme */,
 				C462BDB715C95A8700170E3C /* Supporting Files */,
 			);
 			path = "IRSOT Seminars";
@@ -931,14 +930,6 @@
 				C4DE787F15C95C02007FBEC4 /* ISInfoTableViewController.m */,
 			);
 			name = Info;
-			sourceTree = "<group>";
-		};
-		C4DE788D15C95DE0007FBEC4 /* Trash Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = "Trash Views";
-			path = "IRSOT Seminars";
 			sourceTree = "<group>";
 		};
 		C4FDF9E71674C9DD00040E43 /* Products */ = {

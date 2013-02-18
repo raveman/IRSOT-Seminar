@@ -19,6 +19,7 @@
 #import "SeminarFetcher.h"
 #import "Helper.h"
 #import "ISAlertTimesTableViewController.h"
+#import "ISAlertTimes.h"
 
 #import "Type+Load_Data.h"
 #import "Sections+Load_Data.h"
@@ -393,6 +394,7 @@ const NSInteger settingsSections = 3;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Setup Cell";
+    static NSString *AlertCellIdentifier = @"Setup Alert Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
 
     if (cell == nil) {
@@ -425,8 +427,9 @@ const NSInteger settingsSections = 3;
                     break;
                     
                 case 1:
-                    switchView.on = [[[NSUserDefaults standardUserDefaults] objectForKey:CALENDAR_ALERT_KEY] boolValue];
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
                     cell.textLabel.text = NSLocalizedString(@"Alert", @"Alert");
+                    cell.detailTextLabel.text = @"";
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     break;
@@ -519,7 +522,7 @@ const NSInteger settingsSections = 3;
     if (indexPath.section == settingsUpdateSection) {
         [self loadData];
     }
-    if ((indexPath.section == settingsCalendarAlertSection) || (indexPath.row == 1)) {
+    if ((indexPath.section == settingsCalendarAlertSection) && (indexPath.row == 1)) {
         [self performSegueWithIdentifier:@"Alert" sender:indexPath];
     }
     

@@ -1,3 +1,4 @@
 /IRSOT Seminars.xcodeproj/project.xcworkspace/
 /IRSOT Seminars.xcodeproj/xcuserdata/
 *.ipa
+/submodule-update.sh

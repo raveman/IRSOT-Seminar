@@ -11,6 +11,5 @@
 @interface ISInfoDictionary : NSObject
 
 + (NSArray *) infoArray; // info array
-+ (NSDictionary *) info; // info dictionary
 
 @end

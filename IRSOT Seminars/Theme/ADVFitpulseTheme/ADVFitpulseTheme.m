@@ -144,9 +144,9 @@
 - (UIImage *)backBackgroundForState:(UIControlState)state barMetrics:(UIBarMetrics)barMetrics
 {
     NSString *name = @"backButton";
-    if (barMetrics == UIBarMetricsLandscapePhone) {
-        name = [name stringByAppendingString:@"Landscape"];
-    }
+//    if (barMetrics == UIBarMetricsLandscapePhone) {
+//        name = [name stringByAppendingString:@"Landscape"];
+//    }
     if (state == UIControlStateHighlighted) {
         name = [name stringByAppendingString:@"Highlighted"];
     }

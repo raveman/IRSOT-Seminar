@@ -162,7 +162,8 @@
     }
     
     if ([[segue identifier] isEqualToString:@"Settings"]) {
-        ISSettingsViewController *dvc = (ISSettingsViewController *)[segue destinationViewController];
+        UINavigationController *dnc = (UINavigationController *)[segue destinationViewController];
+        ISSettingsViewController *dvc = (ISSettingsViewController *) dnc.topViewController;
         if (![self.fetchedResultsController.fetchedObjects count]) {
             dvc.emptyStore = NO;
         } else {

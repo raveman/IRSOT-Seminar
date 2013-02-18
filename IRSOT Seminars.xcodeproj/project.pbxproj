@@ -106,6 +106,8 @@
 		C4A37C91162742EF00DBE6E8 /* catalog2-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4A37C8B162742EF00DBE6E8 /* catalog2-iPhone@2x.png */; };
 		C4A37C92162742EF00DBE6E8 /* catalog3-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4A37C8C162742EF00DBE6E8 /* catalog3-iPhone.png */; };
 		C4A37C93162742EF00DBE6E8 /* catalog3-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4A37C8D162742EF00DBE6E8 /* catalog3-iPhone@2x.png */; };
+		C4B7563116D2434D00C23950 /* navigationBackground@2x~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4B7562F16D2434D00C23950 /* navigationBackground@2x~iPad.png */; };
+		C4B7563216D2434D00C23950 /* navigationBackground~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4B7563016D2434D00C23950 /* navigationBackground~iPad.png */; };
 		C4C66E1B1674CA3900B0885F /* libShareKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4FDFA171674C9DE00040E43 /* libShareKit.a */; };
 		C4C66E1C1674CA5F00B0885F /* ShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C4FDFA191674C9DE00040E43 /* ShareKit.bundle */; };
 		C4C66E1E1674F49B00B0885F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C66E1D1674F49B00B0885F /* libsqlite3.dylib */; };
@@ -525,6 +527,8 @@
 		C4A37C8D162742EF00DBE6E8 /* catalog3-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catalog3-iPhone@2x.png"; path = "icons/catalog3-iPhone@2x.png"; sourceTree = "<group>"; };
 		C4B095FC1688CE9F00F26CA2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		C4B095FD1688CEA500F26CA2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		C4B7562F16D2434D00C23950 /* navigationBackground@2x~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navigationBackground@2x~iPad.png"; path = "Resources/navigationBackground@2x~iPad.png"; sourceTree = "<group>"; };
+		C4B7563016D2434D00C23950 /* navigationBackground~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navigationBackground~iPad.png"; path = "Resources/navigationBackground~iPad.png"; sourceTree = "<group>"; };
 		C4C66E1D1674F49B00B0885F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		C4C66E1F1674F4A000B0885F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		C4C66E211674F4AF00B0885F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -713,9 +717,11 @@
 		C45C864215F61C5900108749 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C45E6C8B16CD30170024EC39 /* Buttons */,
 				C408141C16D2424D000857F4 /* navigationBackground.png */,
 				C408141D16D2424D000857F4 /* navigationBackground@2x.png */,
-				C45E6C8B16CD30170024EC39 /* Buttons */,
+				C4B7562F16D2434D00C23950 /* navigationBackground@2x~iPad.png */,
+				C4B7563016D2434D00C23950 /* navigationBackground~iPad.png */,
 				C45C864D15F61C9D00108749 /* light-hash-background.png */,
 				C45C864E15F61C9D00108749 /* light-hash-background@2x.png */,
 				C4E5122915F680E9007DD40E /* light-hash-background@2x~iPad.png */,
@@ -1359,6 +1365,8 @@
 				C408141B16D24205000857F4 /* Default-Landscape~ipad.png in Resources */,
 				C408141E16D2424D000857F4 /* navigationBackground.png in Resources */,
 				C408141F16D2424D000857F4 /* navigationBackground@2x.png in Resources */,
+				C4B7563116D2434D00C23950 /* navigationBackground@2x~iPad.png in Resources */,
+				C4B7563216D2434D00C23950 /* navigationBackground~iPad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

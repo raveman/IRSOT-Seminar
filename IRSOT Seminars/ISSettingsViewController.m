@@ -7,7 +7,7 @@
 //
 // TODO: add error checking: no network, broken data transfer, etc...
 
-#import <QuartzCore/QuartzCore.h>
+#import <EventKit/EventKit.h>
 
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "ReachabilityARC.h"
@@ -18,6 +18,7 @@
 #import "ISMainPageViewController.h"
 #import "SeminarFetcher.h"
 #import "Helper.h"
+#import "ISAlertTimesTableViewController.h"
 
 #import "Type+Load_Data.h"
 #import "Sections+Load_Data.h"
@@ -25,22 +26,18 @@
 #import "Lector+Load_Data.h"
 
 const NSInteger settingsSortSection = 0;
-const NSInteger settingsUpdateSection = 1;
-const NSInteger settingsSections = 2;
+const NSInteger settingsCalendarAlertSection = 1;
+const NSInteger settingsUpdateSection = 2;
+const NSInteger settingsSections = 3;
 
-@interface ISSettingsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface ISSettingsViewController () <UITableViewDataSource, UITableViewDelegate, ISAlertTimesTableViewControllerDelegate>
 @property (strong, nonatomic) NSString *updateDateLabel;
 @property (strong, nonatomic) NSString *errorText;
-
-@property (strong, nonatomic) UISwitch *sortSwitch;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) IBOutlet UILabel *versionLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *closeButton;
-@property (weak, nonatomic) IBOutlet UINavigationBar *navigationBar;
-
-
 
 @property (strong, nonatomic) ReachabilityARC * reach;
 
@@ -51,7 +48,6 @@ const NSInteger settingsSections = 2;
 
 @implementation ISSettingsViewController
 @synthesize updateDateLabel = _updateDateLabel;
-@synthesize sortSwitch = _sortSwitch;
 @synthesize errorText = _errorText;
 
 @synthesize versionLabel;
@@ -61,15 +57,7 @@ const NSInteger settingsSections = 2;
 @synthesize changedTime = _changedTime;
 @synthesize reach = _reach;
 
-- (UISwitch *) sortSwitch
-{
-    if (!_sortSwitch) {
-        _sortSwitch = [[UISwitch alloc] initWithFrame:CGRectZero];
-        [_sortSwitch addTarget:self action:@selector(updateSwitchAtIndexPath) forControlEvents:UIControlEventTouchUpInside];
-    }
-
-    return _sortSwitch;
-}
+#pragma mark - Properties initialization
 
 - (NSString *)errorText
 {
@@ -88,17 +76,31 @@ const NSInteger settingsSections = 2;
     return _reach;
 }
 
+#pragma mark - Helper methods
+- (void) checkCalendarAccess
+{
+    EKEventStore *eventStore = [[EKEventStore alloc] init];
+    
+    if ([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)]) {
+        // iOS 6 and later
+        [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+            if (granted) {
+            }
+        }];
+    } else {
+    }
+}
+
+
+#pragma mark - UIViewContoller methods
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.navigationBar.topItem.title = NSLocalizedString(@"Settings", @"Settings page title");
+    self.navigationItem.title = NSLocalizedString(@"Settings", @"Settings page title");
 
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
-    self.sortSwitch.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
-    
     
     NSString *versionLabelText = NSLocalizedString(@"Версия", @"Version label");
     self.versionLabel.text = [NSString stringWithFormat:@"%@: %@", versionLabelText, [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
@@ -129,18 +131,18 @@ const NSInteger settingsSections = 2;
             refreshCell.userInteractionEnabled = NO;
         });
     };
+ 
+    [self checkCalendarAccess];
     
 }
 
 - (void)viewDidUnload
 {
     [self setUpdateDateLabel:nil];
-    [self setSortSwitch:nil];
     [self setReach:nil];
     [self setVersionLabel:nil];
     [self setCloseButton:nil];
     [self setTableView:nil];
-    [self setNavigationBar:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -164,6 +166,19 @@ const NSInteger settingsSections = 2;
         return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
     } else {
         return YES;
+    }
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([[segue identifier] isEqualToString:@"Alert"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        if ((indexPath.section == settingsCalendarAlertSection) || (indexPath.row == 1)) {
+            NSInteger timeRow = [[[NSUserDefaults standardUserDefaults] objectForKey:CALENDAR_ALERT_TIME] integerValue];
+            ISAlertTimesTableViewController *dvc = (ISAlertTimesTableViewController *)[segue destinationViewController];
+            dvc.timeRow = timeRow;
+            dvc.delegate = self;
+        }
     }
 }
 
@@ -359,6 +374,10 @@ const NSInteger settingsSections = 2;
             rows = 1;
             break;
 
+        case settingsCalendarAlertSection:
+            rows = 2;
+            break;
+            
         case settingsUpdateSection:
             rows = 1;
             break;
@@ -380,27 +399,56 @@ const NSInteger settingsSections = 2;
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
 
+    UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
+    [switchView addTarget:self action:@selector(updateSwitchAtIndexPath:) forControlEvents:UIControlEventTouchUpInside];
+    
     switch (indexPath.section) {
         // sorting switch
         case settingsSortSection:
-            
-            cell.textLabel.text = NSLocalizedString(@"Sort catalog by date or seminar name", @"Sort catalog by date");
-            cell.accessoryView = self.sortSwitch;
+            if (indexPath.row == 0) {
+                switchView.on = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
+                cell.textLabel.text = NSLocalizedString(@"Sort catalog by date or seminar name", @"Sort catalog by date");
+                cell.accessoryView = switchView;
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
 
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
             break;
 
         // catalog update setup
-        case settingsUpdateSection:
-            cell.textLabel.text = NSLocalizedString(@"Refresh catalog", @"Refresh catalog");
-            cell.textLabel.textAlignment = UITextAlignmentCenter;
+        case settingsCalendarAlertSection:
+            switch (indexPath.row) {
+                case 0:
+                    switchView.on = [[[NSUserDefaults standardUserDefaults] objectForKey:CALENDAR_ALERT_KEY] boolValue];
+                    cell.textLabel.text = NSLocalizedString(@"Use calendar alerts", @"Use calendar alerts");
+                    cell.accessoryView = switchView;
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    break;
+                    
+                case 1:
+                    switchView.on = [[[NSUserDefaults standardUserDefaults] objectForKey:CALENDAR_ALERT_KEY] boolValue];
+                    cell.textLabel.text = NSLocalizedString(@"Alert", @"Alert");
+                    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    break;
 
-            if (![self.reach isReachable]) {
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;
-                cell.textLabel.enabled = NO;
-                cell.userInteractionEnabled = NO;
+                default:
+                    break;
             }
+            break;
             
+        // catalog update setup
+        case settingsUpdateSection:
+            if (indexPath.row == 0) {
+                cell.textLabel.text = NSLocalizedString(@"Refresh catalog", @"Refresh catalog");
+                cell.textLabel.textAlignment = UITextAlignmentCenter;
+                cell.accessoryType = UITableViewCellAccessoryNone;
+                
+                if (![self.reach isReachable]) {
+                    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.textLabel.enabled = NO;
+                    cell.userInteractionEnabled = NO;
+                }
+            }
             break;
             
         default:
@@ -416,6 +464,9 @@ const NSInteger settingsSections = 2;
     
     switch (section) {
         case settingsSortSection:
+            break;
+            
+        case settingsCalendarAlertSection:
             break;
             
         case settingsUpdateSection:
@@ -437,6 +488,10 @@ const NSInteger settingsSections = 2;
             title = NSLocalizedString(@"Sort catalog by date", @"Sort description");
             break;
             
+        case settingsCalendarAlertSection:
+            title = NSLocalizedString(@"Use calendar alerts when adding events to calendar", @"Calendar alerts description");
+            break;
+
         case settingsUpdateSection:
             title = self.updateDateLabel;
             break;
@@ -464,16 +519,45 @@ const NSInteger settingsSections = 2;
     if (indexPath.section == settingsUpdateSection) {
         [self loadData];
     }
+    if ((indexPath.section == settingsCalendarAlertSection) || (indexPath.row == 1)) {
+        [self performSegueWithIdentifier:@"Alert" sender:indexPath];
+    }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)updateSwitchAtIndexPath
+- (void)updateSwitchAtIndexPath:(id)sender
+{
+
+    UITableView *tableView = (UITableView *)[[sender superview] superview];
+    NSIndexPath *indexPath = [tableView indexPathForCell:(UITableViewCell*)[sender superview]];
+    
+    if (indexPath.section == settingsSortSection) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSNumber *sortByDate = [NSNumber numberWithBool:[sender isOn]];
+        
+        [defaults setObject:sortByDate forKey:SORT_KEY];
+        [defaults synchronize];
+    }
+    
+    if (indexPath.section == settingsCalendarAlertSection) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSNumber *useCalendarAlerts = [NSNumber numberWithBool:[sender isOn]];
+        
+        [defaults setObject:useCalendarAlerts forKey:CALENDAR_ALERT_KEY];
+        [defaults synchronize];
+    }
+    
+}
+
+#pragma mark - ISAlertTimesViewControllerDelegate
+
+- (void) alertTimesViewContoller:(ISAlertTimesTableViewController *)sender didSelectedTime: (NSInteger) time
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *sortByDate = [NSNumber numberWithBool:self.sortSwitch.on];
+    NSNumber *calendarAlertTime = [NSNumber numberWithInteger:sender.timeRow];
     
-    [defaults setObject:sortByDate forKey:SORT_KEY];
+    [defaults setObject:calendarAlertTime forKey:CALENDAR_ALERT_TIME];
     [defaults synchronize];
 }
 

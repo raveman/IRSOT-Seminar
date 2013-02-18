@@ -7,11 +7,14 @@
 //
 // TODO: переделать все UILabel в UITextView, чтобы у пользователя была возможность копи-паста
 
+#import <EventKit/EventKit.h>
+
 #import "ISAppDelegate.h"
 
 #import "ISSeminarViewController.h"
 #import "ISWebviewViewController.h"
 #import "ISLectorViewController.h"
+#import "ISSettingsViewController.h"
 
 #import "Helper.h"
 #import "Sections.h"
@@ -341,6 +344,7 @@ const NSUInteger sectionHeaderHeight = 30;
     } else {
         NSString *addBookmarkButton = NSLocalizedString(@"Добавить закладку", @"Add seminar bookmark button title");
         NSString *viewOnWebButton = NSLocalizedString(@"Посмотреть полную версию", @"Add seminar bookmark button title");
+        NSString *addToCalendar = NSLocalizedString(@"Add to calendar", @"Add to calendar button title");
 
         // unused buttons for now
 //        NSString *evernoteButton = NSLocalizedString(@"Сохранить в Evernote", @"Share on Evernote");
@@ -356,9 +360,9 @@ const NSUInteger sectionHeaderHeight = 30;
         UIActionSheet *actionSheet = nil;
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Избранное", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Отмена", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
+            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Избранное", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Отмена", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, addToCalendar, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
         } else {
-            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Избранное", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Отмена", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
+            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Избранное", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Отмена", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, addToCalendar, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
         }
         
         [actionSheet showFromBarButtonItem:sender animated:YES];
@@ -394,20 +398,58 @@ const NSUInteger sectionHeaderHeight = 30;
     } else if ([choice isEqualToString:VIEW_ON_WEB]) {
         [self performSegueWithIdentifier:@"View On Web" sender:self];
     } else if (buttonIndex == 2) {
+        // add to calendar
+        EKEventStore *eventStore = [[EKEventStore alloc] init];
+        EKEvent *event = [EKEvent eventWithEventStore:eventStore];
+        event.title = self.seminar.name;
+        event.startDate = self.seminar.date_start;
+        event.endDate = self.seminar.date_end;
+        event.allDay = YES;
+        BOOL useCalendarAlerts = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
+        if (useCalendarAlerts) {
+            NSTimeInterval alarmOffSet = -1 * 60 * 60; // 1 hour
+            EKAlarm *alarm = [EKAlarm alarmWithRelativeOffset:alarmOffSet];
+            [event addAlarm:alarm];
+        }
+
+        
+        [event setCalendar:[eventStore defaultCalendarForNewEvents]];
+
+        NSError *error = nil;
+        
+        // checking for permissions to access calendar
+        if ([eventStore respondsToSelector:@selector(requestAccessToEntityType:completion:)]) {
+            // iOS 6 and later
+            [eventStore requestAccessToEntityType:EKEntityTypeEvent completion:^(BOOL granted, NSError *error) {
+                if (granted) {
+                    [eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&error];
+                }
+            }];
+        } else {
+            [eventStore saveEvent:event span:EKSpanThisEvent commit:YES error:&error];
+        }
+        
+        if (!error) {
+            NSString *message = [NSString stringWithFormat:@"%@ «%@» %@", NSLocalizedString(@"Event", @"Calendar event start message"), self.seminar.name, NSLocalizedString(@"added", @"Calendar event end message") ];
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Calendar", @"Calendar") message:message delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+            [alert show];
+        }
+        
+    } else if (buttonIndex == 3) {
         //share to mail
         SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKURLContentTypeWebpage];
         [SHKMail shareItem:item];
-    } else if (buttonIndex == 3) {
+    } else if (buttonIndex == 4) {
         //share to twitter
         SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар @irsot: «%@»", self.seminar.name] contentType:SHKURLContentTypeWebpage];
         [SHKTwitter shareItem:item];
-    } else if (buttonIndex == 4) {
+    } else if (buttonIndex == 5) {
         //share to facebook
         SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"«%@»", self.seminar.name] contentType:SHKURLContentTypeWebpage];
         [SHKFacebook shareItem:item];
     }
 //    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-       else if (buttonIndex == 5) {
+       else if (buttonIndex == 6) {
             //share to vkontakte
             SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKURLContentTypeWebpage];
             [SHKVkontakte shareItem:item];

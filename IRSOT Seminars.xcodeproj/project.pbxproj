@@ -527,8 +527,8 @@
 		C4B095FD1688CEA500F26CA2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		C4B7562F16D2434D00C23950 /* navigationBackground@2x~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navigationBackground@2x~iPad.png"; path = "Resources/navigationBackground@2x~iPad.png"; sourceTree = "<group>"; };
 		C4B7563016D2434D00C23950 /* navigationBackground~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navigationBackground~iPad.png"; path = "Resources/navigationBackground~iPad.png"; sourceTree = "<group>"; };
-		C4B7563616D24D5300C23950 /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		C4B7563816D24D5600C23950 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C4B7563616D24D5300C23950 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C4B7563816D24D5600C23950 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C4C66E1D1674F49B00B0885F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		C4C66E1F1674F4A000B0885F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		C4C66E211674F4AF00B0885F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };

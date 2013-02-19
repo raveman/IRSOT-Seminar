@@ -93,6 +93,7 @@
 		C46A618215DD2E2D0093C39E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46A618115DD2E2D0093C39E /* SystemConfiguration.framework */; };
 		C46DED3716D257FA008DAC47 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46DED3616D257FA008DAC47 /* EventKit.framework */; };
 		C46DED8216D26813008DAC47 /* ISAlertTimesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C46DED8116D26813008DAC47 /* ISAlertTimesTableViewController.m */; };
+		C46DED8516D28828008DAC47 /* ISAlertTimes.m in Sources */ = {isa = PBXBuildFile; fileRef = C46DED8416D28828008DAC47 /* ISAlertTimes.m */; };
 		C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */; };
 		C483E40F15D2C393001A41FB /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40E15D2C393001A41FB /* Helper.m */; };
 		C48F96F815CC46D400F4AA51 /* Seminar+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F96F715CC46D400F4AA51 /* Seminar+Load_Data.m */; };
@@ -505,6 +506,8 @@
 		C46DED3616D257FA008DAC47 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		C46DED8016D26813008DAC47 /* ISAlertTimesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAlertTimesTableViewController.h; sourceTree = "<group>"; };
 		C46DED8116D26813008DAC47 /* ISAlertTimesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAlertTimesTableViewController.m; sourceTree = "<group>"; };
+		C46DED8316D28828008DAC47 /* ISAlertTimes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISAlertTimes.h; path = Models/ISAlertTimes.h; sourceTree = "<group>"; };
+		C46DED8416D28828008DAC47 /* ISAlertTimes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISAlertTimes.m; path = Models/ISAlertTimes.m; sourceTree = "<group>"; };
 		C46E89B61610C83E00D5CAEE /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		C483E40A15D2ADD1001A41FB /* ISLectorListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorListTableViewController.h; sourceTree = "<group>"; };
 		C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorListTableViewController.m; sourceTree = "<group>"; };
@@ -750,6 +753,8 @@
 			children = (
 				C45D3CEF16CD4E0200877F94 /* ISInfoDictionary.h */,
 				C45D3CF016CD4E0200877F94 /* ISInfoDictionary.m */,
+				C46DED8316D28828008DAC47 /* ISAlertTimes.h */,
+				C46DED8416D28828008DAC47 /* ISAlertTimes.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1420,6 +1425,7 @@
 				C45E6C9C16CD34820024EC39 /* ADVTheme.m in Sources */,
 				C45D3CF116CD4E0200877F94 /* ISInfoDictionary.m in Sources */,
 				C46DED8216D26813008DAC47 /* ISAlertTimesTableViewController.m in Sources */,
+				C46DED8516D28828008DAC47 /* ISAlertTimes.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

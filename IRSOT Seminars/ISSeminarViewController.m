@@ -23,6 +23,7 @@
 #import "Seminar+Load_Data.h"
 #import "Sections+Load_Data.h"
 #import "Type+Load_Data.h"
+#import "ISAlertTimes.h"
 
 #import "SHK.h"
 #import "SHKItem.h"
@@ -407,12 +408,12 @@ const NSUInteger sectionHeaderHeight = 30;
         event.allDay = YES;
         BOOL useCalendarAlerts = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
         if (useCalendarAlerts) {
+            
             NSTimeInterval alarmOffSet = -1 * 60 * 60; // 1 hour
             EKAlarm *alarm = [EKAlarm alarmWithRelativeOffset:alarmOffSet];
             [event addAlarm:alarm];
         }
 
-        
         [event setCalendar:[eventStore defaultCalendarForNewEvents]];
 
         NSError *error = nil;

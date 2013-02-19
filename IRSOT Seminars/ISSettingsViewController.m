@@ -175,9 +175,8 @@ const NSInteger settingsSections = 3;
     if ([[segue identifier] isEqualToString:@"Alert"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         if ((indexPath.section == settingsCalendarAlertSection) || (indexPath.row == 1)) {
-            NSInteger timeRow = [[[NSUserDefaults standardUserDefaults] objectForKey:CALENDAR_ALERT_TIME] integerValue];
             ISAlertTimesTableViewController *dvc = (ISAlertTimesTableViewController *)[segue destinationViewController];
-            dvc.timeRow = timeRow;
+            dvc.timeRow = [ISAlertTimes savedAlertTimeOption];
             dvc.delegate = self;
         }
     }
@@ -403,7 +402,7 @@ const NSInteger settingsSections = 3;
 
     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
     [switchView addTarget:self action:@selector(updateSwitchAtIndexPath:) forControlEvents:UIControlEventTouchUpInside];
-    
+
     switch (indexPath.section) {
         // sorting switch
         case settingsSortSection:
@@ -427,9 +426,13 @@ const NSInteger settingsSections = 3;
                     break;
                     
                 case 1:
-                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                    cell = [tableView dequeueReusableCellWithIdentifier:AlertCellIdentifier];
+                    if (cell == nil) {
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:AlertCellIdentifier];
+                    }
+                    
                     cell.textLabel.text = NSLocalizedString(@"Alert", @"Alert");
-                    cell.detailTextLabel.text = @"";
+                    cell.detailTextLabel.text = [[ISAlertTimes alerTimesArray] objectAtIndex:[ISAlertTimes savedAlertTimeOption]];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     break;
@@ -507,24 +510,15 @@ const NSInteger settingsSections = 3;
 }
 
 #pragma mark - UITableView Delegate
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    
-//}
-//
-//- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section
-//{
-//        
-//}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == settingsUpdateSection) {
         [self loadData];
     }
-    if ((indexPath.section == settingsCalendarAlertSection) && (indexPath.row == 1)) {
-        [self performSegueWithIdentifier:@"Alert" sender:indexPath];
-    }
+//    if ((indexPath.section == settingsCalendarAlertSection) && (indexPath.row == 1)) {
+//        [self performSegueWithIdentifier:@"Alert" sender:indexPath];
+//    }
     
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -557,11 +551,8 @@ const NSInteger settingsSections = 3;
 
 - (void) alertTimesViewContoller:(ISAlertTimesTableViewController *)sender didSelectedTime: (NSInteger) time
 {
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSNumber *calendarAlertTime = [NSNumber numberWithInteger:sender.timeRow];
-    
-    [defaults setObject:calendarAlertTime forKey:CALENDAR_ALERT_TIME];
-    [defaults synchronize];
+    [ISAlertTimes saveAlertTimeOptionWithTimeSelection:sender.timeRow];
+    [self.tableView reloadData];
 }
 
 @end

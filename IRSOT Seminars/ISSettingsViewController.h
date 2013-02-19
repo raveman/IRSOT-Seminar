@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #define SORT_KEY @"SeminarList.Sort"
-#define CALENDAR_ALERT_KEY @"SeminarList.UseCalendarAlerts"
-#define CALENDAR_ALERT_TIME @"SeminarList.CalendarAlertTime"
+
 
 #define USE_ICLOUD_KEY @"SeminarList.UseiCloud"
 #define UPDATE_DATE_KEY @"Catalog.UpdateDate"

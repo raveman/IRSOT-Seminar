@@ -30,4 +30,21 @@
     
     return timeInMinutes;
 }
+
++ (NSInteger)savedAlertTimeOption
+{
+    NSInteger time = [[[NSUserDefaults standardUserDefaults] objectForKey:CALENDAR_ALERT_TIME] integerValue];
+    return  time;
+}
+
++ (void)saveAlertTimeOptionWithTimeSelection:(NSInteger)time
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSNumber *calendarAlertTime = [NSNumber numberWithInteger:time];
+    
+    [defaults setObject:calendarAlertTime forKey:CALENDAR_ALERT_TIME];
+    [defaults synchronize];
+
+}
+
 @end

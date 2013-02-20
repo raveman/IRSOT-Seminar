@@ -188,4 +188,19 @@
     return dateStr;
 }
 
+- (NSString *)stringWithSeminarMonth
+{
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
+    
+    NSDateFormatter *dateFormatterMonth = [[NSDateFormatter alloc] init];
+    [dateFormatterMonth setLocale:locale];
+    [dateFormatterMonth setDateFormat:SEMINAR_DATE_FORMAT_DATE_MONTH_ONLY];
+    
+    NSString *dateStr;
+    
+    dateStr = [NSString stringWithFormat:@"%@", [dateFormatterMonth stringFromDate:self.date_start]];
+    
+    return dateStr;
+}
+
 @end

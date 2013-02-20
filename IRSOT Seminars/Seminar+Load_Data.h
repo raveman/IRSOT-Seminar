@@ -22,5 +22,6 @@
 
 - (NSString *)stringWithLectorNames;
 - (NSString *)stringWithSeminarDates;
+- (NSString *)stringWithSeminarMonth;
 
 @end

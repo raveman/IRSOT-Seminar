@@ -22,6 +22,7 @@
 #define CACHE_NAME_SEMINAR nil
 #define CACHE_NAME_BK nil
 
+
 @interface ISSeminarListTableViewController () <UISearchBarDelegate, UISearchDisplayDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *seminarTypeSwitch;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
@@ -31,6 +32,9 @@
 @property (nonatomic) BOOL searchIsActive;
 
 @property (nonatomic) BOOL sortByDate;
+
+@property (strong, nonatomic) NSDictionary *monthsDict;
+@property (strong, nonatomic) NSArray *months;
 
 @end
 
@@ -47,6 +51,8 @@
 
 @synthesize searchIsActive = _searchIsActive;
 @synthesize sortByDate = _sortByDate;
+@synthesize monthsDict = _monthsDict;
+@synthesize months = _months;
 
 - (NSInteger)currentSeminarType
 {
@@ -68,24 +74,79 @@
     return _sortByDate;
 }
 
+- (NSDictionary *)monthsDict {
+    if (!_monthsDict) {
+        if (!self.section || !self.type) {
+            NSMutableDictionary *monthsInResults = [NSMutableDictionary dictionary];
+            int count = [[self.fetchedResultsController fetchedObjects] count];
+            for (int i=0; i < count; i++) {
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+                Seminar *seminar = [self.fetchedResultsController objectAtIndexPath:indexPath];
+                NSString *monthStr = [seminar stringWithSeminarMonth];
+                NSInteger count = [[monthsInResults objectForKey:monthStr] integerValue];
+                if (count) {
+                    count++;
+                } else {
+                    count = 1;
+                }
+                [monthsInResults setObject:[NSNumber numberWithInteger:count] forKey:monthStr];
+            }
+            
+            _monthsDict = monthsInResults;
+        }
+    }
+    
+    return _monthsDict;
+}
+
+- (NSArray *) months
+{
+    if (!_months) {
+        _months = [self.monthsDict keysSortedByValueUsingSelector:@selector(compare:)];
+    }
+    return _months;
+}
+
+#pragma mark - helper methods
+- (NSIndexPath *)adjustIndexPathForIndexPath:(NSIndexPath *)indexPath
+{
+    // нам нужно посчитать смещение в на самом деле линейном результате выборки fetchobjectresults, чтобы сделать "обманку" на секции разбитые по месяцам
+    NSIndexPath *adjustedIndexPath = indexPath;
+    NSInteger shift = 0;
+    if (indexPath.section) {
+        for (int i = 1; i <= indexPath.section; i++) {
+            shift = shift + [[self.monthsDict objectForKey:[self.months objectAtIndex:i]] integerValue];
+        }
+        shift = shift + indexPath.row;
+    } else {
+        shift = indexPath.row;
+    }
+    adjustedIndexPath = [NSIndexPath indexPathForRow:shift inSection:0];
+
+    return adjustedIndexPath;
+}
+
+#pragma mark - UIViewController methods
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
     
     self.searchDisplayController.searchBar.delegate = self;
     self.searchDisplayController.searchBar.backgroundColor = [UIColor clearColor];
     
     // if we have no arrived section we need to hide seminar type switch
     // and set currentSeminarType
-    self.title = self.section.name;
-    
-    if (!self.section) {
+    if (self.section) {
+        self.title = self.section.name;
+    } else if (self.type) {
 //         self.seminarTypeSwitch.hidden = YES;
         [self.seminarTypeSwitch removeAllSegments];
         [self.seminarTypeSwitch insertSegmentWithTitle:self.type.name atIndex:0 animated:YES];
         self.seminarTypeSwitch.momentary = YES;
-        self.title = self.type.name;
+    } else {
+        [self.seminarTypeSwitch removeAllSegments];
+        [self.seminarTypeSwitch insertSegmentWithTitle:NSLocalizedString(@"All event types", @"All event types") atIndex:0 animated:YES];
+        self.seminarTypeSwitch.momentary = YES;
     }
 }
 
@@ -122,6 +183,10 @@
         } else {
             indexPath = [self.tableView indexPathForCell:sender];
         }
+        if (!self.section || !self.type) {
+            indexPath = [self adjustIndexPathForIndexPath:indexPath];
+        }
+        
         Seminar *seminar = [[self fetchedResultsController] objectAtIndexPath:indexPath];
         [segue.destinationViewController setSeminar:seminar];
         [segue.destinationViewController setManagedObjectContext:self.managedObjectContext];
@@ -149,9 +214,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
-    NSInteger count = [[self.fetchedResultsController sections] count];
-    if (!count) count = 1;
+    NSInteger count = 0;
+    
+    if (self.section || self.type) {
+         count = [[self.fetchedResultsController sections] count];
+        if (!count) count = 1;
+    } else {
+        count = [self.months count];
+    }
+    
     return count;
 }
 
@@ -159,13 +230,17 @@
 
     NSString *title = [NSString string];
     if (!self.searchIsActive) {
-        NSArray *sections = [self.fetchedResultsController sections];
-        if ([sections count]) {
-            id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
-            NSArray *objects = [sectionInfo objects];
-            Seminar *seminar = nil;
-            if ([objects count]) seminar = [objects objectAtIndex:0]; // выбираем любой семинар из массива и спрашиваем его о названии секции
-            title = seminar.section.name;
+        if (self.section || self.type) {
+            NSArray *sections = [self.fetchedResultsController sections];
+            if ([sections count]) {
+                id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
+                NSArray *objects = [sectionInfo objects];
+                Seminar *seminar = nil;
+                if ([objects count]) seminar = [objects objectAtIndex:0]; // выбираем любой семинар из массива и спрашиваем его о названии секции
+                title = seminar.section.name;
+            }
+        } else {
+            title = [self.months objectAtIndex:section];
         }
     }
     return  title;
@@ -174,7 +249,7 @@
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
     if (!self.searchIsActive) {
-        if (!self.section) {
+        if (self.type) {
             NSMutableArray *sectionIndexTitleLetters = [NSMutableArray array];
             NSArray *sections = [self.fetchedResultsController sections];
             int count = [sections count];
@@ -189,6 +264,13 @@
             }
             return sectionIndexTitleLetters;
         }
+        if (!self.section) {
+            NSMutableArray *sectionIndexTitleLetters = [NSMutableArray array];
+            for (NSString *month in self.months) {
+                [sectionIndexTitleLetters addObject:[NSString localizedStringWithFormat:@"%@", [[month substringToIndex:1] lowercaseString]]];
+            }
+            return sectionIndexTitleLetters;
+        }
     }
     
     return nil;
@@ -197,12 +279,16 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger count = 1;
-    
-    if ([[self.fetchedResultsController fetchedObjects] count]) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-        count = [sectionInfo numberOfObjects];
+    if (self.section || self.type) {
+        if ([[self.fetchedResultsController fetchedObjects] count]) {
+            id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+            count = [sectionInfo numberOfObjects];
+        } else {
+            if (self.searchIsActive) count = 0;
+        }
     } else {
-        if (self.searchIsActive) count = 0;
+        NSString *key = [self.months objectAtIndex:section];
+        count = [[self.monthsDict objectForKey:key] integerValue];
     }
     
     return count;
@@ -242,6 +328,9 @@
     if (tableView == self.tableView) {
         // Configure the cell...
         if ([[self.fetchedResultsController fetchedObjects] count]) {
+            if (!self.section || !self.type) {
+                indexPath = [self adjustIndexPathForIndexPath:indexPath];
+            }
             Seminar *seminar = [self.fetchedResultsController objectAtIndexPath:indexPath];
             cell.textLabel.text = seminar.name;
             
@@ -306,26 +395,31 @@
 
     if (self.section) {
         fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %d AND type.id == %d AND date_start > %@", [self.section.id integerValue], self.currentSeminarType, [NSDate date]];
-    } else {
+    } else if (self.type) {
         fetchRequest.predicate = [NSPredicate predicateWithFormat:@"type.id == %d  AND date_start > %@", self.currentSeminarType, [NSDate date]];
+    } else {
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"date_start > %@", [NSDate date]];
     }
     
 //    [fetchRequest setFetchBatchSize:20];
-    
-    NSSortDescriptor *nameSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject: nameSortDescriptor];
-    if (self.sortByDate) {
-        NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date_start" ascending:YES];
-        [sortDescriptors insertObject:sortDescriptor atIndex:0];
+    NSSortDescriptor *sortDescriptor;
+    if (self.sortByDate || (!self.section && self.type)) {
+        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date_start" ascending:YES];
+    } else {
+        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
     }
+
+    NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject: sortDescriptor];
 
     NSString *sectionNameKeyPath = [NSString string];
     if (self.section) {
         sectionNameKeyPath = nil;
-    } else {
+    } else if (self.type) {
         NSSortDescriptor *sectionSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"section" ascending:YES];
         [sortDescriptors insertObject:sectionSortDescriptor atIndex:0];
         sectionNameKeyPath = @"section";
+    } else {
+        sectionNameKeyPath = nil;
     }
 
     [fetchRequest setSortDescriptors:sortDescriptors];

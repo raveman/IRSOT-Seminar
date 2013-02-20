@@ -42,6 +42,7 @@
 #define SEMINAR_DATE_FORMAT @"yyyy-MM-dd HH:mm:ss"
 #define SEMINAR_DATE_FORMAT_DATE @"dd"
 #define SEMINAR_DATE_FORMAT_DATE_MONTH @"MMMM YYYY"
+#define SEMINAR_DATE_FORMAT_DATE_MONTH_ONLY @"MMMM"
 
 // extern NSString *const kReachabilityChangedNotification;
 

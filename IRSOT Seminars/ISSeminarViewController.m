@@ -403,15 +403,24 @@ const NSUInteger sectionHeaderHeight = 30;
         EKEventStore *eventStore = [[EKEventStore alloc] init];
         EKEvent *event = [EKEvent eventWithEventStore:eventStore];
         event.title = self.seminar.name;
-        event.startDate = self.seminar.date_start;
-        event.endDate = self.seminar.date_end;
-        event.allDay = YES;
-        BOOL useCalendarAlerts = [[[NSUserDefaults standardUserDefaults] objectForKey:SORT_KEY] boolValue];
-        if (useCalendarAlerts) {
-            
-            NSTimeInterval alarmOffSet = -1 * 60 * 60; // 1 hour
-            EKAlarm *alarm = [EKAlarm alarmWithRelativeOffset:alarmOffSet];
-            [event addAlarm:alarm];
+        NSDate *startDate = self.seminar.date_start;
+        NSTimeInterval morning = 9*60*60 + 30*60;
+        startDate = [startDate dateByAddingTimeInterval:morning];
+        event.startDate = startDate;
+
+        NSDate *endDate = self.seminar.date_end;
+        NSTimeInterval evening = 17*60*60 + 30*60;
+        endDate = [endDate dateByAddingTimeInterval:evening];
+        event.endDate = endDate;
+        event.allDay = NO;
+        
+        if ([ISAlertTimes useCalendarAlerts]) {
+            int time = [ISAlertTimes times][[ISAlertTimes savedAlertTimeOption]];
+            if (time >= 0) {
+                NSTimeInterval alarmOffSet = -1 * 60 * time; // 1 hour
+                EKAlarm *alarm = [EKAlarm alarmWithRelativeOffset:alarmOffSet];
+                [event addAlarm:alarm];
+            }
         }
 
         [event setCalendar:[eventStore defaultCalendarForNewEvents]];

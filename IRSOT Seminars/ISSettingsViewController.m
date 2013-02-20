@@ -103,7 +103,7 @@ const NSInteger settingsSections = 3;
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
-    NSString *versionLabelText = NSLocalizedString(@"Версия", @"Version label");
+    NSString *versionLabelText = NSLocalizedString(@"Version", @"Version label");
     self.versionLabel.text = [NSString stringWithFormat:@"%@: %@", versionLabelText, [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]];
       
     // checking network availability and enabling or disabling update button.
@@ -134,7 +134,6 @@ const NSInteger settingsSections = 3;
     };
  
     [self checkCalendarAccess];
-    
 }
 
 - (void)viewDidUnload
@@ -150,7 +149,11 @@ const NSInteger settingsSections = 3;
 
 - (void) viewWillAppear:(BOOL)animated
 {
-    self.updateDateLabel = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Last update", @"Last catalog update") ,[[NSUserDefaults standardUserDefaults] objectForKey:UPDATE_DATE_KEY]];
+    NSString *saveUpdateDate = [[NSUserDefaults standardUserDefaults] objectForKey:UPDATE_DATE_KEY];
+    if (saveUpdateDate == nil) {
+        saveUpdateDate = @"";
+    }
+    self.updateDateLabel = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Last update", @"Last catalog update") ,saveUpdateDate];
     [self.reach startNotifier];
     [super viewWillAppear:animated];
 }
@@ -220,7 +223,7 @@ const NSInteger settingsSections = 3;
 
     [self deleteData];
     
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"Обновляю каталог", @"Loading catalog data from the web")];
+    [SVProgressHUD showWithStatus:NSLocalizedString(@"Updating catalog", @"Loading catalog data from the web")];
 
     dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
     dispatch_async(fetchQ, ^{
@@ -269,7 +272,7 @@ const NSInteger settingsSections = 3;
             if (![self.managedObjectContext save:&error]) {
                 NSLog(@"Could'not save: %@", [error localizedDescription]);
                 
-                [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Load errror", @"Load error message"),[error localizedDescription]]];
+                [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Load error", @"Load error message"),[error localizedDescription]]];
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.closeButton.enabled = YES;
                 });
@@ -296,7 +299,7 @@ const NSInteger settingsSections = 3;
                 [defaults synchronize];
 
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Каталог обновлен!", @"Catalog loaded successfully")];
+                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Catalog successfully updated!", @"Catalog loaded successfully")];
                     
                     self.updateDateLabel = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Last update", @"Last catalog update") ,dateUpdated];
                     self.closeButton.enabled = YES;
@@ -341,7 +344,7 @@ const NSInteger settingsSections = 3;
         }
 
         deleted = YES;
-        self.updateDateLabel = NSLocalizedString(@"нет данных", @"No data about update");
+        self.updateDateLabel = NSLocalizedString(@"no information", @"No data about update");
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:@"" forKey:UPDATE_DATE_KEY];
         [defaults synchronize];
@@ -353,7 +356,7 @@ const NSInteger settingsSections = 3;
     [[NSFileManager defaultManager] removeItemAtURL:[[ISAppDelegate sharedDelegate] lectorCacheDirectory] error:&error];
     if (error) NSLog(@"Error creating directory: %@", [error.userInfo objectForKey:NSUnderlyingErrorKey]);
 
-    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Каталог удален", @"Seminars deleted")];
+    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Catalog deleted", @"Catalog deleted")];
     
     //notifying main page view controller about deleted data
     [self.delegate settingsViewController:self didDeletedStore:deleted];
@@ -435,6 +438,8 @@ const NSInteger settingsSections = 3;
                     cell.detailTextLabel.text = [[ISAlertTimes alerTimesArray] objectAtIndex:[ISAlertTimes savedAlertTimeOption]];
                     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    cell.textLabel.enabled = [ISAlertTimes useCalendarAlerts];
+                    cell.detailTextLabel.enabled = cell.textLabel.enabled;
                     break;
 
                 default:
@@ -470,12 +475,15 @@ const NSInteger settingsSections = 3;
     
     switch (section) {
         case settingsSortSection:
+            title = NSLocalizedString(@"Sorting",@"Sorting section title");
             break;
             
         case settingsCalendarAlertSection:
+            title = NSLocalizedString(@"Calendar",@"Calendar section title");
             break;
             
         case settingsUpdateSection:
+            title = NSLocalizedString(@"Catalog",@"Catalog section title");
             break;
             
         default:
@@ -543,6 +551,11 @@ const NSInteger settingsSections = 3;
         
         [defaults setObject:useCalendarAlerts forKey:CALENDAR_ALERT_KEY];
         [defaults synchronize];
+        // now we need to enable/disable cell for alerts
+        NSIndexPath *alertCellIndexPath = [NSIndexPath indexPathForRow:1 inSection:settingsCalendarAlertSection];
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:alertCellIndexPath];
+        cell.textLabel.enabled = [sender isOn];
+        cell.detailTextLabel.enabled = cell.textLabel.enabled;
     }
     
 }

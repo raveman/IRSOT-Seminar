@@ -40,7 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = NSLocalizedString(@"Условия участия", @"Info page title");
+    self.navigationItem.title = NSLocalizedString(@"Participation terms", @"Info page title");
 
     id <ADVTheme> theme = [ADVThemeManager sharedTheme];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];

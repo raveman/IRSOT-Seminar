@@ -27,8 +27,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-//    self.title = NSLocalizedString(@"Новости ИРСОТ", @"News Webview Title");
-    self.navigationItem.title = NSLocalizedString(@"Новости ИРСОТ", @"News Webview Title");
+    self.navigationItem.title = NSLocalizedString(@"IRSOT News", @"News Webview Title");
     self.webview.scalesPageToFit = YES;
     
     NSURL *url = [NSURL URLWithString:@"http://twitter.com/irsot"];
@@ -83,7 +82,7 @@
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Ошибка загрузки :-(", @"Error load :-(")];
+    [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Load error", @"Load error")];
 }
 
 @end

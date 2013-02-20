@@ -68,7 +68,7 @@
                     <navigationItem key="navigationItem" id="Jea-tH-Syn">
                         <barButtonItem key="rightBarButtonItem" image="gear-iPhone.png" id="9t0-lu-CQ2">
                             <connections>
-                                <segue destination="45h-Ie-t0v" kind="modal" identifier="Settings" id="e5e-Uw-2wc"/>
+                                <segue destination="45h-Ie-t0v" kind="modal" identifier="Settings" modalTransitionStyle="flipHorizontal" id="e5e-Uw-2wc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -937,6 +937,7 @@
         <class className="ISSeminarViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ISSeminarViewController.h"/>
             <relationships>
+                <relationship kind="action" name="share:" candidateClass="UIBarButtonItem"/>
                 <relationship kind="outlet" name="attendSeminarButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="lectorTableView" candidateClass="UITableView"/>
                 <relationship kind="outlet" name="lectorsLabel" candidateClass="UILabel"/>

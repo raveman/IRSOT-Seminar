@@ -78,13 +78,13 @@
     self.seminarCategoriesTableView.dataSource = self;
     self.seminarCategoriesTableView.delegate = self;
 
-    self.title =  NSLocalizedString(@"Каталог", @"Main Page Title");
+    self.title =  NSLocalizedString(@"Catalog", @"Main Page Title");
     
     self.noDataLabel.shadowColor = [UIColor grayColor];
     self.noDataLabel.shadowOffset = CGSizeMake(0,-1);
     self.noDataLabel.font = [UIFont boldSystemFontOfSize:28.0];
     self.noDataLabel.textColor = [UIColor whiteColor];
-    self.noDataLabel.text = NSLocalizedString(@"Нет данных", @"Main Page Categories list no data");
+    self.noDataLabel.text = NSLocalizedString(@"No data", @"Main Page Categories list no data");
     
     UIBarButtonItem *setupButton = self.navigationItem.rightBarButtonItem;
     setupButton.image = [UIImage imageNamed:@"gear-iPhone"];
@@ -121,7 +121,7 @@
     count = [[self.fetchedResultsController fetchedObjects] count];
     if (!count) {
         // у нас нет еще никаких данных, надо бы их загрузить
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Каталог", @"Catalog") message:NSLocalizedString(@"У нас нет еще загруженных семинаров", @"No downloaded data") delegate:self cancelButtonTitle:NSLocalizedString(@"Отмена", @"Cancel") otherButtonTitles:NSLocalizedString(@"Загрузить", @"Download"), nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Catalog", @"Catalog") message:NSLocalizedString(@"No downloaded seminars", @"No downloaded data") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") otherButtonTitles:NSLocalizedString(@"Download", @"Download"), nil];
         [alert show];
         checkUpdates = NO;
         self.noDataLabel.hidden = NO;
@@ -198,7 +198,7 @@
         self.noDataLabel.hidden = YES;
     } else {
         self.noDataLabel.hidden = NO;
-        self.noDataLabel.text = NSLocalizedString(@"Нет данных в каталоге", @"Main Page Categories list no data");
+        self.noDataLabel.text = NSLocalizedString(@"No data in catalog", @"Main Page Categories list no data");
     }
         
     return rowsInSection;
@@ -242,10 +242,10 @@
     NSString *title = [NSString string];
     switch (section) {
         case 0:
-            title = NSLocalizedString(@"Разделы", @"Main Page Section Title");
+            title = NSLocalizedString(@"Sections", @"Main Page Section Title");
             break;
         case 1:
-            title = NSLocalizedString(@"Форматы", @"Main Page Type Title");
+            title = NSLocalizedString(@"Formats", @"Main Page Type Title");
             break;
         default:
             break;
@@ -406,7 +406,7 @@
                 if (savedChangeTime < changeTime) {
                     dispatch_async(dispatch_get_main_queue(), ^{
                         self.changedTime = changeTime;
-                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Каталог", @"Catalog") message:NSLocalizedString(@"Есть обновления каталога. Загрузить ?", @"There are updates message")  delegate:self cancelButtonTitle:NSLocalizedString(@"Не сейчас", @"Not now button") otherButtonTitles:NSLocalizedString(@"Загрузить", @"Download button"), nil];
+                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Catalog", @"Catalog") message:NSLocalizedString(@"There are catalog updates. Download ?", @"There are updates message")  delegate:self cancelButtonTitle:NSLocalizedString(@"Not now", @"Not now button") otherButtonTitles:NSLocalizedString(@"Download", @"Download button"), nil];
                         [alert show];
                     });
                 }

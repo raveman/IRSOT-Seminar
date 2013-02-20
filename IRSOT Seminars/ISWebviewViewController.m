@@ -145,11 +145,11 @@
     if (self.actionSheet) {
         // do nothing
     } else {
-        NSString *openInSafariButton = NSLocalizedString(@"Открыть в Safari", @"Open in Safari");
+        NSString *openInSafariButton = NSLocalizedString(@"Open in Safari", @"Open in Safari");
         
         UIActionSheet *actionSheet = nil;
         
-        actionSheet = [[UIActionSheet alloc] initWithTitle:self.webview.request.URL.absoluteString delegate:self cancelButtonTitle:NSLocalizedString(@"Отмена", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:openInSafariButton,  nil];
+        actionSheet = [[UIActionSheet alloc] initWithTitle:self.webview.request.URL.absoluteString delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:openInSafariButton,  nil];
         [actionSheet showFromBarButtonItem:sender animated:YES];
         self.actionSheet = actionSheet;
     }

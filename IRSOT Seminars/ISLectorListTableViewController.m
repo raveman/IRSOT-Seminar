@@ -34,7 +34,7 @@
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
 
     self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
-    self.title = NSLocalizedString(@"Лекторы", @"Lector List View Title");
+    self.title = NSLocalizedString(@"Lectors", @"Lector List View Title");
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
 }

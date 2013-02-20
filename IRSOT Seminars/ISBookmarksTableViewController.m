@@ -58,7 +58,7 @@
     id <ADVTheme> theme = [ADVThemeManager sharedTheme];
     [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
 
-    self.title = NSLocalizedString(@"Избранное", @"Favorites List View Title");
+    self.title = NSLocalizedString(@"Favorites", @"Favorites List View Title");
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;

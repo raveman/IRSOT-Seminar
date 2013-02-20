@@ -236,7 +236,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
     if ([self.seminars count]) {
-        return NSLocalizedString(@"Семинары:", @"Lector Seminar Table Title");
+        return NSLocalizedString(@"Seminars:", @"Lector Seminar Table Title");
     } else {
         return @"";
     }

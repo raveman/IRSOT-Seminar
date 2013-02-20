@@ -38,8 +38,8 @@
 
 const NSUInteger sectionHeaderHeight = 30;
 
-#define ADD_BOOKMARK NSLocalizedString(@"Добавить закладку", @"Add bookmark")
-#define VIEW_ON_WEB NSLocalizedString(@"Посмотреть полную версию", @"View on web site")
+#define ADD_BOOKMARK NSLocalizedString(@"Add bookmark", @"Add bookmark")
+#define VIEW_ON_WEB NSLocalizedString(@"View on web site", @"View on web site")
 
 
 @interface ISSeminarViewController () <UIActionSheetDelegate, UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate>
@@ -322,7 +322,7 @@ const NSUInteger sectionHeaderHeight = 30;
         
         ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
         [dvc setUrl:url];
-        [dvc setWebviewTitle:NSLocalizedString(@"Принять участие", @"Attend seminar")];
+        [dvc setWebviewTitle:NSLocalizedString(@"Attend seminar", @"Attend seminar")];
     } else if ([segue.identifier isEqualToString:@"View On Web"]) {
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", self.seminar.ruseminar_url]];
         
@@ -343,27 +343,22 @@ const NSUInteger sectionHeaderHeight = 30;
     if (self.actionSheet) {
         // do nothing
     } else {
-        NSString *addBookmarkButton = NSLocalizedString(@"Добавить закладку", @"Add seminar bookmark button title");
-        NSString *viewOnWebButton = NSLocalizedString(@"Посмотреть полную версию", @"Add seminar bookmark button title");
+        NSString *addBookmarkButton = NSLocalizedString(@"Add bookmark", @"Add seminar bookmark button title");
+        NSString *viewOnWebButton = NSLocalizedString(@"View on web site", @"Add seminar bookmark button title");
         NSString *addToCalendar = NSLocalizedString(@"Add to calendar", @"Add to calendar button title");
 
-        // unused buttons for now
-//        NSString *evernoteButton = NSLocalizedString(@"Сохранить в Evernote", @"Share on Evernote");
-//        NSString *pocketButton = NSLocalizedString(@"Сохранить в Pocket", @"Share on Pocket");
-//        NSString *readItLaterButton = NSLocalizedString(@"Сохранить в Read it Later", @"Share on Read it Later");
         
-        NSString *twitterButton = NSLocalizedString(@"Отправить в Twitter", @"Share on twitter");
-        NSString *facebookButton = NSLocalizedString(@"Отправить в Facebook", @"Share on Facebook");
-        NSString *emailButton = NSLocalizedString(@"Отправить по почте", @"Share via E-Mail");
-        NSString *vkontakteButton = NSLocalizedString(@"Отправить в Вконтакте", @"Share on Vkontakte");
-//        NSString *odnoklassnikiButton = NSLocalizedString(@"Отправить в Одноклассники", @"Share on Odnoklassniki");
+        NSString *twitterButton = NSLocalizedString(@"Share on Twitter", @"Share on twitter");
+        NSString *facebookButton = NSLocalizedString(@"Share on Facebook", @"Share on Facebook");
+        NSString *emailButton = NSLocalizedString(@"Email", @"Share via E-Mail");
+        NSString *vkontakteButton = NSLocalizedString(@"Share on Vkontakte", @"Share on Vkontakte");
         
         UIActionSheet *actionSheet = nil;
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Избранное", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Отмена", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, addToCalendar, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
+            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Favorites", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, addToCalendar, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
         } else {
-            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Избранное", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Отмена", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, addToCalendar, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
+            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Favorites", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, addToCalendar, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
         }
         
         [actionSheet showFromBarButtonItem:sender animated:YES];
@@ -447,11 +442,11 @@ const NSUInteger sectionHeaderHeight = 30;
         
     } else if (buttonIndex == 3) {
         //share to mail
-        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKURLContentTypeWebpage];
+        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"%@: «%@»", NSLocalizedString(@"IRSOT seminar",@"IRSOT Seminar"), self.seminar.name] contentType:SHKURLContentTypeWebpage];
         [SHKMail shareItem:item];
     } else if (buttonIndex == 4) {
         //share to twitter
-        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар @irsot: «%@»", self.seminar.name] contentType:SHKURLContentTypeWebpage];
+        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"%@ @irsot: «%@»", NSLocalizedString(@"Seminar",@"Seminar"), self.seminar.name] contentType:SHKURLContentTypeWebpage];
         [SHKTwitter shareItem:item];
     } else if (buttonIndex == 5) {
         //share to facebook
@@ -461,7 +456,7 @@ const NSUInteger sectionHeaderHeight = 30;
 //    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
        else if (buttonIndex == 6) {
             //share to vkontakte
-            SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKURLContentTypeWebpage];
+            SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"%@: «%@»", NSLocalizedString(@"IRSOT seminar",@"IRSOT Seminar"), self.seminar.name] contentType:SHKURLContentTypeWebpage];
             [SHKVkontakte shareItem:item];
     }
     
@@ -647,44 +642,44 @@ const NSUInteger sectionHeaderHeight = 30;
     switch (seminarType) {
         case SEMINAR_TYPE_SEMINAR:
             if (count == 1) {
-                title = NSLocalizedString(@"Семинар проводит:", @"Seminar Lector Table Title");
+                title = NSLocalizedString(@"Seminar host:", @"Seminar Lector Table Title");
             } else {
-                title = NSLocalizedString(@"Семинар проводят:", @"Seminar Lectors Table Title");
+                title = NSLocalizedString(@"Seminar hosts:", @"Seminar Lectors Table Title");
             }
             break;
         case SEMINAR_TYPE_BK:
             if (count == 1) {
-                title = NSLocalizedString(@"Бизнесс-класс проводит:", @"BK Lector Table Title");
+                title = NSLocalizedString(@"Business-class host:", @"BK Lector Table Title");
             } else {
-                title = NSLocalizedString(@"Бизнесс-класс проводят:", @"BK Lectors Table Title");
+                title = NSLocalizedString(@"Business-class hosts:", @"BK Lectors Table Title");
             }
             break;
         case SEMINAR_TYPE_COURSE:
             if (count == 1) {
-                title = NSLocalizedString(@"Курс проводит:", @"Course Lector Table Title");
+                title = NSLocalizedString(@"Course host:", @"Course Lector Table Title");
             } else {
-                title = NSLocalizedString(@"Курс проводят:", @"Course Lectors Table Title");
+                title = NSLocalizedString(@"Course hosts:", @"Course Lectors Table Title");
             }
             break;
         case SEMINAR_TYPE_CONFERENCE:
             if (count == 1) {
-                title = NSLocalizedString(@"Конференцию проводит:", @"Conference Lector Table Title");
+                title = NSLocalizedString(@"Conference host:", @"Conference Lector Table Title");
             } else {
-                title = NSLocalizedString(@"Конференцию проводят:", @"Conference Lectors Table Title");
+                title = NSLocalizedString(@"Conference hosts:", @"Conference Lectors Table Title");
             }
             break;
         case SEMINAR_TYPE_MASTER_CLASS:
             if (count == 1) {
-                title = NSLocalizedString(@"Мастер-класс проводит:", @"Master class Lector Table Title");
+                title = NSLocalizedString(@"Master-class host:", @"Master class Lector Table Title");
             } else {
-                title = NSLocalizedString(@"Мастер-класс проводят:", @"Master class Lectors Table Title");
+                title = NSLocalizedString(@"Master-class hosts:", @"Master class Lectors Table Title");
             }
             break;
         case SEMINAR_TYPE_THEMATIC_WEEK:
-            title = NSLocalizedString(@"Лекторы:", @"Thematic week Lectors Table Title");
+            title = NSLocalizedString(@"Lectors:", @"Thematic week Lectors Table Title");
             break;
         case SEMINAR_TYPE_NBU:
-            title = NSLocalizedString(@"Лекторы:", @"NBU Lectors Table Title");
+            title = NSLocalizedString(@"Lectors:", @"NBU Lectors Table Title");
             break;
         default:
             break;

@@ -12,6 +12,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ISAlertTimes : NSObject
++ (BOOL)useCalendarAlerts;
 
 + (NSArray *)alerTimesArray; // alert times array
 + (int *)times;

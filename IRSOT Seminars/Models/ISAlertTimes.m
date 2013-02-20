@@ -10,6 +10,11 @@
 
 @implementation ISAlertTimes
 
++ (BOOL)useCalendarAlerts
+{
+    return [[[NSUserDefaults standardUserDefaults] objectForKey:CALENDAR_ALERT_KEY] boolValue];
+}
+
 + (NSArray *)alerTimesArray {
     NSArray *times = [NSArray arrayWithObjects:NSLocalizedString(@"None", @"None"),
                       NSLocalizedString(@"At time of event", @"At time of event"),

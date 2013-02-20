@@ -26,7 +26,7 @@
 
 #define CACHE_NAME @"Master"
 
-// 255 211 120 134U pantone
+const NSInteger allTypesSection = 0;
 
 @interface ISMainPageViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, ISSettingsViewControllerDelegate> {
     BOOL checkUpdates;
@@ -48,21 +48,10 @@
 
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize managedObjectContext = _managedObjectContext;
-@synthesize selectedCellBGColor = _selectedCellBGColor;
-@synthesize notSelectedCellBGColor = _notSelectedCellBGColor;
 
 @synthesize currentSelectedCell = _currentSelectedCell;
 @synthesize changedTime = _changedTime;
 
-#pragma mark - getters and setters
-- (UIColor *) selectedCellBGColor
-{
-    return [UIColor colorWithRed:1 green:0.83 blue:0.47 alpha:1.0];
-}
-- (UIColor *) notSelectedCellBGColor
-{
-    return [UIColor whiteColor];
-}
 
 #pragma mark - UIViewController lifecycle
 - (void)viewDidLoad
@@ -77,7 +66,10 @@
     // setting categories list tableview datasource and delegate
     self.seminarCategoriesTableView.dataSource = self;
     self.seminarCategoriesTableView.delegate = self;
-
+    self.seminarCategoriesTableView.backgroundColor = [UIColor clearColor];
+    self.seminarCategoriesTableView.opaque = NO;
+    self.seminarCategoriesTableView.backgroundView = [[UIImageView alloc]initWithImage:[theme viewBackground]];
+    
     self.title =  NSLocalizedString(@"Catalog", @"Main Page Title");
     
     self.noDataLabel.shadowColor = [UIColor grayColor];
@@ -89,10 +81,6 @@
     UIBarButtonItem *setupButton = self.navigationItem.rightBarButtonItem;
     setupButton.image = [UIImage imageNamed:@"gear-iPhone"];
     setupButton.title = @"";
-    
-    self.seminarCategoriesTableView.backgroundColor = [UIColor clearColor];
-    self.seminarCategoriesTableView.opaque = NO;
-    self.seminarCategoriesTableView.backgroundView = [[UIImageView alloc]initWithImage:[theme viewBackground]];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
     
@@ -148,14 +136,18 @@
 {
     if ([[segue identifier] isEqualToString:@"Seminar List For Section or Type"]) {
         NSIndexPath *indexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
-        if (indexPath.section == 0) {
-            Sections *section = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-            ISSeminarListTableViewController *dvc = [segue destinationViewController];
+        ISSeminarListTableViewController *dvc = [segue destinationViewController];
+        if (indexPath.section == allTypesSection) {
+            [dvc setManagedObjectContext:self.managedObjectContext];
+        }
+        if (indexPath.section == 1) {
+            NSIndexPath *adjustedIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1];
+            Sections *section = [[self fetchedResultsController] objectAtIndexPath:adjustedIndexPath];
             [dvc setSection:section];
             [dvc setManagedObjectContext:self.managedObjectContext];
-        } else {
-            Type *type = [[self fetchedResultsController] objectAtIndexPath:indexPath];
-            ISSeminarListTableViewController *dvc = [segue destinationViewController];
+        } else if (indexPath.section == 2){
+            NSIndexPath *adjustedIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1];
+            Type *type = [[self fetchedResultsController] objectAtIndexPath:adjustedIndexPath];
             [dvc setType:type];
             [dvc setManagedObjectContext:self.managedObjectContext];
         }
@@ -179,28 +171,29 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[self.fetchedResultsController sections] count];
+    return [[self.fetchedResultsController sections] count] + 1;
 }
-
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//    return [[[self.fetchedResultsController sections] objectAtIndex:section] name];
-//}
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
+
     NSInteger rowsInSection = 0;
-    
-    if ([[self.fetchedResultsController fetchedObjects] count]) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-       rowsInSection = [sectionInfo numberOfObjects];
-        self.noDataLabel.hidden = YES;
+
+    if (section == allTypesSection) {
+        rowsInSection = 1;
     } else {
-        self.noDataLabel.hidden = NO;
-        self.noDataLabel.text = NSLocalizedString(@"No data in catalog", @"Main Page Categories list no data");
-    }
+        // Return the number of rows in the section.
         
+        if ([[self.fetchedResultsController fetchedObjects] count]) {
+            id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section-1];
+            rowsInSection = [sectionInfo numberOfObjects];
+            self.noDataLabel.hidden = YES;
+        } else {
+            self.noDataLabel.hidden = NO;
+            self.noDataLabel.text = NSLocalizedString(@"No data in catalog", @"Main Page Categories list no data");
+        }
+    }
+    
     return rowsInSection;
 }
 
@@ -226,11 +219,17 @@
     cell.selectionStyle = [Helper cellSelectionStyle];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.font = [Helper cellMainFont];
-    if ([[self.fetchedResultsController fetchedObjects] count]) {
-        Sections *section = [self.fetchedResultsController objectAtIndexPath:indexPath];
-        NSString *sectionName = [[[section.name substringToIndex:1] uppercaseString] stringByAppendingString:[section.name substringFromIndex:1]];
-        
-        cell.textLabel.text = sectionName;
+
+    if (indexPath.section == allTypesSection) {
+        cell.textLabel.text = NSLocalizedString(@"All event types", @"All event types");
+    } else {
+        if ([[self.fetchedResultsController fetchedObjects] count]) {
+            NSIndexPath *adjustedIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1];
+            Sections *section = [self.fetchedResultsController objectAtIndexPath:adjustedIndexPath];
+            NSString *sectionName = [[[section.name substringToIndex:1] uppercaseString] stringByAppendingString:[section.name substringFromIndex:1]];
+            
+            cell.textLabel.text = sectionName;
+        }
     }
     
     return cell;
@@ -241,10 +240,13 @@
 
     NSString *title = [NSString string];
     switch (section) {
-        case 0:
-            title = NSLocalizedString(@"Sections", @"Main Page Section Title");
+        case allTypesSection:
+            title = @"";
             break;
         case 1:
+            title = NSLocalizedString(@"Sections", @"Main Page Section Title");
+            break;
+        case 2:
             title = NSLocalizedString(@"Formats", @"Main Page Type Title");
             break;
         default:

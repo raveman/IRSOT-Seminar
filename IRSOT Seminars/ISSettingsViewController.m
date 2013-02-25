@@ -24,6 +24,7 @@
 #import "Type+Load_Data.h"
 #import "Sections+Load_Data.h"
 #import "Seminar+Load_Data.h"
+#import "AllEvents+Load_Data.h"
 #import "Lector+Load_Data.h"
 
 const NSInteger settingsSortSection = 0;
@@ -242,6 +243,7 @@ const NSInteger settingsSections = 3;
     
             NSArray *sections = [sectionsAndTypes valueForKey:@"sections"];
             NSArray *types = [sectionsAndTypes valueForKey:@"types"];
+            NSArray *allEvents = [sectionsAndTypes valueForKey:@"all"];
             
             for (NSDictionary *section in sections) {
                 [Sections sectionWithTerm:section inManagedObjectContext:self.managedObjectContext];
@@ -251,6 +253,10 @@ const NSInteger settingsSections = 3;
             for (NSDictionary *type in types) {
                 [Type typeWithTerm:type inManagedObjectContext:self.managedObjectContext];
 //                NSLog(@"Type: %@", [type objectForKey:@"name"]);
+            }
+            
+            for (NSDictionary *event in allEvents) {
+                [AllEvents eventWithTerm:event inManagedObjectContext:self.managedObjectContext];
             }
 
             [SVProgressHUD showWithStatus:NSLocalizedString(@"Updating lectors", @"Updating lectors message")];

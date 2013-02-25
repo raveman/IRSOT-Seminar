@@ -28,14 +28,13 @@
 
 const NSInteger allTypesSection = 0;
 
-@interface ISMainPageViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, ISSettingsViewControllerDelegate> {
+@interface ISMainPageViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, ISSettingsViewControllerDelegate>
+{
     BOOL checkUpdates;
     int count;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *noDataLabel;
-@property (nonatomic, strong) UIColor *selectedCellBGColor;
-@property (nonatomic, strong) UIColor *notSelectedCellBGColor;
 
 @property (nonatomic, strong) UITableViewCell *currentSelectedCell;
 @property (nonatomic) NSInteger changedTime;
@@ -115,7 +114,7 @@ const NSInteger allTypesSection = 0;
         self.noDataLabel.hidden = NO;
     } else {
         self.noDataLabel.hidden = YES;
-        // deselecting previous selected row
+        // deselecting previous selected row;
         NSIndexPath *indexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
         if (indexPath != nil) {
             [self.seminarCategoriesTableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -141,12 +140,12 @@ const NSInteger allTypesSection = 0;
             [dvc setManagedObjectContext:self.managedObjectContext];
         }
         if (indexPath.section == 1) {
-            NSIndexPath *adjustedIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1];
+            NSIndexPath *adjustedIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
             Sections *section = [[self fetchedResultsController] objectAtIndexPath:adjustedIndexPath];
             [dvc setSection:section];
             [dvc setManagedObjectContext:self.managedObjectContext];
         } else if (indexPath.section == 2){
-            NSIndexPath *adjustedIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1];
+            NSIndexPath *adjustedIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
             Type *type = [[self fetchedResultsController] objectAtIndexPath:adjustedIndexPath];
             [dvc setType:type];
             [dvc setManagedObjectContext:self.managedObjectContext];
@@ -171,27 +170,22 @@ const NSInteger allTypesSection = 0;
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return [[self.fetchedResultsController sections] count] + 1;
+    NSInteger sections = [[self.fetchedResultsController sections] count];
+
+    return sections;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
     NSInteger rowsInSection = 0;
-
-    if (section == allTypesSection) {
-        rowsInSection = 1;
+    
+    if ([[self.fetchedResultsController fetchedObjects] count]) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+        rowsInSection = [sectionInfo numberOfObjects];
+        self.noDataLabel.hidden = YES;
     } else {
-        // Return the number of rows in the section.
-        
-        if ([[self.fetchedResultsController fetchedObjects] count]) {
-            id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section-1];
-            rowsInSection = [sectionInfo numberOfObjects];
-            self.noDataLabel.hidden = YES;
-        } else {
-            self.noDataLabel.hidden = NO;
-            self.noDataLabel.text = NSLocalizedString(@"No data in catalog", @"Main Page Categories list no data");
-        }
+        self.noDataLabel.hidden = NO;
+        self.noDataLabel.text = NSLocalizedString(@"No data in catalog", @"Main Page Categories list no data");
     }
     
     return rowsInSection;
@@ -220,16 +214,12 @@ const NSInteger allTypesSection = 0;
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.textLabel.font = [Helper cellMainFont];
 
-    if (indexPath.section == allTypesSection) {
-        cell.textLabel.text = NSLocalizedString(@"All event types", @"All event types");
-    } else {
-        if ([[self.fetchedResultsController fetchedObjects] count]) {
-            NSIndexPath *adjustedIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section - 1];
-            Sections *section = [self.fetchedResultsController objectAtIndexPath:adjustedIndexPath];
-            NSString *sectionName = [[[section.name substringToIndex:1] uppercaseString] stringByAppendingString:[section.name substringFromIndex:1]];
-            
-            cell.textLabel.text = sectionName;
-        }
+    if ([[self.fetchedResultsController fetchedObjects] count]) {
+        NSIndexPath *adjustedIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
+        Sections *section = [self.fetchedResultsController objectAtIndexPath:adjustedIndexPath];
+        NSString *sectionName = [[[section.name substringToIndex:1] uppercaseString] stringByAppendingString:[section.name substringFromIndex:1]];
+        
+        cell.textLabel.text = sectionName;
     }
     
     return cell;
@@ -237,10 +227,9 @@ const NSInteger allTypesSection = 0;
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
 {
-
     NSString *title = [NSString string];
     switch (section) {
-        case allTypesSection:
+        case 0:
             title = @"";
             break;
         case 1:
@@ -266,19 +255,15 @@ const NSInteger allTypesSection = 0;
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
 
-    // Fetching "meta" entity Term, because we need in Sections and Types simultaneously.
-    // Section and Type are derived from Term
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Term" inManagedObjectContext:self.managedObjectContext];
-    [fetchRequest setEntity:entity];
+    fetchRequest.entity = entity;
     
-    // Set the batch size to a suitable number.
-    [fetchRequest setFetchBatchSize:20];
+    fetchRequest.fetchBatchSize = 20;
     
-    // Sort keys: we have two: first - by vid, second by name.
     NSArray *sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"vid" ascending:NO],
                                  [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
     
-    [fetchRequest setSortDescriptors:sortDescriptors];
+    fetchRequest.sortDescriptors = sortDescriptors;
     
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"vid" cacheName:CACHE_NAME];
     aFetchedResultsController.delegate = self;
@@ -303,6 +288,7 @@ const NSInteger allTypesSection = 0;
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
 {
+
     switch(type) {
         case NSFetchedResultsChangeInsert:
             [self.seminarCategoriesTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
@@ -349,6 +335,16 @@ const NSInteger allTypesSection = 0;
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[object valueForKey:@"name"] description];
+}
+
+- (void)addControllerContextDidSave:(NSNotification*)saveNotification {
+    double delayInSeconds = 1.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
+        // Merging changes causes the fetched results controller to update its results
+        [context mergeChangesFromContextDidSaveNotification:saveNotification];
+    });
 }
 
 #pragma mark - UIAlerViewDelegate

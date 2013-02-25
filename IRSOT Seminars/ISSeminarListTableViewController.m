@@ -33,9 +33,6 @@
 
 @property (nonatomic) BOOL sortByDate;
 
-@property (strong, nonatomic) NSDictionary *monthsDict;
-@property (strong, nonatomic) NSArray *months;
-
 @end
 
 @implementation ISSeminarListTableViewController
@@ -51,8 +48,6 @@
 
 @synthesize searchIsActive = _searchIsActive;
 @synthesize sortByDate = _sortByDate;
-@synthesize monthsDict = _monthsDict;
-@synthesize months = _months;
 
 - (NSInteger)currentSeminarType
 {
@@ -74,58 +69,6 @@
     return _sortByDate;
 }
 
-- (NSDictionary *)monthsDict {
-    if (!_monthsDict) {
-        if (!self.section || !self.type) {
-            NSMutableDictionary *monthsInResults = [NSMutableDictionary dictionary];
-            int count = [[self.fetchedResultsController fetchedObjects] count];
-            for (int i=0; i < count; i++) {
-                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-                Seminar *seminar = [self.fetchedResultsController objectAtIndexPath:indexPath];
-                NSString *monthStr = [seminar stringWithSeminarMonth];
-                NSInteger count = [[monthsInResults objectForKey:monthStr] integerValue];
-                if (count) {
-                    count++;
-                } else {
-                    count = 1;
-                }
-                [monthsInResults setObject:[NSNumber numberWithInteger:count] forKey:monthStr];
-            }
-            
-            _monthsDict = monthsInResults;
-        }
-    }
-    
-    return _monthsDict;
-}
-
-- (NSArray *) months
-{
-    if (!_months) {
-        _months = [self.monthsDict keysSortedByValueUsingSelector:@selector(compare:)];
-    }
-    return _months;
-}
-
-#pragma mark - helper methods
-- (NSIndexPath *)adjustIndexPathForIndexPath:(NSIndexPath *)indexPath
-{
-    // нам нужно посчитать смещение в на самом деле линейном результате выборки fetchobjectresults, чтобы сделать "обманку" на секции разбитые по месяцам
-    NSIndexPath *adjustedIndexPath = indexPath;
-    NSInteger shift = 0;
-    if (indexPath.section) {
-        for (int i = 1; i <= indexPath.section; i++) {
-            shift = shift + [[self.monthsDict objectForKey:[self.months objectAtIndex:i]] integerValue];
-        }
-        shift = shift + indexPath.row;
-    } else {
-        shift = indexPath.row;
-    }
-    adjustedIndexPath = [NSIndexPath indexPathForRow:shift inSection:0];
-
-    return adjustedIndexPath;
-}
-
 #pragma mark - UIViewController methods
 - (void)viewDidLoad
 {
@@ -143,10 +86,12 @@
         [self.seminarTypeSwitch removeAllSegments];
         [self.seminarTypeSwitch insertSegmentWithTitle:self.type.name atIndex:0 animated:YES];
         self.seminarTypeSwitch.momentary = YES;
+        self.title = self.type.name;
     } else {
         [self.seminarTypeSwitch removeAllSegments];
-        [self.seminarTypeSwitch insertSegmentWithTitle:NSLocalizedString(@"All event types", @"All event types") atIndex:0 animated:YES];
+        [self.seminarTypeSwitch insertSegmentWithTitle:NSLocalizedString(@"All events", @"All events") atIndex:0 animated:YES];
         self.seminarTypeSwitch.momentary = YES;
+        self.title = NSLocalizedString(@"All events", @"All events");
     }
 }
 
@@ -155,14 +100,6 @@
     [self setSeminarTypeSwitch:nil];
     [self setSearchBar:nil];
     [super viewDidUnload];
-}
-
-- (void)viewWillDisappear:(BOOL)animated
-{
-    [super viewWillDisappear:animated];
-// don't need to delete caches, we do not support them now
-//    [NSFetchedResultsController deleteCacheWithName:CACHE_NAME_SEMINAR];
-//    [NSFetchedResultsController deleteCacheWithName:CACHE_NAME_BK];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -182,9 +119,6 @@
             indexPath = sender;
         } else {
             indexPath = [self.tableView indexPathForCell:sender];
-        }
-        if (!self.section || !self.type) {
-            indexPath = [self adjustIndexPathForIndexPath:indexPath];
         }
         
         Seminar *seminar = [[self fetchedResultsController] objectAtIndexPath:indexPath];
@@ -214,36 +148,37 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    NSInteger count = 0;
-    
-    if (self.section || self.type) {
-         count = [[self.fetchedResultsController sections] count];
+    NSInteger count = 1;
+
+//    if (!self.searchIsActive) {
+        count = [[self.fetchedResultsController sections] count];
         if (!count) count = 1;
-    } else {
-        count = [self.months count];
-    }
-    
+//    }
+
     return count;
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 
     NSString *title = [NSString string];
-    if (!self.searchIsActive) {
-        if (self.section || self.type) {
-            NSArray *sections = [self.fetchedResultsController sections];
-            if ([sections count]) {
-                id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
-                NSArray *objects = [sectionInfo objects];
-                Seminar *seminar = nil;
-                if ([objects count]) seminar = [objects objectAtIndex:0]; // выбираем любой семинар из массива и спрашиваем его о названии секции
-                title = seminar.section.name;
+//    if (!self.searchIsActive) {
+        NSArray *sections = [self.fetchedResultsController sections];
+        if ([sections count]) {
+            id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:section];
+            NSArray *objects = [sectionInfo objects];
+            Seminar *seminar = nil;
+            if ([objects count]) seminar = [objects objectAtIndex:0]; // выбираем любой семинар из массива и спрашиваем его о названии секции
+            title = seminar.section.name;
+            if (!self.section && !self.type) {
+                    title = [seminar stringFromSeminarMonth];
             }
-        } else {
-            title = [self.months objectAtIndex:section];
         }
-    }
+//    }
     return  title;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+    return [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
 }
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
@@ -264,13 +199,21 @@
             }
             return sectionIndexTitleLetters;
         }
-        if (!self.section) {
-            NSMutableArray *sectionIndexTitleLetters = [NSMutableArray array];
-            for (NSString *month in self.months) {
-                [sectionIndexTitleLetters addObject:[NSString localizedStringWithFormat:@"%@", [[month substringToIndex:1] lowercaseString]]];
-            }
-            return sectionIndexTitleLetters;
-        }
+//        if (!self.section) {
+//            NSMutableArray *sectionIndexTitleLetters = [NSMutableArray array];
+//            NSArray *sections = [self.fetchedResultsController sections];
+//            int count = [sections count];
+//            if (count) {
+//                for (int i=0; i < count; i++) {
+//                    id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:i];
+//                    NSArray *objects = [sectionInfo objects];
+//                    Seminar *seminar = nil;
+//                    if ([objects count]) seminar = [objects objectAtIndex:0]; // выбираем любой семинар из массива и спрашиваем его о названии секции
+//                    [sectionIndexTitleLetters addObject: [seminar.section.name substringToIndex:1]];
+//                }
+//            }
+//            return sectionIndexTitleLetters;
+//        }
     }
     
     return nil;
@@ -279,18 +222,14 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSInteger count = 1;
-    if (self.section || self.type) {
-        if ([[self.fetchedResultsController fetchedObjects] count]) {
-            id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-            count = [sectionInfo numberOfObjects];
-        } else {
-            if (self.searchIsActive) count = 0;
-        }
+
+    if ([[self.fetchedResultsController fetchedObjects] count]) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
+        count = [sectionInfo numberOfObjects];
     } else {
-        NSString *key = [self.months objectAtIndex:section];
-        count = [[self.monthsDict objectForKey:key] integerValue];
+        if (self.searchIsActive) count = 0;
     }
-    
+
     return count;
 }
 
@@ -328,9 +267,6 @@
     if (tableView == self.tableView) {
         // Configure the cell...
         if ([[self.fetchedResultsController fetchedObjects] count]) {
-            if (!self.section || !self.type) {
-                indexPath = [self adjustIndexPathForIndexPath:indexPath];
-            }
             Seminar *seminar = [self.fetchedResultsController objectAtIndexPath:indexPath];
             cell.textLabel.text = seminar.name;
             
@@ -349,6 +285,7 @@
         }
     } else {
         if ([[self.fetchedResultsController fetchedObjects] count]) {
+            
             Seminar *seminar = [self.fetchedResultsController objectAtIndexPath:indexPath];
             cell.textLabel.text = seminar.name;
             
@@ -402,24 +339,26 @@
     }
     
 //    [fetchRequest setFetchBatchSize:20];
-    NSSortDescriptor *sortDescriptor;
-    if (self.sortByDate || (!self.section && self.type)) {
-        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date_start" ascending:YES];
+    NSMutableArray *sortDescriptors = [NSMutableArray array];
+    
+    if (!self.section && !self.type) {
+    } else if (self.sortByDate) {
+        [sortDescriptors addObject:[[NSSortDescriptor alloc] initWithKey:@"date_start" ascending:YES]];
     } else {
-        sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+        [sortDescriptors addObject:[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES]];
     }
-
-    NSMutableArray *sortDescriptors = [NSMutableArray arrayWithObject: sortDescriptor];
 
     NSString *sectionNameKeyPath = [NSString string];
     if (self.section) {
         sectionNameKeyPath = nil;
     } else if (self.type) {
-        NSSortDescriptor *sectionSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"section" ascending:YES];
-        [sortDescriptors insertObject:sectionSortDescriptor atIndex:0];
         sectionNameKeyPath = @"section";
+        NSSortDescriptor *sectionSortDescriptor = [[NSSortDescriptor alloc] initWithKey:sectionNameKeyPath ascending:YES];
+        [sortDescriptors insertObject:sectionSortDescriptor atIndex:0];
     } else {
-        sectionNameKeyPath = nil;
+        sectionNameKeyPath = @"stringFromSeminarMonth";
+        NSSortDescriptor *sectionSortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date_start" ascending:YES];
+        [sortDescriptors insertObject:sectionSortDescriptor atIndex:0];
     }
 
     [fetchRequest setSortDescriptors:sortDescriptors];
@@ -501,30 +440,35 @@
     }
 }
 
-//- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-//{
-//    [self.tableView endUpdates];
-//}
-
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
     NSManagedObject *object = [self.fetchedResultsController objectAtIndexPath:indexPath];
     cell.textLabel.text = [[object valueForKey:@"name"] description];
 }
 
-#pragma mark - Content filtering
+#pragma mark - Content filtering (search)
 - (void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope
 {
     NSFetchRequest *aRequest = [[self fetchedResultsController] fetchRequest];
 
     if (self.section) {
         aRequest.predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@ AND section.id == %d AND type.id == %d", searchText, [self.section.id integerValue] , self.currentSeminarType];
-    } else {
+    } else if (self.type) {
         aRequest.predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@ AND type.id == %d", searchText,  self.currentSeminarType];
+    } else {
+        aRequest.predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@", searchText];
     }
   
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
+    NSMutableArray *sortDescriptors = [NSMutableArray array];
+    if (self.sortByDate) {
+        [sortDescriptors addObject:[[NSSortDescriptor alloc] initWithKey:@"date_start" ascending:YES]];
+    }
+    if (self.type) {
+        [sortDescriptors insertObject:[[NSSortDescriptor alloc] initWithKey:@"section" ascending:YES] atIndex:0];
+    }
+    if (!self.type && !self.section) {
+        [sortDescriptors insertObject:[[NSSortDescriptor alloc] initWithKey:@"date_start" ascending:YES] atIndex:0];
+    }
     
     [aRequest setSortDescriptors:sortDescriptors];
     
@@ -534,6 +478,7 @@
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         abort();
     }
+//    NSLog(@"Predicate:%@ count: %d", aRequest.predicate, [[[self fetchedResultsController] fetchedObjects] count]);
 }
 
 #pragma mark - UISearch Delegates

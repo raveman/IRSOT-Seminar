@@ -203,13 +203,15 @@
 
 - (NSString *)stringFromSeminarMonth
 {
+    [self willAccessValueForKey:@"stringFromSeminarMonth"];
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
 
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setLocale:locale];
     [formatter setDateFormat:@"LLLL"];
     NSString *stringFromDate = [formatter stringFromDate:self.date_start];
-    
+    [self didAccessValueForKey:@"stringFromSeminarMonth"];
+
     return stringFromDate;
 }
 

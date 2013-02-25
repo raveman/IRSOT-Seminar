@@ -110,6 +110,8 @@
 		C4B7563116D2434D00C23950 /* navigationBackground@2x~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4B7562F16D2434D00C23950 /* navigationBackground@2x~iPad.png */; };
 		C4B7563216D2434D00C23950 /* navigationBackground~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4B7563016D2434D00C23950 /* navigationBackground~iPad.png */; };
 		C4B7563516D24D5300C23950 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4B7563716D24D5300C23950 /* Localizable.strings */; };
+		C4BAFC1316DBA70600D088E7 /* AllEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BAFC1216DBA70600D088E7 /* AllEvents.m */; };
+		C4BAFC4316DBAB5700D088E7 /* AllEvents+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C4BAFC4216DBAB5700D088E7 /* AllEvents+Load_Data.m */; };
 		C4C66E1B1674CA3900B0885F /* libShareKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4FDFA171674C9DE00040E43 /* libShareKit.a */; };
 		C4C66E1C1674CA5F00B0885F /* ShareKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C4FDFA191674C9DE00040E43 /* ShareKit.bundle */; };
 		C4C66E1E1674F49B00B0885F /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C4C66E1D1674F49B00B0885F /* libsqlite3.dylib */; };
@@ -528,12 +530,19 @@
 		C4A37C8B162742EF00DBE6E8 /* catalog2-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catalog2-iPhone@2x.png"; path = "icons/catalog2-iPhone@2x.png"; sourceTree = "<group>"; };
 		C4A37C8C162742EF00DBE6E8 /* catalog3-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catalog3-iPhone.png"; path = "icons/catalog3-iPhone.png"; sourceTree = "<group>"; };
 		C4A37C8D162742EF00DBE6E8 /* catalog3-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "catalog3-iPhone@2x.png"; path = "icons/catalog3-iPhone@2x.png"; sourceTree = "<group>"; };
+		C4AE0A6D16DBA2DE00EF3C5C /* IRSOT_Seminars 6.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "IRSOT_Seminars 6.xcdatamodel"; sourceTree = "<group>"; };
 		C4B095FC1688CE9F00F26CA2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		C4B095FD1688CEA500F26CA2 /* ru */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = ru; path = ru.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		C4B7562F16D2434D00C23950 /* navigationBackground@2x~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navigationBackground@2x~iPad.png"; path = "Resources/navigationBackground@2x~iPad.png"; sourceTree = "<group>"; };
 		C4B7563016D2434D00C23950 /* navigationBackground~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navigationBackground~iPad.png"; path = "Resources/navigationBackground~iPad.png"; sourceTree = "<group>"; };
 		C4B7563616D24D5300C23950 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		C4B7563816D24D5600C23950 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C4BAFC1116DBA70600D088E7 /* AllEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllEvents.h; sourceTree = "<group>"; };
+		C4BAFC1216DBA70600D088E7 /* AllEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllEvents.m; sourceTree = "<group>"; };
+		C4BAFC3E16DBA78F00D088E7 /* Seminar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seminar.h; sourceTree = "<group>"; };
+		C4BAFC3F16DBA78F00D088E7 /* Seminar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seminar.m; sourceTree = "<group>"; };
+		C4BAFC4116DBAB5700D088E7 /* AllEvents+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AllEvents+Load_Data.h"; sourceTree = "<group>"; };
+		C4BAFC4216DBAB5700D088E7 /* AllEvents+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AllEvents+Load_Data.m"; sourceTree = "<group>"; };
 		C4C66E1D1674F49B00B0885F /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		C4C66E1F1674F4A000B0885F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		C4C66E211674F4AF00B0885F /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
@@ -601,6 +610,12 @@
 			isa = PBXGroup;
 			children = (
 				C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */,
+				C4BAFC3E16DBA78F00D088E7 /* Seminar.h */,
+				C4BAFC3F16DBA78F00D088E7 /* Seminar.m */,
+				C4BAFC1116DBA70600D088E7 /* AllEvents.h */,
+				C4BAFC1216DBA70600D088E7 /* AllEvents.m */,
+				C4BAFC4116DBAB5700D088E7 /* AllEvents+Load_Data.h */,
+				C4BAFC4216DBAB5700D088E7 /* AllEvents+Load_Data.m */,
 				C465875C15F9001800AA2B6B /* Lector.h */,
 				C465875D15F9001800AA2B6B /* Lector.m */,
 				C465876815F9001800AA2B6B /* Sections.h */,
@@ -740,8 +755,6 @@
 		C45D3CED16CD4D9700877F94 /* WebView */ = {
 			isa = PBXGroup;
 			children = (
-				C4D7CEF315D3F1A60003F90C /* ISNewsWebviewControllerViewController.h */,
-				C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */,
 				C4DE788215C95C42007FBEC4 /* ISWebviewViewController.h */,
 				C4DE788315C95C42007FBEC4 /* ISWebviewViewController.m */,
 			);
@@ -936,6 +949,15 @@
 			name = "Settings Views";
 			sourceTree = "<group>";
 		};
+		C4D39D2B16D528D600078A20 /* News */ = {
+			isa = PBXGroup;
+			children = (
+				C4D7CEF315D3F1A60003F90C /* ISNewsWebviewControllerViewController.h */,
+				C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */,
+			);
+			name = News;
+			sourceTree = "<group>";
+		};
 		C4DE788B15C95DC1007FBEC4 /* Main Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -944,6 +966,7 @@
 				C415A30C15CC996A004BCD79 /* Lector Views */,
 				C415A30415CC95B0004BCD79 /* Bookmarks */,
 				C4DE788C15C95DCA007FBEC4 /* Info */,
+				C4D39D2B16D528D600078A20 /* News */,
 			);
 			name = "Main Views";
 			sourceTree = "<group>";
@@ -1419,6 +1442,7 @@
 				C465876415F9001800AA2B6B /* Type.m in Sources */,
 				C465876715F9001800AA2B6B /* Seminar.m in Sources */,
 				C465876A15F9001800AA2B6B /* Sections.m in Sources */,
+				C4BAFC1316DBA70600D088E7 /* AllEvents.m in Sources */,
 				C425DFD916C00853002338E3 /* SVProgressHUD.m in Sources */,
 				C45E6C9A16CD34820024EC39 /* ADVDefaultTheme.m in Sources */,
 				C45E6C9B16CD34820024EC39 /* ADVFitpulseTheme.m in Sources */,
@@ -1426,6 +1450,7 @@
 				C45D3CF116CD4E0200877F94 /* ISInfoDictionary.m in Sources */,
 				C46DED8216D26813008DAC47 /* ISAlertTimesTableViewController.m in Sources */,
 				C46DED8516D28828008DAC47 /* ISAlertTimes.m in Sources */,
+				C4BAFC4316DBAB5700D088E7 /* AllEvents+Load_Data.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1612,13 +1637,14 @@
 		C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C4AE0A6D16DBA2DE00EF3C5C /* IRSOT_Seminars 6.xcdatamodel */,
 				C465875B15F8FFDD00AA2B6B /* IRSOT_Seminars 5.xcdatamodel */,
 				C4F9EEA315ECF8E3008BA56D /* IRSOT_Seminars 4.xcdatamodel */,
 				C43AB40615E28A8F003813DF /* IRSOT_Seminars 3.xcdatamodel */,
 				C4C6DD1715E0274E003292C8 /* IRSOT_Seminars 2.xcdatamodel */,
 				C462BDC915C95A8700170E3C /* IRSOT_Seminars.xcdatamodel */,
 			);
-			currentVersion = C465875B15F8FFDD00AA2B6B /* IRSOT_Seminars 5.xcdatamodel */;
+			currentVersion = C4AE0A6D16DBA2DE00EF3C5C /* IRSOT_Seminars 6.xcdatamodel */;
 			path = IRSOT_Seminars.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

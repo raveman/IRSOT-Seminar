@@ -10,7 +10,7 @@
 
 @interface Sections (Load_Data)
 
-+ (Sections *)sectionWithTerm:(NSDictionary *)termInfo inManagedObjectContext:(NSManagedObjectContext *)context;
++ (Sections *)sectionWithTerm:(NSDictionary *)term inManagedObjectContext:(NSManagedObjectContext *)context;
 + (Sections *)sectionWithId:(NSInteger)sectionId inManagedObjectContext:(NSManagedObjectContext *)context;
 
 - (UIColor *)sectionColor;

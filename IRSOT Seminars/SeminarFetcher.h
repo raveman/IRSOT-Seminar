@@ -15,11 +15,20 @@
 #define SEMINAR_SITE @"devedu.ruseminar.ru"
 #define SEMINAR_URL @"http://mobile.ruseminar.ru/api/nonauth"
 #define UPDATE_NODE @"node/100"
-#define SEMINAR_TAXONOMY_URL @"taxonomy_vocabulary"
+
+// #define SEMINAR_TAXONOMY_URL @"taxonomy_vocabulary"
 #define SEMINAR_TERM_URL @"taxonomy_term"
+
+#define SEMINAR_TAXONOMY_URL @"taxonomy_term?parameters[vid]"
+#define SEMINAR_TERM_URL @"taxonomy_term"
+
 #define SEMINAR_LIST_URL @"seminars"
 #define SEMINAR_TYPE @"seminar_type"
 #define SEMINAR_SECTION @"seminar_section"
+
+#define SEMINAR_TYPE_VID 2
+#define SEMINAR_SECTION_VID 3
+#define SEMINAR_ALL_VID 6
 
 #define SEMINAR_NAME @"node_title"
 #define SEMINAR_LECTOR @"lectors"
@@ -42,7 +51,6 @@
 #define SEMINAR_DATE_FORMAT @"yyyy-MM-dd HH:mm:ss"
 #define SEMINAR_DATE_FORMAT_DATE @"dd"
 #define SEMINAR_DATE_FORMAT_DATE_MONTH @"MMMM YYYY"
-#define SEMINAR_DATE_FORMAT_DATE_MONTH_ONLY @"MMMM"
 
 // extern NSString *const kReachabilityChangedNotification;
 

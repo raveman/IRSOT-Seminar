@@ -8,6 +8,7 @@
 
 #import "SeminarFetcher.h"
 #import "SVProgressHUD/SVProgressHUD.h"
+#import "Sections+Load_Data.h"
 
 @implementation SeminarFetcher
 
@@ -37,36 +38,47 @@
 
 + (NSDictionary *)sectionsAndTypes
 {
-    NSMutableArray *sections = [NSMutableArray array];
-    NSMutableArray *types = [NSMutableArray array];
+//    NSMutableArray *sections = [NSMutableArray array];
+//    NSMutableArray *types = [NSMutableArray array];
 
-    // выбираем список всех словарей
-    NSString *taxonomyURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_TAXONOMY_URL];
-    NSArray *taxonomy = [self executeFetch:taxonomyURL];
+    // выбираем список всех типов мероприятий
+    NSString *typeURL = [NSString stringWithFormat:@"%@/%@=%d", SEMINAR_URL, SEMINAR_TAXONOMY_URL, SEMINAR_TYPE_VID];
+    NSArray *seminarTypes = [self executeFetch:typeURL];
+
+    // выбираем список всех разделов
+    NSString *sectionURL = [NSString stringWithFormat:@"%@/%@=%d", SEMINAR_URL, SEMINAR_TAXONOMY_URL, SEMINAR_SECTION_VID];
+    NSArray *seminarSections = [self executeFetch:sectionURL];
+
+    // выбираем список всех разделов
+    NSString *allURL = [NSString stringWithFormat:@"%@/%@=%d", SEMINAR_URL, SEMINAR_TAXONOMY_URL, SEMINAR_ALL_VID];
+    NSArray *seminarAll = [self executeFetch:allURL];
+
     
-    //выбираем список всех терминов
-    NSString *termURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_TERM_URL];
-    NSArray *terms = [self executeFetch:termURL];
+//выбираем список всех терминов
+//    NSString *termURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_TERM_URL];
+//    NSArray *terms = [self executeFetch:termURL];
+
+    
     
     //пробегаем по словаряем, заполняем массивы для типов и секций
-    for (NSDictionary *taxonomyDict in taxonomy) {
-        if ([[taxonomyDict objectForKey:@"machine_name"] isEqualToString:SEMINAR_SECTION]) {
-            for (NSDictionary *term in terms) {
-                if ([[term objectForKey:@"vid"] isEqualToString:[taxonomyDict objectForKey:@"vid"]]) {
-                    [sections addObject:term];
-                }
-            }
-        }
-        if ([[taxonomyDict objectForKey:@"machine_name"] isEqualToString:SEMINAR_TYPE]) {
-            for (NSDictionary *term in terms) {
-                if ([[term objectForKey:@"vid"] isEqualToString:[taxonomyDict objectForKey:@"vid"]]) {
-                    [types addObject:term];
-                }
-            }
-        }
-    }
+//    for (NSDictionary *taxonomyDict in taxonomy) {
+//        if ([[taxonomyDict objectForKey:@"machine_name"] isEqualToString:SEMINAR_SECTION]) {
+//            for (NSDictionary *term in terms) {
+//                if ([[term objectForKey:@"vid"] isEqualToString:[taxonomyDict objectForKey:@"vid"]]) {
+//                    [sections addObject:term];
+//                }
+//            }
+//        }
+//        if ([[taxonomyDict objectForKey:@"machine_name"] isEqualToString:SEMINAR_TYPE]) {
+//            for (NSDictionary *term in terms) {
+//                if ([[term objectForKey:@"vid"] isEqualToString:[taxonomyDict objectForKey:@"vid"]]) {
+//                    [types addObject:term];
+//                }
+//            }
+//        }
+//    }
     
-    return [NSDictionary dictionaryWithObjectsAndKeys:sections, @"sections", types, @"types", nil];
+    return [NSDictionary dictionaryWithObjectsAndKeys:seminarSections, @"sections", seminarTypes, @"types", seminarAll, @"all", nil];
 }
 
 + (NSArray *)seminars

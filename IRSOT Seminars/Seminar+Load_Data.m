@@ -11,6 +11,7 @@
 #import "Sections+Load_Data.h"
 #import "Type+Load_Data.h"
 #import "Lector+Load_Data.h"
+#import "AllEvents.h"
 
 @implementation Seminar (Load_Data)
 
@@ -18,15 +19,23 @@
 {
     Seminar *seminar = nil;
     
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"AllEvents"];
+    NSError *error = nil;
+    NSArray *matches = [context executeFetchRequest:request error:&error];
+    AllEvents *allEvents = nil;
+    if (matches) {
+        allEvents = [matches objectAtIndex:0];
+    }
+    
     // check whether we have already a new seminar in our database
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Seminar"];
+    request = [NSFetchRequest fetchRequestWithEntityName:@"Seminar"];
     request.predicate = [NSPredicate predicateWithFormat:@"id == %@", [dictionary objectForKey:@"nid"]];
     // soring our fetch
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
-    NSError *error = nil;
-    NSArray *matches = [context executeFetchRequest:request error:&error];
+    error = nil;
+    matches = [context executeFetchRequest:request error:&error];
     
     if (!matches || ([matches count] > 1)) {
         // handle error
@@ -72,7 +81,7 @@
         seminar.ruseminar_url = [[dictionary objectForKey:SEMINAR_RUSEMINAR_URL] objectForKey:@"url"];
         NSDictionary *program = [dictionary objectForKey:SEMINAR_PROGRAM];
         if ([program count]) seminar.program = [program objectForKey:@"value"];
-        
+        [allEvents addSeminarsObject:seminar];
     } else {
         seminar = [matches lastObject];
     }
@@ -182,25 +191,49 @@
     if ([[dateFormatterDate stringFromDate:self.date_start] isEqualToString:[dateFormatterDate stringFromDate:self.date_end]]) {
         dateStr = [NSString stringWithFormat:@"%@ %@", [dateFormatterDate stringFromDate:self.date_start],  [dateFormatterMonth stringFromDate:self.date_start]];
     } else {
-        dateStr = [NSString stringWithFormat:@"%@ - %@ %@", [dateFormatterDate stringFromDate:self.date_start], [dateFormatterDate stringFromDate:self.date_end], [dateFormatterMonth stringFromDate:self.date_start]];
+        if ([self integerFromSeminarMonthWithDate:self.date_start] == [self integerFromSeminarMonthWithDate:self.date_end]) {
+            dateStr = [NSString stringWithFormat:@"%@ - %@ %@", [dateFormatterDate stringFromDate:self.date_start], [dateFormatterDate stringFromDate:self.date_end], [dateFormatterMonth stringFromDate:self.date_start]];
+        } else {
+            dateStr = [NSString stringWithFormat:@"%@ %@ - %@ %@", [dateFormatterDate stringFromDate:self.date_start], [dateFormatterMonth stringFromDate:self.date_start], [dateFormatterDate stringFromDate:self.date_end], [dateFormatterMonth stringFromDate:self.date_start]];
+        }
     }
     
     return dateStr;
 }
 
-- (NSString *)stringWithSeminarMonth
+- (NSString *)stringFromSeminarMonth
 {
     NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
+
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setLocale:locale];
+    [formatter setDateFormat:@"LLLL"];
+    NSString *stringFromDate = [formatter stringFromDate:self.date_start];
     
-    NSDateFormatter *dateFormatterMonth = [[NSDateFormatter alloc] init];
-    [dateFormatterMonth setLocale:locale];
-    [dateFormatterMonth setDateFormat:SEMINAR_DATE_FORMAT_DATE_MONTH_ONLY];
-    
-    NSString *dateStr;
-    
-    dateStr = [NSString stringWithFormat:@"%@", [dateFormatterMonth stringFromDate:self.date_start]];
-    
-    return dateStr;
+    return stringFromDate;
 }
 
+- (NSInteger)integerFromSeminarDay
+{
+    NSCalendar *cal = [[NSCalendar alloc] init];
+    NSDateComponents *components = [cal components:0 fromDate:self.date_start];
+    
+    return [components day];
+}
+
+- (NSInteger)integerFromSeminarMonthWithDate: (NSDate *)date
+{
+    NSCalendar *cal = [[NSCalendar alloc] init];
+    NSDateComponents *components = [cal components:0 fromDate:date];
+    
+    return [components month];
+}
+
+- (NSInteger)integerFromSeminarYear
+{
+    NSCalendar *cal = [[NSCalendar alloc] init];
+    NSDateComponents *components = [cal components:0 fromDate:self.date_start];
+    
+    return [components year];
+}
 @end

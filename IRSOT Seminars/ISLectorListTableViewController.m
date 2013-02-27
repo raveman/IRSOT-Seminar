@@ -30,9 +30,6 @@
 {
     [super viewDidLoad];
     
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-
     self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
     self.title = NSLocalizedString(@"Lectors", @"Lector List View Title");
 
@@ -106,6 +103,13 @@
     return count;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    int numberOfRows = 2;
+    
+    return (40.0 + (numberOfRows - 1) * 15.0);
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Lector Cell";
@@ -117,6 +121,10 @@
     cell.textLabel.font = [Helper cellMainFont];
     cell.detailTextLabel.font = [Helper cellDetailFont];
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+
+    UIImage *accessoryImage = [UIImage imageNamed:@"accessoryArrow"];
+    cell.accessoryView = [[UIImageView alloc] initWithImage:accessoryImage];
+    cell.textLabel.font = [Helper cellMainFont];
 
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         Lector *lector = [self.fetchedResultsController objectAtIndexPath:indexPath];

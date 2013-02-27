@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 AppDesignVault. All rights reserved.
 //
 
+#import <CoreImage/CoreImage.h>
 #import "ADVFitpulseTheme.h"
 
 @implementation ADVFitpulseTheme
@@ -15,7 +16,8 @@
 }
 
 - (UIColor *)mainColor {
-    return [UIColor colorWithWhite:0.3 alpha:1.0];
+//    return [UIColor colorWithWhite:0.3 alpha:1.0];
+      return [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
 }
 
 - (UIColor *)secondColor {
@@ -51,7 +53,7 @@
 
 - (UIColor *)backgroundColor
 {
-    return [UIColor colorWithWhite:0.85 alpha:1.0];
+    return [UIColor colorWithRed:217/255.0 green:217/255.0 blue:217/255.0 alpha:1.0];
 }
 
 - (UIColor *)baseTintColor
@@ -63,8 +65,8 @@
 
 - (UIColor *)accentTintColor
 {
-//    return nil;
-    return [UIColor colorWithRed:47/255.0 green:158/255.0 blue:227/255.0 alpha:1.0];
+    return nil;
+//    return [UIColor colorWithRed:47/255.0 green:158/255.0 blue:227/255.0 alpha:1.0];
 }
 
 - (UIColor *)selectedTabbarItemTintColor
@@ -85,7 +87,8 @@
 
 - (UIColor *)switchTintColor
 {
-    return [UIColor colorWithRed:0.86f green:0.86f blue:0.86f alpha:1.00f];;
+//    return [UIColor colorWithRed:0.86f green:0.86f blue:0.86f alpha:1.00f];;
+     return [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
 }
 
 - (CGSize)shadowOffset
@@ -115,7 +118,7 @@
 }
 
 - (UIImage *)navigationBackgroundForIPadAndOrientation:(UIInterfaceOrientation)orientation {
-    NSString *name = @"navigationBackgroundRight";
+    NSString *name = @"navigationBackgroundiPad";
     if (UIInterfaceOrientationIsLandscape(orientation)) {
         name = [name stringByAppendingString:@"Landscape"];
     }
@@ -168,7 +171,8 @@
 
 - (UIImage *)searchBackground
 {
-    return [UIImage imageNamed:@"searchBackground"];
+//    return [UIImage imageNamed:@"searchBackground"];
+    return nil;
 }
 
 - (UIImage *)searchFieldImage
@@ -235,22 +239,58 @@
 
 - (UIImage *)tableBackground
 {
-    UIImage *image = [UIImage imageNamed:@"background"];
-    image = [image resizableImageWithCapInsets:UIEdgeInsetsZero];
+//    UIImage *image = [UIImage imageNamed:@"background"];
+//    image = [image resizableImageWithCapInsets:UIEdgeInsetsZero];
+//    return image;
+    CIColor *color = [CIColor colorWithRed:217/255.0 green:217/255.0 blue:217/255.0 alpha:1.0];
+    UIImage *image = [UIImage imageWithCIImage: [CIImage imageWithColor:color]];
     return image;
 }
-
-- (UIImage *)tableSectionHeaderBackground {
-    UIImage *image = [UIImage imageNamed:@"list-section-header-bg"];
-    image = [image resizableImageWithCapInsets:UIEdgeInsetsZero];
-    return image;
-}
-
 
 - (UIImage *)tableFooterBackground {
     UIImage *image = [UIImage imageNamed:@"list-footer-bg"];
     image = [image resizableImageWithCapInsets:UIEdgeInsetsZero];
     return image;
+}
+
+- (UIFont *)sectionLabelFont
+{
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0];
+    return font;
+}
+
+- (UIColor *)sectionLabelColor
+{
+//    return [UIColor colorWithRed:8/255.0 green:54/255.0 blue:80/255.0 alpha:1.0];
+    return [UIColor colorWithRed:18/255.0 green:122/255.0 blue:187/255.0 alpha:1.0];
+}
+
+- (UILabel *)sectionLabelInTableView: (UITableView *)tableView forSection:(NSUInteger)section andMargin:(NSUInteger)margin
+{
+    CGRect frame = CGRectZero;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        if (margin == 0) {
+            margin = 60;
+        }
+        frame = CGRectMake(margin, 10, tableView.frame.size.width - 60, 18);
+    } else {
+        if (margin == 0) {
+            margin = 20;
+        }
+        frame = CGRectMake(margin, 10, tableView.frame.size.width - 18, 18);
+    }
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:frame];
+    
+    label.text = [tableView.dataSource tableView:tableView titleForHeaderInSection:section];
+    label.textColor = [self sectionLabelColor];
+    label.font = [self sectionLabelFont];
+    label.shadowColor = [UIColor whiteColor];
+    label.shadowOffset = CGSizeMake(0,1);
+    
+    label.backgroundColor = [UIColor clearColor];
+    return label;
 }
 
 - (UIImage *)viewBackground

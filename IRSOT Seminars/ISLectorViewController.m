@@ -52,12 +52,14 @@
     size.height = pictureFrame.size.height;
     
     CGRect titleFrame = self.lectorName.frame;
-    titleFrame.origin.x = pictureFrame.origin.x * 2 + pictureFrame.size.width;
+    titleFrame.origin.x = pictureFrame.origin.x * 1.2 + pictureFrame.size.width;
+    titleFrame.size.width = currentSize.width - titleFrame.origin.x;
+    [self.lectorName sizeToFit];
     self.lectorName.frame = titleFrame;
-    titleFrame = [Helper resizeTextView:self.lectorName withSize:size];
+    titleFrame = [Helper resizeTextView:self.lectorName withSize:titleFrame.size andMargin:10];
     
     // header
-    size = titleFrame.size;
+//    size = titleFrame.size;
 
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         CGRect bioFrame = self.lectorBio.frame;
@@ -71,7 +73,7 @@
     }
     
     // bio
-    CGRect rect = [Helper resizeTextView:self.lectorBio withSize:size];
+    CGRect rect = [Helper resizeTextView:self.lectorBio withSize:size andMargin:-1];
     if ([[UIDevice currentDevice] userInterfaceIdiom] != UIUserInterfaceIdiomPad) size.height += rect.size.height + 10;
         else size.height = pictureFrame.origin.y + pictureFrame.size.height;
     
@@ -132,7 +134,10 @@
 	// view additional setups
 
     id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    
+//    [self.view setBackgroundColor:[theme backgroundColor]];
+    
+//    [ADVThemeManager customizeTableView:self.lectorSeminars];
     
     self.lectorSeminars.dataSource = self;
     self.lectorSeminars.delegate = self;
@@ -140,6 +145,10 @@
     self.title = [self.lector fullName];
 
     self.lectorName.text = [self.lector fullName];
+    self.lectorName.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0];
+    self.lectorName.textColor = [theme sectionLabelColor];
+    
+    
     self.lectorBio.text = self.lector.bio;
     if ([self.lector.seminars count]) {
         NSArray *lectorSeminars = [self.lector.seminars allObjects];
@@ -211,7 +220,6 @@
     return [self.seminars count];
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Lector Seminar Cell";
@@ -220,9 +228,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.font = [UIFont fontWithName:@"Helvetica Neue Medium" size:15.0];
-    cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica Neue" size:13.0];
+    cell.textLabel.font = [Helper cellMainFont];
+    cell.detailTextLabel.font = [Helper cellDetailFont];
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    
+    UIImage *accessoryImage = [UIImage imageNamed:@"accessoryArrow"];
+    cell.accessoryView = [[UIImageView alloc] initWithImage:accessoryImage];
+    cell.textLabel.font = [Helper cellMainFont];
 
     if ([self.seminars count]) {
         Seminar *seminar = [self.seminars objectAtIndex:indexPath.row];
@@ -243,5 +255,15 @@
 }
 
 #pragma mark - UITableViewDelegate
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
+    [headerView setBackgroundColor:[UIColor clearColor]];
+    
+    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    [headerView addSubview:[theme sectionLabelInTableView:tableView forSection:section andMargin:0]];
+    
+    return headerView;
+}
 
 @end

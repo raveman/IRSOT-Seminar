@@ -58,17 +58,16 @@ const NSInteger allTypesSection = 0;
     [super viewDidLoad];
     
     id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
+    [self.view setBackgroundColor:[theme backgroundColor]];
+    
+    [ADVThemeManager customizeTableView:self.seminarCategoriesTableView];
     
     self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
     
     // setting categories list tableview datasource and delegate
     self.seminarCategoriesTableView.dataSource = self;
     self.seminarCategoriesTableView.delegate = self;
-    self.seminarCategoriesTableView.backgroundColor = [UIColor clearColor];
-    self.seminarCategoriesTableView.opaque = NO;
-    self.seminarCategoriesTableView.backgroundView = [[UIImageView alloc]initWithImage:[theme viewBackground]];
-    
+
     self.title =  NSLocalizedString(@"Catalog", @"Main Page Title");
     
     self.noDataLabel.shadowColor = [UIColor grayColor];
@@ -211,7 +210,8 @@ const NSInteger allTypesSection = 0;
         UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 //    }
     cell.selectionStyle = [Helper cellSelectionStyle];
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    UIImage *accessoryImage = [UIImage imageNamed:@"accessoryArrow"];
+    cell.accessoryView = [[UIImageView alloc] initWithImage:accessoryImage];
     cell.textLabel.font = [Helper cellMainFont];
 
     if ([[self.fetchedResultsController fetchedObjects] count]) {
@@ -243,6 +243,17 @@ const NSInteger allTypesSection = 0;
     }
     
     return title;
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
+    [headerView setBackgroundColor:[UIColor clearColor]];
+    
+    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    [headerView addSubview:[theme sectionLabelInTableView:tableView forSection:section andMargin:0]];
+    
+    return headerView;
 }
 
 #pragma mark - Fetched results controller

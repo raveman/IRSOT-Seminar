@@ -24,17 +24,20 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
     //adjust the label new height.
     CGRect newFrame = label.frame;
     newFrame.size.height = expectedLabelSize.height;
-//    newFrame.size.width = expectedLabelSize.width - HORIZONTAL_MARGIN;
+    newFrame.size.width = expectedLabelSize.width - HORIZONTAL_MARGIN;
     newFrame.size.width = maximumLabelSize.width;
     label.frame = newFrame;
     
     return newFrame;
 }
 
-+ (CGRect) resizeTextView:(UITextView *)textView withSize:(CGSize)size
++ (CGRect) resizeTextView:(UITextView *)textView withSize:(CGSize)size andMargin:(NSUInteger)margin
 {
+
+    if (margin == -1) margin = HORIZONTAL_MARGIN;
+
     CGRect newFrame = textView.frame;
-    newFrame.size.width = size.width - HORIZONTAL_MARGIN;
+    newFrame.size.width = size.width - margin;
     textView.frame = newFrame;
     
     CGRect frame = textView.frame;
@@ -113,7 +116,7 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
 
 + (UIFont *) labelFont
 {
-    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:15.0];
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0];
     return font;
 }
 

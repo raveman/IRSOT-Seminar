@@ -60,9 +60,11 @@ typedef enum  {
 - (UIImage *)segmentedDividerForBarMetrics:(UIBarMetrics)barMetrics;
 
 - (UIImage *)tableBackground;
-- (UIImage *)tableSectionHeaderBackground;
 - (UIImage *)tableFooterBackground;
 - (UIImage *)viewBackground;
+- (UIColor *)sectionLabelColor;
+- (UILabel *)sectionLabelInTableView: (UITableView *)tableView forSection:(NSUInteger)section andMargin:(NSUInteger)margin;
+- (UIFont *)sectionLabelFont;
 
 - (UIImage *)switchOnImage;
 - (UIImage *)switchOffImage;

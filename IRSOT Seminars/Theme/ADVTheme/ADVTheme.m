@@ -165,7 +165,7 @@
         [segmentedAppearance setTintColor:baseTintColor];
 //        [tabBarAppearance setTintColor:baseTintColor];
         [toolbarAppearance setTintColor:baseTintColor];
-        [searchBarAppearance setTintColor:baseTintColor];
+//        [searchBarAppearance setTintColor:baseTintColor];
         [sliderAppearance setThumbTintColor:baseTintColor];
         [sliderAppearance setMinimumTrackTintColor:baseTintColor];
         [progressAppearance setProgressTintColor:baseTintColor];

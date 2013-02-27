@@ -27,9 +27,9 @@
 #import "AllEvents+Load_Data.h"
 #import "Lector+Load_Data.h"
 
-const NSInteger settingsSortSection = 0;
-const NSInteger settingsCalendarAlertSection = 1;
-const NSInteger settingsUpdateSection = 2;
+const NSInteger settingsUpdateSection = 0;
+const NSInteger settingsSortSection = 1;
+const NSInteger settingsCalendarAlertSection = 2;
 const NSInteger settingsSections = 3;
 
 @interface ISSettingsViewController () <UITableViewDataSource, UITableViewDelegate, ISAlertTimesTableViewControllerDelegate>

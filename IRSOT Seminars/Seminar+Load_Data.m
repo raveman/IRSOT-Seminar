@@ -185,16 +185,22 @@
     NSDateFormatter *dateFormatterMonth = [[NSDateFormatter alloc] init];
     [dateFormatterMonth setLocale:locale];
     [dateFormatterMonth setDateFormat:SEMINAR_DATE_FORMAT_DATE_MONTH];
+    NSDateFormatter *dateFormatterMonthYear = [[NSDateFormatter alloc] init];
+    [dateFormatterMonthYear setLocale:locale];
+    [dateFormatterMonthYear setDateFormat:SEMINAR_DATE_FORMAT_DATE_MONTH_YEAR];
+
     
     NSString *dateStr;
     
     if ([[dateFormatterDate stringFromDate:self.date_start] isEqualToString:[dateFormatterDate stringFromDate:self.date_end]]) {
         dateStr = [NSString stringWithFormat:@"%@ %@", [dateFormatterDate stringFromDate:self.date_start],  [dateFormatterMonth stringFromDate:self.date_start]];
     } else {
-        if ([self integerFromSeminarMonthWithDate:self.date_start] == [self integerFromSeminarMonthWithDate:self.date_end]) {
-            dateStr = [NSString stringWithFormat:@"%@ - %@ %@", [dateFormatterDate stringFromDate:self.date_start], [dateFormatterDate stringFromDate:self.date_end], [dateFormatterMonth stringFromDate:self.date_start]];
+        NSUInteger monthS = [self integerFromSeminarMonthWithDate:self.date_start];
+        NSUInteger monthE = [self integerFromSeminarMonthWithDate:self.date_end];
+        if ( monthS == monthE) {
+            dateStr = [NSString stringWithFormat:@"%@ – %@ %@", [dateFormatterDate stringFromDate:self.date_start], [dateFormatterDate stringFromDate:self.date_end], [dateFormatterMonthYear stringFromDate:self.date_end]];
         } else {
-            dateStr = [NSString stringWithFormat:@"%@ %@ - %@ %@", [dateFormatterDate stringFromDate:self.date_start], [dateFormatterMonth stringFromDate:self.date_start], [dateFormatterDate stringFromDate:self.date_end], [dateFormatterMonth stringFromDate:self.date_start]];
+            dateStr = [NSString stringWithFormat:@"%@ %@ – %@ %@", [dateFormatterDate stringFromDate:self.date_start], [dateFormatterMonth stringFromDate:self.date_start], [dateFormatterDate stringFromDate:self.date_end], [dateFormatterMonthYear stringFromDate:self.date_end]];
         }
     }
     
@@ -225,8 +231,8 @@
 
 - (NSInteger)integerFromSeminarMonthWithDate: (NSDate *)date
 {
-    NSCalendar *cal = [[NSCalendar alloc] init];
-    NSDateComponents *components = [cal components:0 fromDate:date];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDateComponents *components = [calendar components:NSMonthCalendarUnit fromDate:date];
     
     return [components month];
 }

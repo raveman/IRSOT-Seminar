@@ -186,7 +186,7 @@
     return nil;
 }
 
-- (UILabel *)sectionLabelInTableView: (UITableView *)tableView forSection:(NSUInteger)section
+- (UILabel *)sectionLabelInTableView: (UITableView *)tableView forSection:(NSUInteger)section andMargin:(NSUInteger)margin
 {
     return nil;
 }

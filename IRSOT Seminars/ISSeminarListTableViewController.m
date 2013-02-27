@@ -14,6 +14,7 @@
 #import "Type+Load_Data.h"
 #import "Lector.h"
 #import "ISSettingsViewController.h"
+#import "ADVTheme.h"
 
 #import "Helper.h"
 
@@ -73,9 +74,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.searchDisplayController.searchBar.delegate = self;
-    self.searchDisplayController.searchBar.backgroundColor = [UIColor clearColor];
+//    self.searchDisplayController.searchBar.backgroundColor = [UIColor clearColor];
     
     // if we have no arrived section we need to hide seminar type switch
     // and set currentSeminarType
@@ -111,6 +112,12 @@
     }
 }
 
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        [self.tableView reloadData];
+    }
+}
+
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Seminar View"]) {
@@ -142,6 +149,43 @@
         default:
             break;
     }    
+}
+
+#pragma mark - Helper methods
+
+- (NSString *)truncateLectorNames:(NSString *)lectors
+{
+    NSUInteger length = 0;
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        if ([self.tableView.dataSource respondsToSelector:@selector(sectionIndexTitlesForTableView:)]) {
+            NSArray *indexTitles = [self.tableView.dataSource sectionIndexTitlesForTableView:self.tableView];
+            if (indexTitles) {
+                if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+                    length = 68;
+                } else {
+                    length = 32;
+                }
+            } else {
+                if (UIDeviceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+                    length = 72;
+                } else {
+                    length = 36;
+                }
+            }
+        }
+        if ([lectors length] > length) {
+            lectors = [lectors substringToIndex:length];
+            lectors = [lectors stringByAppendingString:@"…"];
+        }
+    } else {
+        if ([lectors length] > 100) {
+            lectors = [lectors substringToIndex:100];
+            lectors = [lectors stringByAppendingString:@"…"];
+        }
+    }
+    
+    return lectors;
 }
 
 #pragma mark - Table view data source
@@ -233,22 +277,6 @@
     return count;
 }
 
-- (NSString *)truncateLectorNames:(NSString *)lectors
-{
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        if ([lectors length] > 35) {
-            lectors = [lectors substringToIndex:35];
-            lectors = [lectors stringByAppendingString:@"…"];
-        }
-    } else {
-        if ([lectors length] > 100) {
-            lectors = [lectors substringToIndex:100];
-            lectors = [lectors stringByAppendingString:@"…"];
-        }
-    }
-    
-    return lectors;
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -263,6 +291,10 @@
 
     cell.selectionStyle = [Helper cellSelectionStyle];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+    UIImage *accessoryImage = [UIImage imageNamed:@"accessoryArrow"];
+    cell.accessoryView = [[UIImageView alloc] initWithImage:accessoryImage];
+    cell.textLabel.font = [Helper cellMainFont];
     
     if (tableView == self.tableView) {
         // Configure the cell...
@@ -307,6 +339,7 @@
 
     return (40.0 + (numberOfRows - 1) * 15.0);
 }
+
 
 #pragma mark - Table view delegate
 

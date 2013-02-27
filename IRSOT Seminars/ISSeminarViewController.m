@@ -25,6 +25,8 @@
 #import "Type+Load_Data.h"
 #import "ISAlertTimes.h"
 
+#import "ADVTheme.h"
+
 #import "SHK.h"
 #import "SHKItem.h"
 #import "SHKFacebook.h"
@@ -35,8 +37,6 @@
 
 //#define ADD_BOOKMARK @"Добавить закладку"
 //#define VIEW_ON_WEB @"Посмотреть полную версию"
-
-const NSUInteger sectionHeaderHeight = 30;
 
 #define ADD_BOOKMARK NSLocalizedString(@"Add bookmark", @"Add bookmark")
 #define VIEW_ON_WEB NSLocalizedString(@"View on web site", @"View on web site")
@@ -99,7 +99,7 @@ const NSUInteger sectionHeaderHeight = 30;
 
     CGSize currentSize = self.view.frame.size;
     [Helper resizeRectButton:self.attendSeminarButton withSize:currentSize];
-    CGRect headerRect = [Helper resizeTextView:self.seminarName withSize: currentSize];
+    CGRect headerRect = [Helper resizeTextView:self.seminarName withSize: currentSize andMargin:-1];
     
     // опускаем дату проведения семинара
     CGRect rect = self.seminarDate.frame;
@@ -139,7 +139,13 @@ const NSUInteger sectionHeaderHeight = 30;
     size.height = height + 10;
     
     int tableHeight = self.lectorTableView.rowHeight * [self.seminar.lectors count];
-    tableHeight = tableHeight + sectionHeaderHeight + 25;
+    CGRect tableSectionFrame = [[self tableView:self.lectorTableView viewForHeaderInSection:0] frame];
+    tableHeight = tableHeight + tableSectionFrame.size.height + 25;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        tableHeight = tableHeight + 10;
+    }
+    
+    
     CGRect tableFrame = self.lectorTableView.frame;
     tableFrame.size.width = currentSize.width;
 
@@ -243,6 +249,10 @@ const NSUInteger sectionHeaderHeight = 30;
 
         self.typeLabel.text = self.seminar.type.name;
 
+        id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+        self.programLabel.textColor = [theme sectionLabelColor];
+        self.programLabel.font = [theme sectionLabelFont];
+        
         [self.programWebView loadHTMLString:self.html baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];
         self.programWebView.userInteractionEnabled = NO;
         self.programWebView.scrollView.scrollEnabled = NO;
@@ -620,6 +630,10 @@ const NSUInteger sectionHeaderHeight = 30;
     cell.detailTextLabel.font = [Helper cellDetailFont];
     cell.selectionStyle = [Helper cellSelectionStyle];
     
+    UIImage *accessoryImage = [UIImage imageNamed:@"accessoryArrow"];
+    cell.accessoryView = [[UIImageView alloc] initWithImage:accessoryImage];
+    cell.textLabel.font = [Helper cellMainFont];
+    
     if ([self.seminar.lectors count]) {
         Lector *lector = [self.lectors objectAtIndex:indexPath.row];
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
@@ -691,15 +705,11 @@ const NSUInteger sectionHeaderHeight = 30;
 #pragma mark - UITableViewDelegate
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, sectionHeaderHeight)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
     [headerView setBackgroundColor:[UIColor clearColor]];
-
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(18, 3, tableView.bounds.size.width - 18, 18)];
-    label.text = [self tableView:tableView titleForHeaderInSection:section];
-    label.textColor = [UIColor blackColor];
-    label.font = [Helper labelFont];
-    label.backgroundColor = [UIColor clearColor];
-    [headerView addSubview:label];
+    
+    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    [headerView addSubview:[theme sectionLabelInTableView:tableView forSection:section andMargin:20]];
     
     return headerView;
 }

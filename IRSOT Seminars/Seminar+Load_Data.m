@@ -193,7 +193,7 @@
     NSString *dateStr;
     
     if ([[dateFormatterDate stringFromDate:self.date_start] isEqualToString:[dateFormatterDate stringFromDate:self.date_end]]) {
-        dateStr = [NSString stringWithFormat:@"%@ %@", [dateFormatterDate stringFromDate:self.date_start],  [dateFormatterMonth stringFromDate:self.date_start]];
+        dateStr = [NSString stringWithFormat:@"%@ %@", [dateFormatterDate stringFromDate:self.date_start],  [dateFormatterMonthYear stringFromDate:self.date_start]];
     } else {
         NSUInteger monthS = [self integerFromSeminarMonthWithDate:self.date_start];
         NSUInteger monthE = [self integerFromSeminarMonthWithDate:self.date_end];

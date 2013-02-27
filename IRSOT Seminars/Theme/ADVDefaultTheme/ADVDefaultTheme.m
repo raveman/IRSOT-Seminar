@@ -175,6 +175,22 @@
     return nil;
 }
 
+- (UIFont *)sectionLabelFont
+{
+    return nil;
+}
+
+
+- (UIColor *)sectionLabelColor
+{
+    return nil;
+}
+
+- (UILabel *)sectionLabelInTableView: (UITableView *)tableView forSection:(NSUInteger)section
+{
+    return nil;
+}
+
 - (UIImage *)viewBackground
 {
     return nil;

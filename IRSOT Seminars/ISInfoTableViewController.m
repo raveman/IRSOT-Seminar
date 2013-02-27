@@ -22,8 +22,7 @@
 @implementation ISInfoTableViewController
 
 @synthesize infoLinks = _infoLinks;
-
-@synthesize tableView;
+@synthesize tableView = _tableView;
 
 #pragma mark - variable instantiation
 
@@ -42,18 +41,12 @@
     [super viewDidLoad];
     self.navigationItem.title = NSLocalizedString(@"Participation terms", @"Info page title");
 
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    [self.view setBackgroundColor:[UIColor colorWithPatternImage:[theme viewBackground]]];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
 //    self.tableView.backgroundColor = [UIColor clearColor];
 //    self.tableView.opaque = NO;
 //    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[theme viewBackground]];
+    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    [self.view setBackgroundColor:[theme backgroundColor]];
+    
     [ADVThemeManager customizeTableView:self.tableView];
 }
 
@@ -112,12 +105,12 @@
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     // Configure the cell...
-    
-//    NSDictionary *sectionDictionary = [self getDictionaryFor:self.infoLinks atIndex:indexPath.section];
-//    NSString *key = [self getKeyForDictionary:sectionDictionary atIndex:indexPath.row];
 
-//    NSString *url = [[[self.infoLinks objectAtIndex:indexPath.section] objectAtIndex:0] objectAtIndex:indexPath.row];
     NSString *key = [[[self.infoLinks objectAtIndex:indexPath.section*2] objectAtIndex:1] objectAtIndex:indexPath.row];
+
+    UIImage *accessoryImage = [UIImage imageNamed:@"accessoryArrow"];
+    cell.accessoryView = [[UIImageView alloc] initWithImage:accessoryImage];
+    cell.textLabel.font = [Helper cellMainFont];
     
     cell.textLabel.font = [Helper cellMainFont];
     cell.selectionStyle = [Helper cellSelectionStyle];
@@ -125,6 +118,17 @@
     cell.textLabel.text = key;
     
     return cell;
+}
+
+- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
+    [headerView setBackgroundColor:[UIColor clearColor]];
+
+    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
+    [headerView addSubview:[theme sectionLabelInTableView:tableView forSection:section andMargin:0]];
+    
+    return headerView;
 }
 
 #pragma mark - Table view delegate
@@ -136,7 +140,7 @@
         NSURL *url = [NSURL URLWithString:[[[self.infoLinks objectAtIndex:indexPath.section*2] objectAtIndex:0] objectAtIndex:indexPath.row]];
         ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
         [dvc setUrl:url];
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         [dvc setTitle:cell.textLabel.text];
     }
 }

@@ -68,7 +68,7 @@ const NSInteger allTypesSection = 0;
     self.seminarCategoriesTableView.dataSource = self;
     self.seminarCategoriesTableView.delegate = self;
 
-    self.title =  NSLocalizedString(@"Catalog", @"Main Page Title");
+    self.navigationItem.title =  NSLocalizedString(@"IRSOT Seminars", @"Main Page Title");
     
     self.noDataLabel.shadowColor = [UIColor grayColor];
     self.noDataLabel.shadowOffset = CGSizeMake(0,-1);
@@ -218,8 +218,58 @@ const NSInteger allTypesSection = 0;
         NSIndexPath *adjustedIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
         Sections *section = [self.fetchedResultsController objectAtIndexPath:adjustedIndexPath];
         NSString *sectionName = [[[section.name substringToIndex:1] uppercaseString] stringByAppendingString:[section.name substringFromIndex:1]];
+
+        cell.textLabel.text = sectionName;
+        if ([sectionName isEqualToString:NSLocalizedString(@"All events", @"All events")]) {
+            cell.imageView.image = [UIImage imageNamed:@"calendar"];
+        }
         
         cell.textLabel.text = sectionName;
+        if ([sectionName isEqualToString:@"Бухгалтерский учет"]) {
+            cell.imageView.image = [UIImage imageNamed:@"accounting"];
+        }
+        
+        if ([sectionName isEqualToString:@"Кадры"]) {
+            cell.imageView.image = [UIImage imageNamed:@"hr"];
+        }
+        if ([sectionName isEqualToString:@"Право"]) {
+            cell.imageView.image = [UIImage imageNamed:@"law"];
+        }
+        if ([sectionName isEqualToString:@"Управление"]) {
+            cell.imageView.image = [UIImage imageNamed:@"management"];
+        }
+        if ([sectionName isEqualToString:@"Финансы"]) {
+            cell.imageView.image = [UIImage imageNamed:@"finance"];
+        }
+        
+        if ([sectionName isEqualToString:@"Бизнес-класс"]) {
+            cell.imageView.image = [UIImage imageNamed:@"business_class"];
+        }
+        
+        if ([sectionName isEqualToString:@"Семинар"]) {
+            cell.imageView.image = [UIImage imageNamed:@"seminar"];
+        }
+        
+        if ([sectionName isEqualToString:@"Мастер-класс"]) {
+            cell.imageView.image = [UIImage imageNamed:@"master_class"];
+        }
+        
+        if ([sectionName isEqualToString:@"Неделя бухучета"]) {
+            cell.imageView.image = [UIImage imageNamed:@"nbu"];
+        }
+        
+        if ([sectionName isEqualToString:@"Курс"]) {
+            cell.imageView.image = [UIImage imageNamed:@"course"];
+        }
+        
+        if ([sectionName isEqualToString:@"Тематическая неделя"]) {
+            cell.imageView.image = [UIImage imageNamed:@"lecturer"];
+        }
+        
+        if ([sectionName isEqualToString:@"Конференция"]) {
+            cell.imageView.image = [UIImage imageNamed:@"conference"];
+        }
+        
     }
     
     return cell;

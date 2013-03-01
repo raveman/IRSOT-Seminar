@@ -113,7 +113,7 @@ const NSInteger settingsSections = 3;
     self.reach.reachableBlock = ^(ReachabilityARC * reachability)
     {
         dispatch_async(dispatch_get_main_queue(), ^{
-            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:settingsUpdateSection];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:settingsUpdateSection];
             UITableViewCell *refreshCell = [weakSelf.tableView cellForRowAtIndexPath:indexPath];
             refreshCell.selectionStyle = UITableViewCellSelectionStyleBlue;
             refreshCell.textLabel.enabled = YES;
@@ -126,7 +126,7 @@ const NSInteger settingsSections = 3;
         dispatch_async(dispatch_get_main_queue(), ^{
             [SVProgressHUD showErrorWithStatus:weakSelf.errorText];
 
-            NSIndexPath *indexPath = [NSIndexPath indexPathForItem:0 inSection:settingsUpdateSection];
+            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:settingsUpdateSection];
             UITableViewCell *refreshCell = [weakSelf.tableView cellForRowAtIndexPath:indexPath];
             refreshCell.selectionStyle = UITableViewCellSelectionStyleNone;
             refreshCell.textLabel.enabled = NO;

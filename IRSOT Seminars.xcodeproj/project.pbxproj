@@ -54,6 +54,31 @@
 		C45BE28B16E0E900007C2F02 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE28A16E0E900007C2F02 /* Default-Portrait@2x~ipad.png */; };
 		C45BE28D16E0E903007C2F02 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE28C16E0E903007C2F02 /* Default-Landscape~ipad.png */; };
 		C45BE28F16E0E904007C2F02 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE28E16E0E904007C2F02 /* Default-Landscape@2x~ipad.png */; };
+		C45BE29516E0F426007C2F02 /* accounting@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE29016E0F425007C2F02 /* accounting@2x.png */; };
+		C45BE29616E0F426007C2F02 /* finance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE29116E0F426007C2F02 /* finance@2x.png */; };
+		C45BE29716E0F426007C2F02 /* hr@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE29216E0F426007C2F02 /* hr@2x.png */; };
+		C45BE29816E0F426007C2F02 /* law@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE29316E0F426007C2F02 /* law@2x.png */; };
+		C45BE29916E0F426007C2F02 /* management@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE29416E0F426007C2F02 /* management@2x.png */; };
+		C45BE29D16E0F8FE007C2F02 /* business_class@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE29A16E0F8FE007C2F02 /* business_class@2x.png */; };
+		C45BE29E16E0F8FE007C2F02 /* master_class@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE29B16E0F8FE007C2F02 /* master_class@2x.png */; };
+		C45BE29F16E0F8FE007C2F02 /* seminar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE29C16E0F8FE007C2F02 /* seminar@2x.png */; };
+		C45BE2A116E0FB22007C2F02 /* course@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2A016E0FB22007C2F02 /* course@2x.png */; };
+		C45BE2A316E0FC45007C2F02 /* conference@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2A216E0FC45007C2F02 /* conference@2x.png */; };
+		C45BE2A516E0FC4D007C2F02 /* nbu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2A416E0FC4D007C2F02 /* nbu@2x.png */; };
+		C45BE2A716E0FC54007C2F02 /* lecturer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2A616E0FC54007C2F02 /* lecturer@2x.png */; };
+		C45BE2A916E0FD34007C2F02 /* calendar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2A816E0FD34007C2F02 /* calendar@2x.png */; };
+		C45BE2B616E0FFFE007C2F02 /* accounting.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2AA16E0FFFD007C2F02 /* accounting.png */; };
+		C45BE2B716E0FFFE007C2F02 /* business_class.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2AB16E0FFFD007C2F02 /* business_class.png */; };
+		C45BE2B816E0FFFE007C2F02 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2AC16E0FFFD007C2F02 /* calendar.png */; };
+		C45BE2B916E0FFFE007C2F02 /* course.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2AD16E0FFFD007C2F02 /* course.png */; };
+		C45BE2BA16E0FFFE007C2F02 /* finace.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2AE16E0FFFD007C2F02 /* finace.png */; };
+		C45BE2BB16E0FFFE007C2F02 /* hr.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2AF16E0FFFD007C2F02 /* hr.png */; };
+		C45BE2BC16E0FFFE007C2F02 /* law.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2B016E0FFFD007C2F02 /* law.png */; };
+		C45BE2BD16E0FFFE007C2F02 /* lecturer.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2B116E0FFFD007C2F02 /* lecturer.png */; };
+		C45BE2BE16E0FFFE007C2F02 /* management.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2B216E0FFFE007C2F02 /* management.png */; };
+		C45BE2BF16E0FFFE007C2F02 /* master_class.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2B316E0FFFE007C2F02 /* master_class.png */; };
+		C45BE2C016E0FFFE007C2F02 /* nbu.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2B416E0FFFE007C2F02 /* nbu.png */; };
+		C45BE2C116E0FFFE007C2F02 /* seminar.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2B516E0FFFE007C2F02 /* seminar.png */; };
 		C45C86A715F63DA300108749 /* orangeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C869F15F63DA300108749 /* orangeButton.png */; };
 		C45C86A815F63DA300108749 /* orangeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C86A015F63DA300108749 /* orangeButton@2x.png */; };
 		C45C86A915F63DA300108749 /* orangeButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C86A115F63DA300108749 /* orangeButtonHighlight.png */; };
@@ -453,6 +478,31 @@
 		C45BE28A16E0E900007C2F02 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "../Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		C45BE28C16E0E903007C2F02 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		C45BE28E16E0E904007C2F02 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "../Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
+		C45BE29016E0F425007C2F02 /* accounting@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "accounting@2x.png"; path = "Resources/accounting@2x.png"; sourceTree = "<group>"; };
+		C45BE29116E0F426007C2F02 /* finance@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "finance@2x.png"; path = "Resources/finance@2x.png"; sourceTree = "<group>"; };
+		C45BE29216E0F426007C2F02 /* hr@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hr@2x.png"; path = "Resources/hr@2x.png"; sourceTree = "<group>"; };
+		C45BE29316E0F426007C2F02 /* law@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "law@2x.png"; path = "Resources/law@2x.png"; sourceTree = "<group>"; };
+		C45BE29416E0F426007C2F02 /* management@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "management@2x.png"; path = "Resources/management@2x.png"; sourceTree = "<group>"; };
+		C45BE29A16E0F8FE007C2F02 /* business_class@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "business_class@2x.png"; path = "Resources/business_class@2x.png"; sourceTree = "<group>"; };
+		C45BE29B16E0F8FE007C2F02 /* master_class@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "master_class@2x.png"; path = "Resources/master_class@2x.png"; sourceTree = "<group>"; };
+		C45BE29C16E0F8FE007C2F02 /* seminar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "seminar@2x.png"; path = "Resources/seminar@2x.png"; sourceTree = "<group>"; };
+		C45BE2A016E0FB22007C2F02 /* course@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "course@2x.png"; path = "Resources/course@2x.png"; sourceTree = "<group>"; };
+		C45BE2A216E0FC45007C2F02 /* conference@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "conference@2x.png"; path = "Resources/conference@2x.png"; sourceTree = "<group>"; };
+		C45BE2A416E0FC4D007C2F02 /* nbu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "nbu@2x.png"; path = "Resources/nbu@2x.png"; sourceTree = "<group>"; };
+		C45BE2A616E0FC54007C2F02 /* lecturer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "lecturer@2x.png"; path = "Resources/lecturer@2x.png"; sourceTree = "<group>"; };
+		C45BE2A816E0FD34007C2F02 /* calendar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "calendar@2x.png"; path = "Resources/calendar@2x.png"; sourceTree = "<group>"; };
+		C45BE2AA16E0FFFD007C2F02 /* accounting.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = accounting.png; path = Resources/accounting.png; sourceTree = "<group>"; };
+		C45BE2AB16E0FFFD007C2F02 /* business_class.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = business_class.png; path = Resources/business_class.png; sourceTree = "<group>"; };
+		C45BE2AC16E0FFFD007C2F02 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar.png; path = Resources/calendar.png; sourceTree = "<group>"; };
+		C45BE2AD16E0FFFD007C2F02 /* course.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = course.png; path = Resources/course.png; sourceTree = "<group>"; };
+		C45BE2AE16E0FFFD007C2F02 /* finace.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = finace.png; path = Resources/finace.png; sourceTree = "<group>"; };
+		C45BE2AF16E0FFFD007C2F02 /* hr.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = hr.png; path = Resources/hr.png; sourceTree = "<group>"; };
+		C45BE2B016E0FFFD007C2F02 /* law.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = law.png; path = Resources/law.png; sourceTree = "<group>"; };
+		C45BE2B116E0FFFD007C2F02 /* lecturer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = lecturer.png; path = Resources/lecturer.png; sourceTree = "<group>"; };
+		C45BE2B216E0FFFE007C2F02 /* management.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = management.png; path = Resources/management.png; sourceTree = "<group>"; };
+		C45BE2B316E0FFFE007C2F02 /* master_class.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = master_class.png; path = Resources/master_class.png; sourceTree = "<group>"; };
+		C45BE2B416E0FFFE007C2F02 /* nbu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nbu.png; path = Resources/nbu.png; sourceTree = "<group>"; };
+		C45BE2B516E0FFFE007C2F02 /* seminar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seminar.png; path = Resources/seminar.png; sourceTree = "<group>"; };
 		C45C869F15F63DA300108749 /* orangeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orangeButton.png; path = Resources/orangeButton.png; sourceTree = "<group>"; };
 		C45C86A015F63DA300108749 /* orangeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "orangeButton@2x.png"; path = "Resources/orangeButton@2x.png"; sourceTree = "<group>"; };
 		C45C86A115F63DA300108749 /* orangeButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orangeButtonHighlight.png; path = Resources/orangeButtonHighlight.png; sourceTree = "<group>"; };
@@ -703,6 +753,31 @@
 		C456427815D25B53001C4024 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				C45BE2AA16E0FFFD007C2F02 /* accounting.png */,
+				C45BE2AB16E0FFFD007C2F02 /* business_class.png */,
+				C45BE2AC16E0FFFD007C2F02 /* calendar.png */,
+				C45BE2AD16E0FFFD007C2F02 /* course.png */,
+				C45BE2AE16E0FFFD007C2F02 /* finace.png */,
+				C45BE2AF16E0FFFD007C2F02 /* hr.png */,
+				C45BE2B016E0FFFD007C2F02 /* law.png */,
+				C45BE2B116E0FFFD007C2F02 /* lecturer.png */,
+				C45BE2B216E0FFFE007C2F02 /* management.png */,
+				C45BE2B316E0FFFE007C2F02 /* master_class.png */,
+				C45BE2B416E0FFFE007C2F02 /* nbu.png */,
+				C45BE2B516E0FFFE007C2F02 /* seminar.png */,
+				C45BE2A816E0FD34007C2F02 /* calendar@2x.png */,
+				C45BE2A216E0FC45007C2F02 /* conference@2x.png */,
+				C45BE2A616E0FC54007C2F02 /* lecturer@2x.png */,
+				C45BE2A416E0FC4D007C2F02 /* nbu@2x.png */,
+				C45BE29A16E0F8FE007C2F02 /* business_class@2x.png */,
+				C45BE2A016E0FB22007C2F02 /* course@2x.png */,
+				C45BE29B16E0F8FE007C2F02 /* master_class@2x.png */,
+				C45BE29C16E0F8FE007C2F02 /* seminar@2x.png */,
+				C45BE29016E0F425007C2F02 /* accounting@2x.png */,
+				C45BE29116E0F426007C2F02 /* finance@2x.png */,
+				C45BE29216E0F426007C2F02 /* hr@2x.png */,
+				C45BE29316E0F426007C2F02 /* law@2x.png */,
+				C45BE29416E0F426007C2F02 /* management@2x.png */,
 				C493E591162C2967002A7E57 /* bookmarks-iPhone.png */,
 				C493E592162C2967002A7E57 /* bookmarks-iPhone@2x.png */,
 				C4A37C88162742EF00DBE6E8 /* catalog1-iPhone.png */,
@@ -1402,6 +1477,31 @@
 				C45BE28B16E0E900007C2F02 /* Default-Portrait@2x~ipad.png in Resources */,
 				C45BE28D16E0E903007C2F02 /* Default-Landscape~ipad.png in Resources */,
 				C45BE28F16E0E904007C2F02 /* Default-Landscape@2x~ipad.png in Resources */,
+				C45BE29516E0F426007C2F02 /* accounting@2x.png in Resources */,
+				C45BE29616E0F426007C2F02 /* finance@2x.png in Resources */,
+				C45BE29716E0F426007C2F02 /* hr@2x.png in Resources */,
+				C45BE29816E0F426007C2F02 /* law@2x.png in Resources */,
+				C45BE29916E0F426007C2F02 /* management@2x.png in Resources */,
+				C45BE29D16E0F8FE007C2F02 /* business_class@2x.png in Resources */,
+				C45BE29E16E0F8FE007C2F02 /* master_class@2x.png in Resources */,
+				C45BE29F16E0F8FE007C2F02 /* seminar@2x.png in Resources */,
+				C45BE2A116E0FB22007C2F02 /* course@2x.png in Resources */,
+				C45BE2A316E0FC45007C2F02 /* conference@2x.png in Resources */,
+				C45BE2A516E0FC4D007C2F02 /* nbu@2x.png in Resources */,
+				C45BE2A716E0FC54007C2F02 /* lecturer@2x.png in Resources */,
+				C45BE2A916E0FD34007C2F02 /* calendar@2x.png in Resources */,
+				C45BE2B616E0FFFE007C2F02 /* accounting.png in Resources */,
+				C45BE2B716E0FFFE007C2F02 /* business_class.png in Resources */,
+				C45BE2B816E0FFFE007C2F02 /* calendar.png in Resources */,
+				C45BE2B916E0FFFE007C2F02 /* course.png in Resources */,
+				C45BE2BA16E0FFFE007C2F02 /* finace.png in Resources */,
+				C45BE2BB16E0FFFE007C2F02 /* hr.png in Resources */,
+				C45BE2BC16E0FFFE007C2F02 /* law.png in Resources */,
+				C45BE2BD16E0FFFE007C2F02 /* lecturer.png in Resources */,
+				C45BE2BE16E0FFFE007C2F02 /* management.png in Resources */,
+				C45BE2BF16E0FFFE007C2F02 /* master_class.png in Resources */,
+				C45BE2C016E0FFFE007C2F02 /* nbu.png in Resources */,
+				C45BE2C116E0FFFE007C2F02 /* seminar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

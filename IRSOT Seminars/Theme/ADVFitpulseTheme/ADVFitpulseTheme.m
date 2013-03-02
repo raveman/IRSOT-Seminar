@@ -61,18 +61,19 @@
 //    return nil;
 //    return [UIColor colorWithRed:47/255.0 green:158/255.0 blue:227/255.0 alpha:1.0];
     return [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
+//    return [UIColor colorWithRed:18/255.0 green:122/255.0 blue:187/255.0 alpha:1.0];
 }
 
 - (UIColor *)accentTintColor
 {
-    return nil;
-//    return [UIColor colorWithRed:47/255.0 green:158/255.0 blue:227/255.0 alpha:1.0];
+    return [UIColor colorWithRed:18/255.0 green:122/255.0 blue:187/255.0 alpha:1.0];
 }
 
 - (UIColor *)selectedTabbarItemTintColor
 {
-    //    return [UIColor colorWithRed:0.50f green:0.84f blue:0.06f alpha:1.00f];
-    return [self baseTintColor];
+//    return [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
+    return [UIColor colorWithRed:18/255.0 green:122/255.0 blue:187/255.0 alpha:1.0];
+
 }
 
 - (UIColor *)switchThumbColor
@@ -82,13 +83,19 @@
 
 - (UIColor *)switchOnColor
 {
-    return [UIColor colorWithRed:0.16f green:0.65f blue:0.51f alpha:1.00f];
+    return [UIColor colorWithRed:18/255.0 green:122/255.0 blue:187/255.0 alpha:1.0];
 }
 
 - (UIColor *)switchTintColor
 {
 //    return [UIColor colorWithRed:0.86f green:0.86f blue:0.86f alpha:1.00f];;
-     return [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
+//     return [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
+    return [self baseTintColor];
+}
+
+- (UIColor *)segmentedTintColor
+{
+    return [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
 }
 
 - (CGSize)shadowOffset
@@ -302,12 +309,14 @@
 
 - (UIImage *)switchOnImage
 {
-    return [UIImage imageNamed:@"switchOnBackground"];
+//    return [UIImage imageNamed:@"switchOnBackground"];
+    return nil;
 }
 
 - (UIImage *)switchOffImage
 {
-    return [UIImage imageNamed:@"switchOffBackground"];
+//    return [UIImage imageNamed:@"switchOffBackground"];
+    return nil;
 }
 
 

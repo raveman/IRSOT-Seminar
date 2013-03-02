@@ -221,9 +221,12 @@
     return  title;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
-    return [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
-}
+//- (NSInteger)tableView:(UITableView *)tableView sectionForSectionIndexTitle:(NSString *)title atIndex:(NSInteger)index {
+//    
+//    NSInteger section = [self.fetchedResultsController sectionForSectionIndexTitle:title atIndex:index];
+//    
+//    return section;
+//}
 
 - (NSArray *)sectionIndexTitlesForTableView:(UITableView *)tableView
 {
@@ -371,9 +374,9 @@
         fetchRequest.predicate = [NSPredicate predicateWithFormat:@"date_start > %@", [NSDate date]];
     }
     
-//    [fetchRequest setFetchBatchSize:20];
+    [fetchRequest setFetchBatchSize:20];
     NSMutableArray *sortDescriptors = [NSMutableArray array];
-    
+
     if (!self.section && !self.type) {
     } else if (self.sortByDate) {
         [sortDescriptors addObject:[[NSSortDescriptor alloc] initWithKey:@"date_start" ascending:YES]];
@@ -385,7 +388,7 @@
     if (self.section) {
         sectionNameKeyPath = nil;
     } else if (self.type) {
-        sectionNameKeyPath = @"section";
+        sectionNameKeyPath = @"section.name";
         NSSortDescriptor *sectionSortDescriptor = [[NSSortDescriptor alloc] initWithKey:sectionNameKeyPath ascending:YES];
         [sortDescriptors insertObject:sectionSortDescriptor atIndex:0];
     } else {

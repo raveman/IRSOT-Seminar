@@ -206,6 +206,7 @@
         // we shoud write error
         self.seminarName.text = @"Такого семинара нет в каталоге!";
         self.seminarName.textColor = [UIColor redColor];
+        [Helper resizeTextView:self.seminarName withSize:self.view.frame.size andMargin:-1];
 
         self.seminarDate.hidden = YES;
         self.sectionLabel.hidden = YES;

@@ -9,7 +9,7 @@
 #import "ISAlertTimesTableViewController.h"
 #import "ISAlertTimes.h"
 
-@interface ISAlertTimesTableViewController ()
+@interface ISAlertTimesTableViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
@@ -27,6 +27,14 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.tableView.dataSource = self;
+    self.tableView.delegate = self;
+    self.navigationItem.title = NSLocalizedString(@"Event Alert", @"Alert page title");
+}
+
+- (void)viewDidUnload {
+    [self setTableView:nil];
+    [super viewDidUnload];
 }
 
 #pragma mark - Table view data source
@@ -44,7 +52,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Alert Time Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
@@ -83,8 +91,4 @@
     [self.delegate alertTimesViewContoller:self didSelectedTime:self.timeRow];
 }
 
-- (void)viewDidUnload {
-    [self setTableView:nil];
-    [super viewDidUnload];
-}
 @end

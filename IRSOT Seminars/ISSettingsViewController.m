@@ -43,6 +43,8 @@ const NSInteger settingsSections = 3;
 
 @property (strong, nonatomic) ReachabilityARC * reach;
 
+@property (nonatomic) BOOL isUpdating;
+
 - (void) loadData;
 - (void) deleteData;
 
@@ -58,12 +60,13 @@ const NSInteger settingsSections = 3;
 @synthesize emptyStore = _emptyStore;
 @synthesize changedTime = _changedTime;
 @synthesize reach = _reach;
+@synthesize isUpdating = _isUpdating;
+
 
 #pragma mark - Properties initialization
 
 - (NSString *)errorText
 {
-    
     if (!_errorText) {
         _errorText = NSLocalizedString(@"No internet access", @"No network access");
     }
@@ -135,6 +138,7 @@ const NSInteger settingsSections = 3;
     };
  
     [self checkCalendarAccess];
+    self.isUpdating = NO;
 }
 
 - (void)viewDidUnload
@@ -221,100 +225,105 @@ const NSInteger settingsSections = 3;
 
 - (void) loadData
 {
+    if (!self.isUpdating) {
+        self.isUpdating = YES;
+        
+        [self deleteData];
+        
+        [SVProgressHUD showWithStatus:NSLocalizedString(@"Updating catalog", @"Loading catalog data from the web")];
 
-    [self deleteData];
-    
-    [SVProgressHUD showWithStatus:NSLocalizedString(@"Updating catalog", @"Loading catalog data from the web")];
-
-    dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
-    dispatch_async(fetchQ, ^{
-    
-        // downloading section and types
-    
-        [self.managedObjectContext performBlockAndWait:^{
-            
-            // disabling "close" button
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.closeButton.enabled = NO;
-            });
-            
-            NSDictionary  *sectionsAndTypes = [SeminarFetcher sectionsAndTypes];
-    
-            NSArray *sections = [sectionsAndTypes valueForKey:@"sections"];
-            NSArray *types = [sectionsAndTypes valueForKey:@"types"];
-            NSArray *allEvents = [sectionsAndTypes valueForKey:@"all"];
-            
-            for (NSDictionary *section in sections) {
-                [Sections sectionWithTerm:section inManagedObjectContext:self.managedObjectContext];
-//                NSLog(@"Section: %@", [section objectForKey:@"name"]);
-            }
-            
-            for (NSDictionary *type in types) {
-                [Type typeWithTerm:type inManagedObjectContext:self.managedObjectContext];
-//                NSLog(@"Type: %@", [type objectForKey:@"name"]);
-            }
-            
-            for (NSDictionary *event in allEvents) {
-                [AllEvents eventWithTerm:event inManagedObjectContext:self.managedObjectContext];
-            }
-
-            [SVProgressHUD showWithStatus:NSLocalizedString(@"Updating lectors", @"Updating lectors message")];
-            
-            NSArray *lectors = [SeminarFetcher lectors];
-            for (NSDictionary *lectorInfo in lectors) {
-                [Lector lectorWithDictionary:lectorInfo inManagedObjectContext:self.managedObjectContext];
-            }
-
-            [SVProgressHUD showWithStatus:NSLocalizedString(@"Updating catalog", @"Updating catalog message")];
-    
-            NSArray *seminars = [SeminarFetcher seminars];
-    
-            for (NSDictionary *seminarInfo in seminars) {
-                [Seminar seminarWithDictionary:seminarInfo lectors:lectors inManagedObjectContext:self.managedObjectContext];
-            }
-
-            NSError *error = nil;
-            if (![self.managedObjectContext save:&error]) {
-                NSLog(@"Could'not save: %@", [error localizedDescription]);
+        dispatch_queue_t fetchQ = dispatch_queue_create("Seminar fetcher", NULL);
+        dispatch_async(fetchQ, ^{
+        
+            // downloading section and types
+        
+            [self.managedObjectContext performBlockAndWait:^{
                 
-                [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Load error", @"Load error message"),[error localizedDescription]]];
+                // disabling "close" button
+                
                 dispatch_async(dispatch_get_main_queue(), ^{
-                    self.closeButton.enabled = YES;
+                    self.closeButton.enabled = NO;
                 });
                 
-            } else {
-                [self.delegate settingsViewController:self didUpdatedStore:YES];
-//                [self.delegate performSelector:@selector(reloadData)];
+                NSDictionary  *sectionsAndTypes = [SeminarFetcher sectionsAndTypes];
+        
+                NSArray *sections = [sectionsAndTypes valueForKey:@"sections"];
+                NSArray *types = [sectionsAndTypes valueForKey:@"types"];
+                NSArray *allEvents = [sectionsAndTypes valueForKey:@"all"];
                 
-                NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
-                //                NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatFromTemplate:@"HH:MM dd.mm.yyyy" options:nil locale:nil];
-                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-                [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-                [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+                for (NSDictionary *section in sections) {
+                    [Sections sectionWithTerm:section inManagedObjectContext:self.managedObjectContext];
+    //                NSLog(@"Section: %@", [section objectForKey:@"name"]);
+                }
                 
-                [dateFormatter setLocale:locale];
-                NSDate *dateChanged = [NSDate date];
-                NSString *dateUpdated = [dateFormatter stringFromDate:dateChanged];
-                self.changedTime = [dateChanged timeIntervalSince1970];
+                for (NSDictionary *type in types) {
+                    [Type typeWithTerm:type inManagedObjectContext:self.managedObjectContext];
+    //                NSLog(@"Type: %@", [type objectForKey:@"name"]);
+                }
+                
+                for (NSDictionary *event in allEvents) {
+                    [AllEvents eventWithTerm:event inManagedObjectContext:self.managedObjectContext];
+                }
 
-                NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-                [defaults setObject:dateUpdated forKey:UPDATE_DATE_KEY];
+                [SVProgressHUD showWithStatus:NSLocalizedString(@"Updating lectors", @"Updating lectors message")];
                 
-                [defaults setInteger:self.changedTime forKey:CATALOG_CHANGED_KEY];
-                [defaults synchronize];
+                NSArray *lectors = [SeminarFetcher lectors];
+                for (NSDictionary *lectorInfo in lectors) {
+                    [Lector lectorWithDictionary:lectorInfo inManagedObjectContext:self.managedObjectContext];
+                }
 
-                dispatch_async(dispatch_get_main_queue(), ^{
-                    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Catalog successfully updated!", @"Catalog loaded successfully")];
+                [SVProgressHUD showWithStatus:NSLocalizedString(@"Updating catalog", @"Updating catalog message")];
+        
+                NSArray *seminars = [SeminarFetcher seminars];
+        
+                for (NSDictionary *seminarInfo in seminars) {
+                    [Seminar seminarWithDictionary:seminarInfo lectors:lectors inManagedObjectContext:self.managedObjectContext];
+                }
+
+                NSError *error = nil;
+                if (![self.managedObjectContext save:&error]) {
+                    NSLog(@"Could'not save: %@", [error localizedDescription]);
                     
-                    self.updateDateLabel = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Last update", @"Last catalog update") ,dateUpdated];
-                    self.closeButton.enabled = YES;
-                    [self.tableView reloadData];
-                });
-            }
-        }]; // end managedObjectContext performBlock
-    }); // end dispatch_async(fetchQ) block
-    dispatch_release(fetchQ);
+                    [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@ %@", NSLocalizedString(@"Load error", @"Load error message"),[error localizedDescription]]];
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        self.closeButton.enabled = YES;
+                        self.isUpdating = NO;
+                    });
+                    
+                } else {
+                    [self.delegate settingsViewController:self didUpdatedStore:YES];
+    //                [self.delegate performSelector:@selector(reloadData)];
+                    
+                    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
+                    //                NSDateFormatter *dateFormatter = [NSDateFormatter dateFormatFromTemplate:@"HH:MM dd.mm.yyyy" options:nil locale:nil];
+                    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
+                    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
+                    
+                    [dateFormatter setLocale:locale];
+                    NSDate *dateChanged = [NSDate date];
+                    NSString *dateUpdated = [dateFormatter stringFromDate:dateChanged];
+                    self.changedTime = [dateChanged timeIntervalSince1970];
+
+                    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                    [defaults setObject:dateUpdated forKey:UPDATE_DATE_KEY];
+                    
+                    [defaults setInteger:self.changedTime forKey:CATALOG_CHANGED_KEY];
+                    [defaults synchronize];
+
+                    dispatch_async(dispatch_get_main_queue(), ^{
+                        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Catalog successfully updated!", @"Catalog loaded successfully")];
+                        
+                        self.updateDateLabel = [NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Last update", @"Last catalog update") ,dateUpdated];
+                        self.closeButton.enabled = YES;
+                        [self.tableView reloadData];
+                        self.isUpdating = NO;
+                    });
+                }
+            }]; // end managedObjectContext performBlock
+        }); // end dispatch_async(fetchQ) block
+        dispatch_release(fetchQ);
+    }
 }
 
 // удаляем все данные из приложения

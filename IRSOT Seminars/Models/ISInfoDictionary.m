@@ -16,7 +16,7 @@
     
     NSArray *urls = [NSArray array];
     NSArray *titles = [NSArray array];
-        
+
     urls = [NSArray arrayWithObjects: @"http://www.ruseminar.ru/terms", @"http://www.ruseminar.ru/terms-kadry", @"http://www.ruseminar.ru/dogovor", nil];
     titles = [NSArray arrayWithObjects:NSLocalizedString(@"Разделы «Бухгалтерский учет и налогообложение», «Финансы», «Право», «Управление»", @"All sections"),
               NSLocalizedString(@"Раздел «Кадры»", @"Раздел «Кадры»"), NSLocalizedString(@"Образец договора", @"Contract template"), nil];
@@ -33,6 +33,5 @@
     infoArray = [NSArray arrayWithObjects:distance, NSLocalizedString(@"Дистанционное участие", @"Distance attendance"), terms, NSLocalizedString(@"Условия участия", @"Participation terms"), about, NSLocalizedString(@"О компании", @"About company"), nil];
     return infoArray;
 }
-
 
 @end

@@ -201,6 +201,7 @@
     id <ADVTheme> theme = [self sharedTheme];
     UIImage *backgroundImage = [theme tableBackground];
     UIColor *backgroundColor = [theme backgroundColor];
+    tableView.opaque = YES;
     if (backgroundImage) {
         UIImageView *background = [[UIImageView alloc] initWithImage:backgroundImage];
         [tableView setBackgroundView:background];

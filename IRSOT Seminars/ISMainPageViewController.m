@@ -59,7 +59,6 @@ const NSInteger allTypesSection = 0;
     
     id <ADVTheme> theme = [ADVThemeManager sharedTheme];
     [self.view setBackgroundColor:[theme backgroundColor]];
-    
     [ADVThemeManager customizeTableView:self.seminarCategoriesTableView];
     
     self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];

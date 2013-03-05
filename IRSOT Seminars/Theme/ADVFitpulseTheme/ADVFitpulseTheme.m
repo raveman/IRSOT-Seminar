@@ -8,6 +8,7 @@
 
 #import <CoreImage/CoreImage.h>
 #import "ADVFitpulseTheme.h"
+#import "Helper.h"
 
 @implementation ADVFitpulseTheme
 
@@ -117,7 +118,12 @@
 {
     NSString *name = @"navigationBackground";
     if (metrics == UIBarMetricsLandscapePhone) {
-        name = [name stringByAppendingString:@"Landscape"];
+        NSString *platform = [Helper platformString];
+        if ([platform hasPrefix:@"iPhone 5"] || [platform isEqualToString:@"iPod Touch (5 Gen)"]) {
+            name = [name stringByAppendingString:@"5Landscape"];
+        } else {
+            name = [name stringByAppendingString:@"Landscape"];
+        }
     }
     UIImage *image = [UIImage imageNamed:name];
     image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 8.0, 0.0, 8.0)];

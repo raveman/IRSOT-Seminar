@@ -7,3 +7,6 @@
 [submodule "Submodules/ShareKit"]
 	path = Submodules/ShareKit
 	url = git://github.com/ShareKit/ShareKit.git
+[submodule "Submodules/PSUpdateApp"]
+	path = Submodules/PSUpdateApp
+	url = https://github.com/danielebogo/PSUpdateApp.git

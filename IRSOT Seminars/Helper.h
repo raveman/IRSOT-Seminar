@@ -25,4 +25,5 @@ extern NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification;
 + (UITableViewCellSelectionStyle) cellSelectionStyle;
 + (UIFont *)labelFont;
 
++ (NSString *)platformString;
 @end

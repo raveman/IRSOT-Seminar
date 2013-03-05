@@ -125,6 +125,10 @@
             name = [name stringByAppendingString:@"Landscape"];
         }
     }
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        name = @"navigationBackground~iPad";
+    }
+    
     UIImage *image = [UIImage imageNamed:name];
     image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 8.0, 0.0, 8.0)];
     return image;

@@ -253,6 +253,7 @@
         id <ADVTheme> theme = [ADVThemeManager sharedTheme];
         self.programLabel.textColor = [theme sectionLabelColor];
         self.programLabel.font = [theme sectionLabelFont];
+        [ADVThemeManager customizeTableView:self.lectorTableView];
         
         [self.programWebView loadHTMLString:self.html baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];
         self.programWebView.userInteractionEnabled = NO;

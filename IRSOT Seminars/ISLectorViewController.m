@@ -134,10 +134,7 @@
 	// view additional setups
 
     id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    
-//    [self.view setBackgroundColor:[theme backgroundColor]];
-    
-//    [ADVThemeManager customizeTableView:self.lectorSeminars];
+    [ADVThemeManager customizeTableView:self.lectorSeminars];
     
     self.lectorSeminars.dataSource = self;
     self.lectorSeminars.delegate = self;

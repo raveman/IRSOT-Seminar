@@ -34,6 +34,8 @@
     self.title = NSLocalizedString(@"Lectors", @"Lector List View Title");
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -66,19 +68,7 @@
     }
 }
 
-#pragma mark - Notification handlers
-- (void) seminarDataChanged:(NSNotification *)notification
-{
-    //    notification.name;
-    //    notification.object;
-    //    notification.userInfo;
-    
-    if ([notification.userInfo objectForKey:NSRemovedPersistentStoresKey]) {
-        self.fetchedResultsController = nil;
-    }
-    
-    [self.tableView reloadData];
-}
+
 
 #pragma mark - Table view data source
 
@@ -256,5 +246,21 @@
     cell.textLabel.text = [[object valueForKey:@"name"] description];
 }
 
+#pragma mark - Notification handlers
+
+- (void) seminarDataChanged:(NSNotification *)notification
+{
+    //    notification.name;
+    //    notification.object;
+    //    notification.userInfo;
+    
+    if ([notification.userInfo objectForKey:NSRemovedPersistentStoresKey]) {
+        self.fetchedResultsController = nil;
+    }
+    
+    [self.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+    //    [self.view performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:NO];
+    //    [self.view setNeedsDisplay];
+}
 
 @end

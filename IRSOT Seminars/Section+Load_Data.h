@@ -10,4 +10,7 @@
 
 @interface Section (Load_Data)
 
++ (Section *)sectionWithTerm:(NSDictionary *)term inManagedObjectContext:(NSManagedObjectContext *)context;
++ (Section *)sectionWithId:(NSInteger)sectionId inManagedObjectContext:(NSManagedObjectContext *)context;
+
 @end

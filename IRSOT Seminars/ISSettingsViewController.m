@@ -336,6 +336,12 @@ const NSInteger settingsSections = 3;
     
     NSPersistentStoreCoordinator *persistentCoordinator = [self.managedObjectContext persistentStoreCoordinator];
     // retrieve the store URL
+    
+    NSArray *stores = [persistentCoordinator persistentStores];
+    if (!stores) {
+        return;
+    }
+    
     NSURL *storeURL = [persistentCoordinator URLForPersistentStore:[[persistentCoordinator persistentStores] lastObject]];
     
     // lock the current context

@@ -8,7 +8,7 @@
 
 #import "SeminarFetcher.h"
 #import "SVProgressHUD/SVProgressHUD.h"
-#import "Sections+Load_Data.h"
+#import "Section+Load_Data.h"
 
 @implementation SeminarFetcher
 

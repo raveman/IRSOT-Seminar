@@ -21,7 +21,6 @@
 		C408140D16D232F5000857F4 /* button-gray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C408140516D232F5000857F4 /* button-gray@2x.png */; };
 		C408141E16D2424D000857F4 /* navigationBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = C408141C16D2424D000857F4 /* navigationBackground.png */; };
 		C408141F16D2424D000857F4 /* navigationBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C408141D16D2424D000857F4 /* navigationBackground@2x.png */; };
-		C40D8F1A15CBDBBB0048ABF4 /* Sections+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1915CBDBBB0048ABF4 /* Sections+Load_Data.m */; };
 		C40D8F1D15CBDFB30048ABF4 /* Type+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C40D8F1C15CBDFB30048ABF4 /* Type+Load_Data.m */; };
 		C40F52EB15DD725E0022A9B5 /* back-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C40F52E715DD725E0022A9B5 /* back-iPhone.png */; };
 		C40F52EC15DD725E0022A9B5 /* back-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C40F52E815DD725E0022A9B5 /* back-iPhone@2x.png */; };
@@ -92,6 +91,10 @@
 		C45C86B515F63DAE00108749 /* greenButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C86B115F63DAE00108749 /* greenButtonHighlight.png */; };
 		C45C86B615F63DAE00108749 /* greenButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C86B215F63DAE00108749 /* greenButtonHighlight@2x.png */; };
 		C45D3CF116CD4E0200877F94 /* ISInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C45D3CF016CD4E0200877F94 /* ISInfoDictionary.m */; };
+		C45DA61316E734F3002B295A /* AllEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = C45DA61216E734F3002B295A /* AllEvents.m */; };
+		C45DA61616E734FD002B295A /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C45DA61516E734FD002B295A /* Seminar.m */; };
+		C45DA61916E7350B002B295A /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = C45DA61816E7350B002B295A /* Section.m */; };
+		C45DA61C16E73519002B295A /* Section+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C45DA61B16E73519002B295A /* Section+Load_Data.m */; };
 		C45E6C9A16CD34820024EC39 /* ADVDefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C45E6C9316CD34820024EC39 /* ADVDefaultTheme.m */; };
 		C45E6C9B16CD34820024EC39 /* ADVFitpulseTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C45E6C9616CD34820024EC39 /* ADVFitpulseTheme.m */; };
 		C45E6C9C16CD34820024EC39 /* ADVTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C45E6C9916CD34820024EC39 /* ADVTheme.m */; };
@@ -121,8 +124,6 @@
 		C4786CA416DE023C007A9B4A /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4786CA316DE023C007A9B4A /* CoreImage.framework */; };
 		C4786CAD16DE3AEB007A9B4A /* accessoryArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C4786CAB16DE3AEB007A9B4A /* accessoryArrow.png */; };
 		C4786CAE16DE3AEB007A9B4A /* accessoryArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4786CAC16DE3AEB007A9B4A /* accessoryArrow@2x.png */; };
-		C482F77216E72BE700EF4A24 /* AllEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = C482F77116E72BE700EF4A24 /* AllEvents.m */; };
-		C482F79616E72BF000EF4A24 /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C482F79516E72BF000EF4A24 /* Seminar.m */; };
 		C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */; };
 		C483E40F15D2C393001A41FB /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40E15D2C393001A41FB /* Helper.m */; };
 		C48F96F815CC46D400F4AA51 /* Seminar+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F96F715CC46D400F4AA51 /* Seminar+Load_Data.m */; };
@@ -442,8 +443,6 @@
 		C408140516D232F5000857F4 /* button-gray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "button-gray@2x.png"; path = "Resources/button-gray@2x.png"; sourceTree = "<group>"; };
 		C408141C16D2424D000857F4 /* navigationBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navigationBackground.png; path = Resources/navigationBackground.png; sourceTree = "<group>"; };
 		C408141D16D2424D000857F4 /* navigationBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navigationBackground@2x.png"; path = "Resources/navigationBackground@2x.png"; sourceTree = "<group>"; };
-		C40D8F1815CBDBBB0048ABF4 /* Sections+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Sections+Load_Data.h"; sourceTree = "<group>"; };
-		C40D8F1915CBDBBB0048ABF4 /* Sections+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Sections+Load_Data.m"; sourceTree = "<group>"; };
 		C40D8F1B15CBDFB30048ABF4 /* Type+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Type+Load_Data.h"; sourceTree = "<group>"; };
 		C40D8F1C15CBDFB30048ABF4 /* Type+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Type+Load_Data.m"; sourceTree = "<group>"; };
 		C40F52E715DD725E0022A9B5 /* back-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back-iPhone.png"; path = "icons/back-iPhone.png"; sourceTree = "<group>"; };
@@ -520,6 +519,15 @@
 		C45C86B215F63DAE00108749 /* greenButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "greenButtonHighlight@2x.png"; path = "Resources/greenButtonHighlight@2x.png"; sourceTree = "<group>"; };
 		C45D3CEF16CD4E0200877F94 /* ISInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISInfoDictionary.h; path = Models/ISInfoDictionary.h; sourceTree = "<group>"; };
 		C45D3CF016CD4E0200877F94 /* ISInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISInfoDictionary.m; path = Models/ISInfoDictionary.m; sourceTree = "<group>"; };
+		C45DA5EF16E72CC6002B295A /* IRSOT_Seminars 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IRSOT_Seminars 7.xcdatamodel"; sourceTree = "<group>"; };
+		C45DA61116E734F3002B295A /* AllEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllEvents.h; sourceTree = "<group>"; };
+		C45DA61216E734F3002B295A /* AllEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllEvents.m; sourceTree = "<group>"; };
+		C45DA61416E734FD002B295A /* Seminar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seminar.h; sourceTree = "<group>"; };
+		C45DA61516E734FD002B295A /* Seminar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seminar.m; sourceTree = "<group>"; };
+		C45DA61716E7350B002B295A /* Section.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Section.h; sourceTree = "<group>"; };
+		C45DA61816E7350B002B295A /* Section.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Section.m; sourceTree = "<group>"; };
+		C45DA61A16E73519002B295A /* Section+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Section+Load_Data.h"; sourceTree = "<group>"; };
+		C45DA61B16E73519002B295A /* Section+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Section+Load_Data.m"; sourceTree = "<group>"; };
 		C45E6C9216CD34820024EC39 /* ADVDefaultTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADVDefaultTheme.h; sourceTree = "<group>"; };
 		C45E6C9316CD34820024EC39 /* ADVDefaultTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADVDefaultTheme.m; sourceTree = "<group>"; };
 		C45E6C9516CD34820024EC39 /* ADVFitpulseTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADVFitpulseTheme.h; sourceTree = "<group>"; };
@@ -564,10 +572,6 @@
 		C4786CA316DE023C007A9B4A /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		C4786CAB16DE3AEB007A9B4A /* accessoryArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = accessoryArrow.png; path = Resources/accessoryArrow.png; sourceTree = "<group>"; };
 		C4786CAC16DE3AEB007A9B4A /* accessoryArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "accessoryArrow@2x.png"; path = "Resources/accessoryArrow@2x.png"; sourceTree = "<group>"; };
-		C482F77016E72BE700EF4A24 /* AllEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllEvents.h; sourceTree = "<group>"; };
-		C482F77116E72BE700EF4A24 /* AllEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllEvents.m; sourceTree = "<group>"; };
-		C482F79416E72BF000EF4A24 /* Seminar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seminar.h; sourceTree = "<group>"; };
-		C482F79516E72BF000EF4A24 /* Seminar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seminar.m; sourceTree = "<group>"; };
 		C483E40A15D2ADD1001A41FB /* ISLectorListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorListTableViewController.h; sourceTree = "<group>"; };
 		C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorListTableViewController.m; sourceTree = "<group>"; };
 		C483E40D15D2C393001A41FB /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
@@ -662,11 +666,15 @@
 		C40D8F1715CBD8730048ABF4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				C482F79416E72BF000EF4A24 /* Seminar.h */,
-				C482F79516E72BF000EF4A24 /* Seminar.m */,
+				C45DA61716E7350B002B295A /* Section.h */,
+				C45DA61816E7350B002B295A /* Section.m */,
+				C45DA61A16E73519002B295A /* Section+Load_Data.h */,
+				C45DA61B16E73519002B295A /* Section+Load_Data.m */,
+				C45DA61416E734FD002B295A /* Seminar.h */,
+				C45DA61516E734FD002B295A /* Seminar.m */,
+				C45DA61116E734F3002B295A /* AllEvents.h */,
+				C45DA61216E734F3002B295A /* AllEvents.m */,
 				C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */,
-				C482F77016E72BE700EF4A24 /* AllEvents.h */,
-				C482F77116E72BE700EF4A24 /* AllEvents.m */,
 				C4BAFC4116DBAB5700D088E7 /* AllEvents+Load_Data.h */,
 				C4BAFC4216DBAB5700D088E7 /* AllEvents+Load_Data.m */,
 				C465875C15F9001800AA2B6B /* Lector.h */,
@@ -679,8 +687,6 @@
 				C465876015F9001800AA2B6B /* Term.m */,
 				C48F971115CC519E00F4AA51 /* Lector+Load_Data.h */,
 				C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */,
-				C40D8F1815CBDBBB0048ABF4 /* Sections+Load_Data.h */,
-				C40D8F1915CBDBBB0048ABF4 /* Sections+Load_Data.m */,
 				C40D8F1B15CBDFB30048ABF4 /* Type+Load_Data.h */,
 				C40D8F1C15CBDFB30048ABF4 /* Type+Load_Data.m */,
 				C48F96F615CC46D400F4AA51 /* Seminar+Load_Data.h */,
@@ -1530,7 +1536,6 @@
 				C4DE788715C95C96007FBEC4 /* ISSettingsViewController.m in Sources */,
 				C4DE788A15C95D26007FBEC4 /* ISSeminarListTableViewController.m in Sources */,
 				C4DE789215C96EF3007FBEC4 /* SeminarFetcher.m in Sources */,
-				C40D8F1A15CBDBBB0048ABF4 /* Sections+Load_Data.m in Sources */,
 				C40D8F1D15CBDFB30048ABF4 /* Type+Load_Data.m in Sources */,
 				C48F96F815CC46D400F4AA51 /* Seminar+Load_Data.m in Sources */,
 				C48F971315CC519E00F4AA51 /* Lector+Load_Data.m in Sources */,
@@ -1553,8 +1558,10 @@
 				C46DED8216D26813008DAC47 /* ISAlertTimesTableViewController.m in Sources */,
 				C46DED8516D28828008DAC47 /* ISAlertTimes.m in Sources */,
 				C4BAFC4316DBAB5700D088E7 /* AllEvents+Load_Data.m in Sources */,
-				C482F77216E72BE700EF4A24 /* AllEvents.m in Sources */,
-				C482F79616E72BF000EF4A24 /* Seminar.m in Sources */,
+				C45DA61316E734F3002B295A /* AllEvents.m in Sources */,
+				C45DA61616E734FD002B295A /* Seminar.m in Sources */,
+				C45DA61916E7350B002B295A /* Section.m in Sources */,
+				C45DA61C16E73519002B295A /* Section+Load_Data.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1741,6 +1748,7 @@
 		C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				C45DA5EF16E72CC6002B295A /* IRSOT_Seminars 7.xcdatamodel */,
 				C4AE0A6D16DBA2DE00EF3C5C /* IRSOT_Seminars 6.xcdatamodel */,
 				C465875B15F8FFDD00AA2B6B /* IRSOT_Seminars 5.xcdatamodel */,
 				C4F9EEA315ECF8E3008BA56D /* IRSOT_Seminars 4.xcdatamodel */,
@@ -1748,7 +1756,7 @@
 				C4C6DD1715E0274E003292C8 /* IRSOT_Seminars 2.xcdatamodel */,
 				C462BDC915C95A8700170E3C /* IRSOT_Seminars.xcdatamodel */,
 			);
-			currentVersion = C4AE0A6D16DBA2DE00EF3C5C /* IRSOT_Seminars 6.xcdatamodel */;
+			currentVersion = C45DA5EF16E72CC6002B295A /* IRSOT_Seminars 7.xcdatamodel */;
 			path = IRSOT_Seminars.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

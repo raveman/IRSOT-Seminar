@@ -22,7 +22,7 @@
 #import "ISAlertTimes.h"
 
 #import "Type+Load_Data.h"
-#import "Sections+Load_Data.h"
+#import "Section+Load_Data.h"
 #import "Seminar+Load_Data.h"
 #import "AllEvents+Load_Data.h"
 #import "Lector+Load_Data.h"
@@ -252,7 +252,7 @@ const NSInteger settingsSections = 3;
                 NSArray *allEvents = [sectionsAndTypes valueForKey:@"all"];
                 
                 for (NSDictionary *section in sections) {
-                    [Sections sectionWithTerm:section inManagedObjectContext:self.managedObjectContext];
+                    [Section sectionWithTerm:section inManagedObjectContext:self.managedObjectContext];
     //                NSLog(@"Section: %@", [section objectForKey:@"name"]);
                 }
                 

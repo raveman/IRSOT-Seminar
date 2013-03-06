@@ -10,7 +10,7 @@
 #import "ISSeminarViewController.h"
 #import "Helper.h"
 #import "ADVTheme.h"
-#import "Sections+Load_Data.h"
+#import "Section+Load_Data.h"
 
 @interface ISBookmarksTableViewController ()
 

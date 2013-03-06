@@ -21,7 +21,7 @@
 #import "Type.h"
 #import "Lector.h"
 #import "Seminar+Load_Data.h"
-#import "Sections+Load_Data.h"
+#import "Section+Load_Data.h"
 #import "Type+Load_Data.h"
 #import "ISAlertTimes.h"
 

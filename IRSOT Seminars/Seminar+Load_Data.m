@@ -8,7 +8,7 @@
 #import "SeminarFetcher.h"
 
 #import "Seminar+Load_Data.h"
-#import "Sections+Load_Data.h"
+#import "Section+Load_Data.h"
 #import "Type+Load_Data.h"
 #import "Lector+Load_Data.h"
 #import "AllEvents.h"
@@ -72,7 +72,7 @@
         }
         
         NSInteger sectionId = [[[dictionary objectForKey:SEMINAR_SECTION] objectForKey:@"tid"] integerValue];
-        Sections *section = [Sections sectionWithId:sectionId inManagedObjectContext:context];
+        Section *section = [Section sectionWithId:sectionId inManagedObjectContext:context];
         seminar.section = section;
         
         NSInteger typeId = [[[dictionary objectForKey:SEMINAR_TYPE] objectForKey:@"tid"] integerValue];

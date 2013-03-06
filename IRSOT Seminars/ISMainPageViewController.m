@@ -19,7 +19,7 @@
 #import "SeminarFetcher.h"
 
 #import "Type+Load_Data.h"
-#import "Sections+Load_Data.h"
+#import "Section+Load_Data.h"
 #import "AllEvents.h"
 
 #import "Helper.h"
@@ -62,15 +62,16 @@ const NSInteger typesSection = 2;
 
 - (void) filterEpmtySections
 {
-
-    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:typesSection];
-    NSArray *items = sectionInfo.objects;
-    
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"seminars.@count > 0", @"Type"];
-    NSArray *filteredItems = [items filteredArrayUsingPredicate:predicate];
-    
-    self.emptyCount = [items count] - [filteredItems count];
-    self.filteredTypeItems = filteredItems;
+   if ([self.fetchedResultsController.sections count]) {
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:typesSection];
+        NSArray *items = sectionInfo.objects;
+        
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"seminars.@count > 0", @"Type"];
+        NSArray *filteredItems = [items filteredArrayUsingPredicate:predicate];
+        
+        self.emptyCount = [items count] - [filteredItems count];
+        self.filteredTypeItems = filteredItems;
+    }
 }
 
 #pragma mark - UIViewController lifecycle
@@ -132,13 +133,20 @@ const NSInteger typesSection = 2;
         checkUpdates = NO;
         self.noDataLabel.hidden = NO;
     } else {
+        [self.seminarCategoriesTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+
         self.noDataLabel.hidden = YES;
         // deselecting previous selected row;
-        NSIndexPath *indexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
-        if (indexPath != nil) {
-            [self.seminarCategoriesTableView deselectRowAtIndexPath:indexPath animated:YES];
-        }
+//        NSIndexPath *indexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
+//        if (indexPath != nil) {
+//            [self.seminarCategoriesTableView deselectRowAtIndexPath:indexPath animated:YES];
+//        }
     }
+}
+
+- (void) viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -380,10 +388,10 @@ const NSInteger typesSection = 2;
     return _fetchedResultsController;
 }
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.seminarCategoriesTableView beginUpdates];
-}
+//- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller
+//{
+//    [self.seminarCategoriesTableView beginUpdates];
+//}
 
 - (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
            atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type
@@ -391,11 +399,11 @@ const NSInteger typesSection = 2;
 
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            [self.seminarCategoriesTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+//            [self.seminarCategoriesTableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeDelete:
-            [self.seminarCategoriesTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+//            [self.seminarCategoriesTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
@@ -408,28 +416,28 @@ const NSInteger typesSection = 2;
     
     switch(type) {
         case NSFetchedResultsChangeInsert:
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeDelete:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
             
         case NSFetchedResultsChangeUpdate:
-            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+//            [self configureCell:[tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
             break;
             
         case NSFetchedResultsChangeMove:
-            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+//            [tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
             break;
     }
 }
 
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
-{
-    [self.seminarCategoriesTableView endUpdates];
-}
+//- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller
+//{
+//    [self.seminarCategoriesTableView endUpdates];
+//}
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
@@ -460,7 +468,7 @@ const NSInteger typesSection = 2;
 {
     if (updated) {
         self.fetchedResultsController = nil;
-        [self.seminarCategoriesTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+//        [self.seminarCategoriesTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }
 }
 
@@ -476,7 +484,7 @@ const NSInteger typesSection = 2;
         self.fetchedResultsController = nil;
     }
 
-    [self.seminarCategoriesTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+//    [self.seminarCategoriesTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
 //    [self.view performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:NO];
 //    [self.view setNeedsDisplay];
 }

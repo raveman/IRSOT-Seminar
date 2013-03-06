@@ -250,15 +250,15 @@ const NSInteger typesSection = 2;
         NSUInteger seminarsCount = 0;
         NSString *sectionName;
         
-        if ([row isKindOfClass:[Sections class]]) {
-            seminarsCount = [[(Sections *)row seminars] count];
-            sectionName = [(Sections *)row name];
+        if ([row isKindOfClass:[Section class]]) {
+            seminarsCount = [[(Section *)row seminars] count];
+            sectionName = [(Section *)row name];
         } else if ([row isKindOfClass:[Type class]]) {
-            seminarsCount = [[(Sections *)row seminars] count];
-            sectionName = [(Sections *)row name];
+            seminarsCount = [[(Type *)row seminars] count];
+            sectionName = [(Type *)row name];
         } else if ([row isKindOfClass:[AllEvents class]]) {
-            seminarsCount = [[(Sections *)row seminars] count];
-            sectionName = [(Sections *)row name];
+            seminarsCount = [[(AllEvents *)row seminars] count];
+            sectionName = [(AllEvents *)row name];
         }
         
         sectionName = [[[sectionName substringToIndex:1] uppercaseString] stringByAppendingString:[sectionName substringFromIndex:1]];

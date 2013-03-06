@@ -2,7 +2,7 @@
 //  AllEvents.h
 //  IRSOT Seminars
 //
-//  Created by Bob Ershov on 25.02.13.
+//  Created by Bob Ershov on 06.03.13.
 //  Copyright (c) 2013 IRSOT. All rights reserved.
 //
 

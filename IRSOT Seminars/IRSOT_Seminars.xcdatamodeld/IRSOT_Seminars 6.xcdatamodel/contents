@@ -28,7 +28,7 @@
         <attribute name="program" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ruseminar_url" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="ruseminarID" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <relationship name="allevents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AllEvents" inverseName="seminars" inverseEntity="AllEvents" syncable="YES"/>
+        <relationship name="allevents" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="AllEvents" inverseName="seminars" inverseEntity="AllEvents" syncable="YES"/>
         <relationship name="lectors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Lector" inverseName="seminars" inverseEntity="Lector" syncable="YES"/>
         <relationship name="section" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Section" inverseName="seminars" inverseEntity="Section" syncable="YES"/>
         <relationship name="type" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Type" inverseName="seminars" inverseEntity="Type" syncable="YES"/>
@@ -43,11 +43,11 @@
         <relationship name="seminars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Seminar" inverseName="type" inverseEntity="Seminar" syncable="YES"/>
     </entity>
     <elements>
+        <element name="AllEvents" positionX="376" positionY="-306" width="128" height="58"/>
         <element name="Lector" positionX="-108" positionY="-63" width="128" height="180"/>
         <element name="Section" positionX="-119" positionY="-207" width="128" height="58"/>
         <element name="Seminar" positionX="135" positionY="-315" width="128" height="253"/>
         <element name="Term" positionX="-74" positionY="-522" width="128" height="103"/>
-        <element name="Type" positionX="-162" positionY="-324" width="128" height="58"/>
-        <element name="AllEvents" positionX="376" positionY="-297" width="128" height="58"/>
+        <element name="Type" positionX="-261" positionY="-324" width="128" height="58"/>
     </elements>
 </model>

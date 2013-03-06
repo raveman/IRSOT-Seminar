@@ -92,9 +92,9 @@
 		C45C86B615F63DAE00108749 /* greenButtonHighlight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C86B215F63DAE00108749 /* greenButtonHighlight@2x.png */; };
 		C45D3CF116CD4E0200877F94 /* ISInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C45D3CF016CD4E0200877F94 /* ISInfoDictionary.m */; };
 		C45DA61316E734F3002B295A /* AllEvents.m in Sources */ = {isa = PBXBuildFile; fileRef = C45DA61216E734F3002B295A /* AllEvents.m */; };
-		C45DA61616E734FD002B295A /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C45DA61516E734FD002B295A /* Seminar.m */; };
 		C45DA61916E7350B002B295A /* Section.m in Sources */ = {isa = PBXBuildFile; fileRef = C45DA61816E7350B002B295A /* Section.m */; };
 		C45DA61C16E73519002B295A /* Section+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C45DA61B16E73519002B295A /* Section+Load_Data.m */; };
+		C45DA61F16E736A7002B295A /* Seminar.m in Sources */ = {isa = PBXBuildFile; fileRef = C45DA61E16E736A7002B295A /* Seminar.m */; };
 		C45E6C9A16CD34820024EC39 /* ADVDefaultTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C45E6C9316CD34820024EC39 /* ADVDefaultTheme.m */; };
 		C45E6C9B16CD34820024EC39 /* ADVFitpulseTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C45E6C9616CD34820024EC39 /* ADVFitpulseTheme.m */; };
 		C45E6C9C16CD34820024EC39 /* ADVTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C45E6C9916CD34820024EC39 /* ADVTheme.m */; };
@@ -522,12 +522,12 @@
 		C45DA5EF16E72CC6002B295A /* IRSOT_Seminars 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IRSOT_Seminars 7.xcdatamodel"; sourceTree = "<group>"; };
 		C45DA61116E734F3002B295A /* AllEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllEvents.h; sourceTree = "<group>"; };
 		C45DA61216E734F3002B295A /* AllEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllEvents.m; sourceTree = "<group>"; };
-		C45DA61416E734FD002B295A /* Seminar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seminar.h; sourceTree = "<group>"; };
-		C45DA61516E734FD002B295A /* Seminar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seminar.m; sourceTree = "<group>"; };
 		C45DA61716E7350B002B295A /* Section.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Section.h; sourceTree = "<group>"; };
 		C45DA61816E7350B002B295A /* Section.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Section.m; sourceTree = "<group>"; };
 		C45DA61A16E73519002B295A /* Section+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Section+Load_Data.h"; sourceTree = "<group>"; };
 		C45DA61B16E73519002B295A /* Section+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Section+Load_Data.m"; sourceTree = "<group>"; };
+		C45DA61D16E736A7002B295A /* Seminar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Seminar.h; sourceTree = "<group>"; };
+		C45DA61E16E736A7002B295A /* Seminar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Seminar.m; sourceTree = "<group>"; };
 		C45E6C9216CD34820024EC39 /* ADVDefaultTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADVDefaultTheme.h; sourceTree = "<group>"; };
 		C45E6C9316CD34820024EC39 /* ADVDefaultTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ADVDefaultTheme.m; sourceTree = "<group>"; };
 		C45E6C9516CD34820024EC39 /* ADVFitpulseTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ADVFitpulseTheme.h; sourceTree = "<group>"; };
@@ -670,11 +670,11 @@
 				C45DA61816E7350B002B295A /* Section.m */,
 				C45DA61A16E73519002B295A /* Section+Load_Data.h */,
 				C45DA61B16E73519002B295A /* Section+Load_Data.m */,
-				C45DA61416E734FD002B295A /* Seminar.h */,
-				C45DA61516E734FD002B295A /* Seminar.m */,
 				C45DA61116E734F3002B295A /* AllEvents.h */,
 				C45DA61216E734F3002B295A /* AllEvents.m */,
 				C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */,
+				C45DA61D16E736A7002B295A /* Seminar.h */,
+				C45DA61E16E736A7002B295A /* Seminar.m */,
 				C4BAFC4116DBAB5700D088E7 /* AllEvents+Load_Data.h */,
 				C4BAFC4216DBAB5700D088E7 /* AllEvents+Load_Data.m */,
 				C465875C15F9001800AA2B6B /* Lector.h */,
@@ -1559,9 +1559,9 @@
 				C46DED8516D28828008DAC47 /* ISAlertTimes.m in Sources */,
 				C4BAFC4316DBAB5700D088E7 /* AllEvents+Load_Data.m in Sources */,
 				C45DA61316E734F3002B295A /* AllEvents.m in Sources */,
-				C45DA61616E734FD002B295A /* Seminar.m in Sources */,
 				C45DA61916E7350B002B295A /* Section.m in Sources */,
 				C45DA61C16E73519002B295A /* Section+Load_Data.m in Sources */,
+				C45DA61F16E736A7002B295A /* Seminar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

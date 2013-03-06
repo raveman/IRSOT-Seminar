@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
 
-@class AllEvents, Lector, Sections, Type;
+@class AllEvents, Lector, Section, Type;
 
 @interface Seminar : NSManagedObject
 
@@ -25,7 +25,7 @@
 @property (nonatomic, retain) NSNumber * ruseminarID;
 @property (nonatomic, retain) AllEvents *allevents;
 @property (nonatomic, retain) NSSet *lectors;
-@property (nonatomic, retain) Sections *section;
+@property (nonatomic, retain) Section *section;
 @property (nonatomic, retain) Type *type;
 @end
 

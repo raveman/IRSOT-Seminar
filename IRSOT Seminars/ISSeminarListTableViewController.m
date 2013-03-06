@@ -12,6 +12,7 @@
 
 #import "Seminar+Load_Data.h"
 #import "Type+Load_Data.h"
+#import "Section+Load_Data.h"
 #import "Lector.h"
 #import "ISSettingsViewController.h"
 #import "ADVTheme.h"

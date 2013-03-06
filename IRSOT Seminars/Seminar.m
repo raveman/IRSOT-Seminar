@@ -9,7 +9,7 @@
 #import "Seminar.h"
 #import "AllEvents.h"
 #import "Lector.h"
-#import "Sections.h"
+#import "Section.h"
 #import "Type.h"
 
 

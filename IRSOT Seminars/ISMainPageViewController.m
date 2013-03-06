@@ -20,13 +20,16 @@
 
 #import "Type+Load_Data.h"
 #import "Sections+Load_Data.h"
+#import "AllEvents.h"
 
 #import "Helper.h"
 #import "ADVTheme.h"
 
 #define CACHE_NAME @"Master"
 
-const NSInteger allTypesSection = 0;
+const NSUInteger allTypesSection = 0;
+
+const NSInteger typesSection = 2;
 
 @interface ISMainPageViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, ISSettingsViewControllerDelegate>
 {
@@ -38,6 +41,8 @@ const NSInteger allTypesSection = 0;
 
 @property (nonatomic, strong) UITableViewCell *currentSelectedCell;
 @property (nonatomic) NSInteger changedTime;
+@property (nonatomic) NSUInteger emptyCount;
+@property (nonatomic, strong) NSArray *filteredTypeItems;
 
 @end
 
@@ -50,7 +55,23 @@ const NSInteger allTypesSection = 0;
 
 @synthesize currentSelectedCell = _currentSelectedCell;
 @synthesize changedTime = _changedTime;
+@synthesize emptyCount = _emptyCount;
+@synthesize filteredTypeItems = _filteredTypeItems;
 
+#pragma mark - Class methods 
+
+- (void) filterEpmtySections
+{
+
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:typesSection];
+    NSArray *items = sectionInfo.objects;
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"seminars.@count > 0", @"Type"];
+    NSArray *filteredItems = [items filteredArrayUsingPredicate:predicate];
+    
+    self.emptyCount = [items count] - [filteredItems count];
+    self.filteredTypeItems = filteredItems;
+}
 
 #pragma mark - UIViewController lifecycle
 - (void)viewDidLoad
@@ -132,19 +153,17 @@ const NSInteger allTypesSection = 0;
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([[segue identifier] isEqualToString:@"Seminar List For Section or Type"]) {
-        NSIndexPath *indexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
+        NSIndexPath *selectedIndexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
         ISSeminarListTableViewController *dvc = [segue destinationViewController];
-        if (indexPath.section == allTypesSection) {
+        if (selectedIndexPath.section == allTypesSection) {
             [dvc setManagedObjectContext:self.managedObjectContext];
         }
-        if (indexPath.section == 1) {
-            NSIndexPath *adjustedIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
-            Sections *section = [[self fetchedResultsController] objectAtIndexPath:adjustedIndexPath];
+        if (selectedIndexPath.section == 1) {
+            Sections *section = [[self fetchedResultsController] objectAtIndexPath:selectedIndexPath];
             [dvc setSection:section];
             [dvc setManagedObjectContext:self.managedObjectContext];
-        } else if (indexPath.section == 2){
-            NSIndexPath *adjustedIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
-            Type *type = [[self fetchedResultsController] objectAtIndexPath:adjustedIndexPath];
+        } else if (selectedIndexPath.section == typesSection){
+            Type *type = [self.filteredTypeItems objectAtIndex:selectedIndexPath.row];
             [dvc setType:type];
             [dvc setManagedObjectContext:self.managedObjectContext];
         }
@@ -180,6 +199,9 @@ const NSInteger allTypesSection = 0;
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
         rowsInSection = [sectionInfo numberOfObjects];
+        if (section == typesSection) {
+            rowsInSection = rowsInSection - self.emptyCount;
+        }
         self.noDataLabel.hidden = YES;
     } else {
         self.noDataLabel.hidden = NO;
@@ -203,72 +225,88 @@ const NSInteger allTypesSection = 0;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Education Types Cell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-//    if (cell == nil) {
-        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//    }
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     cell.selectionStyle = [Helper cellSelectionStyle];
     UIImage *accessoryImage = [UIImage imageNamed:@"accessoryArrow"];
     cell.accessoryView = [[UIImageView alloc] initWithImage:accessoryImage];
     cell.textLabel.font = [Helper cellMainFont];
-
+    
     if ([[self.fetchedResultsController fetchedObjects] count]) {
-        NSIndexPath *adjustedIndexPath = [NSIndexPath indexPathForRow:indexPath.row inSection:indexPath.section];
-        Sections *section = [self.fetchedResultsController objectAtIndexPath:adjustedIndexPath];
-        NSString *sectionName = [[[section.name substringToIndex:1] uppercaseString] stringByAppendingString:[section.name substringFromIndex:1]];
+        id row;
+        if (indexPath.section == typesSection) {
+            row = [self.filteredTypeItems objectAtIndex:indexPath.row];
+        } else {
+            row = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        }
+        
+        NSUInteger seminarsCount = 0;
+        NSString *sectionName;
+        
+        if ([row isKindOfClass:[Sections class]]) {
+            seminarsCount = [[(Sections *)row seminars] count];
+            sectionName = [(Sections *)row name];
+        } else if ([row isKindOfClass:[Type class]]) {
+            seminarsCount = [[(Sections *)row seminars] count];
+            sectionName = [(Sections *)row name];
+        } else if ([row isKindOfClass:[AllEvents class]]) {
+            seminarsCount = [[(Sections *)row seminars] count];
+            sectionName = [(Sections *)row name];
+        }
+        
+        sectionName = [[[sectionName substringToIndex:1] uppercaseString] stringByAppendingString:[sectionName substringFromIndex:1]];
 
-        cell.textLabel.text = sectionName;
-        if ([sectionName isEqualToString:NSLocalizedString(@"All events", @"All events")]) {
-            cell.imageView.image = [UIImage imageNamed:@"calendar"];
+        if (seminarsCount) {
+            cell.textLabel.text = sectionName;
+            if ([sectionName isEqualToString:@"Все мероприятия"]) {
+                cell.imageView.image = [UIImage imageNamed:@"calendar"];
+            }
+                
+            cell.textLabel.text = sectionName;
+            if ([sectionName isEqualToString:@"Бухгалтерский учет"]) {
+                cell.imageView.image = [UIImage imageNamed:@"accounting"];
+            }
+            
+            if ([sectionName isEqualToString:@"Кадры"]) {
+                cell.imageView.image = [UIImage imageNamed:@"hr"];
+            }
+            if ([sectionName isEqualToString:@"Право"]) {
+                cell.imageView.image = [UIImage imageNamed:@"law"];
+            }
+            if ([sectionName isEqualToString:@"Управление"]) {
+                cell.imageView.image = [UIImage imageNamed:@"management"];
+            }
+            if ([sectionName isEqualToString:@"Финансы"]) {
+                cell.imageView.image = [UIImage imageNamed:@"finance"];
+            }
+            
+            if ([sectionName isEqualToString:@"Бизнес-класс"]) {
+                cell.imageView.image = [UIImage imageNamed:@"business_class"];
+            }
+            
+            if ([sectionName isEqualToString:@"Семинар"]) {
+                cell.imageView.image = [UIImage imageNamed:@"seminar"];
+            }
+            
+            if ([sectionName isEqualToString:@"Мастер-класс"]) {
+                cell.imageView.image = [UIImage imageNamed:@"master_class"];
+            }
+            
+            if ([sectionName isEqualToString:@"Неделя бухучета"]) {
+                cell.imageView.image = [UIImage imageNamed:@"nbu"];
+            }
+            
+            if ([sectionName isEqualToString:@"Курс"]) {
+                cell.imageView.image = [UIImage imageNamed:@"course"];
+            }
+            
+            if ([sectionName isEqualToString:@"Тематическая неделя"]) {
+                cell.imageView.image = [UIImage imageNamed:@"lecturer"];
+            }
+            
+            if ([sectionName isEqualToString:@"Конференция"]) {
+                cell.imageView.image = [UIImage imageNamed:@"conference"];
+            }
         }
-        
-        cell.textLabel.text = sectionName;
-        if ([sectionName isEqualToString:@"Бухгалтерский учет"]) {
-            cell.imageView.image = [UIImage imageNamed:@"accounting"];
-        }
-        
-        if ([sectionName isEqualToString:@"Кадры"]) {
-            cell.imageView.image = [UIImage imageNamed:@"hr"];
-        }
-        if ([sectionName isEqualToString:@"Право"]) {
-            cell.imageView.image = [UIImage imageNamed:@"law"];
-        }
-        if ([sectionName isEqualToString:@"Управление"]) {
-            cell.imageView.image = [UIImage imageNamed:@"management"];
-        }
-        if ([sectionName isEqualToString:@"Финансы"]) {
-            cell.imageView.image = [UIImage imageNamed:@"finance"];
-        }
-        
-        if ([sectionName isEqualToString:@"Бизнес-класс"]) {
-            cell.imageView.image = [UIImage imageNamed:@"business_class"];
-        }
-        
-        if ([sectionName isEqualToString:@"Семинар"]) {
-            cell.imageView.image = [UIImage imageNamed:@"seminar"];
-        }
-        
-        if ([sectionName isEqualToString:@"Мастер-класс"]) {
-            cell.imageView.image = [UIImage imageNamed:@"master_class"];
-        }
-        
-        if ([sectionName isEqualToString:@"Неделя бухучета"]) {
-            cell.imageView.image = [UIImage imageNamed:@"nbu"];
-        }
-        
-        if ([sectionName isEqualToString:@"Курс"]) {
-            cell.imageView.image = [UIImage imageNamed:@"course"];
-        }
-        
-        if ([sectionName isEqualToString:@"Тематическая неделя"]) {
-            cell.imageView.image = [UIImage imageNamed:@"lecturer"];
-        }
-        
-        if ([sectionName isEqualToString:@"Конференция"]) {
-            cell.imageView.image = [UIImage imageNamed:@"conference"];
-        }
-        
     }
     
     return cell;
@@ -327,7 +365,7 @@ const NSInteger allTypesSection = 0;
     
     NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"vid" cacheName:CACHE_NAME];
     aFetchedResultsController.delegate = self;
-    self.fetchedResultsController = aFetchedResultsController;
+    _fetchedResultsController = aFetchedResultsController;
     
 	NSError *error = nil;
 	if (![self.fetchedResultsController performFetch:&error]) {
@@ -336,6 +374,8 @@ const NSInteger allTypesSection = 0;
 	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	    abort();
 	}
+
+    [self filterEpmtySections];
     
     return _fetchedResultsController;
 }
@@ -397,16 +437,6 @@ const NSInteger allTypesSection = 0;
     cell.textLabel.text = [[object valueForKey:@"name"] description];
 }
 
-- (void)addControllerContextDidSave:(NSNotification*)saveNotification {
-    double delayInSeconds = 1.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        NSManagedObjectContext *context = [self.fetchedResultsController managedObjectContext];
-        // Merging changes causes the fetched results controller to update its results
-        [context mergeChangesFromContextDidSaveNotification:saveNotification];
-    });
-}
-
 #pragma mark - UIAlerViewDelegate
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     
@@ -429,6 +459,7 @@ const NSInteger allTypesSection = 0;
 - (void) settingsViewController:(ISSettingsViewController *)sender didUpdatedStore:(BOOL)updated
 {
     if (updated) {
+        self.fetchedResultsController = nil;
         [self.seminarCategoriesTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
     }
 }

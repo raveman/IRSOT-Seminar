@@ -519,7 +519,7 @@
 		C45C86B215F63DAE00108749 /* greenButtonHighlight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "greenButtonHighlight@2x.png"; path = "Resources/greenButtonHighlight@2x.png"; sourceTree = "<group>"; };
 		C45D3CEF16CD4E0200877F94 /* ISInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISInfoDictionary.h; path = Models/ISInfoDictionary.h; sourceTree = "<group>"; };
 		C45D3CF016CD4E0200877F94 /* ISInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISInfoDictionary.m; path = Models/ISInfoDictionary.m; sourceTree = "<group>"; };
-		C45DA5EF16E72CC6002B295A /* IRSOT_Seminars 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IRSOT_Seminars 7.xcdatamodel"; sourceTree = "<group>"; };
+		C45DA5EF16E72CC6002B295A /* IRSOT_Seminars 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "IRSOT_Seminars 7.xcdatamodel"; sourceTree = "<group>"; };
 		C45DA61116E734F3002B295A /* AllEvents.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AllEvents.h; sourceTree = "<group>"; };
 		C45DA61216E734F3002B295A /* AllEvents.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AllEvents.m; sourceTree = "<group>"; };
 		C45DA61716E7350B002B295A /* Section.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Section.h; sourceTree = "<group>"; };

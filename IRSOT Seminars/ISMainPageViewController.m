@@ -412,7 +412,7 @@ const NSInteger typesSection = 2;
        atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type
       newIndexPath:(NSIndexPath *)newIndexPath
 {
-    UITableView *tableView = self.seminarCategoriesTableView;
+//    UITableView *tableView = self.seminarCategoriesTableView;
     
     switch(type) {
         case NSFetchedResultsChangeInsert:

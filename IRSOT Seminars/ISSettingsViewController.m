@@ -342,45 +342,49 @@ const NSInteger settingsSections = 3;
         return;
     }
     
-    NSURL *storeURL = [persistentCoordinator URLForPersistentStore:[[persistentCoordinator persistentStores] lastObject]];
-    
-    // lock the current context
-    [self.managedObjectContext lock];
-    [self.managedObjectContext reset];//to drop pending changes
-    
-    BOOL deleted = NO;
-    //delete the store from the current managedObjectContext
-    if ([persistentCoordinator removePersistentStore:[[persistentCoordinator persistentStores] lastObject] error:&error])
-    {
-        // remove the file containing the data
-        [[NSFileManager defaultManager] removeItemAtURL:storeURL error:&error];
-        //recreate the store like in the  appDelegate method
-        NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
-                                 [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
-                                 [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-        if (![persistentCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
-
-            NSLog(@"Recreating store after deletion: unresolved error %@, %@", error, [error userInfo]);
-            abort();
+    NSArray *persistenStores = [persistentCoordinator persistentStores];
+    if (persistenStores) {
+        NSURL *storeURL = [persistentCoordinator URLForPersistentStore:[persistenStores lastObject]];
+        
+        // lock the current context
+        [self.managedObjectContext lock];
+        [self.managedObjectContext reset];//to drop pending changes
+        
+        BOOL deleted = NO;
+        //delete the store from the current managedObjectContext
+        if ([persistentCoordinator removePersistentStore:[[persistentCoordinator persistentStores] lastObject] error:&error])
+        {
+            // remove the file containing the data
+            [[NSFileManager defaultManager] removeItemAtURL:storeURL error:&error];
+            //recreate the store like in the  appDelegate method
+            NSDictionary *options = [NSDictionary dictionaryWithObjectsAndKeys:
+                                     [NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption,
+                                     [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
+            if (![persistentCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:options error:&error]) {
+                
+                NSLog(@"Recreating store after deletion: unresolved error %@, %@", error, [error userInfo]);
+                abort();
+            }
+            
+            deleted = YES;
+            self.updateDateLabel = NSLocalizedString(@"no information", @"No data about update");
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            [defaults setObject:@"" forKey:UPDATE_DATE_KEY];
+            [defaults synchronize];
         }
-
-        deleted = YES;
-        self.updateDateLabel = NSLocalizedString(@"no information", @"No data about update");
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        [defaults setObject:@"" forKey:UPDATE_DATE_KEY];
-        [defaults synchronize];
+        
+        [self.managedObjectContext unlock];
+        
+        // need to remove Lector Pics cache
+        [[NSFileManager defaultManager] removeItemAtURL:[[ISAppDelegate sharedDelegate] lectorCacheDirectory] error:&error];
+        if (error) NSLog(@"Error creating directory: %@", [error.userInfo objectForKey:NSUnderlyingErrorKey]);
+        [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Catalog deleted", @"Catalog deleted")];
+        
+        //notifying main page view controller about deleted data
+        [self.delegate settingsViewController:self didDeletedStore:deleted];
     }
-    
-    [self.managedObjectContext unlock];
-    
-    // need to remove Lector Pics cache
-    [[NSFileManager defaultManager] removeItemAtURL:[[ISAppDelegate sharedDelegate] lectorCacheDirectory] error:&error];
-    if (error) NSLog(@"Error creating directory: %@", [error.userInfo objectForKey:NSUnderlyingErrorKey]);
 
-    [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Catalog deleted", @"Catalog deleted")];
-    
-    //notifying main page view controller about deleted data
-    [self.delegate settingsViewController:self didDeletedStore:deleted];
+
 }
 
 

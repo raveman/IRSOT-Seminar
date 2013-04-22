@@ -72,9 +72,16 @@
         str = [str stringByReplacingOccurrencesOfString:@" +" withString:@" " options:NSRegularExpressionSearch range:NSMakeRange(0, str.length)];
         
         NSArray *lectorNames = [str componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        lector.lastName = [lectorNames objectAtIndex:2];
-        lector.firstName = [lectorNames objectAtIndex:0];
-        lector.fatherName = [lectorNames objectAtIndex:1];
+        NSInteger namesCount = [lectorNames count];
+        if (namesCount == 2) {
+            lector.lastName = [lectorNames objectAtIndex:1];
+            lector.firstName = [lectorNames objectAtIndex:0];
+            lector.fatherName = @"";
+        } else if (namesCount == 3) {
+            lector.lastName = [lectorNames objectAtIndex:2];
+            lector.firstName = [lectorNames objectAtIndex:0];
+            lector.fatherName = [lectorNames objectAtIndex:1];
+        }
 
         lector.name = [NSString stringWithFormat:@"%@ %@. %@.",lector.lastName, [lector.firstName substringToIndex:1], [lector.fatherName substringToIndex:1]];
         

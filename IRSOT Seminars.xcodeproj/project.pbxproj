@@ -1703,8 +1703,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "IRSOT Seminars/IRSOT Seminars.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Vladimir Ershov";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Vladimir Ershov";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
 				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
@@ -1714,8 +1714,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "95856A54-2703-4887-ACB1-010423CE1326";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "95856A54-2703-4887-ACB1-010423CE1326";
+				PROVISIONING_PROFILE = "CB80C715-53B1-48DE-AA71-1F1B3B1D48B2";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB80C715-53B1-48DE-AA71-1F1B3B1D48B2";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};

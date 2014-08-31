@@ -24,13 +24,13 @@
     NSError *error = nil;
     NSArray *matches = [context executeFetchRequest:request error:&error];
     AllEvents *allEvents = nil;
-    if (matches) {
+    if (matches.count) {
         allEvents = [matches objectAtIndex:0];
     }
     
     // check whether we have already a new seminar in our database
     request = [NSFetchRequest fetchRequestWithEntityName:@"Seminar"];
-    request.predicate = [NSPredicate predicateWithFormat:@"id == %@", [dictionary objectForKey:@"nid"]];
+    request.predicate = [NSPredicate predicateWithFormat:@"id == %@", [dictionary objectForKey:SEMINAR_RUSEMINAR_ID]];
     // soring our fetch
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
@@ -42,13 +42,15 @@
         // handle error
     } else if ([matches count] == 0) {
         seminar = [NSEntityDescription insertNewObjectForEntityForName:@"Seminar" inManagedObjectContext:context];
-        seminar.id = [NSNumber numberWithInteger:[[dictionary objectForKey:@"nid"] integerValue]];
+        seminar.id = [NSNumber numberWithInteger:[[dictionary objectForKey:SEMINAR_RUSEMINAR_ID] integerValue]];
         seminar.name = [dictionary objectForKey:SEMINAR_NAME];
         
-        NSString *strRuseminarID = [[dictionary objectForKey:SEMINAR_RUSEMINAR_ID] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-        numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-        seminar.ruseminarID = [numberFormatter numberFromString:strRuseminarID];
+//        NSString *strRuseminarID = [[dictionary objectForKey:SEMINAR_RUSEMINAR_ID] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+//        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+//        numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+//        seminar.ruseminarID = [numberFormatter numberFromString:strRuseminarID];
+
+        seminar.ruseminarID = [dictionary objectForKey:SEMINAR_RUSEMINAR_ID];
         
         NSString *dateStartStr = [dictionary valueForKeyPath:SEMINAR_DATE_START];
         NSString *dateEndStr = [dictionary valueForKeyPath:SEMINAR_DATE_END];
@@ -61,36 +63,39 @@
         seminar.date_start = dateStart;
         seminar.date_end = dateEnd;
         
-        NSDictionary *buf = [dictionary objectForKey:SEMINAR_ONLINE];
-        if ([buf count] >0 ) {
-            NSString *bufString = [buf objectForKey:@"value"];
-//            if ([bufString length] > 0) {
-                seminar.online = [NSNumber numberWithInteger:[bufString integerValue]];
-//            } else {
-//                seminar.online = [NSNumber numberWithInteger:0];
-//            }
-        }
+//        NSDictionary *buf = [dictionary objectForKey:SEMINAR_ONLINE];
+//        if ([buf count] >0 ) {
+//            NSString *bufString = [buf objectForKey:@"value"];
+////            if ([bufString length] > 0) {
+//                seminar.online = [NSNumber numberWithInteger:[bufString integerValue]];
+////            } else {
+////                seminar.online = [NSNumber numberWithInteger:0];
+////            }
+//        }
+        seminar.online = [dictionary objectForKey:SEMINAR_ONLINE];
         
-        NSInteger sectionId = [[[dictionary objectForKey:SEMINAR_SECTION] objectForKey:@"tid"] integerValue];
+        NSInteger sectionId = [[dictionary objectForKey:SEMINAR_SECTION] integerValue];
         Section *section = [Section sectionWithId:sectionId inManagedObjectContext:context];
         seminar.section = section;
         
-        NSInteger typeId = [[[dictionary objectForKey:SEMINAR_TYPE] objectForKey:@"tid"] integerValue];
+        NSInteger typeId = [[dictionary objectForKey:SEMINAR_TYPE] integerValue];
         Type *type = [Type typeWithId:typeId inManagedObjectContext:context];
         seminar.type = type;
         
-        NSArray *lectorNames = [dictionary objectForKey:SEMINAR_LECTOR];
+        NSArray *lectorNames = [[dictionary objectForKey:SEMINAR_LECTOR] componentsSeparatedByString:@","];
         NSMutableSet *lectorsForSeminar = [NSMutableSet set];
         for (NSString *lectorName in lectorNames) {
             Lector *lector = [Lector lectorWithID:[lectorName integerValue] inManagedObjectContext:context];
             [lectorsForSeminar addObject:lector];
         }
         seminar.lectors = lectorsForSeminar;
-        seminar.ruseminar_url = [[dictionary objectForKey:SEMINAR_RUSEMINAR_URL] objectForKey:@"url"];
-        NSDictionary *program = [dictionary objectForKey:SEMINAR_PROGRAM];
-        if ([program count]) seminar.program = [program objectForKey:@"value"];
-        NSNumber *cost_full = [NSNumber numberWithInteger:[[[dictionary objectForKey:SEMINAR_COST_FULL] objectForKey:@"value"] integerValue]];
-        NSNumber *cost_discount = [NSNumber numberWithInteger:[[[dictionary objectForKey:SEMINAR_COST_DISCOUNT] objectForKey:@"value"] integerValue]];
+        seminar.ruseminar_url = [dictionary objectForKey:SEMINAR_RUSEMINAR_URL];
+
+        seminar.program = [dictionary objectForKey:SEMINAR_PROGRAM];
+
+        NSNumber *cost_full = [NSNumber numberWithInteger:[[dictionary objectForKey:SEMINAR_COST_FULL] integerValue]];
+
+        NSNumber *cost_discount = [NSNumber numberWithInteger:[[dictionary objectForKey:SEMINAR_COST_DISCOUNT] integerValue]];
         seminar.cost_full = cost_full;
         seminar.cost_discount = cost_discount;
         [allEvents addSeminarsObject:seminar];

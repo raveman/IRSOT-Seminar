@@ -34,8 +34,8 @@
 
 #define SEMINAR_LIST_URL @"seminars.json"
 #define SEMINAR_NAME @"title"
-#define SEMINAR_TYPE @"seminar_type"
-#define SEMINAR_SECTION @"seminar_section"
+#define SEMINAR_TYPE @"seminar_type_id"
+#define SEMINAR_SECTION @"seminar_section_id"
 #define SEMINAR_LECTOR @"lectors"
 #define SEMINAR_DATE_START @"date_start"
 #define SEMINAR_DATE_END @"date_end"
@@ -60,7 +60,7 @@
 #define SEMINAR_PROGRAM_ID @"ruseminar_id"
 #define SEMINAR_PROGRAM_PROGRAM @"program"
 
-#define SEMINAR_DATE_FORMAT @"yyyy-MM-dd HH:mm:ss"
+#define SEMINAR_DATE_FORMAT @"yyyy-MM-dd"
 #define SEMINAR_DATE_FORMAT_DATE @"dd"
 #define SEMINAR_DATE_FORMAT_DATE_MONTH @"MMMM"
 #define SEMINAR_DATE_FORMAT_DATE_MONTH_YEAR @"MMMM YYYY"

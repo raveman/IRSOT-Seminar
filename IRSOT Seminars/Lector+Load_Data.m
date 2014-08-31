@@ -91,7 +91,7 @@
         lector.bio = [dictionary objectForKey:LECTOR_BIO];
         id photo = [dictionary objectForKey:LECTOR_PHOTO_URL];
         if (![photo isKindOfClass:[NSNull class]]) {
-            lector.photo = photo;
+            lector.photo = [NSString stringWithFormat:@"%@/%@", RUSEMINAR_SITE, photo];
         } else {
             lector.photo = @"";
         }

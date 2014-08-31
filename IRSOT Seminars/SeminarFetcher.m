@@ -50,10 +50,8 @@
     NSArray *seminarSections = [self executeFetch:sectionURL];
 
     // выбираем список всех разделов
-// unused, only for drupal backend
-//    NSString *allURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, ];
-//    NSArray *seminarAll = [self executeFetch:allURL];
-
+    NSString *allURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_ALL];
+    NSArray *seminarAll = [NSArray arrayWithObject:[self executeFetch:allURL]];
     
 //выбираем список всех терминов
 //    NSString *termURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_TERM_URL];
@@ -78,7 +76,7 @@
 //        }
 //    }
     
-    return [NSDictionary dictionaryWithObjectsAndKeys:seminarSections, @"sections", seminarTypes, @"types", nil];
+    return [NSDictionary dictionaryWithObjectsAndKeys:seminarSections, @"sections", seminarTypes, @"types",  seminarAll, @"all", nil];
 }
 
 + (NSArray *)seminars

@@ -12,6 +12,8 @@
 #define RUSEMINAR_SEMINAR_CSS @"http://www.ruseminar.ru/assets/css/seminar.css"
 #define RUSEMINAR_MY_CSS @"http://www.ruseminar.ru/assets/css/my.css"
 
+#define RUSEMINAR_SITE @"http://www.ruseminar.ru"
+
 #define SEMINAR_SITE @"devedu.ruseminar.ru"
 #define SEMINAR_URL @"http://mobile.ruseminar.ru"
 #define UPDATE_NODE @"node/100"
@@ -23,9 +25,11 @@
 
 #define SEMINAR_TYPE_LIST @"seminar_types.json"
 #define SEMINAR_SECTION_LIST @"seminar_sections.json"
+#define SEMINAR_ALL @"allseminarstype.json"
 
 #define SEMINAR_TERM_ID @"id"
 #define SEMINAR_TERM_NAME @"name"
+#define SEMINAR_TERM_VID @"vid" // TERM type: 0 - type, 1 - section
 
 // unused, only for drupal version
 //#define SEMINAR_TYPE_VID 2

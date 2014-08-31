@@ -31,6 +31,7 @@
         type = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext:context];
         type.id = [NSNumber numberWithInteger:[[term objectForKey:SEMINAR_TERM_ID] integerValue]];
         type.name = [term objectForKey:SEMINAR_TERM_NAME];
+        type.vid = [NSNumber numberWithInt: 1];
     } else {
         type = [matches lastObject];
     }

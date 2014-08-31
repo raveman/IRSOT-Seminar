@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 IRSOT. All rights reserved.
 //
 
+#import "SeminarFetcher.h"
 #import "AllEvents+Load_Data.h"
 
 @implementation AllEvents (Load_Data)
@@ -15,7 +16,7 @@
     
     // check whether we have already a new section in our database
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"AllEvents"];
-    request.predicate = [NSPredicate predicateWithFormat:@"id == %@", [term objectForKey:@"tid"]];
+    request.predicate = [NSPredicate predicateWithFormat:@"id == %@", [term objectForKey:SEMINAR_TERM_ID]];
     // soring our fetch
     NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
@@ -27,10 +28,8 @@
         // handle error
     } else if ([matches count] == 0) {
         event = [NSEntityDescription insertNewObjectForEntityForName:@"AllEvents" inManagedObjectContext:context];
-        event.id = [NSNumber numberWithInteger:[[term objectForKey:@"tid"] integerValue]];
-        event.name = [term objectForKey:@"name"];
-        event.machine_name = [term objectForKey:@"machine_name"];
-        event.vid = [NSNumber numberWithInteger:[[term objectForKey:@"vid"] integerValue]];
+        event.id = [NSNumber numberWithInteger:[[term objectForKey:SEMINAR_TERM_NAME] integerValue]];
+        event.name = [term objectForKey:SEMINAR_TERM_NAME];
     } else {
         event = [matches lastObject];
     }

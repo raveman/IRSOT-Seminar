@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 IRSOT. All rights reserved.
 //
 
+#import "SeminarFetcher.h"
 #import "Section+Load_Data.h"
 
 @implementation Section (Load_Data)
@@ -16,9 +17,9 @@
     
     // check whether we have already a new section in our database
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Section"];
-    request.predicate = [NSPredicate predicateWithFormat:@"id == %@", [term objectForKey:@"tid"]];
+    request.predicate = [NSPredicate predicateWithFormat:@"id == %@", [term objectForKey:SEMINAR_TERM_ID]];
     // soring our fetch
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:SEMINAR_TERM_NAME ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     NSError *error = nil;
@@ -28,10 +29,8 @@
         // handle error
     } else if ([matches count] == 0) {
         section = [NSEntityDescription insertNewObjectForEntityForName:@"Section" inManagedObjectContext:context];
-        section.id = [NSNumber numberWithInteger:[[term objectForKey:@"tid"] integerValue]];
-        section.name = [term objectForKey:@"name"];
-        section.machine_name = [term objectForKey:@"machine_name"];
-        section.vid = [NSNumber numberWithInteger:[[term objectForKey:@"vid"] integerValue]];
+        section.id = [NSNumber numberWithInteger:[[term objectForKey:SEMINAR_TERM_ID] integerValue]];
+        section.name = [term objectForKey:SEMINAR_TERM_NAME];
     } else {
         section = [matches lastObject];
     }
@@ -46,7 +45,7 @@
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Section"];
     request.predicate = [NSPredicate predicateWithFormat:@"id = %d", sectionId];
     // sorting our fetch
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:SEMINAR_TERM_NAME ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     NSError *error = nil;

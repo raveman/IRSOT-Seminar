@@ -6,6 +6,7 @@
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
 
+#import "SeminarFetcher.h"
 #import "Type+Load_Data.h"
 
 @implementation Type (Load_Data)
@@ -16,9 +17,9 @@
     
     // check whether we have already a new section in our database
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Type"];
-    request.predicate = [NSPredicate predicateWithFormat:@"id == %@", [term objectForKey:@"tid"]];
+    request.predicate = [NSPredicate predicateWithFormat:@"id == %@", [term objectForKey:SEMINAR_TERM_ID]];
     // soring our fetch
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:SEMINAR_TERM_NAME ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     NSError *error = nil;
@@ -28,10 +29,8 @@
         // handle error
     } else if ([matches count] == 0) {
         type = [NSEntityDescription insertNewObjectForEntityForName:@"Type" inManagedObjectContext:context];
-        type.id = [NSNumber numberWithInteger:[[term objectForKey:@"tid"] integerValue]];
-        type.name = [term objectForKey:@"name"];
-        type.machine_name = [term objectForKey:@"machine_name"];
-        type.vid = [NSNumber numberWithInteger:[[term objectForKey:@"vid"] integerValue]];
+        type.id = [NSNumber numberWithInteger:[[term objectForKey:SEMINAR_TERM_ID] integerValue]];
+        type.name = [term objectForKey:SEMINAR_TERM_NAME];
     } else {
         type = [matches lastObject];
     }
@@ -46,7 +45,7 @@
     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Type"];
     request.predicate = [NSPredicate predicateWithFormat:@"id = %d", typeId];
     // soring our fetch
-    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:SEMINAR_TERM_NAME ascending:YES];
     request.sortDescriptors = [NSArray arrayWithObject:sortDescriptor];
     
     NSError *error = nil;

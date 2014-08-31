@@ -24,7 +24,6 @@
 
 @end
 
-
 @interface ISSettingsViewController : UIViewController
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) BOOL emptyStore;

@@ -252,6 +252,7 @@ const NSInteger settingsSections = 3;
         
                 NSArray *sections = [sectionsAndTypes valueForKey:@"sections"];
                 NSArray *types = [sectionsAndTypes valueForKey:@"types"];
+                NSArray *allEvents = [sectionsAndTypes valueForKey:@"all"];
                 
                 for (NSDictionary *section in sections) {
                     [Section sectionWithTerm:section inManagedObjectContext:self.managedObjectContext];
@@ -262,7 +263,12 @@ const NSInteger settingsSections = 3;
                     [Type typeWithTerm:type inManagedObjectContext:self.managedObjectContext];
 //                    NSLog(@"Type: %@", [type objectForKey:@"name"]);
                 }
-
+                
+                for (NSDictionary *event in allEvents) {
+                    [AllEvents eventWithTerm:event inManagedObjectContext:self.managedObjectContext];
+                }
+                
+                
                 [SVProgressHUD showWithStatus:NSLocalizedString(@"Updating lectors", @"Updating lectors message")];
                 
                 NSArray *lectors = [SeminarFetcher lectors];

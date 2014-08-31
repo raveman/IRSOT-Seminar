@@ -28,7 +28,7 @@
         // handle error
     } else if ([matches count] == 0) {
         event = [NSEntityDescription insertNewObjectForEntityForName:@"AllEvents" inManagedObjectContext:context];
-        event.id = [NSNumber numberWithInteger:[[term objectForKey:SEMINAR_TERM_NAME] integerValue]];
+        event.id = [NSNumber numberWithInteger:[[term objectForKey:SEMINAR_TERM_ID] integerValue]];
         event.name = [term objectForKey:SEMINAR_TERM_NAME];
     } else {
         event = [matches lastObject];

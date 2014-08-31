@@ -12,7 +12,7 @@
 
 + (NSArray *)infoArray
 {
-    NSMutableArray *infoArray = [NSMutableArray array];
+    NSArray *infoArray = [NSArray array];
     
     NSArray *urls = [NSArray array];
     NSArray *titles = [NSArray array];

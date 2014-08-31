@@ -71,33 +71,21 @@
         // strip excessive whitespaces from string
         str = [str stringByReplacingOccurrencesOfString:@" +" withString:@" " options:NSRegularExpressionSearch range:NSMakeRange(0, str.length)];
         
-        NSArray *lectorNames = [str componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        NSInteger namesCount = [lectorNames count];
-        if (namesCount == 2) {
-            lector.lastName = [lectorNames objectAtIndex:1];
-            lector.firstName = [lectorNames objectAtIndex:0];
-            lector.fatherName = @"";
-        } else if (namesCount == 3) {
-            lector.lastName = [lectorNames objectAtIndex:2];
-            lector.firstName = [lectorNames objectAtIndex:0];
-            lector.fatherName = [lectorNames objectAtIndex:1];
-        }
+        lector.firstName = [dictionary objectForKey:LECTOR_FIRST_NAME];
+        lector.fatherName = [dictionary objectForKey:LECTOR_FATHER_NAME];
+        lector.lastName = [dictionary objectForKey:LECTOR_LAST_NAME];
 
         lector.name = [NSString stringWithFormat:@"%@ %@. %@.",lector.lastName, [lector.firstName substringToIndex:1], [lector.fatherName substringToIndex:1]];
         
-        NSString *strRuseminarID = [[[dictionary objectForKey:LECTOR_RUSEMINAR_ID] objectForKey:@"value" ]stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-        numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
-        lector.ruseminarID = [numberFormatter numberFromString:strRuseminarID];
-//        lector.ruseminarID = [[dictionary objectForKey:LECTOR_RUSEMINAR_ID] objectForKey:@"value"] ;
+//        NSString *strRuseminarID = [dictionary objectForKey:LECTOR_RUSEMINAR_ID];
+//        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+//        numberFormatter.numberStyle = NSNumberFormatterDecimalStyle;
+//        lector.ruseminarID = [numberFormatter numberFromString:strRuseminarID];
+        lector.ruseminarID = [dictionary objectForKey:LECTOR_RUSEMINAR_ID];
 
         
-        lector.bio = [[dictionary objectForKey:LECTOR_BIO] objectForKey:@"value"];
-        NSDictionary *urlInfo = [dictionary objectForKey:LECTOR_PHOTO_URL];
-        if ([urlInfo count]) {
-            lector.photo = [urlInfo objectForKey:@"url"];
-        }
-//         = [name stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        lector.bio = [dictionary objectForKey:LECTOR_BIO];
+        lector.photo = [dictionary objectForKey:LECTOR_PHOTO_URL];
     } else {
         lector = [matches lastObject];
     }

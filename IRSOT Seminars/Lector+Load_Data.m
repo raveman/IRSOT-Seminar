@@ -75,7 +75,11 @@
         lector.fatherName = [dictionary objectForKey:LECTOR_FATHER_NAME];
         lector.lastName = [dictionary objectForKey:LECTOR_LAST_NAME];
 
-        lector.name = [NSString stringWithFormat:@"%@ %@. %@.",lector.lastName, [lector.firstName substringToIndex:1], [lector.fatherName substringToIndex:1]];
+        if (lector.fatherName.length) {
+            lector.name = [NSString stringWithFormat:@"%@ %@. %@.",lector.lastName, [lector.firstName substringToIndex:1], [lector.fatherName substringToIndex:1]];
+        } else {
+            lector.name = [NSString stringWithFormat:@"%@ %@.",lector.lastName, [lector.firstName substringToIndex:1]];
+        }
         
 //        NSString *strRuseminarID = [dictionary objectForKey:LECTOR_RUSEMINAR_ID];
 //        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
@@ -85,7 +89,12 @@
 
         
         lector.bio = [dictionary objectForKey:LECTOR_BIO];
-        lector.photo = [dictionary objectForKey:LECTOR_PHOTO_URL];
+        id photo = [dictionary objectForKey:LECTOR_PHOTO_URL];
+        if (![photo isKindOfClass:[NSNull class]]) {
+            lector.photo = photo;
+        } else {
+            lector.photo = @"";
+        }
     } else {
         lector = [matches lastObject];
     }

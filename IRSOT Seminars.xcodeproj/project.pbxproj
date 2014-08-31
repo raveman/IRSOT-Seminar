@@ -666,31 +666,31 @@
 		C40D8F1715CBD8730048ABF4 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				C465875F15F9001800AA2B6B /* Term.h */,
+				C465876015F9001800AA2B6B /* Term.m */,
 				C45DA61716E7350B002B295A /* Section.h */,
 				C45DA61816E7350B002B295A /* Section.m */,
 				C45DA61A16E73519002B295A /* Section+Load_Data.h */,
 				C45DA61B16E73519002B295A /* Section+Load_Data.m */,
 				C45DA61116E734F3002B295A /* AllEvents.h */,
 				C45DA61216E734F3002B295A /* AllEvents.m */,
+				C4BAFC4116DBAB5700D088E7 /* AllEvents+Load_Data.h */,
+				C4BAFC4216DBAB5700D088E7 /* AllEvents+Load_Data.m */,
 				C462BDC815C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld */,
 				C45DA61D16E736A7002B295A /* Seminar.h */,
 				C45DA61E16E736A7002B295A /* Seminar.m */,
-				C4BAFC4116DBAB5700D088E7 /* AllEvents+Load_Data.h */,
-				C4BAFC4216DBAB5700D088E7 /* AllEvents+Load_Data.m */,
+				C48F96F615CC46D400F4AA51 /* Seminar+Load_Data.h */,
+				C48F96F715CC46D400F4AA51 /* Seminar+Load_Data.m */,
 				C465875C15F9001800AA2B6B /* Lector.h */,
 				C465875D15F9001800AA2B6B /* Lector.m */,
+				C48F971115CC519E00F4AA51 /* Lector+Load_Data.h */,
+				C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */,
 				C465876815F9001800AA2B6B /* Sections.h */,
 				C465876915F9001800AA2B6B /* Sections.m */,
 				C465876215F9001800AA2B6B /* Type.h */,
 				C465876315F9001800AA2B6B /* Type.m */,
-				C465875F15F9001800AA2B6B /* Term.h */,
-				C465876015F9001800AA2B6B /* Term.m */,
-				C48F971115CC519E00F4AA51 /* Lector+Load_Data.h */,
-				C48F971215CC519E00F4AA51 /* Lector+Load_Data.m */,
 				C40D8F1B15CBDFB30048ABF4 /* Type+Load_Data.h */,
 				C40D8F1C15CBDFB30048ABF4 /* Type+Load_Data.m */,
-				C48F96F615CC46D400F4AA51 /* Seminar+Load_Data.h */,
-				C48F96F715CC46D400F4AA51 /* Seminar+Load_Data.m */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -1135,8 +1135,13 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = IS;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = IRSOT;
+				TargetAttributes = {
+					C462BDA915C95A8700170E3C = {
+						DevelopmentTeam = 3FUFQ8X9FW;
+					};
+				};
 			};
 			buildConfigurationList = C462BDA415C95A8700170E3C /* Build configuration list for PBXProject "IRSOT Seminars" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1624,10 +1629,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1642,10 +1648,14 @@
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1655,10 +1665,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1666,8 +1677,11 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
@@ -1681,8 +1695,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "IRSOT Seminars/IRSOT Seminars.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
 				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
@@ -1692,8 +1706,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "95856A54-2703-4887-ACB1-010423CE1326";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "95856A54-2703-4887-ACB1-010423CE1326";
+				PROVISIONING_PROFILE = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1703,8 +1717,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "IRSOT Seminars/IRSOT Seminars.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Vladimir Ershov";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Vladimir Ershov";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
 				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
@@ -1714,8 +1728,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CB80C715-53B1-48DE-AA71-1F1B3B1D48B2";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CB80C715-53B1-48DE-AA71-1F1B3B1D48B2";
+				PROVISIONING_PROFILE = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};

@@ -14,7 +14,7 @@
 
 + (NSArray *) executeFetch: (NSString *)query
 {
-    query = [NSString stringWithFormat:@"%@.json", query];
+//    query = [NSString stringWithFormat:@"%@.json", query];
     query = [query stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     // NSLog(@"[%@ %@] sent %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), query);
 
@@ -42,23 +42,23 @@
 //    NSMutableArray *types = [NSMutableArray array];
 
     // выбираем список всех типов мероприятий
-    NSString *typeURL = [NSString stringWithFormat:@"%@/%@=%d", SEMINAR_URL, SEMINAR_TAXONOMY_URL, SEMINAR_TYPE_VID];
+    NSString *typeURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_TYPE_LIST];
     NSArray *seminarTypes = [self executeFetch:typeURL];
 
     // выбираем список всех разделов
-    NSString *sectionURL = [NSString stringWithFormat:@"%@/%@=%d", SEMINAR_URL, SEMINAR_TAXONOMY_URL, SEMINAR_SECTION_VID];
+    NSString *sectionURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_SECTION_LIST];
     NSArray *seminarSections = [self executeFetch:sectionURL];
 
     // выбираем список всех разделов
-    NSString *allURL = [NSString stringWithFormat:@"%@/%@=%d", SEMINAR_URL, SEMINAR_TAXONOMY_URL, SEMINAR_ALL_VID];
-    NSArray *seminarAll = [self executeFetch:allURL];
+// unused, only for drupal backend
+//    NSString *allURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, ];
+//    NSArray *seminarAll = [self executeFetch:allURL];
 
     
 //выбираем список всех терминов
 //    NSString *termURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_TERM_URL];
 //    NSArray *terms = [self executeFetch:termURL];
 
-    
     
     //пробегаем по словаряем, заполняем массивы для типов и секций
 //    for (NSDictionary *taxonomyDict in taxonomy) {
@@ -78,7 +78,7 @@
 //        }
 //    }
     
-    return [NSDictionary dictionaryWithObjectsAndKeys:seminarSections, @"sections", seminarTypes, @"types", seminarAll, @"all", nil];
+    return [NSDictionary dictionaryWithObjectsAndKeys:seminarSections, @"sections", seminarTypes, @"types", nil];
 }
 
 + (NSArray *)seminars
@@ -89,6 +89,13 @@
     return seminars;
 }
 
++ (NSArray *)seminarPrograms
+{
+    NSString *seminarProgramsURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_PROGRAMS_LIST_URL];
+    NSArray *seminarPrograms = [SeminarFetcher executeFetch:seminarProgramsURL];
+    
+    return seminarPrograms;
+}
 
 + (NSArray *)lectors
 {

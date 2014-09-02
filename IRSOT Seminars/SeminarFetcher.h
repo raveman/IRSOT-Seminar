@@ -16,7 +16,7 @@
 
 #define SEMINAR_SITE @"devedu.ruseminar.ru"
 #define SEMINAR_URL @"http://mobile.ruseminar.ru"
-#define UPDATE_NODE @"node/100"
+#define UPDATE_NODE @"lastupdate"
 
 // #define SEMINAR_TAXONOMY_URL @"taxonomy_vocabulary"
 

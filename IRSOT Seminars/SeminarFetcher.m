@@ -26,7 +26,7 @@
         [SVProgressHUD showErrorWithStatus:errorMessage];
         NSLog(errorMessage, nil);
     }
-    NSArray *results = jsonData ? [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves error:&error] : nil;
+    NSArray *results = jsonData ? [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingMutableContainers|NSJSONReadingMutableLeaves|NSJSONReadingAllowFragments error:&error] : nil;
     if (error) {
         NSString *errorMessage = [NSString stringWithFormat:@"[%@ %@] JSON error: %@", NSStringFromClass([self class]), NSStringFromSelector(_cmd), error.localizedDescription];
         [SVProgressHUD showErrorWithStatus:errorMessage];
@@ -110,9 +110,9 @@
     NSInteger catalogChanged = 0;
     
     NSString *updatesURL = [NSString stringWithFormat:@"%@/%@",SEMINAR_URL, UPDATE_NODE];
-    NSDictionary *updateNode = (NSDictionary *)[SeminarFetcher executeFetch:updatesURL];
-    if (updateNode) {
-        catalogChanged = [[updateNode objectForKey:@"changed"] integerValue];
+    NSString *dateUpdatedString = (NSString *)[SeminarFetcher executeFetch:updatesURL];
+    if (dateUpdatedString) {
+        catalogChanged = [dateUpdatedString integerValue];
     }
     
     return catalogChanged;

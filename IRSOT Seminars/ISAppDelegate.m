@@ -229,7 +229,7 @@
             NSData *data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: RUSEMINAR_BK_CSS]];
             [data writeToURL:[self bkCSSURL] atomically:YES];
         });
-        dispatch_release(fetchQ);
+//        dispatch_release(fetchQ);
     }
     return [self bkCSSURL];
 }
@@ -250,7 +250,7 @@
             NSData *data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: RUSEMINAR_SEMINAR_CSS]];
             [data writeToURL:[self seminarCSSURL]  atomically:YES];
         });
-        dispatch_release(fetchQ);
+//        dispatch_release(fetchQ);
     }
     return [self seminarCSSURL];
 }
@@ -270,7 +270,7 @@
             NSData *data = [[NSData alloc] initWithContentsOfURL: [NSURL URLWithString: RUSEMINAR_MY_CSS]];
             [data writeToURL:[self myCSSURL]  atomically:YES];
         });
-        dispatch_release(fetchQ);
+//        dispatch_release(fetchQ);
     }
     return [self myCSSURL];
 }

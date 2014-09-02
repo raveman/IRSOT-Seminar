@@ -222,7 +222,7 @@ const NSInteger settingsSections = 3;
             NSData *data = [[NSData alloc] initWithContentsOfURL: remoteURL];
             [data writeToURL:localURL atomically:YES];
         });
-        dispatch_release(fetchQ);
+//        dispatch_release(fetchQ);
     }
 }
 
@@ -325,7 +325,7 @@ const NSInteger settingsSections = 3;
                 }
             }]; // end managedObjectContext performBlock
         }); // end dispatch_async(fetchQ) block
-        dispatch_release(fetchQ);
+//        dispatch_release(fetchQ);
     }
 }
 

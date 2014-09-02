@@ -30,7 +30,7 @@
         event = [NSEntityDescription insertNewObjectForEntityForName:@"AllEvents" inManagedObjectContext:context];
         event.id = [NSNumber numberWithInteger:[[term objectForKey:SEMINAR_TERM_ID] integerValue]];
         event.name = [term objectForKey:SEMINAR_TERM_NAME];
-        event.vid = [NSNumber numberWithInt:0];
+        event.vid = [NSNumber numberWithInt:SEMINAR_ALL_VID];
     } else {
         event = [matches lastObject];
     }

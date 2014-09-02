@@ -31,7 +31,7 @@
         section = [NSEntityDescription insertNewObjectForEntityForName:@"Section" inManagedObjectContext:context];
         section.id = [NSNumber numberWithInteger:[[term objectForKey:SEMINAR_TERM_ID] integerValue]];
         section.name = [term objectForKey:SEMINAR_TERM_NAME];
-        section.vid = [NSNumber numberWithInt: 2];
+        section.vid = [NSNumber numberWithInt: SEMINAR_SECTION_VID];
     } else {
         section = [matches lastObject];
     }

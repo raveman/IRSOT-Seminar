@@ -32,9 +32,9 @@
 #define SEMINAR_TERM_VID @"vid" // TERM type: 0 - type, 1 - section
 
 // unused, only for drupal version
-//#define SEMINAR_TYPE_VID 2
-//#define SEMINAR_SECTION_VID 3
-//#define SEMINAR_ALL_VID 6
+#define SEMINAR_TYPE_VID 2
+#define SEMINAR_SECTION_VID 3
+#define SEMINAR_ALL_VID 6
 
 #define SEMINAR_LIST_URL @"seminars.json"
 #define SEMINAR_NAME @"title"

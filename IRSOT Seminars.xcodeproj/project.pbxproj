@@ -158,6 +158,8 @@
 		C4E4C16616E5ECAB003CBC09 /* navigationBackgroundLandscape.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E4C16416E5ECAB003CBC09 /* navigationBackgroundLandscape.png */; };
 		C4E4C16716E5ECAB003CBC09 /* navigationBackgroundLandscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E4C16516E5ECAB003CBC09 /* navigationBackgroundLandscape@2x.png */; };
 		C4E4C18A16E5ED35003CBC09 /* navigationBackground5Landscape@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E4C18916E5ED35003CBC09 /* navigationBackground5Landscape@2x.png */; };
+		C4E606CB19B6266E001FC0A2 /* info-iPhone.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E606C919B6266E001FC0A2 /* info-iPhone.png */; };
+		C4E606CC19B6266E001FC0A2 /* info-iPhone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4E606CA19B6266E001FC0A2 /* info-iPhone@2x.png */; };
 		C4F9EEB515ED12DA008BA56D /* profile-icon~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F9EEB115ED12DA008BA56D /* profile-icon~iPad.png */; };
 		C4F9EEB615ED12DA008BA56D /* profile-icon@2x~iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F9EEB215ED12DA008BA56D /* profile-icon@2x~iPad.png */; };
 		C4F9EEB715ED12DA008BA56D /* profile-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C4F9EEB315ED12DA008BA56D /* profile-icon.png */; };
@@ -625,6 +627,8 @@
 		C4E4C16416E5ECAB003CBC09 /* navigationBackgroundLandscape.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = navigationBackgroundLandscape.png; path = Resources/navigationBackgroundLandscape.png; sourceTree = "<group>"; };
 		C4E4C16516E5ECAB003CBC09 /* navigationBackgroundLandscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navigationBackgroundLandscape@2x.png"; path = "Resources/navigationBackgroundLandscape@2x.png"; sourceTree = "<group>"; };
 		C4E4C18916E5ED35003CBC09 /* navigationBackground5Landscape@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "navigationBackground5Landscape@2x.png"; path = "Resources/navigationBackground5Landscape@2x.png"; sourceTree = "<group>"; };
+		C4E606C919B6266E001FC0A2 /* info-iPhone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info-iPhone.png"; path = "icons/info-iPhone.png"; sourceTree = "<group>"; };
+		C4E606CA19B6266E001FC0A2 /* info-iPhone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info-iPhone@2x.png"; path = "icons/info-iPhone@2x.png"; sourceTree = "<group>"; };
 		C4F9EEA315ECF8E3008BA56D /* IRSOT_Seminars 4.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "IRSOT_Seminars 4.xcdatamodel"; sourceTree = "<group>"; };
 		C4F9EEB115ED12DA008BA56D /* profile-icon~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-icon~iPad.png"; path = "icons/profile-icon~iPad.png"; sourceTree = "<group>"; };
 		C4F9EEB215ED12DA008BA56D /* profile-icon@2x~iPad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "profile-icon@2x~iPad.png"; path = "icons/profile-icon@2x~iPad.png"; sourceTree = "<group>"; };
@@ -761,6 +765,8 @@
 		C456427815D25B53001C4024 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				C4E606C919B6266E001FC0A2 /* info-iPhone.png */,
+				C4E606CA19B6266E001FC0A2 /* info-iPhone@2x.png */,
 				C45BE2AA16E0FFFD007C2F02 /* accounting.png */,
 				C45BE2AB16E0FFFD007C2F02 /* business_class.png */,
 				C45BE2AC16E0FFFD007C2F02 /* calendar.png */,
@@ -1426,6 +1432,7 @@
 				C462BDC715C95A8700170E3C /* MainStoryboard_iPad.storyboard in Resources */,
 				C4DE788F15C95E34007FBEC4 /* Info Links.plist in Resources */,
 				C4C66E1C1674CA5F00B0885F /* ShareKit.bundle in Resources */,
+				C4E606CB19B6266E001FC0A2 /* info-iPhone.png in Resources */,
 				C456423715D25924001C4024 /* lectors-iPhone.png in Resources */,
 				C456423815D25924001C4024 /* lectors-iPhone@2x.png in Resources */,
 				C456427615D25AE2001C4024 /* gear-iPhone.png in Resources */,
@@ -1469,6 +1476,7 @@
 				C40813F916D232DB000857F4 /* backButton@2x.png in Resources */,
 				C40813FC16D232E3000857F4 /* barButton.png in Resources */,
 				C40813FD16D232E3000857F4 /* barButton@2x.png in Resources */,
+				C4E606CC19B6266E001FC0A2 /* info-iPhone@2x.png in Resources */,
 				C408140616D232F5000857F4 /* button-blue-pressed.png in Resources */,
 				C408140716D232F5000857F4 /* button-blue-pressed@2x.png in Resources */,
 				C408140816D232F5000857F4 /* button-blue.png in Resources */,
@@ -1637,7 +1645,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1656,6 +1665,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1673,7 +1683,8 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1685,6 +1696,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1695,19 +1707,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "IRSOT Seminars/IRSOT Seminars.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
 				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
+				PROVISIONING_PROFILE = "4561a46a-b922-476d-8846-e66e12077a4f";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4561a46a-b922-476d-8846-e66e12077a4f";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1717,19 +1729,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "IRSOT Seminars/IRSOT Seminars.entitlements";
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
 				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
+				PROVISIONING_PROFILE = "4561a46a-b922-476d-8846-e66e12077a4f";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4561a46a-b922-476d-8846-e66e12077a4f";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};

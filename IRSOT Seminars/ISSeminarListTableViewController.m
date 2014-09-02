@@ -56,7 +56,7 @@
     _currentSeminarType = [self.seminarTypeSwitch selectedSegmentIndex];
     if (self.section) {
         if (_currentSeminarType) _currentSeminarType = SEMINAR_TYPE_BK;
-        else _currentSeminarType = SEMINAR_TYPE_SEMINAR;
+        else _currentSeminarType = SEMINAR_TYPE_ALL;
     } else {
         _currentSeminarType = [self.type.id integerValue];
     }
@@ -368,7 +368,11 @@
     [fetchRequest setEntity:entity];
 
     if (self.section) {
-        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %d AND type.id == %d AND date_start > %@", [self.section.id integerValue], self.currentSeminarType, [NSDate date]];
+        if (self.currentSeminarType == SEMINAR_TYPE_BK) {
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %d AND type.id == %d AND date_start => %@", [self.section.id integerValue], self.currentSeminarType, [NSDate date]];
+        } else {
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %d AND type.id != %d AND date_start => %@", [self.section.id integerValue], SEMINAR_TYPE_BK, [NSDate date]];
+        }
     } else if (self.type) {
         fetchRequest.predicate = [NSPredicate predicateWithFormat:@"type.id == %d  AND date_start > %@", self.currentSeminarType, [NSDate date]];
     } else {

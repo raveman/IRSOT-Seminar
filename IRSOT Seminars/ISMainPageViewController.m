@@ -366,12 +366,12 @@ const NSInteger typesSection = 2;
     
     fetchRequest.fetchBatchSize = 20;
     
-    NSArray *sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:@"vid" ascending:NO],
-                                 [NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
+    NSArray *sortDescriptors = @[[[NSSortDescriptor alloc] initWithKey:SEMINAR_TERM_VID ascending:NO],
+                                 [NSSortDescriptor sortDescriptorWithKey:SEMINAR_TERM_NAME ascending:YES selector:@selector(localizedCaseInsensitiveCompare:)]];
     
     fetchRequest.sortDescriptors = sortDescriptors;
     
-    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:@"vid" cacheName:CACHE_NAME];
+    NSFetchedResultsController *aFetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:self.managedObjectContext sectionNameKeyPath:SEMINAR_TERM_VID cacheName:CACHE_NAME];
     aFetchedResultsController.delegate = self;
     _fetchedResultsController = aFetchedResultsController;
     

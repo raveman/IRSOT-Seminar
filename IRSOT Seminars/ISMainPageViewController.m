@@ -27,9 +27,9 @@
 
 #define CACHE_NAME @"Master"
 
-const NSUInteger allTypesSection = 0;
-
-const NSInteger typesSection = 2;
+static const NSUInteger ALL_TYPES_SECTION = 0;
+static const NSUInteger SECTIONS_SECTION = 1;
+static const NSUInteger TYPES_SECTION = 2;
 
 @interface ISMainPageViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, ISSettingsViewControllerDelegate>
 {
@@ -63,7 +63,7 @@ const NSInteger typesSection = 2;
 - (void) filterEpmtySections
 {
    if ([self.fetchedResultsController.sections count]) {
-        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:typesSection];
+        id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:TYPES_SECTION];
         NSArray *items = sectionInfo.objects;
         
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"seminars.@count > 0", @"Type"];
@@ -163,14 +163,14 @@ const NSInteger typesSection = 2;
     if ([[segue identifier] isEqualToString:@"Seminar List For Section or Type"]) {
         NSIndexPath *selectedIndexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
         ISSeminarListTableViewController *dvc = [segue destinationViewController];
-        if (selectedIndexPath.section == allTypesSection) {
+        if (selectedIndexPath.section == ALL_TYPES_SECTION) {
             [dvc setManagedObjectContext:self.managedObjectContext];
         }
-        if (selectedIndexPath.section == 1) {
+        if (selectedIndexPath.section == SECTIONS_SECTION) {
             Sections *section = [[self fetchedResultsController] objectAtIndexPath:selectedIndexPath];
             [dvc setSection:section];
             [dvc setManagedObjectContext:self.managedObjectContext];
-        } else if (selectedIndexPath.section == typesSection){
+        } else if (selectedIndexPath.section == TYPES_SECTION){
             Type *type = [self.filteredTypeItems objectAtIndex:selectedIndexPath.row];
             [dvc setType:type];
             [dvc setManagedObjectContext:self.managedObjectContext];
@@ -207,7 +207,7 @@ const NSInteger typesSection = 2;
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
         rowsInSection = [sectionInfo numberOfObjects];
-        if (section == typesSection) {
+        if (section == TYPES_SECTION) {
             rowsInSection = rowsInSection - self.emptyCount;
         }
         self.noDataLabel.hidden = YES;
@@ -241,7 +241,7 @@ const NSInteger typesSection = 2;
     
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         id row;
-        if (indexPath.section == typesSection) {
+        if (indexPath.section == TYPES_SECTION) {
             row = [self.filteredTypeItems objectAtIndex:indexPath.row];
         } else {
             row = [self.fetchedResultsController objectAtIndexPath:indexPath];
@@ -267,52 +267,32 @@ const NSInteger typesSection = 2;
             cell.textLabel.text = sectionName;
             if ([sectionName isEqualToString:@"Все мероприятия"]) {
                 cell.imageView.image = [UIImage imageNamed:@"calendar"];
-            }
-                
-            cell.textLabel.text = sectionName;
-            if ([sectionName isEqualToString:@"Бухгалтерский учет"]) {
+            } else if ([sectionName isEqualToString:@"Бухгалтерский учет"]) {
                 cell.imageView.image = [UIImage imageNamed:@"accounting"];
-            }
-            
-            if ([sectionName isEqualToString:@"Кадры"]) {
+            } else if ([sectionName isEqualToString:@"Кадры"]) {
                 cell.imageView.image = [UIImage imageNamed:@"hr"];
-            }
-            if ([sectionName isEqualToString:@"Право"]) {
+            } else if ([sectionName isEqualToString:@"Право"]) {
                 cell.imageView.image = [UIImage imageNamed:@"law"];
-            }
-            if ([sectionName isEqualToString:@"Управление"]) {
+            } else if ([sectionName isEqualToString:@"Управление"]) {
                 cell.imageView.image = [UIImage imageNamed:@"management"];
-            }
-            if ([sectionName isEqualToString:@"Финансы"]) {
+            } else if ([sectionName isEqualToString:@"Финансы"]) {
                 cell.imageView.image = [UIImage imageNamed:@"finance"];
-            }
-            
-            if ([sectionName isEqualToString:@"Бизнес-класс"]) {
+            } else if ([sectionName isEqualToString:@"Бизнес-класс"]) {
                 cell.imageView.image = [UIImage imageNamed:@"business_class"];
-            }
-            
-            if ([sectionName isEqualToString:@"Семинар"]) {
+            } else if ([sectionName isEqualToString:@"Семинар"]) {
                 cell.imageView.image = [UIImage imageNamed:@"seminar"];
-            }
-            
-            if ([sectionName isEqualToString:@"Мастер-класс"]) {
+            } else if ([sectionName isEqualToString:@"Мастер-класс"]) {
                 cell.imageView.image = [UIImage imageNamed:@"master_class"];
-            }
-            
-            if ([sectionName isEqualToString:@"Неделя бухучета"]) {
+            } else if ([sectionName isEqualToString:@"Неделя бухучета"]) {
                 cell.imageView.image = [UIImage imageNamed:@"nbu"];
-            }
-            
-            if ([sectionName isEqualToString:@"Курс"]) {
+            } else if ([sectionName isEqualToString:@"Курс"]) {
                 cell.imageView.image = [UIImage imageNamed:@"course"];
-            }
-            
-            if ([sectionName isEqualToString:@"Тематическая неделя"]) {
+            } else if ([sectionName isEqualToString:@"Тематическая неделя"]) {
                 cell.imageView.image = [UIImage imageNamed:@"lecturer"];
-            }
-            
-            if ([sectionName isEqualToString:@"Конференция"]) {
+            } else if ([sectionName isEqualToString:@"Конференция"]) {
                 cell.imageView.image = [UIImage imageNamed:@"conference"];
+            } else {
+                cell.imageView.image = [UIImage imageNamed:@"seminar"];
             }
         }
     }
@@ -509,7 +489,7 @@ const NSInteger typesSection = 2;
                 }
             }
         });
-        dispatch_release(checkQ);
+//        dispatch_release(checkQ);
     }
 }
 

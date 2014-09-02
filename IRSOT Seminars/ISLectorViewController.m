@@ -124,7 +124,7 @@
             });
         });
         
-        dispatch_release(fetchQ);
+//        dispatch_release(fetchQ);
     }
 }
 

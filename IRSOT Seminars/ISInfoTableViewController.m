@@ -124,12 +124,11 @@
 {
     NSString *title;
     if (section == 2) {
-        title = NSLocalizedString(@"Телефоны: (495) 933-02-17, 234-1390, 234-1423, 234-1417\n Факс: (495) 933-0215\n E-mail: seminar@ruseminar.ru",@"Info telephones");
+        title = NSLocalizedString(@"Телефоны: +7 (495) 933-02-17, +7 (495) 974-24-53\n Факс: (495) 933-0215\n E-mail: seminar@ruseminar.ru",@"Info telephones");
     }
     return title;
 
 }
-
 
 - (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {

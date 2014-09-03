@@ -61,7 +61,6 @@
     self.forwardButton.title = @" ";
     self.actionButton.title = @" ";
     self.reloadButton.title = @" ";
-    self.backButton.width = 30.0;
     
     if (self.navigationController) {
         self.modalNavigationBar.hidden = YES;

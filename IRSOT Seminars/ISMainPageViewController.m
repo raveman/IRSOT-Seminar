@@ -99,7 +99,8 @@ static const NSUInteger TYPES_SECTION = 2;
     
     UIBarButtonItem *setupButton = self.navigationItem.rightBarButtonItem;
     setupButton.image = [UIImage imageNamed:@"gear-iPhone"];
-    setupButton.title = @" ";
+    setupButton.title = @"   ";
+    [Helper fixBarButtonItemForiOS7:setupButton];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
     

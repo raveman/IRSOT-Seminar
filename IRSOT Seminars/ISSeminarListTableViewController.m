@@ -95,6 +95,7 @@
         self.seminarTypeSwitch.momentary = YES;
         self.title = NSLocalizedString(@"All events", @"All events");
     }
+    self.searchBar.placeholder = NSLocalizedString(@"название мероприятия", @"search placeholder");
     
     [Helper fixSegmentedControlForiOS7:self.seminarTypeSwitch];
 }
@@ -495,7 +496,11 @@
     NSFetchRequest *aRequest = [[self fetchedResultsController] fetchRequest];
 
     if (self.section) {
-        aRequest.predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@ AND section.id == %d AND type.id == %d", searchText, [self.section.id integerValue] , self.currentSeminarType];
+        if (self.currentSeminarType == SEMINAR_TYPE_BK) {
+            aRequest.predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@ AND section.id == %d AND type.id == %d", searchText, [self.section.id integerValue] , self.currentSeminarType];
+        } else {
+            aRequest.predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@ AND section.id == %d", searchText, [self.section.id integerValue]];
+        }
     } else if (self.type) {
         aRequest.predicate = [NSPredicate predicateWithFormat:@"name CONTAINS[cd] %@ AND type.id == %d", searchText,  self.currentSeminarType];
     } else {

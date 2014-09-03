@@ -556,22 +556,25 @@
     "</head> \n<body>\n<div id=\"program_page\">\n<div class=\"cat_program\">\n"];
 
     // constructing seminar attending cost
-    if ([self.seminar.type.id integerValue] == SEMINAR_TYPE_SEMINAR) {
-        NSString *cost = [NSString stringWithFormat:@"<p>Регистрационный взнос составляет <strong>%@</strong> руб.<br>\nобеспечивает обед в ресторане отеля, кофе-паузы, раздаточные материалы</p>", self.seminar.cost_full];
-        
-        // constructing discounts
-        NSString *cost_discount = [NSString string];
-        if ([self.seminar.cost_discount integerValue] != 0) {
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"d MMMM"];
-            NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
-            [dateFormatter setLocale:locale];
-            NSDate *discount_date = [self.seminar.date_start dateByAddingTimeInterval:-864000]; // 10 days in seconds: 18*24*60*60
+    if ([self.seminar.type.id integerValue] != 4 ) {
+        if ([self.seminar.cost_full integerValue] != 0) {
+            NSString *cost = [NSString stringWithFormat:@"<p>Регистрационный взнос составляет <strong>%@</strong> руб.<br>\nобеспечивает обед в ресторане отеля, кофе-паузы, раздаточные материалы</p>", self.seminar.cost_full];
             
-            cost_discount = [NSString stringWithFormat:@"<p>При оплате <span style=\"color: #d71632;\"><strong>до %@ </strong></span><br>\n СПЕЦИАЛЬНАЯ ЦЕНА %@ руб.</p>\n", [dateFormatter stringFromDate:discount_date], self.seminar.cost_discount];
+            // constructing discounts
+            NSString *cost_discount = [NSString string];
+            if ([self.seminar.cost_discount integerValue] != 0) {
+                NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+                [dateFormatter setDateFormat:@"d MMMM"];
+                NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
+                [dateFormatter setLocale:locale];
+                NSDate *discount_date = [self.seminar.date_start dateByAddingTimeInterval:-864000]; // 10 days in seconds: 18*24*60*60
+                
+                cost_discount = [NSString stringWithFormat:@"<p>При оплате <span style=\"color: #d71632;\"><strong>до %@ </strong></span><br>\n СПЕЦИАЛЬНАЯ ЦЕНА %@ руб.</p>\n", [dateFormatter stringFromDate:discount_date], self.seminar.cost_discount];
+            }
+            html = [NSString stringWithFormat:@"%@\n <p></p><hr>%@ %@<hr>\n", html, cost, cost_discount];
         }
-        html = [NSString stringWithFormat:@"%@\n <p></p><hr>%@ %@<hr>\n", html, cost, cost_discount];
     }
+
     
     NSString *footer = @"</div></div>\n</body>\n</html>";
 
@@ -654,52 +657,11 @@
 {
     NSInteger count = [self.seminar.lectors count];
     NSString *title = [NSString string];
-    NSInteger seminarType = [self.seminar.type.id integerValue];
-    
-    switch (seminarType) {
-        case SEMINAR_TYPE_SEMINAR:
-            if (count == 1) {
-                title = NSLocalizedString(@"Seminar host:", @"Seminar Lector Table Title");
-            } else {
-                title = NSLocalizedString(@"Seminar hosts:", @"Seminar Lectors Table Title");
-            }
-            break;
-        case SEMINAR_TYPE_BK:
-            if (count == 1) {
-                title = NSLocalizedString(@"Business-class host:", @"BK Lector Table Title");
-            } else {
-                title = NSLocalizedString(@"Business-class hosts:", @"BK Lectors Table Title");
-            }
-            break;
-        case SEMINAR_TYPE_COURSE:
-            if (count == 1) {
-                title = NSLocalizedString(@"Course host:", @"Course Lector Table Title");
-            } else {
-                title = NSLocalizedString(@"Course hosts:", @"Course Lectors Table Title");
-            }
-            break;
-        case SEMINAR_TYPE_CONFERENCE:
-            if (count == 1) {
-                title = NSLocalizedString(@"Conference host:", @"Conference Lector Table Title");
-            } else {
-                title = NSLocalizedString(@"Conference hosts:", @"Conference Lectors Table Title");
-            }
-            break;
-        case SEMINAR_TYPE_MASTER_CLASS:
-            if (count == 1) {
-                title = NSLocalizedString(@"Master-class host:", @"Master class Lector Table Title");
-            } else {
-                title = NSLocalizedString(@"Master-class hosts:", @"Master class Lectors Table Title");
-            }
-            break;
-        case SEMINAR_TYPE_THEMATIC_WEEK:
-            title = NSLocalizedString(@"Lectors:", @"Thematic week Lectors Table Title");
-            break;
-        case SEMINAR_TYPE_NBU:
-            title = NSLocalizedString(@"Lectors:", @"NBU Lectors Table Title");
-            break;
-        default:
-            break;
+
+    if (count == 1) {
+        title = NSLocalizedString(@"Seminar host:", @"Seminar Lector Table Title");
+    } else {
+        title = NSLocalizedString(@"Seminar hosts:", @"Seminar Lectors Table Title");
     }
     
     return title;

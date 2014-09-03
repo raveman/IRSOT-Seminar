@@ -223,9 +223,7 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
                                 nil];
     [barButtonItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
     NSDictionary *highlightedAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
-    
     [barButtonItem setTitleTextAttributes:highlightedAttributes forState:UIControlStateHighlighted];
-    
     barButtonItem.tintColor = [Helper tintColor];
 }
 

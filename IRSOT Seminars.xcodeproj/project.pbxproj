@@ -78,6 +78,7 @@
 		C45BE2BF16E0FFFE007C2F02 /* master_class.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2B316E0FFFE007C2F02 /* master_class.png */; };
 		C45BE2C016E0FFFE007C2F02 /* nbu.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2B416E0FFFE007C2F02 /* nbu.png */; };
 		C45BE2C116E0FFFE007C2F02 /* seminar.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE2B516E0FFFE007C2F02 /* seminar.png */; };
+		C45C716219B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.m in Sources */ = {isa = PBXBuildFile; fileRef = C45C716119B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.m */; };
 		C45C86A715F63DA300108749 /* orangeButton.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C869F15F63DA300108749 /* orangeButton.png */; };
 		C45C86A815F63DA300108749 /* orangeButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C86A015F63DA300108749 /* orangeButton@2x.png */; };
 		C45C86A915F63DA300108749 /* orangeButtonHighlight.png in Resources */ = {isa = PBXBuildFile; fileRef = C45C86A115F63DA300108749 /* orangeButtonHighlight.png */; };
@@ -507,6 +508,8 @@
 		C45BE2B316E0FFFE007C2F02 /* master_class.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = master_class.png; path = Resources/master_class.png; sourceTree = "<group>"; };
 		C45BE2B416E0FFFE007C2F02 /* nbu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nbu.png; path = Resources/nbu.png; sourceTree = "<group>"; };
 		C45BE2B516E0FFFE007C2F02 /* seminar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = seminar.png; path = Resources/seminar.png; sourceTree = "<group>"; };
+		C45C716019B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+iOS7Spacing.h"; sourceTree = "<group>"; };
+		C45C716119B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+iOS7Spacing.m"; sourceTree = "<group>"; };
 		C45C869F15F63DA300108749 /* orangeButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orangeButton.png; path = Resources/orangeButton.png; sourceTree = "<group>"; };
 		C45C86A015F63DA300108749 /* orangeButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "orangeButton@2x.png"; path = "Resources/orangeButton@2x.png"; sourceTree = "<group>"; };
 		C45C86A115F63DA300108749 /* orangeButtonHighlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = orangeButtonHighlight.png; path = Resources/orangeButtonHighlight.png; sourceTree = "<group>"; };
@@ -905,6 +908,8 @@
 				C45E6C9116CD34820024EC39 /* ADVDefaultTheme */,
 				C45E6C9416CD34820024EC39 /* ADVFitpulseTheme */,
 				C45E6C9716CD34820024EC39 /* ADVTheme */,
+				C45C716019B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.h */,
+				C45C716119B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.m */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -1539,6 +1544,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C45C716219B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.m in Sources */,
 				C4DCB69416C1534F00519F6A /* ReachabilityARC.m in Sources */,
 				C462BDBD15C95A8700170E3C /* main.m in Sources */,
 				C462BDC115C95A8700170E3C /* ISAppDelegate.m in Sources */,
@@ -1708,18 +1714,18 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "IRSOT Seminars/IRSOT Seminars.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
 				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4561a46a-b922-476d-8846-e66e12077a4f";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4561a46a-b922-476d-8846-e66e12077a4f";
+				PROVISIONING_PROFILE = "F2FB22DF-EF93-44A9-A7A3-C8D049B2C19B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F2FB22DF-EF93-44A9-A7A3-C8D049B2C19B";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1730,18 +1736,18 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "IRSOT Seminars/IRSOT Seminars.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
 				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "4561a46a-b922-476d-8846-e66e12077a4f";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4561a46a-b922-476d-8846-e66e12077a4f";
+				PROVISIONING_PROFILE = "F2FB22DF-EF93-44A9-A7A3-C8D049B2C19B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F2FB22DF-EF93-44A9-A7A3-C8D049B2C19B";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				WRAPPER_EXTENSION = app;
 			};

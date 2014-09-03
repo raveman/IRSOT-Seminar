@@ -38,15 +38,21 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
 
     if (margin == -1) margin = HORIZONTAL_MARGIN;
 
+//    CGRect newFrame = textView.frame;
+//    newFrame.size.width = size.width - margin;
+//    textView.frame = newFrame;
+//    
+//    CGRect frame = textView.frame;
+//    frame.size.height = textView.contentSize.height;
+//    textView.frame = frame;
+    
+    CGFloat fixedWidth = textView.frame.size.width; // - margin;
+    CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
     CGRect newFrame = textView.frame;
-    newFrame.size.width = size.width - margin;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
     textView.frame = newFrame;
     
-    CGRect frame = textView.frame;
-    frame.size.height = textView.contentSize.height;
-    textView.frame = frame;
-    
-    return frame;
+    return newFrame;
 }
 
 + (CGRect) resizeRectButton:(UIButton *)button withSize:(CGSize)size
@@ -178,5 +184,52 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
     
     return platform;
 }
+
++ (UIColor *)tintColor {
+    return [UIColor colorWithRed:228 / 255.0 green:245 / 255.0 blue:253 / 255.0 alpha:1.0];
+}
+
++ (void)fixSegmentedControlForiOS7:(UISegmentedControl *)segmentedControl;
+{
+    NSInteger deviceVersion = [[UIDevice currentDevice] systemVersion].integerValue;
+    if(deviceVersion < 7) // If this is not an iOS 7 device, we do not need to perform these customizations.
+        return;
+    
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [UIFont boldSystemFontOfSize:12], UITextAttributeFont,
+                                [UIColor whiteColor], UITextAttributeTextColor,
+                                nil];
+    [segmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    NSDictionary *highlightedAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    
+    [segmentedControl setTitleTextAttributes:highlightedAttributes forState:UIControlStateHighlighted];
+    
+    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    segmentedControl.tintColor = [Helper tintColor];
+    //    self.seminarTypeSwitch.tintColor = [UIColor colorWithRed:105 / 255.0 green:201 / 255.0 blue:229 / 255.0 alpha:1.0];
+    //    self.seminarTypeSwitch.tintColor = [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
+    //    self.seminarTypeSwitch.tintColor = [UIColor whiteColor];
+}
+
++ (void)fixBarButtonItemForiOS7:(UIBarButtonItem *)barButtonItem
+{
+    NSInteger deviceVersion = [[UIDevice currentDevice] systemVersion].integerValue;
+    if(deviceVersion < 7) // If this is not an iOS 7 device, we do not need to perform these customizations.
+        return;
+    
+    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                [UIFont boldSystemFontOfSize:12], UITextAttributeFont,
+                                [UIColor whiteColor], UITextAttributeTextColor,
+                                nil];
+    [barButtonItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
+    NSDictionary *highlightedAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
+    
+    [barButtonItem setTitleTextAttributes:highlightedAttributes forState:UIControlStateHighlighted];
+    
+    barButtonItem.tintColor = [Helper tintColor];
+}
+
+
+
 
 @end

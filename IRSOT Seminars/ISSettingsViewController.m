@@ -563,8 +563,20 @@ const NSInteger settingsSections = 3;
 - (void)updateSwitchAtIndexPath:(id)sender
 {
 
-    UITableView *tableView = (UITableView *)[[sender superview] superview];
-    NSIndexPath *indexPath = [tableView indexPathForCell:(UITableViewCell*)[sender superview]];
+    UITableView *tableView;
+    UITableViewCell *cell;
+    NSIndexPath *indexPath;
+
+    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
+        UISwitch *switchInCell = (UISwitch *)sender;
+        cell = (UITableViewCell *) switchInCell.superview.superview;
+        indexPath = [self.tableView indexPathForCell:cell];
+        tableView = self.tableView;
+    } else {
+        tableView = (UITableView *)[[sender superview] superview];
+        indexPath = [tableView indexPathForCell:(UITableViewCell*)[sender superview]];
+    }
+
     
     if (indexPath.section == settingsSortSection) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -582,7 +594,7 @@ const NSInteger settingsSections = 3;
         [defaults synchronize];
         // now we need to enable/disable cell for alerts
         NSIndexPath *alertCellIndexPath = [NSIndexPath indexPathForRow:1 inSection:settingsCalendarAlertSection];
-        UITableViewCell *cell = [tableView cellForRowAtIndexPath:alertCellIndexPath];
+        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:alertCellIndexPath];
         cell.textLabel.enabled = [sender isOn];
         cell.detailTextLabel.enabled = cell.textLabel.enabled;
     }

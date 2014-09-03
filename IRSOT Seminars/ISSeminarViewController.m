@@ -99,7 +99,7 @@
 
     CGSize currentSize = self.view.frame.size;
     [Helper resizeRectButton:self.attendSeminarButton withSize:currentSize];
-    CGRect headerRect = [Helper resizeTextView:self.seminarName withSize: currentSize andMargin:-1];
+    CGRect headerRect = [Helper resizeTextView:self.seminarName withSize:currentSize andMargin:-1];
     
     // опускаем дату проведения семинара
     CGRect rect = self.seminarDate.frame;
@@ -264,6 +264,7 @@
         self.lectorTableView.delegate = self;
         
         self.scrollView.scrollsToTop = YES;
+        [Helper fixBarButtonItemForiOS7:self.navigationItem.rightBarButtonItem];
     }
 }
 

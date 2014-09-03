@@ -95,6 +95,8 @@
         self.seminarTypeSwitch.momentary = YES;
         self.title = NSLocalizedString(@"All events", @"All events");
     }
+    
+    [Helper fixSegmentedControlForiOS7:self.seminarTypeSwitch];
 }
 
 - (void)viewDidUnload
@@ -544,5 +546,6 @@
     [self setSearchIsActive:YES];
     return;
 }
+
 
 @end

@@ -26,4 +26,10 @@ extern NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification;
 + (UIFont *)labelFont;
 
 + (NSString *)platformString;
+
++ (UIColor *)tintColor;
+
++ (void)fixSegmentedControlForiOS7:(UISegmentedControl *)segmentedControl;
++ (void)fixBarButtonItemForiOS7:(UIBarButtonItem *)barButtonItem;
+
 @end

@@ -96,7 +96,8 @@
 
 - (UIColor *)segmentedTintColor
 {
-    return [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
+//    return [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
+    return [self baseTintColor];
 }
 
 - (CGSize)shadowOffset
@@ -158,6 +159,7 @@
     }
     UIImage *image = [UIImage imageNamed:name];
     image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 5.0, 0.0, 5.0)];
+//    image = [image resizableImageWithCapInsets:UIEdgeInsetsMake(0.0, 5.0, 0.0, 5.0)];
     return image;
 }
 

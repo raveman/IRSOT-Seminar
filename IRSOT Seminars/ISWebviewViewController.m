@@ -8,6 +8,7 @@
 
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "ISWebviewViewController.h"
+#import "Helper.h"
 
 @interface ISWebviewViewController () <UIWebViewDelegate, UIActionSheetDelegate>
 //@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
@@ -47,6 +48,21 @@
 {
     [super viewDidLoad];
     
+
+    NSMutableArray *buttons = self.modalWebToolBar.items.mutableCopy;
+    UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    spacer.width = 10;
+    [buttons insertObject:spacer atIndex:1];
+    [buttons insertObject:spacer atIndex:3];
+    [buttons insertObject:spacer atIndex:3];
+    self.modalWebToolBar.items = buttons;
+    
+    self.backButton.title = @" ";
+    self.forwardButton.title = @" ";
+    self.actionButton.title = @" ";
+    self.reloadButton.title = @" ";
+    self.backButton.width = 30.0;
+    
     if (self.navigationController) {
         self.modalNavigationBar.hidden = YES;
         self.modalWebToolBar.hidden = YES;
@@ -65,6 +81,14 @@
     }
     
 	// Do any additional setup after loading the view.
+    [Helper fixBarButtonItemForiOS7:self.backButton];
+    [Helper fixBarButtonItemForiOS7:self.forwardButton];
+    [Helper fixBarButtonItemForiOS7:self.actionButton];
+    [Helper fixBarButtonItemForiOS7:self.reloadButton];
+    self.modalWebToolBar.barStyle = UIBarStyleDefault;
+    self.modalWebToolBar.backgroundColor = [Helper tintColor];
+    
+    
 }
 
 - (void)viewDidUnload

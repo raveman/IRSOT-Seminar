@@ -125,6 +125,9 @@
 		C4786CA416DE023C007A9B4A /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4786CA316DE023C007A9B4A /* CoreImage.framework */; };
 		C4786CAD16DE3AEB007A9B4A /* accessoryArrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C4786CAB16DE3AEB007A9B4A /* accessoryArrow.png */; };
 		C4786CAE16DE3AEB007A9B4A /* accessoryArrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C4786CAC16DE3AEB007A9B4A /* accessoryArrow@2x.png */; };
+		C47E4CE619B77F7C006D8CA9 /* irsot-icon-iPad-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = C47E4CE319B77F7C006D8CA9 /* irsot-icon-iPad-ios7.png */; };
+		C47E4CE719B77F7C006D8CA9 /* irsot-icon-iPad-ios7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C47E4CE419B77F7C006D8CA9 /* irsot-icon-iPad-ios7@2x.png */; };
+		C47E4CE819B77F7C006D8CA9 /* irsot-icon-iPhone-ios7.png in Resources */ = {isa = PBXBuildFile; fileRef = C47E4CE519B77F7C006D8CA9 /* irsot-icon-iPhone-ios7.png */; };
 		C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */; };
 		C483E40F15D2C393001A41FB /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40E15D2C393001A41FB /* Helper.m */; };
 		C48F96F815CC46D400F4AA51 /* Seminar+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F96F715CC46D400F4AA51 /* Seminar+Load_Data.m */; };
@@ -577,6 +580,9 @@
 		C4786CA316DE023C007A9B4A /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
 		C4786CAB16DE3AEB007A9B4A /* accessoryArrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = accessoryArrow.png; path = Resources/accessoryArrow.png; sourceTree = "<group>"; };
 		C4786CAC16DE3AEB007A9B4A /* accessoryArrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "accessoryArrow@2x.png"; path = "Resources/accessoryArrow@2x.png"; sourceTree = "<group>"; };
+		C47E4CE319B77F7C006D8CA9 /* irsot-icon-iPad-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "irsot-icon-iPad-ios7.png"; sourceTree = "<group>"; };
+		C47E4CE419B77F7C006D8CA9 /* irsot-icon-iPad-ios7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "irsot-icon-iPad-ios7@2x.png"; sourceTree = "<group>"; };
+		C47E4CE519B77F7C006D8CA9 /* irsot-icon-iPhone-ios7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "irsot-icon-iPhone-ios7.png"; sourceTree = "<group>"; };
 		C483E40A15D2ADD1001A41FB /* ISLectorListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorListTableViewController.h; sourceTree = "<group>"; };
 		C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorListTableViewController.m; sourceTree = "<group>"; };
 		C483E40D15D2C393001A41FB /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
@@ -803,6 +809,9 @@
 				C4A37C8B162742EF00DBE6E8 /* catalog2-iPhone@2x.png */,
 				C4A37C8C162742EF00DBE6E8 /* catalog3-iPhone.png */,
 				C4A37C8D162742EF00DBE6E8 /* catalog3-iPhone@2x.png */,
+				C47E4CE319B77F7C006D8CA9 /* irsot-icon-iPad-ios7.png */,
+				C47E4CE419B77F7C006D8CA9 /* irsot-icon-iPad-ios7@2x.png */,
+				C47E4CE519B77F7C006D8CA9 /* irsot-icon-iPhone-ios7.png */,
 				C4E3A9EA1612304300CFF725 /* irsot-icon-iPad@2x.png */,
 				C4E3A9E81612303F00CFF725 /* irsot-icon-iPad.png */,
 				C4E3A9E61612303A00CFF725 /* irsot-icon-iPhone@2x.png */,
@@ -1475,10 +1484,12 @@
 				C4A37C92162742EF00DBE6E8 /* catalog3-iPhone.png in Resources */,
 				C4A37C93162742EF00DBE6E8 /* catalog3-iPhone@2x.png in Resources */,
 				C493E593162C2967002A7E57 /* bookmarks-iPhone.png in Resources */,
+				C47E4CE619B77F7C006D8CA9 /* irsot-icon-iPad-ios7.png in Resources */,
 				C493E594162C2967002A7E57 /* bookmarks-iPhone@2x.png in Resources */,
 				C425DFD816C00853002338E3 /* SVProgressHUD.bundle in Resources */,
 				C40813F816D232DB000857F4 /* backButton.png in Resources */,
 				C40813F916D232DB000857F4 /* backButton@2x.png in Resources */,
+				C47E4CE819B77F7C006D8CA9 /* irsot-icon-iPhone-ios7.png in Resources */,
 				C40813FC16D232E3000857F4 /* barButton.png in Resources */,
 				C40813FD16D232E3000857F4 /* barButton@2x.png in Resources */,
 				C4E606CC19B6266E001FC0A2 /* info-iPhone@2x.png in Resources */,
@@ -1512,6 +1523,7 @@
 				C45BE29816E0F426007C2F02 /* law@2x.png in Resources */,
 				C45BE29916E0F426007C2F02 /* management@2x.png in Resources */,
 				C45BE29D16E0F8FE007C2F02 /* business_class@2x.png in Resources */,
+				C47E4CE719B77F7C006D8CA9 /* irsot-icon-iPad-ios7@2x.png in Resources */,
 				C45BE29E16E0F8FE007C2F02 /* master_class@2x.png in Resources */,
 				C45BE29F16E0F8FE007C2F02 /* seminar@2x.png in Resources */,
 				C45BE2A116E0FB22007C2F02 /* course@2x.png in Resources */,

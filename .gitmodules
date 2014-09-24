@@ -4,9 +4,6 @@
 [submodule "Submodules/SVProgressHUD"]
 	path = Submodules/SVProgressHUD
 	url = https://github.com/samvermette/SVProgressHUD.git
-[submodule "Submodules/ShareKit"]
-	path = Submodules/ShareKit
-	url = git://github.com/ShareKit/ShareKit.git
 [submodule "Submodules/PSUpdateApp"]
 	path = Submodules/PSUpdateApp
 	url = https://github.com/danielebogo/PSUpdateApp.git

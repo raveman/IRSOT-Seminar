@@ -1,15 +1,13 @@
 {
   "images" : [
     {
-      "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "irsot-icon-iPhone@2x.png",
+      "size" : "29x29",
       "scale" : "2x"
     },
     {
-      "size" : "40x40",
       "idiom" : "iphone",
-      "filename" : "irsot-icon-iPhone@2x-1.png",
+      "size" : "40x40",
       "scale" : "2x"
     },
     {
@@ -24,27 +22,23 @@
       "scale" : "3x"
     },
     {
-      "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "irsot-icon-iPad.png",
+      "size" : "29x29",
       "scale" : "1x"
     },
     {
-      "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "irsot-icon-iPad@2x.png",
+      "size" : "29x29",
       "scale" : "2x"
     },
     {
-      "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "irsot-icon-iPad-ios7-1.png",
+      "size" : "40x40",
       "scale" : "1x"
     },
     {
-      "size" : "40x40",
       "idiom" : "ipad",
-      "filename" : "irsot-icon-iPad-ios7@2x-1.png",
+      "size" : "40x40",
       "scale" : "2x"
     },
     {

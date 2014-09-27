@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		C415A30215CC95A0004BCD79 /* ISBookmarksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C415A30115CC95A0004BCD79 /* ISBookmarksTableViewController.m */; };
 		C415A30B15CC9952004BCD79 /* ISLectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C415A30A15CC9952004BCD79 /* ISLectorViewController.m */; };
-		C41B5C7F15F4ECA20079D940 /* ISSHKConfigurator.m in Sources */ = {isa = PBXBuildFile; fileRef = C41B5C7E15F4ECA20079D940 /* ISSHKConfigurator.m */; };
 		C423682715DEBBDF0066B1D7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682615DEBBDF0066B1D7 /* Security.framework */; };
 		C423682915DEBBE70066B1D7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682815DEBBE70066B1D7 /* MessageUI.framework */; };
 		C423682B15DEBBEF0066B1D7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682A15DEBBEF0066B1D7 /* CFNetwork.framework */; };
@@ -62,6 +61,7 @@
 		C4D42DB919D72EDC003D51CD /* Term.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D42DA919D72EDC003D51CD /* Term.m */; };
 		C4D42DBA19D72EDC003D51CD /* Type.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D42DAB19D72EDC003D51CD /* Type.m */; };
 		C4D42DBB19D72EDC003D51CD /* Type+Load_Data.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D42DAD19D72EDC003D51CD /* Type+Load_Data.m */; };
+		C4D42DC619D731FB003D51CD /* ISTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D42DC519D731FB003D51CD /* ISTheme.m */; };
 		C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */; };
 		C4DCB69416C1534F00519F6A /* ReachabilityARC.m in Sources */ = {isa = PBXBuildFile; fileRef = C425DFCF16C00617002338E3 /* ReachabilityARC.m */; };
 		C4DE788015C95C02007FBEC4 /* ISInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4DE787F15C95C02007FBEC4 /* ISInfoTableViewController.m */; };
@@ -79,8 +79,6 @@
 		C415A30115CC95A0004BCD79 /* ISBookmarksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISBookmarksTableViewController.m; sourceTree = "<group>"; };
 		C415A30915CC9952004BCD79 /* ISLectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorViewController.h; sourceTree = "<group>"; };
 		C415A30A15CC9952004BCD79 /* ISLectorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorViewController.m; sourceTree = "<group>"; };
-		C41B5C7D15F4ECA20079D940 /* ISSHKConfigurator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSHKConfigurator.h; sourceTree = "<group>"; };
-		C41B5C7E15F4ECA20079D940 /* ISSHKConfigurator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSHKConfigurator.m; sourceTree = "<group>"; };
 		C423682615DEBBDF0066B1D7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		C423682815DEBBE70066B1D7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C423682A15DEBBEF0066B1D7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -170,6 +168,8 @@
 		C4D42DAB19D72EDC003D51CD /* Type.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Type.m; path = Models/Type.m; sourceTree = "<group>"; };
 		C4D42DAC19D72EDC003D51CD /* Type+Load_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "Type+Load_Data.h"; path = "Models/Type+Load_Data.h"; sourceTree = "<group>"; };
 		C4D42DAD19D72EDC003D51CD /* Type+Load_Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "Type+Load_Data.m"; path = "Models/Type+Load_Data.m"; sourceTree = "<group>"; };
+		C4D42DC419D731FB003D51CD /* ISTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISTheme.h; sourceTree = "<group>"; };
+		C4D42DC519D731FB003D51CD /* ISTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISTheme.m; sourceTree = "<group>"; };
 		C4D7CEF315D3F1A60003F90C /* ISNewsWebviewControllerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISNewsWebviewControllerViewController.h; sourceTree = "<group>"; };
 		C4D7CEF415D3F1A60003F90C /* ISNewsWebviewControllerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISNewsWebviewControllerViewController.m; sourceTree = "<group>"; };
 		C4DE787E15C95C02007FBEC4 /* ISInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISInfoTableViewController.h; sourceTree = "<group>"; };
@@ -247,8 +247,6 @@
 		C41B5C7C15F4EC780079D940 /* Share */ = {
 			isa = PBXGroup;
 			children = (
-				C41B5C7D15F4ECA20079D940 /* ISSHKConfigurator.h */,
-				C41B5C7E15F4ECA20079D940 /* ISSHKConfigurator.m */,
 			);
 			name = Share;
 			sourceTree = "<group>";
@@ -344,6 +342,8 @@
 		C45E6C9016CD34820024EC39 /* Theme */ = {
 			isa = PBXGroup;
 			children = (
+				C4D42DC419D731FB003D51CD /* ISTheme.h */,
+				C4D42DC519D731FB003D51CD /* ISTheme.m */,
 				C45C716019B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.h */,
 				C45C716119B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.m */,
 			);
@@ -574,6 +574,7 @@
 				C462BDCA15C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld in Sources */,
 				C4D42DAE19D72EDC003D51CD /* AllEvents.m in Sources */,
 				C462BDDB15C95B7300170E3C /* ISMainPageViewController.m in Sources */,
+				C4D42DC619D731FB003D51CD /* ISTheme.m in Sources */,
 				C4D42DB219D72EDC003D51CD /* Lector.m in Sources */,
 				C4DE788015C95C02007FBEC4 /* ISInfoTableViewController.m in Sources */,
 				C4D42DB719D72EDC003D51CD /* Seminar.m in Sources */,
@@ -588,7 +589,6 @@
 				C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */,
 				C483E40F15D2C393001A41FB /* Helper.m in Sources */,
 				C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */,
-				C41B5C7F15F4ECA20079D940 /* ISSHKConfigurator.m in Sources */,
 				C425DFD916C00853002338E3 /* SVProgressHUD.m in Sources */,
 				C45D3CF116CD4E0200877F94 /* ISInfoDictionary.m in Sources */,
 				C4D42DB819D72EDC003D51CD /* Seminar+Load_Data.m in Sources */,

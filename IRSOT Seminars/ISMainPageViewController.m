@@ -23,7 +23,7 @@
 #import "AllEvents.h"
 
 #import "Helper.h"
-#import "ADVTheme.h"
+#import "ISTheme.h"
 
 #define CACHE_NAME @"Master"
 
@@ -322,8 +322,7 @@ static const NSUInteger TYPES_SECTION = 2;
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
     [headerView setBackgroundColor:[UIColor clearColor]];
     
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    [headerView addSubview:[theme sectionLabelInTableView:tableView forSection:section andMargin:0]];
+    [headerView addSubview:[ISTheme sectionLabelInTableView:tableView forSection:section andMargin:0]];
     
     return headerView;
 }

@@ -15,7 +15,6 @@
 #import "Section+Load_Data.h"
 #import "Lector.h"
 #import "ISSettingsViewController.h"
-#import "ADVTheme.h"
 
 #import "Helper.h"
 

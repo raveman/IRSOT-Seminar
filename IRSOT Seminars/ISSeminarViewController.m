@@ -16,6 +16,8 @@
 #import "ISLectorViewController.h"
 #import "ISSettingsViewController.h"
 
+#import "ISTheme.h"
+
 #import "Helper.h"
 #import "Sections.h"
 #import "Type.h"
@@ -24,8 +26,6 @@
 #import "Section+Load_Data.h"
 #import "Type+Load_Data.h"
 #import "ISAlertTimes.h"
-
-#import "ADVTheme.h"
 
 //#define ADD_BOOKMARK @"Добавить закладку"
 //#define VIEW_ON_WEB @"Посмотреть полную версию"
@@ -242,10 +242,8 @@
 
         self.typeLabel.text = self.seminar.type.name;
 
-        id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-        self.programLabel.textColor = [theme sectionLabelColor];
-        self.programLabel.font = [theme sectionLabelFont];
-        [ADVThemeManager customizeTableView:self.lectorTableView];
+        self.programLabel.textColor = [ISTheme sectionLabelColor];
+        self.programLabel.font = [ISTheme sectionLabelFont];
         
         [self.programWebView loadHTMLString:self.html baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];
         self.programWebView.userInteractionEnabled = NO;
@@ -661,8 +659,7 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
     [headerView setBackgroundColor:[UIColor clearColor]];
     
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    [headerView addSubview:[theme sectionLabelInTableView:tableView forSection:section andMargin:20]];
+    [headerView addSubview:[ISTheme sectionLabelInTableView:tableView forSection:section andMargin:20]];
     
     return headerView;
 }

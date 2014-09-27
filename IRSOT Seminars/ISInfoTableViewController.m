@@ -10,7 +10,7 @@
 #import "ISWebviewViewController.h"
 #import "ISInfoDictionary.h"
 #import "Helper.h"
-#import "ADVTheme.h"
+#import "ISTheme.h"
 
 @interface ISInfoTableViewController ()
 @property (nonatomic, strong) NSArray *infoLinks;
@@ -44,10 +44,8 @@
 //    self.tableView.backgroundColor = [UIColor clearColor];
 //    self.tableView.opaque = NO;
 //    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[theme viewBackground]];
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    [self.view setBackgroundColor:[theme backgroundColor]];
-    
-    [ADVThemeManager customizeTableView:self.tableView];
+
+    [self.view setBackgroundColor:[ISTheme backgroundColor]];
 }
 
 - (void)viewDidUnload
@@ -135,8 +133,7 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
     [headerView setBackgroundColor:[UIColor clearColor]];
 
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    [headerView addSubview:[theme sectionLabelInTableView:tableView forSection:section andMargin:0]];
+    [headerView addSubview:[ISTheme sectionLabelInTableView:tableView forSection:section andMargin:0]];
     
     return headerView;
 }

@@ -12,12 +12,9 @@
 #import "ISBookmarksTableViewController.h"
 #import "ISLectorListTableViewController.h"
 
+#import "ISTheme.h"
+
 #import "SeminarFetcher.h"
-
-#import "SHKConfiguration.h"
-#import "ISSHKConfigurator.h"
-
-#import "ADVTheme.h"
 
 @implementation ISAppDelegate
 
@@ -37,10 +34,8 @@
 {
 //    UIColor *appColor = [UIColor colorWithRed:47/255.0 green:158/255.0 blue:227/255.0 alpha:1.0];
 //    
-//    [[UINavigationBar appearance] setTintColor: appColor];
+    [[UINavigationBar appearance] setTintColor: [ISTheme mainColor]];
     
-    [ADVThemeManager customizeAppAppearance];
-
     self.kvStore = [NSUbiquitousKeyValueStore defaultStore];
     
 //    [[NSNotificationCenter defaultCenter] addObserver:self
@@ -48,9 +43,6 @@
 //                                                 name:NSUbiquitousKeyValueStoreDidChangeExternallyNotification
 //                                               object:self.kvStore];
     [self.kvStore synchronize];
-    
-    DefaultSHKConfigurator *configurator = [[ISSHKConfigurator alloc] init];
-    [SHKConfiguration sharedInstanceWithConfigurator:configurator];
     
     return YES;
 }

@@ -14,7 +14,6 @@
 
 #import "Lector+Load_Data.h"
 #import "Helper.h"
-#import "ADVTheme.h"
 
 #define CACHE_NAME @"lectors.cache"
 

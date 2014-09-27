@@ -12,7 +12,7 @@
 #import "ISSeminarViewController.h"
 #import "Seminar+Load_Data.h"
 #import "Helper.h"
-#import "ADVTheme.h"
+#import "ISTheme.h"
 
 @interface ISLectorViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -133,9 +133,6 @@
     [super viewDidLoad];
 	// view additional setups
 
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    [ADVThemeManager customizeTableView:self.lectorSeminars];
-    
     self.lectorSeminars.dataSource = self;
     self.lectorSeminars.delegate = self;
     
@@ -143,8 +140,7 @@
 
     self.lectorName.text = [self.lector fullName];
     self.lectorName.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:20.0];
-    self.lectorName.textColor = [theme sectionLabelColor];
-    
+    self.lectorName.textColor = [ISTheme sectionLabelColor];
     
     self.lectorBio.text = self.lector.bio;
     if ([self.lector.seminars count]) {
@@ -257,8 +253,7 @@
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
     [headerView setBackgroundColor:[UIColor clearColor]];
     
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    [headerView addSubview:[theme sectionLabelInTableView:tableView forSection:section andMargin:0]];
+    [headerView addSubview:[ISTheme sectionLabelInTableView:tableView forSection:section andMargin:0]];
     
     return headerView;
 }

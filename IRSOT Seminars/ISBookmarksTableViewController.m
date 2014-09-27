@@ -148,7 +148,7 @@
         [self.tableView reloadData];
     } else {
         NSNumber *reasonForChange = [userInfo objectForKey:NSUbiquitousKeyValueStoreChangeReasonKey];
-        int reason = [reasonForChange integerValue];
+        NSInteger reason = [reasonForChange integerValue];
         if ((reason == NSUbiquitousKeyValueStoreServerChange) || (reason == NSUbiquitousKeyValueStoreInitialSyncChange)) {
             NSArray *changedKeys = [userInfo objectForKey:NSUbiquitousKeyValueStoreChangedKeysKey];
             if ([changedKeys count]) {

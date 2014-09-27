@@ -27,14 +27,6 @@
 
 #import "ADVTheme.h"
 
-#import "SHK.h"
-#import "SHKItem.h"
-#import "SHKFacebook.h"
-#import "SHKTwitter.h"
-#import "SHKEvernote.h"
-#import "SHKMail.h"
-#import "SHKVkontakte.h"
-
 //#define ADD_BOOKMARK @"Добавить закладку"
 //#define VIEW_ON_WEB @"Посмотреть полную версию"
 
@@ -455,22 +447,18 @@
         
     } else if (buttonIndex == 3) {
         //share to mail
-        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"%@: «%@»", NSLocalizedString(@"IRSOT seminar",@"IRSOT Seminar"), self.seminar.name] contentType:SHKURLContentTypeWebpage];
-        [SHKMail shareItem:item];
+
     } else if (buttonIndex == 4) {
         //share to twitter
-        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"%@ @irsot: «%@»", NSLocalizedString(@"Seminar",@"Seminar"), self.seminar.name] contentType:SHKURLContentTypeWebpage];
-        [SHKTwitter shareItem:item];
+
     } else if (buttonIndex == 5) {
         //share to facebook
-        SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"«%@»", self.seminar.name] contentType:SHKURLContentTypeWebpage];
-        [SHKFacebook shareItem:item];
+
     }
 //    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
        else if (buttonIndex == 6) {
             //share to vkontakte
-            SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"%@: «%@»", NSLocalizedString(@"IRSOT seminar",@"IRSOT Seminar"), self.seminar.name] contentType:SHKURLContentTypeWebpage];
-            [SHKVkontakte shareItem:item];
+
     }
     
     //share to evernote

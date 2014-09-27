@@ -123,7 +123,7 @@
         } else {
             cell.textLabel.text = [lector fullName];
         }
-        cell.detailTextLabel.text = [NSString stringWithFormat:@"Семинаров: %d", [lector.seminars count] ];
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"Семинаров: %lu", (unsigned long)[lector.seminars count] ];
     }
     
     return cell;

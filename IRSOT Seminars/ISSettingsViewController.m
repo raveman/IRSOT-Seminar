@@ -198,7 +198,7 @@ const NSInteger settingsSections = 3;
 // done button pressed
 - (IBAction)done:(UIBarButtonItem *)sender
 {
-    [[self presentingViewController] dismissModalViewControllerAnimated:YES];
+    [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - Loading staff from website
@@ -480,7 +480,7 @@ const NSInteger settingsSections = 3;
             if (indexPath.row == 0) {
                 cell.textLabel.text = NSLocalizedString(@"Refresh catalog", @"Refresh catalog");
                 cell.textLabel.textColor = [UIColor redColor];
-                cell.textLabel.textAlignment = UITextAlignmentCenter;
+                cell.textLabel.textAlignment = NSTextAlignmentCenter;
                 cell.accessoryType = UITableViewCellAccessoryNone;
                 
                 if (![self.reach isReachable]) {

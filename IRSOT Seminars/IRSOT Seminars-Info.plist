@@ -9,38 +9,9 @@
 	<key>CFBundleExecutable</key>
 	<string>${EXECUTABLE_NAME}</string>
 	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string>irsot-icon-iPhone-ios7</string>
-				<string>irsot-icon-iPad.png</string>
-				<string>irsot-icon-iPad@2x.png</string>
-				<string>irsot-icon-iPhone.png</string>
-				<string>irsot-icon-iPhone@2x.png</string>
-			</array>
-			<key>UIPrerenderedIcon</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 	<key>CFBundleIcons~ipad</key>
-	<dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string>irsot-icon-iPad-ios7</string>
-				<string>irsot-icon-iPhone-ios7</string>
-				<string>irsot-icon-iPad.png</string>
-				<string>irsot-icon-iPad@2x.png</string>
-				<string>irsot-icon-iPhone.png</string>
-				<string>irsot-icon-iPhone@2x.png</string>
-			</array>
-			<key>UIPrerenderedIcon</key>
-			<true/>
-		</dict>
-	</dict>
+	<dict/>
 	<key>CFBundleIdentifier</key>
 	<string>com.21centurylabs.${PRODUCT_NAME:rfc1034identifier}</string>
 	<key>CFBundleInfoDictionaryVersion</key>

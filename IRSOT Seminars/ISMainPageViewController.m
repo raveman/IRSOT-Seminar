@@ -34,7 +34,7 @@ static const NSUInteger TYPES_SECTION = 2;
 @interface ISMainPageViewController () <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate, ISSettingsViewControllerDelegate>
 {
     BOOL checkUpdates;
-    int count;
+    NSUInteger count;
 }
 
 @property (weak, nonatomic) IBOutlet UILabel *noDataLabel;
@@ -78,10 +78,6 @@ static const NSUInteger TYPES_SECTION = 2;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    id <ADVTheme> theme = [ADVThemeManager sharedTheme];
-    [self.view setBackgroundColor:[theme backgroundColor]];
-    [ADVThemeManager customizeTableView:self.seminarCategoriesTableView];
     
     self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
     

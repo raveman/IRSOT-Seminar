@@ -238,7 +238,7 @@
         if (self.type) {
             NSMutableArray *sectionIndexTitleLetters = [NSMutableArray array];
             NSArray *sections = [self.fetchedResultsController sections];
-            int count = [sections count];
+            NSUInteger count = [sections count];
             if (count) {
                 for (int i=0; i < count; i++) {
                     id <NSFetchedResultsSectionInfo> sectionInfo = [sections objectAtIndex:i];
@@ -314,7 +314,7 @@
             
             cell.detailTextLabel.text =[NSString stringWithFormat:@"%@\n%@", lectors, [seminar stringWithSeminarDates]];
             cell.detailTextLabel.numberOfLines = 2;
-            cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
         } else {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
             cell.textLabel.font = [Helper cellMainFont];
@@ -333,7 +333,7 @@
             
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@\n%@", lectors, [seminar stringWithSeminarDates]];
             cell.detailTextLabel.numberOfLines = 2;
-            cell.detailTextLabel.lineBreakMode = UILineBreakModeWordWrap;
+            cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
         }
     }
     

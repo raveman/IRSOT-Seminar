@@ -9,6 +9,7 @@
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "ISWebviewViewController.h"
 #import "Helper.h"
+#import "ISTheme.h"
 
 @interface ISWebviewViewController () <UIWebViewDelegate, UIActionSheetDelegate>
 //@property (weak, nonatomic) IBOutlet UIScrollView *scrollview;
@@ -62,6 +63,11 @@
     self.actionButton.title = @" ";
     self.reloadButton.title = @" ";
     
+    self.backButton.tintColor = [ISTheme navigationBarBackgroundColor];
+    self.forwardButton.tintColor = [ISTheme navigationBarBackgroundColor];
+    self.actionButton.tintColor = [ISTheme navigationBarBackgroundColor];
+    self.reloadButton.tintColor = [ISTheme navigationBarBackgroundColor];
+    
     if (self.navigationController) {
         self.modalNavigationBar.hidden = YES;
         self.modalWebToolBar.hidden = YES;
@@ -82,7 +88,7 @@
 	// Do any additional setup after loading the view.
 
     self.modalWebToolBar.barStyle = UIBarStyleDefault;
-    self.modalWebToolBar.backgroundColor = [Helper tintColor];
+//    self.modalWebToolBar.barTintColor = [ISTheme navigationBarBackgroundColor];
 }
 
 - (void)viewDidUnload

@@ -693,7 +693,7 @@
             [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Mail saved", @"Mail saved")];
             break;
         case MFMailComposeResultSent:
-            [SVProgressHUD showWithStatus:NSLocalizedString(@"Mail sent", @"Mail sent")];
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Mail sent", @"Mail sent")];
             break;
         case MFMailComposeResultFailed:
             [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Mail sent failure", @"Mail sent failure"), [error localizedDescription]]];

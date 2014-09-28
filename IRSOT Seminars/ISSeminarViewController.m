@@ -213,6 +213,8 @@
             whiteButton = [whiteButton resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
             whiteButtonHighlight = [whiteButtonHighlight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
         }
+
+        [self.attendSeminarButton setTitle:NSLocalizedString(@"Attend seminar", @"Attend seminar") forState:UIControlStateNormal];
         [self.attendSeminarButton setBackgroundImage:whiteButton forState:UIControlStateNormal];
         [self.attendSeminarButton setBackgroundImage:whiteButtonHighlight forState:UIControlStateHighlighted];
         

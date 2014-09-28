@@ -35,7 +35,6 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
 
 + (CGRect) resizeTextView:(UITextView *)textView withSize:(CGSize)size andMargin:(NSUInteger)margin
 {
-
     if (margin == -1) margin = HORIZONTAL_MARGIN;
 
 //    CGRect newFrame = textView.frame;
@@ -46,7 +45,7 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
 //    frame.size.height = textView.contentSize.height;
 //    textView.frame = frame;
     
-    CGFloat fixedWidth = textView.frame.size.width; // - margin;
+    CGFloat fixedWidth = size.width - margin; // - margin;
     CGSize newSize = [textView sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
     CGRect newFrame = textView.frame;
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
@@ -63,22 +62,6 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
     
     return frame;
 }
-
-//- (UIImage *)addBorderToImage:(UIImage *)image
-//{
-//    CGImageRef cgimage = [image CGImage];
-//    float width = CGImageGetWidth(cgimage);
-//    float height = CGImageGetHeight(cgimage);
-//    
-//    // create temp buf
-//    void *data = malloc(width * height * 4);
-//    
-//    // draw image to buf
-//    CGContextRef ctx = CGBitmapContextCreate(data, width, height, 8, width * 4, CGImageGetColorSpace(image.CGImage), kCGImageAlphaPremultipliedLast);
-//    
-//    
-//    return newImage;
-//}
 
 + (void)makeButtonShiny:(UIButton*)button withBackgroundColor:(UIColor*)backgroundColor
 {
@@ -188,45 +171,6 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
 + (UIColor *)tintColor {
     return [UIColor colorWithRed:228 / 255.0 green:245 / 255.0 blue:253 / 255.0 alpha:1.0];
 }
-
-+ (void)fixSegmentedControlForiOS7:(UISegmentedControl *)segmentedControl;
-{
-    NSInteger deviceVersion = [[UIDevice currentDevice] systemVersion].integerValue;
-    if(deviceVersion < 7) // If this is not an iOS 7 device, we do not need to perform these customizations.
-        return;
-    
-    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [UIFont boldSystemFontOfSize:12], UITextAttributeFont,
-                                [UIColor whiteColor], UITextAttributeTextColor,
-                                nil];
-    [segmentedControl setTitleTextAttributes:attributes forState:UIControlStateNormal];
-    NSDictionary *highlightedAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
-    
-    [segmentedControl setTitleTextAttributes:highlightedAttributes forState:UIControlStateHighlighted];
-    
-    segmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
-    segmentedControl.tintColor = [Helper tintColor];
-    //    self.seminarTypeSwitch.tintColor = [UIColor colorWithRed:105 / 255.0 green:201 / 255.0 blue:229 / 255.0 alpha:1.0];
-    //    self.seminarTypeSwitch.tintColor = [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
-    //    self.seminarTypeSwitch.tintColor = [UIColor whiteColor];
-}
-
-+ (void)fixBarButtonItemForiOS7:(UIBarButtonItem *)barButtonItem
-{
-    NSInteger deviceVersion = [[UIDevice currentDevice] systemVersion].integerValue;
-    if(deviceVersion < 7) // If this is not an iOS 7 device, we do not need to perform these customizations.
-        return;
-    
-    NSDictionary *attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                [UIFont boldSystemFontOfSize:12], UITextAttributeFont,
-                                [UIColor whiteColor], UITextAttributeTextColor,
-                                nil];
-    [barButtonItem setTitleTextAttributes:attributes forState:UIControlStateNormal];
-    NSDictionary *highlightedAttributes = [NSDictionary dictionaryWithObject:[UIColor whiteColor] forKey:UITextAttributeTextColor];
-    [barButtonItem setTitleTextAttributes:highlightedAttributes forState:UIControlStateHighlighted];
-    barButtonItem.tintColor = [Helper tintColor];
-}
-
 
 
 

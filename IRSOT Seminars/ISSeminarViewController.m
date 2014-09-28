@@ -5,7 +5,6 @@
 //  Created by Bob Ershov on 04.08.12.
 //  Copyright (c) 2012 Bob Ershov. All rights reserved.
 //
-// TODO: переделать все UILabel в UITextView, чтобы у пользователя была возможность копи-паста
 
 #import <EventKit/EventKit.h>
 
@@ -48,6 +47,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *lectorTableView;
 
 @property (weak, nonatomic) UIActionSheet *actionSheet;
+@property (weak, nonatomic) UIActivityViewController *activityController;
 
 @property (strong, nonatomic) NSArray *lectors;
 
@@ -67,7 +67,9 @@
 @synthesize scrollView = _scrollView;
 @synthesize programWebView = _programWebView;
 @synthesize lectorTableView = _lectorTableView;
+
 @synthesize actionSheet = _actionSheet;
+@synthesize activityController = _activityController;
 
 @synthesize seminar = _seminar;
 @synthesize seminarID = _seminarID;
@@ -85,6 +87,7 @@
     return _html;
 }
 
+#pragma mark - Recalculate bounds methods
 - (void) recalculateElementsBounds
 {
     // получаем размеры заголовка
@@ -97,7 +100,7 @@
     CGRect rect = self.seminarDate.frame;
     rect.origin.y = headerRect.origin.y + headerRect.size.height;
     self.seminarDate.frame = rect;
-    int height = rect.origin.y + rect.size.height;
+    NSInteger height = rect.origin.y + rect.size.height;
     
     // опускаем тип и раздел семинаров на высоту предыдущих двух
     rect = self.sectionLabel.frame;
@@ -114,29 +117,15 @@
     height = rect.origin.y + rect.size.height - 10;
     
     // опускаем лекторов на текущее смещение
-//    rect = [Helper resizeLabel:self.lectorsLabel withSize:currentSize];
-//    rect.origin.y = height + 10;
-//    self.lectorsLabel.frame = rect;
-//    
-//    height = rect.origin.y + rect.size.height;
-    
-
-//    rect = self.programTextView.frame;
-//    rect.origin.y = height + 10;
-//    CGRect programRect = [Helper resizeTextView:self.programTextView withSize: currentSize];
-//    rect.size.width = programRect.size.width;
-//    self.programTextView.frame = rect;
-
     CGSize size = rect.size;
     size.height = height + 10;
     
-    int tableHeight = self.lectorTableView.rowHeight * [self.seminar.lectors count];
-    CGRect tableSectionFrame = [[self tableView:self.lectorTableView viewForHeaderInSection:0] frame];
-    tableHeight = tableHeight + tableSectionFrame.size.height + 25;
+    NSInteger tableHeight = 44 * ([self.seminar.lectors count] + 1);
+//    CGRect tableSectionFrame = [[self tableView:self.lectorTableView viewForHeaderInSection:0] frame];
+//    tableHeight = tableHeight + tableSectionFrame.size.height;
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
         tableHeight = tableHeight + 10;
     }
-    
     
     CGRect tableFrame = self.lectorTableView.frame;
     tableFrame.size.width = currentSize.width;
@@ -146,6 +135,7 @@
     self.lectorTableView.frame = tableFrame;
 
     size.height += tableHeight;// + 40;
+//    size.height += tableFrame.size.height;// + 40;
 
     // опускаем лабел программа
     
@@ -183,6 +173,7 @@
 //    [self recalculateElementsBounds];
 }
 
+#pragma mark - UIViewController
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -198,7 +189,7 @@
         // we shoud write error
         self.seminarName.text = @"Такого семинара нет в каталоге!";
         self.seminarName.textColor = [UIColor redColor];
-        [Helper resizeTextView:self.seminarName withSize:self.view.frame.size andMargin:-1];
+//        [Helper resizeTextView:self.seminarName withSize:self.view.frame.size andMargin:0];
 
         self.seminarDate.hidden = YES;
         self.sectionLabel.hidden = YES;
@@ -244,39 +235,24 @@
 
         self.programLabel.textColor = [ISTheme sectionLabelColor];
         self.programLabel.font = [ISTheme sectionLabelFont];
+        self.programLabel.text = [NSLocalizedString(@"Agenda", @"Agenda") uppercaseString];
         
         [self.programWebView loadHTMLString:self.html baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];
         self.programWebView.userInteractionEnabled = NO;
         self.programWebView.scrollView.scrollEnabled = NO;
         self.programWebView.scalesPageToFit = YES;
         self.programWebView.delegate = self;
+
         self.lectorTableView.dataSource = self;
         self.lectorTableView.delegate = self;
         
         self.scrollView.scrollsToTop = YES;
-        [Helper fixBarButtonItemForiOS7:self.navigationItem.rightBarButtonItem];
     }
-}
-
-- (void)viewDidUnload
-{
-    [self setSectionLabel:nil];
-    [self setTypeLabel:nil];
-    [self setLectorsLabel:nil];
-
-    [self setScrollView:nil];
-    [self setSeminarDate:nil];
-    [self setSeminarName:nil];
-    [self setAttendSeminarButton:nil];
-    [self setProgramWebView:nil];
-    [self setProgramLabel:nil];
-    [self setLectorTableView:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (void) viewWillAppear:(BOOL)animated
 {
+    [super viewWillAppear:animated];
 
 //    [self recalculateElementsBounds];
 
@@ -285,7 +261,6 @@
         [self.lectorTableView deselectRowAtIndexPath:indexPath animated:YES];
     }
     
-    [super viewWillAppear:animated];
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -308,7 +283,6 @@
 - (void) didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
     [self recalculateElementsBounds];
-//   [self.programWebView loadHTMLString:self.html baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];
     [self.programWebView stringByEvaluatingJavaScriptFromString:@"var e = document.createEvent('Events'); "
      @"e.initEvent('orientationchange', true, false);"
      @"document.dispatchEvent(e); "];
@@ -653,16 +627,26 @@
     return title;
 }
 
-#pragma mark - UITableViewDelegate
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
-    [headerView setBackgroundColor:[UIColor clearColor]];
-    
-    [headerView addSubview:[ISTheme sectionLabelInTableView:tableView forSection:section andMargin:20]];
-    
-    return headerView;
-}
+//- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
+//    [headerView setBackgroundColor:[UIColor clearColor]];
+//    
+//    [headerView addSubview:[ISTheme sectionLabelInTableView:tableView forSection:section andMargin:0]];
+//    
+//    return headerView;
+//}
 
+#pragma mark UITableViewDelegate
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    if([view isKindOfClass:[UITableViewHeaderFooterView class]]){
+        
+        UITableViewHeaderFooterView *tableViewHeaderFooterView = (UITableViewHeaderFooterView *) view;
+        tableViewHeaderFooterView.textLabel.textColor = [ISTheme labelColor];
+        tableViewHeaderFooterView.textLabel.font = [ISTheme sectionLabelFont];
+    }
+}
 
 @end

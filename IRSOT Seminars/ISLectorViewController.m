@@ -247,15 +247,15 @@
     }
 }
 
-#pragma mark - UITableViewDelegate
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
-    [headerView setBackgroundColor:[UIColor clearColor]];
-    
-    [headerView addSubview:[ISTheme sectionLabelInTableView:tableView forSection:section andMargin:0]];
-    
-    return headerView;
+    if([view isKindOfClass:[UITableViewHeaderFooterView class]]){
+        
+        UITableViewHeaderFooterView *tableViewHeaderFooterView = (UITableViewHeaderFooterView *) view;
+        tableViewHeaderFooterView.textLabel.textColor = [ISTheme labelColor];
+        tableViewHeaderFooterView.textLabel.font = [ISTheme sectionLabelFont];
+        
+    }
 }
 
 @end

@@ -98,8 +98,6 @@ static const NSUInteger TYPES_SECTION = 2;
     setupButton.title = @" ";
     setupButton.tintColor = [ISTheme barButtonItemColor];
     
-//    [Helper fixBarButtonItemForiOS7:setupButton];
-
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
@@ -319,14 +317,24 @@ static const NSUInteger TYPES_SECTION = 2;
     return title;
 }
 
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
+//    [headerView setBackgroundColor:[UIColor clearColor]];
+//    
+//    [headerView addSubview:[ISTheme sectionLabelInTableView:tableView forSection:section andMargin:0]];
+//    
+//    return headerView;
+//}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
-    [headerView setBackgroundColor:[UIColor clearColor]];
-    
-    [headerView addSubview:[ISTheme sectionLabelInTableView:tableView forSection:section andMargin:0]];
-    
-    return headerView;
+    if([view isKindOfClass:[UITableViewHeaderFooterView class]]){
+        
+        UITableViewHeaderFooterView *tableViewHeaderFooterView = (UITableViewHeaderFooterView *) view;
+        tableViewHeaderFooterView.textLabel.textColor = [ISTheme labelColor];
+        tableViewHeaderFooterView.textLabel.font = [ISTheme sectionLabelFont];
+    }
 }
 
 #pragma mark - Fetched results controller

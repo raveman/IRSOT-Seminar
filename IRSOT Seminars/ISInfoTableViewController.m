@@ -45,7 +45,7 @@
 //    self.tableView.opaque = NO;
 //    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[theme viewBackground]];
 
-    [self.view setBackgroundColor:[ISTheme backgroundColor]];
+//    [self.view setBackgroundColor:[ISTheme backgroundColor]];
 }
 
 - (void)viewDidUnload
@@ -128,16 +128,6 @@
 
 }
 
-- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
-    [headerView setBackgroundColor:[UIColor clearColor]];
-
-    [headerView addSubview:[ISTheme sectionLabelInTableView:tableView forSection:section andMargin:0]];
-    
-    return headerView;
-}
-
 #pragma mark - Table view delegate
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -149,6 +139,16 @@
         [dvc setUrl:url];
         UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
         [dvc setTitle:cell.textLabel.text];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    if([view isKindOfClass:[UITableViewHeaderFooterView class]]){
+        
+        UITableViewHeaderFooterView *tableViewHeaderFooterView = (UITableViewHeaderFooterView *) view;
+        tableViewHeaderFooterView.textLabel.textColor = [ISTheme labelColor];
+        tableViewHeaderFooterView.textLabel.font = [ISTheme sectionLabelFont];
     }
 }
 

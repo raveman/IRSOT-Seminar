@@ -21,7 +21,7 @@
 + (UIColor *)navigationBarTitleColor;
 
 + (UIColor *)baseTintColor;
-//+ (UIColor *)accentTintColor;
++ (UIColor *)labelColor;
 + (UIColor *)selectedTabbarItemTintColor;
 
 + (UIColor *)switchThumbColor;

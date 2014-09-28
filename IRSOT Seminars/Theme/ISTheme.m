@@ -13,7 +13,7 @@
 
 + (UIColor *)mainColor
 {
-    return [ISTheme baseTintColor];
+    return [ISTheme labelColor];
 }
 
 + (UIColor *)secondColor
@@ -28,7 +28,7 @@
 
 + (UIColor *)navigationBarBackgroundColor
 {
-    return [ISTheme accentTintColor];
+    return [ISTheme labelColor];
 }
 
 + (UIColor *)navigationBarTitleColor
@@ -42,7 +42,7 @@
     return [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
 }
 
-+ (UIColor *)accentTintColor
++ (UIColor *)labelColor
 {
     return [UIColor colorWithRed:18/255.0 green:122/255.0 blue:187/255.0 alpha:1.0];
 
@@ -91,8 +91,8 @@
 
 + (UIFont *)sectionLabelFont
 {
-    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0];
-    return font;
+    return [UIFont fontWithDescriptor:[UIFontDescriptor fontDescriptorWithFontAttributes:@{@"NSCTFontUIUsageAttribute" : UIFontTextStyleBody, @"NSFontNameAttribute" : @"HelveticaNeue-Medium"}] size:15.0];
+ 
 }
 
 + (UIColor *)sectionLabelColor

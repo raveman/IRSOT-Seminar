@@ -564,6 +564,17 @@ const NSInteger settingsSections = 3;
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
+{
+    if([view isKindOfClass:[UITableViewHeaderFooterView class]]){
+        
+        UITableViewHeaderFooterView *tableViewHeaderFooterView = (UITableViewHeaderFooterView *) view;
+        tableViewHeaderFooterView.textLabel.textColor = [ISTheme labelColor];
+        tableViewHeaderFooterView.textLabel.font = [ISTheme sectionLabelFont];
+    }
+}
+
+#pragma mark - Settings actions
 - (void)updateSwitch:(id)sender
 {
 

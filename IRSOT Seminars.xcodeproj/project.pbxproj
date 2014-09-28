@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C402E18119D8AD130040E359 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C402E17E19D8AD130040E359 /* SVProgressHUD.bundle */; };
+		C402E18219D8AD130040E359 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C402E18019D8AD130040E359 /* SVProgressHUD.m */; };
 		C415A30215CC95A0004BCD79 /* ISBookmarksTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C415A30115CC95A0004BCD79 /* ISBookmarksTableViewController.m */; };
 		C415A30B15CC9952004BCD79 /* ISLectorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C415A30A15CC9952004BCD79 /* ISLectorViewController.m */; };
 		C423682715DEBBDF0066B1D7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682615DEBBDF0066B1D7 /* Security.framework */; };
 		C423682915DEBBE70066B1D7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682815DEBBE70066B1D7 /* MessageUI.framework */; };
 		C423682B15DEBBEF0066B1D7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682A15DEBBEF0066B1D7 /* CFNetwork.framework */; };
 		C423682D15DEBBF70066B1D7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C423682C15DEBBF70066B1D7 /* CoreLocation.framework */; };
-		C425DFD816C00853002338E3 /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C425DFD516C00853002338E3 /* SVProgressHUD.bundle */; };
-		C425DFD916C00853002338E3 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = C425DFD716C00853002338E3 /* SVProgressHUD.m */; };
 		C42D425F15E3D9600042E708 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42D425E15E3D9600042E708 /* QuartzCore.framework */; };
 		C42D426115E3D9650042E708 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C42D426015E3D9640042E708 /* MapKit.framework */; };
 		C45BE28316E0E8DD007C2F02 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE28216E0E8DD007C2F02 /* Default.png */; };
@@ -75,8 +75,10 @@
 /* Begin PBXFileReference section */
 		C402E17B19D892EE0040E359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		C402E17C19D893000040E359 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		C403AD0816AED8A7001908E5 /* NVUIGradientButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NVUIGradientButton.h; sourceTree = "<group>"; };
-		C403AD0916AED8A7001908E5 /* NVUIGradientButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NVUIGradientButton.m; sourceTree = "<group>"; };
+		C402E17D19D8AD130040E359 /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SVProgressHUD-Prefix.pch"; path = "Submodules/SVProgressHUD/SVProgressHUD-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		C402E17E19D8AD130040E359 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = SVProgressHUD.bundle; path = Submodules/SVProgressHUD/SVProgressHUD.bundle; sourceTree = SOURCE_ROOT; };
+		C402E17F19D8AD130040E359 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SVProgressHUD.h; path = Submodules/SVProgressHUD/SVProgressHUD.h; sourceTree = SOURCE_ROOT; };
+		C402E18019D8AD130040E359 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SVProgressHUD.m; path = Submodules/SVProgressHUD/SVProgressHUD.m; sourceTree = SOURCE_ROOT; };
 		C415A30015CC95A0004BCD79 /* ISBookmarksTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISBookmarksTableViewController.h; sourceTree = "<group>"; };
 		C415A30115CC95A0004BCD79 /* ISBookmarksTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISBookmarksTableViewController.m; sourceTree = "<group>"; };
 		C415A30915CC9952004BCD79 /* ISLectorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorViewController.h; sourceTree = "<group>"; };
@@ -87,9 +89,6 @@
 		C423682C15DEBBF70066B1D7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		C425DFCE16C00617002338E3 /* ReachabilityARC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ReachabilityARC.h; path = Submodules/Reachability/ReachabilityARC.h; sourceTree = SOURCE_ROOT; };
 		C425DFCF16C00617002338E3 /* ReachabilityARC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ReachabilityARC.m; path = Submodules/Reachability/ReachabilityARC.m; sourceTree = SOURCE_ROOT; };
-		C425DFD516C00853002338E3 /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
-		C425DFD616C00853002338E3 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
-		C425DFD716C00853002338E3 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		C42D425E15E3D9600042E708 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		C42D426015E3D9640042E708 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C43AB40615E28A8F003813DF /* IRSOT_Seminars 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "IRSOT_Seminars 3.xcdatamodel"; sourceTree = "<group>"; };
@@ -216,8 +215,6 @@
 				C425DFD416C00853002338E3 /* SVProgressHUD */,
 				C425DFCE16C00617002338E3 /* ReachabilityARC.h */,
 				C425DFCF16C00617002338E3 /* ReachabilityARC.m */,
-				C403AD0816AED8A7001908E5 /* NVUIGradientButton.h */,
-				C403AD0916AED8A7001908E5 /* NVUIGradientButton.m */,
 			);
 			name = Contrib;
 			sourceTree = "<group>";
@@ -252,9 +249,10 @@
 		C425DFD416C00853002338E3 /* SVProgressHUD */ = {
 			isa = PBXGroup;
 			children = (
-				C425DFD516C00853002338E3 /* SVProgressHUD.bundle */,
-				C425DFD616C00853002338E3 /* SVProgressHUD.h */,
-				C425DFD716C00853002338E3 /* SVProgressHUD.m */,
+				C402E17D19D8AD130040E359 /* SVProgressHUD-Prefix.pch */,
+				C402E17E19D8AD130040E359 /* SVProgressHUD.bundle */,
+				C402E17F19D8AD130040E359 /* SVProgressHUD.h */,
+				C402E18019D8AD130040E359 /* SVProgressHUD.m */,
 			);
 			name = SVProgressHUD;
 			path = ../Submodules/SVProgressHUD/SVProgressHUD;
@@ -541,10 +539,10 @@
 				C462BDC415C95A8700170E3C /* MainStoryboard_iPhone.storyboard in Resources */,
 				C462BDC715C95A8700170E3C /* MainStoryboard_iPad.storyboard in Resources */,
 				C4DE788F15C95E34007FBEC4 /* Info Links.plist in Resources */,
-				C425DFD816C00853002338E3 /* SVProgressHUD.bundle in Resources */,
 				C4D42D9119D72DE5003D51CD /* Images.xcassets in Resources */,
 				C4B7563516D24D5300C23950 /* Localizable.strings in Resources */,
 				C45BE28316E0E8DD007C2F02 /* Default.png in Resources */,
+				C402E18119D8AD130040E359 /* SVProgressHUD.bundle in Resources */,
 				C45BE28516E0E8DF007C2F02 /* Default@2x.png in Resources */,
 				C45BE28716E0E8F6007C2F02 /* Default-568h@2x.png in Resources */,
 				C45BE28916E0E8FD007C2F02 /* Default-Portrait~ipad.png in Resources */,
@@ -566,6 +564,7 @@
 				C4DCB69416C1534F00519F6A /* ReachabilityARC.m in Sources */,
 				C4D42DB319D72EDC003D51CD /* Lector+Load_Data.m in Sources */,
 				C4D42DB919D72EDC003D51CD /* Term.m in Sources */,
+				C402E18219D8AD130040E359 /* SVProgressHUD.m in Sources */,
 				C4D42DAF19D72EDC003D51CD /* AllEvents+Load_Data.m in Sources */,
 				C462BDBD15C95A8700170E3C /* main.m in Sources */,
 				C462BDC115C95A8700170E3C /* ISAppDelegate.m in Sources */,
@@ -587,7 +586,6 @@
 				C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */,
 				C483E40F15D2C393001A41FB /* Helper.m in Sources */,
 				C4D7CEF515D3F1A60003F90C /* ISNewsWebviewControllerViewController.m in Sources */,
-				C425DFD916C00853002338E3 /* SVProgressHUD.m in Sources */,
 				C45D3CF116CD4E0200877F94 /* ISInfoDictionary.m in Sources */,
 				C4D42DB819D72EDC003D51CD /* Seminar+Load_Data.m in Sources */,
 				C46DED8216D26813008DAC47 /* ISAlertTimesTableViewController.m in Sources */,

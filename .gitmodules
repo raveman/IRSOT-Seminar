@@ -1,9 +1,6 @@
 [submodule "Submodules/Reachability"]
 	path = Submodules/Reachability
 	url = https://github.com/tonymillion/Reachability.git
-[submodule "Submodules/SVProgressHUD"]
-	path = Submodules/SVProgressHUD
-	url = https://github.com/samvermette/SVProgressHUD.git
 [submodule "Submodules/PSUpdateApp"]
 	path = Submodules/PSUpdateApp
 	url = https://github.com/danielebogo/PSUpdateApp.git

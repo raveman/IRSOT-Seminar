@@ -370,16 +370,18 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Seminar" inManagedObjectContext:self.managedObjectContext];
     [fetchRequest setEntity:entity];
 
+    NSDate *minus7DaysFromToday = [[NSDate date] dateByAddingTimeInterval:-7*24*60*60];
+
     if (self.section) {
         if (self.currentSeminarType == SEMINAR_TYPE_BK) {
-            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %d AND type.id == %d AND date_start => %@", [self.section.id integerValue], self.currentSeminarType, [NSDate date]];
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %d AND type.id == %d AND date_start => %@", [self.section.id integerValue], self.currentSeminarType, minus7DaysFromToday];
         } else {
-            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %d AND type.id != %d AND date_start => %@", [self.section.id integerValue], SEMINAR_TYPE_BK, [NSDate date]];
+            fetchRequest.predicate = [NSPredicate predicateWithFormat:@"section.id == %d AND type.id != %d AND date_start => %@", [self.section.id integerValue], SEMINAR_TYPE_BK, minus7DaysFromToday];
         }
     } else if (self.type) {
-        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"type.id == %d  AND date_start > %@", self.currentSeminarType, [NSDate date]];
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"type.id == %d  AND date_start => %@", self.currentSeminarType, minus7DaysFromToday];
     } else {
-        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"date_start > %@", [NSDate date]];
+        fetchRequest.predicate = [NSPredicate predicateWithFormat:@"date_start => %@", minus7DaysFromToday];
     }
     
     [fetchRequest setFetchBatchSize:20];

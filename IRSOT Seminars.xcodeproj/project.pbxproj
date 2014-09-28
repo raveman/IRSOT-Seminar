@@ -24,7 +24,6 @@
 		C45BE28B16E0E900007C2F02 /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE28A16E0E900007C2F02 /* Default-Portrait@2x~ipad.png */; };
 		C45BE28D16E0E903007C2F02 /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE28C16E0E903007C2F02 /* Default-Landscape~ipad.png */; };
 		C45BE28F16E0E904007C2F02 /* Default-Landscape@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = C45BE28E16E0E904007C2F02 /* Default-Landscape@2x~ipad.png */; };
-		C45C716219B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.m in Sources */ = {isa = PBXBuildFile; fileRef = C45C716119B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.m */; };
 		C45D3CF116CD4E0200877F94 /* ISInfoDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = C45D3CF016CD4E0200877F94 /* ISInfoDictionary.m */; };
 		C462BDAF15C95A8700170E3C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDAE15C95A8700170E3C /* UIKit.framework */; };
 		C462BDB115C95A8700170E3C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C462BDB015C95A8700170E3C /* Foundation.framework */; };
@@ -100,8 +99,6 @@
 		C45BE28A16E0E900007C2F02 /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Portrait@2x~ipad.png"; path = "../Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		C45BE28C16E0E903007C2F02 /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape~ipad.png"; path = "../Default-Landscape~ipad.png"; sourceTree = "<group>"; };
 		C45BE28E16E0E904007C2F02 /* Default-Landscape@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-Landscape@2x~ipad.png"; path = "../Default-Landscape@2x~ipad.png"; sourceTree = "<group>"; };
-		C45C716019B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationItem+iOS7Spacing.h"; sourceTree = "<group>"; };
-		C45C716119B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationItem+iOS7Spacing.m"; sourceTree = "<group>"; };
 		C45D3CEF16CD4E0200877F94 /* ISInfoDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISInfoDictionary.h; path = Models/ISInfoDictionary.h; sourceTree = "<group>"; };
 		C45D3CF016CD4E0200877F94 /* ISInfoDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISInfoDictionary.m; path = Models/ISInfoDictionary.m; sourceTree = "<group>"; };
 		C45DA5EF16E72CC6002B295A /* IRSOT_Seminars 7.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "IRSOT_Seminars 7.xcdatamodel"; sourceTree = "<group>"; };
@@ -340,8 +337,6 @@
 			children = (
 				C4D42DC419D731FB003D51CD /* ISTheme.h */,
 				C4D42DC519D731FB003D51CD /* ISTheme.m */,
-				C45C716019B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.h */,
-				C45C716119B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.m */,
 			);
 			path = Theme;
 			sourceTree = "<group>";
@@ -559,7 +554,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C45C716219B64E3700A9FC7D /* UINavigationItem+iOS7Spacing.m in Sources */,
 				C4D42DBB19D72EDC003D51CD /* Type+Load_Data.m in Sources */,
 				C4DCB69416C1534F00519F6A /* ReachabilityARC.m in Sources */,
 				C4D42DB319D72EDC003D51CD /* Lector+Load_Data.m in Sources */,

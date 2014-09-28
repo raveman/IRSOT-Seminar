@@ -78,7 +78,7 @@ static const NSUInteger TYPES_SECTION = 2;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+        
     self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
     
     // setting categories list tableview datasource and delegate

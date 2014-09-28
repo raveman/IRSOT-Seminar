@@ -32,8 +32,9 @@
 #pragma mark - UIApplicationDelegate
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    UIColor *appColor = [UIColor colorWithRed:47/255.0 green:158/255.0 blue:227/255.0 alpha:1.0];
-//    
+
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+
     [[UINavigationBar appearance] setBarTintColor: [ISTheme navigationBarBackgroundColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [ISTheme navigationBarTitleColor]}];
 

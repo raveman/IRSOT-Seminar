@@ -655,8 +655,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -696,8 +696,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -709,6 +709,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
 				SDKROOT = iphoneos;
@@ -735,8 +736,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d8aab2ea-080f-4cbe-a156-5e23fa496274";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "d8aab2ea-080f-4cbe-a156-5e23fa496274";
+				PROVISIONING_PROFILE = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				WRAPPER_EXTENSION = app;
@@ -760,8 +761,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d8aab2ea-080f-4cbe-a156-5e23fa496274";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "d8aab2ea-080f-4cbe-a156-5e23fa496274";
+				PROVISIONING_PROFILE = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				WRAPPER_EXTENSION = app;

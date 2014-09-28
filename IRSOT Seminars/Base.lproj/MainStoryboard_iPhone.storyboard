@@ -161,7 +161,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wn9-3e-uXb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1784" y="1034"/>
+            <point key="canvasLocation" x="1260" y="994"/>
         </scene>
         <!--Seminar View Controller-->
         <scene sceneID="xiA-S5-OSx">
@@ -273,11 +273,12 @@
                         <outlet property="seminarName" destination="jfs-iB-s1z" id="QfF-Cg-yn2"/>
                         <outlet property="typeLabel" destination="iVH-jy-7Eu" id="aR2-EZ-Y04"/>
                         <segue destination="2kA-qE-Yhq" kind="modal" identifier="View On Web" id="Tgl-bc-A5N"/>
+                        <segue destination="2kA-qE-Yhq" kind="modal" identifier="View additional" id="XWU-mK-KTj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fkk-C3-hG7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1784" y="140"/>
+            <point key="canvasLocation" x="1852" y="268"/>
         </scene>
         <!--test-->
         <scene sceneID="ccs-ya-jZJ">
@@ -545,7 +546,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="anx-Oe-kCt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1784" y="1683"/>
+            <point key="canvasLocation" x="1912" y="1199"/>
         </scene>
         <!--News Webview Controller View Controller-->
         <scene sceneID="3e6-Hn-RJF">
@@ -872,8 +873,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="b9m-e9-TaY"/>
         <segue reference="O2i-Ja-jpZ"/>
-        <segue reference="UiY-x5-4jX"/>
+        <segue reference="b9m-e9-TaY"/>
+        <segue reference="XWU-mK-KTj"/>
     </inferredMetricsTieBreakers>
 </document>

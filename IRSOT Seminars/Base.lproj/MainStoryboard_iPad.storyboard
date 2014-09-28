@@ -165,7 +165,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xt-xh-l0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4144" y="1770"/>
+            <point key="canvasLocation" x="3220" y="1602"/>
         </scene>
         <!--Seminar View Controller-->
         <scene sceneID="A91-mY-MYN">
@@ -277,6 +277,7 @@
                         <outlet property="seminarName" destination="XDL-ls-akc" id="nZd-7v-NG4"/>
                         <outlet property="typeLabel" destination="xEt-SL-Rk2" id="bg1-41-e1m"/>
                         <segue destination="SBq-1l-4kx" kind="modal" identifier="View On Web" id="ap6-i4-iW8"/>
+                        <segue destination="SBq-1l-4kx" kind="modal" identifier="View additional" id="6NU-Lo-oOk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MkF-Gj-2Ad" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -553,7 +554,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOT-OK-O0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4171" y="3055"/>
+            <point key="canvasLocation" x="4531" y="2131"/>
         </scene>
         <!--News Webview Controller View Controller-->
         <scene sceneID="86Q-MJ-Zq4">
@@ -888,8 +889,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="n1G-fY-hht"/>
-        <segue reference="ap6-i4-iW8"/>
         <segue reference="2L4-Gf-Zte"/>
+        <segue reference="VsF-FJ-0gS"/>
+        <segue reference="6NU-Lo-oOk"/>
     </inferredMetricsTieBreakers>
 </document>

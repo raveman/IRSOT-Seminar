@@ -17,6 +17,7 @@
 
 #import "ISTheme.h"
 
+#import "SeminarFetcher.h"
 #import "Helper.h"
 #import "Sections.h"
 #import "Type.h"
@@ -25,13 +26,6 @@
 #import "Section+Load_Data.h"
 #import "Type+Load_Data.h"
 #import "ISAlertTimes.h"
-
-//#define ADD_BOOKMARK @"Добавить закладку"
-//#define VIEW_ON_WEB @"Посмотреть полную версию"
-
-#define ADD_BOOKMARK NSLocalizedString(@"Add bookmark", @"Add bookmark")
-#define VIEW_ON_WEB NSLocalizedString(@"View on web site", @"View on web site")
-
 
 @interface ISSeminarViewController () <UIActionSheetDelegate, UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -237,7 +231,7 @@
         self.programLabel.font = [ISTheme sectionLabelFont];
         self.programLabel.text = [NSLocalizedString(@"Agenda", @"Agenda") uppercaseString];
         
-        [self.programWebView loadHTMLString:self.html baseURL:[NSURL URLWithString:@"http://www.ruseminar.ru"]];
+        [self.programWebView loadHTMLString:self.html baseURL:[NSURL URLWithString:RUSEMINAR_SITE]];
         self.programWebView.userInteractionEnabled = NO;
         self.programWebView.scrollView.scrollEnabled = NO;
         self.programWebView.scalesPageToFit = YES;
@@ -295,7 +289,7 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Bill Webview"]) {
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.ruseminar.ru/bill?id=%@", self.seminar.ruseminarID]];
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/bill?id=%@", RUSEMINAR_SITE, self.seminar.ruseminarID]];
         
         ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
         [dvc setUrl:url];
@@ -303,6 +297,11 @@
     } else if ([segue.identifier isEqualToString:@"View On Web"]) {
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", self.seminar.ruseminar_url]];
         
+        ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
+        [dvc setUrl:url];
+        [dvc setWebviewTitle:self.seminar.name];
+    } else if ([segue.identifier isEqualToString:@"View additional"]) {
+        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@", EDU_RUSEMINAR_SITE, ADDITIONAL_PATH, self.seminar.ruseminarID]];
         ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
         [dvc setUrl:url];
         [dvc setWebviewTitle:self.seminar.name];
@@ -320,22 +319,19 @@
     if (self.actionSheet) {
         // do nothing
     } else {
-        NSString *addBookmarkButton = NSLocalizedString(@"Add bookmark", @"Add seminar bookmark button title");
-        NSString *viewOnWebButton = NSLocalizedString(@"View on web site", @"Add seminar bookmark button title");
+        NSString *addBookmarkButton = NSLocalizedString(@"Add bookmark", @"Add bookmark");
+        NSString *viewOnWebButton = NSLocalizedString(@"View on web site", @"View on web site");
         NSString *addToCalendar = NSLocalizedString(@"Add to calendar", @"Add to calendar button title");
 
-        
-        NSString *twitterButton = NSLocalizedString(@"Share on Twitter", @"Share on twitter");
-        NSString *facebookButton = NSLocalizedString(@"Share on Facebook", @"Share on Facebook");
+        NSString *viewAdditionaMaterials = NSLocalizedString(@"View additional materials", @"View additional materials button title");
         NSString *emailButton = NSLocalizedString(@"Email", @"Share via E-Mail");
-        NSString *vkontakteButton = NSLocalizedString(@"Share on Vkontakte", @"Share on Vkontakte");
         
         UIActionSheet *actionSheet = nil;
         
         if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Favorites", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, addToCalendar, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
+            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Favorites", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, addToCalendar, viewAdditionaMaterials, emailButton, nil];
         } else {
-            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Favorites", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, addToCalendar, emailButton, twitterButton, facebookButton, vkontakteButton, nil];
+            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Favorites", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, addToCalendar, viewAdditionaMaterials, emailButton, nil];
         }
         
         [actionSheet showFromBarButtonItem:sender animated:YES];
@@ -346,9 +342,9 @@
 #pragma mark - UIActionSheetDelegate
 
 - (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSString *choice = [actionSheet buttonTitleAtIndex:buttonIndex];
+
     if (buttonIndex == [actionSheet destructiveButtonIndex]) {
-    } else if ([choice isEqualToString:ADD_BOOKMARK]) {
+    } else if (buttonIndex == 0) {
         NSUbiquitousKeyValueStore *bookmarksStore = [NSUbiquitousKeyValueStore defaultStore];
         NSMutableArray *bookmarksArray = [[bookmarksStore arrayForKey:BOOKMARKS_KEY] mutableCopy];
         BOOL found = NO;
@@ -368,7 +364,7 @@
             [bookmarksStore setObject:bookmarksArray forKey:BOOKMARKS_KEY];
             [[NSNotificationCenter defaultCenter] postNotificationName:NSUbiquitousKeyValueStoreDidChangeLocallyNotification object:bookmarksStore userInfo:bookmark];
         }
-    } else if ([choice isEqualToString:VIEW_ON_WEB]) {
+    } else if (buttonIndex == 1) {
         [self performSegueWithIdentifier:@"View On Web" sender:self];
     } else if (buttonIndex == 2) {
         // add to calendar
@@ -418,7 +414,8 @@
         }
         
     } else if (buttonIndex == 3) {
-        //share to mail
+        // view seminar additional materials
+        [self performSegueWithIdentifier:@"View additional" sender:self];
 
     } else if (buttonIndex == 4) {
         //share to twitter
@@ -453,7 +450,6 @@
                                                                                    cacheName:nil];
     NSError *error = nil;
 	if (![fetchedResultsController performFetch:&error]) {
-        // TODO: handle error!
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
 	    NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
 	    abort();

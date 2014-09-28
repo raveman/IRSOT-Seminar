@@ -18,6 +18,9 @@
 #define SEMINAR_URL @"http://mobile.ruseminar.ru"
 #define UPDATE_NODE @"lastupdate"
 
+#define EDU_RUSEMINAR_SITE @"http://edu.ruseminar.ru"
+#define ADDITIONAL_PATH @"structured-program"
+
 // #define SEMINAR_TAXONOMY_URL @"taxonomy_vocabulary"
 
 #define SEMINAR_TAXONOMY_URL @"taxonomy_term?parameters[vid]"

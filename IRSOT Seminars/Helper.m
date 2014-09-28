@@ -121,8 +121,6 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
     [[tabBarController.tabBar.items objectAtIndex:3] setTitle:NSLocalizedString(@"Important", @"Important Title")];
     
     [[tabBarController.tabBar.items objectAtIndex:4] setTitle:NSLocalizedString(@"News", @"News Title")];
-    
-
 }
 
 

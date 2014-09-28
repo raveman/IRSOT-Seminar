@@ -21,12 +21,22 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
     CGSize maximumLabelSize = size;
     maximumLabelSize.width -= HORIZONTAL_MARGIN;
     
-    CGSize expectedLabelSize = [label.text sizeWithFont:label.font constrainedToSize:maximumLabelSize lineBreakMode:label.lineBreakMode];
+//    CGSize expectedLabelSize = [label.text sizeWithFont:label.font constrainedToSize:maximumLabelSize lineBreakMode:label.lineBreakMode];
+    
+    NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle defaultParagraphStyle] mutableCopy];
+    paragraphStyle.lineBreakMode = label.lineBreakMode;
+    
+    NSDictionary *attributes = @{NSFontAttributeName:label.font, NSParagraphStyleAttributeName:paragraphStyle};
+
+    CGRect expectedLabelRect = [label.text boundingRectWithSize:maximumLabelSize
+                                                        options:NSStringDrawingUsesLineFragmentOrigin
+                                                     attributes:attributes
+                                                        context:nil];
     
     //adjust the label new height.
     CGRect newFrame = label.frame;
-    newFrame.size.height = expectedLabelSize.height;
-    newFrame.size.width = expectedLabelSize.width - HORIZONTAL_MARGIN;
+    newFrame.size.height = expectedLabelRect.size.height;
+    newFrame.size.width = expectedLabelRect.size.width - HORIZONTAL_MARGIN;
     newFrame.size.width = maximumLabelSize.width;
     label.frame = newFrame;
     

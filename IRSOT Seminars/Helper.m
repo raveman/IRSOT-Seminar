@@ -110,9 +110,19 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
     return platform;
 }
 
-+ (void)setTabBarItemsLabels
++(void)setLocalizedItemsLabelsForTabBarController:(UITabBarController *)tabBarController
 {
+    [[tabBarController.tabBar.items objectAtIndex:0] setTitle:NSLocalizedString(@"Catalog", @"Catalog section title")];
     
+    [[tabBarController.tabBar.items objectAtIndex:1] setTitle:NSLocalizedString(@"Lectors", @"Lector List View Title")];
+    
+    [[tabBarController.tabBar.items objectAtIndex:2] setTitle:NSLocalizedString(@"Favorites", @"Bookmarks List View Title")];
+    
+    [[tabBarController.tabBar.items objectAtIndex:3] setTitle:NSLocalizedString(@"Important", @"Important Title")];
+    
+    [[tabBarController.tabBar.items objectAtIndex:4] setTitle:NSLocalizedString(@"News", @"News Title")];
+    
+
 }
 
 

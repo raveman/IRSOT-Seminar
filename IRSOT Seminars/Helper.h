@@ -22,5 +22,6 @@ extern NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification;
 
 + (NSString *)platformString;
 
++(void)setLocalizedItemsLabelsForTabBarController:(UITabBarController *)tabBarController;
 
 @end

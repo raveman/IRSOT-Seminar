@@ -81,6 +81,8 @@ static const NSUInteger TYPES_SECTION = 2;
         
     self.title = NSLocalizedString(@"Catalog", @"Catalog section title");
     self.navigationItem.title = NSLocalizedString(@"IRSOT Seminars", @"Main Page Title");
+
+    [Helper setLocalizedItemsLabelsForTabBarController:self.tabBarController];    
     
     self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
     

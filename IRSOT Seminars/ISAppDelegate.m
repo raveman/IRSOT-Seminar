@@ -34,7 +34,11 @@
 {
 //    UIColor *appColor = [UIColor colorWithRed:47/255.0 green:158/255.0 blue:227/255.0 alpha:1.0];
 //    
-    [[UINavigationBar appearance] setTintColor: [ISTheme mainColor]];
+    [[UINavigationBar appearance] setBarTintColor: [ISTheme navigationBarBackgroundColor]];
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [ISTheme navigationBarTitleColor]}];
+
+    [[UINavigationBar appearance] setTintColor:[ISTheme navigationBarTitleColor]];
+    [[UITabBar appearance] setTintColor:[ISTheme selectedTabbarItemTintColor]];
     
     self.kvStore = [NSUbiquitousKeyValueStore defaultStore];
     

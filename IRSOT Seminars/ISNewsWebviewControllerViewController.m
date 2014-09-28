@@ -9,6 +9,7 @@
 #import "SVProgressHUD/SVProgressHUD.h"
 #import "ISNewsWebviewControllerViewController.h"
 #import "Helper.h"
+#import "ISTheme.h"
 
 @interface ISNewsWebviewControllerViewController () <UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webview;
@@ -34,8 +35,8 @@
     NSURL *url = [NSURL URLWithString:@"http://twitter.com/irsot"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webview loadRequest: request];
-    [Helper fixBarButtonItemForiOS7:self.navigationItem.leftBarButtonItem];
-    [Helper fixBarButtonItemForiOS7:self.navigationItem.rightBarButtonItem];
+    self.navigationItem.rightBarButtonItem.tintColor = [ISTheme barButtonItemColor];
+    self.navigationItem.leftBarButtonItem.tintColor = [ISTheme barButtonItemColor];
 }
 
 - (void)viewDidUnload

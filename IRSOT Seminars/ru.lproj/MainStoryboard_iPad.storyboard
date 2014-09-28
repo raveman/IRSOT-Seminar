@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="SDO-f5-Zha">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="SDO-f5-Zha">
     <dependencies>
-        <deployment version="1296" defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment version="1296" defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -65,7 +65,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="sUW-zO-xeM">
-                        <barButtonItem key="rightBarButtonItem" image="gear-iPhone.png" id="TPX-7l-gOc">
+                        <barButtonItem key="rightBarButtonItem" image="gear-iPhone" id="TPX-7l-gOc">
                             <connections>
                                 <segue destination="T6Y-hZ-rHe" kind="modal" identifier="Settings" modalTransitionStyle="flipHorizontal" id="4pb-gO-fiP"/>
                             </connections>
@@ -283,7 +283,7 @@
             </objects>
             <point key="canvasLocation" x="4208" y="136"/>
         </scene>
-        <!--Seminar List Table View Controller - test-->
+        <!--test-->
         <scene sceneID="q5h-5i-Mhr">
             <objects>
                 <tableViewController id="evp-LS-ef0" customClass="ISSeminarListTableViewController" sceneMemberID="viewController">
@@ -424,7 +424,7 @@
             </objects>
             <point key="canvasLocation" x="1908" y="671"/>
         </scene>
-        <!--Navigation Controller - Каталог-->
+        <!--Каталог-->
         <scene sceneID="Lym-DT-WWZ">
             <objects>
                 <navigationController id="lXx-vE-nHl" sceneMemberID="viewController">
@@ -599,7 +599,7 @@
             </objects>
             <point key="canvasLocation" x="2244" y="4516"/>
         </scene>
-        <!--Navigation Controller - Важно-->
+        <!--Важно-->
         <scene sceneID="kEt-yT-Dza">
             <objects>
                 <navigationController id="UEp-0G-43Y" sceneMemberID="viewController">
@@ -671,7 +671,7 @@
             </objects>
             <point key="canvasLocation" x="1928" y="1842"/>
         </scene>
-        <!--Navigation Controller - Лекторы-->
+        <!--Лекторы-->
         <scene sceneID="fFe-dA-pRv">
             <objects>
                 <navigationController id="np2-lU-KHo" sceneMemberID="viewController">
@@ -691,7 +691,7 @@
             </objects>
             <point key="canvasLocation" x="822" y="1850"/>
         </scene>
-        <!--Navigation Controller - Избранное-->
+        <!--Избранное-->
         <scene sceneID="8dw-C7-w72">
             <objects>
                 <navigationController id="u8i-gs-cdF" sceneMemberID="viewController">
@@ -711,7 +711,7 @@
             </objects>
             <point key="canvasLocation" x="830" y="663"/>
         </scene>
-        <!--Navigation Controller - Новости-->
+        <!--Новости-->
         <scene sceneID="8nz-Fb-WPj">
             <objects>
                 <navigationController id="Wta-hG-btY" sceneMemberID="viewController">
@@ -809,7 +809,7 @@
             </objects>
             <point key="canvasLocation" x="4011" y="-1665"/>
         </scene>
-        <!--Alert Times Table View Controller - Event Alert-->
+        <!--Event Alert-->
         <scene sceneID="fdn-wC-Tyt">
             <objects>
                 <tableViewController id="Pi4-om-JUI" customClass="ISAlertTimesTableViewController" sceneMemberID="viewController">
@@ -877,7 +877,7 @@
         <image name="bookmarks-iPhone.png" width="30" height="30"/>
         <image name="catalog3-iPhone.png" width="30" height="30"/>
         <image name="forward-iPhone.png" width="20" height="20"/>
-        <image name="gear-iPhone.png" width="30" height="30"/>
+        <image name="gear-iPhone" width="30" height="30"/>
         <image name="info-iPhone.png" width="30" height="30"/>
         <image name="lectors-iPhone.png" width="30" height="30"/>
         <image name="profile-icon.png" width="128" height="128"/>

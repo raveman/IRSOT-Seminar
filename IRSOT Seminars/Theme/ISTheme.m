@@ -13,7 +13,7 @@
 
 + (UIColor *)mainColor
 {
-    return [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
+    return [ISTheme baseTintColor];
 }
 
 + (UIColor *)secondColor
@@ -26,6 +26,17 @@
     return [UIColor colorWithRed:217/255.0 green:217/255.0 blue:217/255.0 alpha:1.0];
 }
 
++ (UIColor *)navigationBarBackgroundColor
+{
+    return [ISTheme accentTintColor];
+}
+
++ (UIColor *)navigationBarTitleColor
+{
+    return [UIColor whiteColor];
+}
+
+
 + (UIColor *)baseTintColor
 {
     return [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
@@ -35,6 +46,11 @@
 {
     return [UIColor colorWithRed:18/255.0 green:122/255.0 blue:187/255.0 alpha:1.0];
 
+}
+
++ (UIColor *)barButtonItemColor
+{
+    return [UIColor whiteColor];
 }
 
 + (UIColor *)selectedTabbarItemTintColor

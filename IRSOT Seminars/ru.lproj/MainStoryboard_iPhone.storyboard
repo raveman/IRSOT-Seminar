@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Xxu-CO-emP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Xxu-CO-emP">
     <dependencies>
-        <deployment version="1296" defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment version="1296" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -64,7 +64,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="Jea-tH-Syn">
-                        <barButtonItem key="rightBarButtonItem" image="gear-iPhone.png" id="9t0-lu-CQ2">
+                        <barButtonItem key="rightBarButtonItem" image="gear-iPhone" id="9t0-lu-CQ2">
                             <connections>
                                 <segue destination="P4o-16-HrX" kind="modal" identifier="Settings" modalTransitionStyle="flipHorizontal" id="g5Y-JF-qCF"/>
                             </connections>
@@ -280,7 +280,7 @@
             </objects>
             <point key="canvasLocation" x="1996" y="544"/>
         </scene>
-        <!--Seminar List Table View Controller - test-->
+        <!--test-->
         <scene sceneID="ccs-ya-jZJ">
             <objects>
                 <tableViewController id="nJp-nt-32R" customClass="ISSeminarListTableViewController" sceneMemberID="viewController">
@@ -419,7 +419,7 @@
             </objects>
             <point key="canvasLocation" x="956" y="859"/>
         </scene>
-        <!--Navigation Controller - Каталог-->
+        <!--Каталог-->
         <scene sceneID="74o-AY-3Eu">
             <objects>
                 <navigationController id="Ycv-0g-Mlc" sceneMemberID="viewController">
@@ -592,7 +592,7 @@
             </objects>
             <point key="canvasLocation" x="470" y="2208"/>
         </scene>
-        <!--Navigation Controller - Важно-->
+        <!--Важно-->
         <scene sceneID="rNw-C9-6TY">
             <objects>
                 <navigationController id="k9T-3C-wg4" sceneMemberID="viewController">
@@ -662,7 +662,7 @@
             </objects>
             <point key="canvasLocation" x="956" y="1466"/>
         </scene>
-        <!--Navigation Controller - Лекторы-->
+        <!--Лекторы-->
         <scene sceneID="q7Y-jp-qFF">
             <objects>
                 <navigationController id="wVt-ZX-VzO" sceneMemberID="viewController">
@@ -681,7 +681,7 @@
             </objects>
             <point key="canvasLocation" x="470" y="1466"/>
         </scene>
-        <!--Navigation Controller - Избранное-->
+        <!--Избранное-->
         <scene sceneID="tJu-Zn-Gs6">
             <objects>
                 <navigationController id="Zxi-AR-pyA" sceneMemberID="viewController">
@@ -700,7 +700,7 @@
             </objects>
             <point key="canvasLocation" x="470" y="859"/>
         </scene>
-        <!--Navigation Controller - Новости-->
+        <!--Новости-->
         <scene sceneID="eVJ-Oq-EBg">
             <objects>
                 <navigationController id="COB-C0-uHh" sceneMemberID="viewController">
@@ -859,7 +859,7 @@
         <image name="bookmarks-iPhone.png" width="30" height="30"/>
         <image name="catalog3-iPhone.png" width="30" height="30"/>
         <image name="forward-iPhone.png" width="20" height="20"/>
-        <image name="gear-iPhone.png" width="30" height="30"/>
+        <image name="gear-iPhone" width="30" height="30"/>
         <image name="info-iPhone.png" width="30" height="30"/>
         <image name="lectors-iPhone.png" width="30" height="30"/>
         <image name="profile-icon.png" width="128" height="128"/>

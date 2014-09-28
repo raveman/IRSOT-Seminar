@@ -10,12 +10,20 @@
 
 @interface ISTheme : NSObject
 
+
++ (UIColor *)barButtonItemColor;
+
 + (UIColor *)mainColor;
 + (UIColor *)secondColor;
 + (UIColor *)backgroundColor;
+
++ (UIColor *)navigationBarBackgroundColor;
++ (UIColor *)navigationBarTitleColor;
+
 + (UIColor *)baseTintColor;
-+ (UIColor *)accentTintColor;
+//+ (UIColor *)accentTintColor;
 + (UIColor *)selectedTabbarItemTintColor;
+
 + (UIColor *)switchThumbColor;
 + (UIColor *)switchOnColor;
 + (CGSize)shadowOffset;

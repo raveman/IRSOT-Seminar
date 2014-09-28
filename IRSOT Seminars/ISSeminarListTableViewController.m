@@ -18,6 +18,8 @@
 
 #import "Helper.h"
 
+#import "ISTheme.h"
+
 //#define CACHE_NAME_SEMINAR @"Seminar List"
 //#define CACHE_NAME_BK @"BK List"
 #define CACHE_NAME_SEMINAR nil
@@ -75,6 +77,7 @@
 {
     [super viewDidLoad];
 
+    self.navigationItem.leftBarButtonItem.tintColor = [ISTheme barButtonItemColor];
     self.searchDisplayController.searchBar.delegate = self;
 //    self.searchDisplayController.searchBar.backgroundColor = [UIColor clearColor];
     

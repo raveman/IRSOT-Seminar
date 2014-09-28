@@ -20,6 +20,8 @@
 #import "ISAlertTimesTableViewController.h"
 #import "ISAlertTimes.h"
 
+#import "ISTheme.h"
+
 #import "Type+Load_Data.h"
 #import "Section+Load_Data.h"
 #import "Seminar+Load_Data.h"
@@ -105,7 +107,7 @@ const NSInteger settingsSections = 3;
     [super viewDidLoad];
     
     self.navigationItem.title = NSLocalizedString(@"Settings", @"Settings page title");
-
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -431,7 +433,8 @@ const NSInteger settingsSections = 3;
     }
 
     UISwitch *switchView = [[UISwitch alloc] initWithFrame:CGRectZero];
-    [switchView addTarget:self action:@selector(updateSwitchAtIndexPath:) forControlEvents:UIControlEventTouchUpInside];
+    [switchView addTarget:self action:@selector(updateSwitch:) forControlEvents:UIControlEventTouchUpInside];
+    switchView.onTintColor = [ISTheme switchOnColor];
 
     switch (indexPath.section) {
         // sorting switch
@@ -441,6 +444,7 @@ const NSInteger settingsSections = 3;
                 cell.textLabel.text = NSLocalizedString(@"Sort catalog by date or seminar name", @"Sort catalog by date");
                 cell.accessoryView = switchView;
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                switchView.tag = indexPath.section;
             }
 
             break;
@@ -453,6 +457,7 @@ const NSInteger settingsSections = 3;
                     cell.textLabel.text = NSLocalizedString(@"Use calendar alerts", @"Use calendar alerts");
                     cell.accessoryView = switchView;
                     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+                    switchView.tag = indexPath.section;
                     break;
                     
                 case 1:
@@ -559,24 +564,15 @@ const NSInteger settingsSections = 3;
     [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
-- (void)updateSwitchAtIndexPath:(id)sender
+- (void)updateSwitch:(id)sender
 {
 
-    UITableView *tableView;
-    UITableViewCell *cell;
-    NSIndexPath *indexPath;
-
-    if (floor(NSFoundationVersionNumber) > NSFoundationVersionNumber_iOS_6_1) {
-        UISwitch *switchInCell = (UISwitch *)sender;
-        cell = (UITableViewCell *) switchInCell.superview.superview;
-        indexPath = [self.tableView indexPathForCell:cell];
-        tableView = self.tableView;
-    } else {
-        tableView = (UITableView *)[[sender superview] superview];
-        indexPath = [tableView indexPathForCell:(UITableViewCell*)[sender superview]];
-    }
-
+//    UITableView *tableView;
+//    UITableViewCell *cell;
     
+    NSUInteger indexes[] = {[sender tag], 0};
+    NSIndexPath *indexPath =[NSIndexPath indexPathWithIndexes:indexes length: 2];
+
     if (indexPath.section == settingsSortSection) {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSNumber *sortByDate = [NSNumber numberWithBool:[sender isOn]];
@@ -597,7 +593,6 @@ const NSInteger settingsSections = 3;
         cell.textLabel.enabled = [sender isOn];
         cell.detailTextLabel.enabled = cell.textLabel.enabled;
     }
-    
 }
 
 #pragma mark - ISAlertTimesViewControllerDelegate

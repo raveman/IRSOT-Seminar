@@ -195,9 +195,9 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
-    cell.textLabel.font = [Helper cellMainFont];
-    cell.detailTextLabel.font = [Helper cellDetailFont];
-    cell.selectionStyle = [Helper cellSelectionStyle];
+    cell.textLabel.font = [ISTheme cellMainFont];
+    cell.detailTextLabel.font = [ISTheme cellDetailFont];
+    cell.selectionStyle = [ISTheme cellSelectionStyle];
 
     NSDictionary *bookmark = [self.bookmarks objectAtIndex:indexPath.row];
     cell.textLabel.text = [bookmark objectForKey:BOOKMARK_SEMINAR_NAME_KEY];

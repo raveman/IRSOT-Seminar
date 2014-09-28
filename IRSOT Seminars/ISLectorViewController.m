@@ -221,13 +221,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.font = [Helper cellMainFont];
-    cell.detailTextLabel.font = [Helper cellDetailFont];
-    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    cell.textLabel.font = [ISTheme cellMainFont];
+    cell.detailTextLabel.font = [ISTheme cellDetailFont];
+    cell.selectionStyle = [ISTheme cellSelectionStyle];
     
     UIImage *accessoryImage = [UIImage imageNamed:@"accessoryArrow"];
     cell.accessoryView = [[UIImageView alloc] initWithImage:accessoryImage];
-    cell.textLabel.font = [Helper cellMainFont];
+    cell.textLabel.font = [ISTheme cellMainFont];
 
     if ([self.seminars count]) {
         Seminar *seminar = [self.seminars objectAtIndex:indexPath.row];

@@ -79,13 +79,15 @@ static const NSUInteger TYPES_SECTION = 2;
 {
     [super viewDidLoad];
         
+    self.title = NSLocalizedString(@"Catalog", @"Catalog section title");
+    self.navigationItem.title = NSLocalizedString(@"IRSOT Seminars", @"Main Page Title");
+    
     self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
     
     // setting categories list tableview datasource and delegate
     self.seminarCategoriesTableView.dataSource = self;
     self.seminarCategoriesTableView.delegate = self;
 
-    self.navigationItem.title =  NSLocalizedString(@"IRSOT Seminars", @"Main Page Title");
     
     self.noDataLabel.shadowColor = [UIColor grayColor];
     self.noDataLabel.shadowOffset = CGSizeMake(0,-1);
@@ -231,10 +233,10 @@ static const NSUInteger TYPES_SECTION = 2;
 {
     static NSString *CellIdentifier = @"Education Types Cell";
     UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-    cell.selectionStyle = [Helper cellSelectionStyle];
+    cell.selectionStyle = [ISTheme cellSelectionStyle];
     UIImage *accessoryImage = [UIImage imageNamed:@"accessoryArrow"];
     cell.accessoryView = [[UIImageView alloc] initWithImage:accessoryImage];
-    cell.textLabel.font = [Helper cellMainFont];
+    cell.textLabel.font = [ISTheme cellMainFont];
     
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         id row;

@@ -20,16 +20,7 @@ extern NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification;
 
 // + (void)makeButtonShiny:(UIButton*)button withBackgroundColor:(UIColor*)backgroundColor;
 
-+ (UIFont *) cellMainFont; // returns font for all cells in project
-+ (UIFont *) cellDetailFont; // returns font for all cells in project
-+ (UITableViewCellSelectionStyle) cellSelectionStyle;
-+ (UIFont *)labelFont;
-
 + (NSString *)platformString;
 
-+ (UIColor *)tintColor;
-
-//+ (void)fixSegmentedControlForiOS7:(UISegmentedControl *)segmentedControl;
-//+ (void)fixBarButtonItemForiOS7:(UIBarButtonItem *)barButtonItem;
 
 @end

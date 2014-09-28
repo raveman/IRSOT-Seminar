@@ -27,10 +27,15 @@
 + (UIColor *)switchThumbColor;
 + (UIColor *)switchOnColor;
 + (CGSize)shadowOffset;
+
++ (UIFont *)labelFont;
++ (UIFont *)cellMainFont;
++ (UIFont *)cellDetailFont;
+
 + (UIImage *)tableBackground;
 + (UIFont *)sectionLabelFont;
 + (UIColor *)sectionLabelColor;
 + (UILabel *)sectionLabelInTableView: (UITableView *)tableView forSection:(NSUInteger)section andMargin:(NSUInteger)margin;
-+ (UIImage *)viewBackground;
++ (UITableViewCellSelectionStyle) cellSelectionStyle;
 
 @end

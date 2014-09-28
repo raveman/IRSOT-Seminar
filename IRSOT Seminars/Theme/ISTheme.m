@@ -42,11 +42,6 @@
     return [UIColor colorWithRed:28/255.0 green:173/255.0 blue:215/255.0 alpha:1.0];
 }
 
-+ (UIColor *)labelColor
-{
-    return [UIColor colorWithRed:18/255.0 green:122/255.0 blue:187/255.0 alpha:1.0];
-
-}
 
 + (UIColor *)barButtonItemColor
 {
@@ -79,20 +74,37 @@
    return CGSizeMake(0.0, 1.0);
 }
 
-+ (UIImage *)tableBackground
+
+#pragma mark - Labels styling
++ (UIColor *)labelColor
 {
-    //    UIImage *image = [UIImage imageNamed:@"background"];
-    //    image = [image resizableImageWithCapInsets:UIEdgeInsetsZero];
-    //    return image;
-    CIColor *color = [CIColor colorWithRed:217/255.0 green:217/255.0 blue:217/255.0 alpha:1.0];
-    UIImage *image = [UIImage imageWithCIImage: [CIImage imageWithColor:color]];
-    return image;
+    return [UIColor colorWithRed:18/255.0 green:122/255.0 blue:187/255.0 alpha:1.0];
+    
 }
+
++ (UIFont *) labelFont
+{
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16.0];
+    return font;
+}
+
+#pragma mark - Table Fonts and Styling
 
 + (UIFont *)sectionLabelFont
 {
     return [UIFont fontWithDescriptor:[UIFontDescriptor fontDescriptorWithFontAttributes:@{@"NSCTFontUIUsageAttribute" : UIFontTextStyleBody, @"NSFontNameAttribute" : @"HelveticaNeue-Medium"}] size:15.0];
- 
+    
+}
+
++ (UIFont *) cellMainFont
+{
+    UIFont *font = [UIFont fontWithName:@"HelveticaNeue-Medium" size:17.0];
+    return font;
+}
+
++ (UIFont *) cellDetailFont
+{
+    return [UIFont fontWithName:@"HelveticaNeue" size:14.0];
 }
 
 + (UIColor *)sectionLabelColor
@@ -128,11 +140,19 @@
     return label;
 }
 
-+ (UIImage *)viewBackground
++ (UIImage *)tableBackground
 {
-    UIImage *image = [UIImage imageNamed:@"background"];
-    image = [image resizableImageWithCapInsets:UIEdgeInsetsZero];
+    //    UIImage *image = [UIImage imageNamed:@"background"];
+    //    image = [image resizableImageWithCapInsets:UIEdgeInsetsZero];
+    //    return image;
+    CIColor *color = [CIColor colorWithRed:217/255.0 green:217/255.0 blue:217/255.0 alpha:1.0];
+    UIImage *image = [UIImage imageWithCIImage: [CIImage imageWithColor:color]];
     return image;
+}
+
++ (UITableViewCellSelectionStyle) cellSelectionStyle
+{
+    return UITableViewCellSelectionStyleBlue;
 }
 
 @end

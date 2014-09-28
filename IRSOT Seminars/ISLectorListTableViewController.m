@@ -15,6 +15,8 @@
 #import "Lector+Load_Data.h"
 #import "Helper.h"
 
+#import "ISTheme.h"
+
 #define CACHE_NAME @"lectors.cache"
 
 @interface ISLectorListTableViewController ()
@@ -28,9 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
     self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
-    self.title = NSLocalizedString(@"Lectors", @"Lector List View Title");
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(seminarDataChanged:) name:NSPersistentStoreCoordinatorStoresDidChangeNotification object:nil];
     
@@ -107,13 +108,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.font = [Helper cellMainFont];
-    cell.detailTextLabel.font = [Helper cellDetailFont];
-    cell.selectionStyle = UITableViewCellSelectionStyleBlue;
+    cell.textLabel.font = [ISTheme cellMainFont];
+    cell.detailTextLabel.font = [ISTheme cellDetailFont];
+    cell.selectionStyle = [ISTheme cellSelectionStyle];
 
     UIImage *accessoryImage = [UIImage imageNamed:@"accessoryArrow"];
     cell.accessoryView = [[UIImageView alloc] initWithImage:accessoryImage];
-    cell.textLabel.font = [Helper cellMainFont];
+    cell.textLabel.font = [ISTheme cellMainFont];
 
     if ([[self.fetchedResultsController fetchedObjects] count]) {
         Lector *lector = [self.fetchedResultsController objectAtIndexPath:indexPath];

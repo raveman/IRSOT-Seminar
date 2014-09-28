@@ -293,15 +293,15 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
     }
     
-    cell.textLabel.font = [Helper cellMainFont];
-    cell.detailTextLabel.font = [Helper cellDetailFont];
+    cell.textLabel.font = [ISTheme cellMainFont];
+    cell.detailTextLabel.font = [ISTheme cellDetailFont];
 
-    cell.selectionStyle = [Helper cellSelectionStyle];
+    cell.selectionStyle = [ISTheme cellSelectionStyle];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 
     UIImage *accessoryImage = [UIImage imageNamed:@"accessoryArrow"];
     cell.accessoryView = [[UIImageView alloc] initWithImage:accessoryImage];
-    cell.textLabel.font = [Helper cellMainFont];
+    cell.textLabel.font = [ISTheme cellMainFont];
     
     if (tableView == self.tableView) {
         // Configure the cell...
@@ -317,7 +317,7 @@
             cell.detailTextLabel.lineBreakMode = NSLineBreakByWordWrapping;
         } else {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:nil];
-            cell.textLabel.font = [Helper cellMainFont];
+            cell.textLabel.font = [ISTheme cellMainFont];
             cell.textLabel.text = NSLocalizedString(@"No seminars", @"No seminars");
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.detailTextLabel.text = @"";

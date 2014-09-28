@@ -108,10 +108,10 @@
 
     UIImage *accessoryImage = [UIImage imageNamed:@"accessoryArrow"];
     cell.accessoryView = [[UIImageView alloc] initWithImage:accessoryImage];
-    cell.textLabel.font = [Helper cellMainFont];
+    cell.textLabel.font = [ISTheme cellMainFont];
     
-    cell.textLabel.font = [Helper cellMainFont];
-    cell.selectionStyle = [Helper cellSelectionStyle];
+    cell.textLabel.font = [ISTheme cellMainFont];
+    cell.selectionStyle = [ISTheme cellSelectionStyle];
 
     cell.textLabel.text = key;
     

@@ -39,17 +39,13 @@
 
 @synthesize url = _url;
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.webview.scalesPageToFit = YES;
-    [self.webview loadRequest:[NSURLRequest requestWithURL:self.url]];
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-
+    
+    
     NSMutableArray *buttons = self.modalWebToolBar.items.mutableCopy;
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     spacer.width = 10;
@@ -91,25 +87,23 @@
 //    self.modalWebToolBar.barTintColor = [ISTheme navigationBarBackgroundColor];
 }
 
-- (void)viewDidUnload
-{
-    [self setWebview:nil];
-//    [self setScrollview:nil];
-    [self setModalNavigationBar:nil];
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.webview.scalesPageToFit = YES;
+    [self.webview loadRequest:[NSURLRequest requestWithURL:self.url]];
 
-    [self setModalWebToolBar:nil];
-    [self setBackButton:nil];
-    [self setForwardButton:nil];
-    [self setActionButton:nil];
-    [self setReloadButton:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
     [SVProgressHUD dismiss];
-
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
     [super viewWillDisappear:animated];
 }
 
@@ -125,6 +119,7 @@
 - (IBAction)done:(UIBarButtonItem *)sender {
         [[self presentingViewController] dismissViewControllerAnimated:YES completion:nil];
 }
+
 
 #pragma mark - UIWebViewDelegate
 - (void)webViewDidStartLoad:(UIWebView *)webView

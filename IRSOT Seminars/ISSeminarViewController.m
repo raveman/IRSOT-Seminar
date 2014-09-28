@@ -7,6 +7,9 @@
 //
 
 #import <EventKit/EventKit.h>
+#import <MessageUI/MessageUI.h>
+
+#import "SVProgressHUD.h"
 
 #import "ISAppDelegate.h"
 
@@ -27,7 +30,7 @@
 #import "Type+Load_Data.h"
 #import "ISAlertTimes.h"
 
-@interface ISSeminarViewController () <UIActionSheetDelegate, UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface ISSeminarViewController () <UIActionSheetDelegate, UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *attendSeminarButton;
 @property (weak, nonatomic) IBOutlet UITextView *seminarName;
@@ -420,7 +423,26 @@
         [self performSegueWithIdentifier:@"View additional" sender:self];
 
     } else if (buttonIndex == 4) {
-        //share to twitter
+        //share to email
+        
+        if ([MFMailComposeViewController canSendMail]) {
+            NSString *subject = [NSString stringWithFormat:@"Семинар %@", self.seminar.name];
+            NSString *message = [NSString stringWithFormat:@"%@ \n%@\n", self.seminar.name, self.seminar.ruseminar_url];
+            if ([self.seminar.date_start isEqualToDate: self.seminar.date_end]) {
+                message = [NSString stringWithFormat:@"%@ дата проведения: %@", message, [self stringFromDate:self.seminar.date_start]];
+            } else {
+                message = [NSString stringWithFormat:@"%@ дата проведения: с %@ по %@", message, [self stringFromDate:self.seminar.date_start], [self stringFromDate:self.seminar.date_end]];
+            }
+            MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+            mc.mailComposeDelegate = self;
+            mc.navigationBar.tintColor = [ISTheme barButtonItemColor];
+            [mc setSubject:subject];
+            [mc setMessageBody:message isHTML:NO];
+            [self presentViewController:mc animated:YES completion:NULL];
+        } else {
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Can't send email", @"Can't send email")];
+        }
+
 
     } else if (buttonIndex == 5) {
         //share to facebook
@@ -435,6 +457,16 @@
     //share to evernote
 //    SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
 //    [SHKEvernote shareItem:item];
+}
+
+- (NSString *)stringFromDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"d.MM.y"];
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
+    [dateFormatter setLocale:locale];
+    
+    return [dateFormatter stringFromDate:date];
 }
 
 #pragma mark - Core Data Fetch
@@ -645,6 +677,33 @@
         tableViewHeaderFooterView.textLabel.textColor = [ISTheme labelColor];
         tableViewHeaderFooterView.textLabel.font = [ISTheme sectionLabelFont];
     }
+}
+
+#pragma mark - MailComposerDelegate
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error
+{
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Mail cancelled", @"Mail cancelled")];
+
+            break;
+        case MFMailComposeResultSaved:
+            [SVProgressHUD showSuccessWithStatus:NSLocalizedString(@"Mail saved", @"Mail saved")];
+            break;
+        case MFMailComposeResultSent:
+            [SVProgressHUD showWithStatus:NSLocalizedString(@"Mail sent", @"Mail sent")];
+            break;
+        case MFMailComposeResultFailed:
+            [SVProgressHUD showErrorWithStatus:[NSString stringWithFormat:@"%@: %@", NSLocalizedString(@"Mail sent failure", @"Mail sent failure"), [error localizedDescription]]];
+            break;
+        default:
+            break;
+    }
+    
+    // Close the Mail Interface
+    [self dismissViewControllerAnimated:YES completion:NULL];
 }
 
 @end

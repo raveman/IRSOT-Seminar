@@ -80,14 +80,9 @@
     }
     
 	// Do any additional setup after loading the view.
-    [Helper fixBarButtonItemForiOS7:self.backButton];
-    [Helper fixBarButtonItemForiOS7:self.forwardButton];
-    [Helper fixBarButtonItemForiOS7:self.actionButton];
-    [Helper fixBarButtonItemForiOS7:self.reloadButton];
+
     self.modalWebToolBar.barStyle = UIBarStyleDefault;
     self.modalWebToolBar.backgroundColor = [Helper tintColor];
-    
-    
 }
 
 - (void)viewDidUnload

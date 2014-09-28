@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 #define HORIZONTAL_MARGIN 40
-#define SECTION_HEADER_HEIGHT 25
+#define SECTION_HEADER_HEIGHT 10
 
 extern NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification;
 
@@ -18,7 +18,7 @@ extern NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification;
 + (CGRect) resizeTextView:(UITextView *)textView withSize:(CGSize)size andMargin:(NSUInteger)margin;
 + (CGRect) resizeRectButton:(UIButton *)button withSize:(CGSize)size;
 
-+ (void)makeButtonShiny:(UIButton*)button withBackgroundColor:(UIColor*)backgroundColor;
+// + (void)makeButtonShiny:(UIButton*)button withBackgroundColor:(UIColor*)backgroundColor;
 
 + (UIFont *) cellMainFont; // returns font for all cells in project
 + (UIFont *) cellDetailFont; // returns font for all cells in project
@@ -29,7 +29,7 @@ extern NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification;
 
 + (UIColor *)tintColor;
 
-+ (void)fixSegmentedControlForiOS7:(UISegmentedControl *)segmentedControl;
-+ (void)fixBarButtonItemForiOS7:(UIBarButtonItem *)barButtonItem;
+//+ (void)fixSegmentedControlForiOS7:(UISegmentedControl *)segmentedControl;
+//+ (void)fixBarButtonItemForiOS7:(UIBarButtonItem *)barButtonItem;
 
 @end

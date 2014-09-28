@@ -98,8 +98,6 @@
         self.title = NSLocalizedString(@"All events", @"All events");
     }
     self.searchBar.placeholder = NSLocalizedString(@"название мероприятия", @"search placeholder");
-    
-    [Helper fixSegmentedControlForiOS7:self.seminarTypeSwitch];
 }
 
 - (void)viewDidUnload

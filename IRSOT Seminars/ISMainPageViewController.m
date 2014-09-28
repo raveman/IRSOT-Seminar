@@ -395,6 +395,8 @@ static const NSUInteger TYPES_SECTION = 2;
         case NSFetchedResultsChangeDelete:
 //            [self.seminarCategoriesTableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
             break;
+        default:
+            break;
     }
 }
 

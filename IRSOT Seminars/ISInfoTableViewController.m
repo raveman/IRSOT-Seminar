@@ -39,8 +39,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.title = NSLocalizedString(@"Participation terms", @"Info page title");
-
+    self.title = NSLocalizedString(@"Important", @"Important Title");
+    self.navigationItem.title = NSLocalizedString(@"Important", @"Important Title");
+    
 //    self.tableView.backgroundColor = [UIColor clearColor];
 //    self.tableView.opaque = NO;
 //    self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[theme viewBackground]];

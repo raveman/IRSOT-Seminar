@@ -29,7 +29,9 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    self.navigationItem.title = NSLocalizedString(@"IRSOT News", @"News Webview Title");
+    
+    self.title = NSLocalizedString(@"News", @"News Title");
+    self.navigationItem.title = NSLocalizedString(@"News", @"News Title");
     self.webview.scalesPageToFit = YES;
     
     NSURL *url = [NSURL URLWithString:@"http://twitter.com/irsot"];

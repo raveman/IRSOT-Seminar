@@ -30,6 +30,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.title = NSLocalizedString(@"Lectors", @"Lector List View Title");
 
     self.managedObjectContext = [[ISAppDelegate sharedDelegate] managedObjectContext];
 
@@ -67,8 +68,6 @@
         [dvc setLector:lector];
     }
 }
-
-
 
 #pragma mark - Table view data source
 

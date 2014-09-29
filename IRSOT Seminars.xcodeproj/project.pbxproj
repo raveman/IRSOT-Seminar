@@ -724,10 +724,11 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
+				PROVISIONING_PROFILE = "940e4acb-953c-4e80-84ac-cd72863402b3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "940e4acb-953c-4e80-84ac-cd72863402b3";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
+				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -749,10 +750,11 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
+				PROVISIONING_PROFILE = "940e4acb-953c-4e80-84ac-cd72863402b3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "940e4acb-953c-4e80-84ac-cd72863402b3";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
+				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

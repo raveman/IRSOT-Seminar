@@ -101,15 +101,6 @@
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" id="JYd-Ug-vt5">
-                                        <rect key="frame" x="20" y="156" width="728" height="164"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <string key="text">БиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиография</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
-                                    </textView>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="QoE-G6-taF">
                                         <rect key="frame" x="0.0" y="921" width="768" height="137"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -148,6 +139,15 @@
                                         <rect key="frame" x="20" y="20" width="126" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" id="JYd-Ug-vt5">
+                                        <rect key="frame" x="20" y="156" width="728" height="164"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <string key="text">БиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиографияБиография</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                    </textView>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -213,7 +213,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="SBq-1l-4kx" kind="modal" identifier="Bill Webview" id="64w-Vr-LX1"/>
+                                            <segue destination="SBq-1l-4kx" kind="modal" identifier="Bill Webview" modalPresentationStyle="currentContext" id="64w-Vr-LX1"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Seminar Name" textAlignment="center" id="XDL-ls-akc">
@@ -276,8 +276,8 @@
                         <outlet property="seminarDate" destination="jRn-fZ-bTu" id="SfA-1a-HOb"/>
                         <outlet property="seminarName" destination="XDL-ls-akc" id="nZd-7v-NG4"/>
                         <outlet property="typeLabel" destination="xEt-SL-Rk2" id="bg1-41-e1m"/>
-                        <segue destination="SBq-1l-4kx" kind="modal" identifier="View On Web" id="ap6-i4-iW8"/>
-                        <segue destination="SBq-1l-4kx" kind="modal" identifier="View additional" id="6NU-Lo-oOk"/>
+                        <segue destination="SBq-1l-4kx" kind="modal" identifier="View On Web" modalPresentationStyle="currentContext" id="ap6-i4-iW8"/>
+                        <segue destination="SBq-1l-4kx" kind="modal" identifier="View additional" modalPresentationStyle="currentContext" id="6NU-Lo-oOk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MkF-Gj-2Ad" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -889,8 +889,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="2L4-Gf-Zte"/>
-        <segue reference="VsF-FJ-0gS"/>
         <segue reference="6NU-Lo-oOk"/>
+        <segue reference="VsF-FJ-0gS"/>
+        <segue reference="2L4-Gf-Zte"/>
     </inferredMetricsTieBreakers>
 </document>

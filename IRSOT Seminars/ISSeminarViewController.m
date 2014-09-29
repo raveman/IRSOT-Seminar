@@ -435,7 +435,6 @@
     } else if (buttonIndex == 3) {
         // view seminar additional materials
         [self performSegueWithIdentifier:@"View additional" sender:self];
-
     } else if (buttonIndex == 4) {
         //share to email
         

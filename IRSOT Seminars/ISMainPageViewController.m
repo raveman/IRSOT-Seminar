@@ -15,6 +15,7 @@
 #import "ISMainPageViewController.h"
 #import "ISSeminarListTableViewController.h"
 #import "ISSettingsViewController.h"
+#import "ISBookmarksTableViewController.h"
 
 #import "SeminarFetcher.h"
 
@@ -178,6 +179,11 @@ static const NSUInteger TYPES_SECTION = 2;
         }
     }
     
+    if ([[segue identifier] isEqualToString:@"bookmarks"]) {
+        ISBookmarksTableViewController *dvc = (ISBookmarksTableViewController *)[segue destinationViewController];
+        
+    }
+    
     if ([[segue identifier] isEqualToString:@"Settings"]) {
         UINavigationController *dnc = (UINavigationController *)[segue destinationViewController];
         ISSettingsViewController *dvc = (ISSettingsViewController *) dnc.topViewController;
@@ -320,16 +326,6 @@ static const NSUInteger TYPES_SECTION = 2;
     
     return title;
 }
-
-//- (UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-//{
-//    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.bounds.size.width, SECTION_HEADER_HEIGHT)];
-//    [headerView setBackgroundColor:[UIColor clearColor]];
-//    
-//    [headerView addSubview:[ISTheme sectionLabelInTableView:tableView forSection:section andMargin:0]];
-//    
-//    return headerView;
-//}
 
 - (void)tableView:(UITableView *)tableView willDisplayHeaderView:(UIView *)view forSection:(NSInteger)section
 {

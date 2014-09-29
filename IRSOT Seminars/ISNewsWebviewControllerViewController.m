@@ -30,11 +30,19 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.title = NSLocalizedString(@"News", @"News Title");
-    self.navigationItem.title = NSLocalizedString(@"News", @"News Title");
+    NSURL *url;
+    if (self.tabBarController.selectedIndex == 2) {
+        self.title = NSLocalizedString(@"Video", @"Video Title");
+        self.navigationItem.title = NSLocalizedString(@"Video", @"Video Title");
+        url = [NSURL URLWithString:@"http://youtube.com/irsot"];
+    } else if (self.tabBarController.selectedIndex == 3) {
+        self.title = NSLocalizedString(@"News", @"News Title");
+        self.navigationItem.title = NSLocalizedString(@"News", @"News Title");
+        url = [NSURL URLWithString:@"http://twitter.com/irsot"];
+    }
+    
     self.webview.scalesPageToFit = YES;
     
-    NSURL *url = [NSURL URLWithString:@"http://twitter.com/irsot"];
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webview loadRequest: request];
     self.navigationItem.rightBarButtonItem.tintColor = [ISTheme barButtonItemColor];

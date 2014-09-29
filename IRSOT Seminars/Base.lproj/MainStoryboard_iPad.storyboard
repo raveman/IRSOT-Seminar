@@ -20,8 +20,8 @@
                         <segue destination="lXx-vE-nHl" kind="relationship" relationship="viewControllers" id="94c-G8-ww3"/>
                         <segue destination="np2-lU-KHo" kind="relationship" relationship="viewControllers" id="s7S-iX-2Cy"/>
                         <segue destination="u8i-gs-cdF" kind="relationship" relationship="viewControllers" id="Vfo-io-lmU"/>
-                        <segue destination="UEp-0G-43Y" kind="relationship" relationship="viewControllers" id="PDZ-X4-Eja"/>
                         <segue destination="Wta-hG-btY" kind="relationship" relationship="viewControllers" id="x4z-NM-b62"/>
+                        <segue destination="UEp-0G-43Y" kind="relationship" relationship="viewControllers" id="PDZ-X4-Eja"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfw-TP-iFV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -65,6 +65,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="sUW-zO-xeM">
+                        <barButtonItem key="leftBarButtonItem" systemItem="bookmarks" id="bZh-vD-ZK0">
+                            <connections>
+                                <segue destination="Cmf-sB-TlF" kind="push" id="sV1-I3-Wn7"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="gear-iPhone" id="TPX-7l-gOc">
                             <connections>
                                 <segue destination="cCL-WD-q9U" kind="modal" identifier="Settings" modalTransitionStyle="flipHorizontal" id="ndr-Yk-7gy"/>
@@ -165,7 +170,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8xt-xh-l0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3220" y="1602"/>
+            <point key="canvasLocation" x="3037" y="782"/>
         </scene>
         <!--Seminar View Controller-->
         <scene sceneID="A91-mY-MYN">
@@ -282,7 +287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MkF-Gj-2Ad" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4233" y="156"/>
+            <point key="canvasLocation" x="4531" y="-464"/>
         </scene>
         <!--test-->
         <scene sceneID="q5h-5i-Mhr">
@@ -423,13 +428,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5g5-XR-2QO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1908" y="671"/>
+            <point key="canvasLocation" x="3037" y="-2041"/>
         </scene>
         <!--Catalog-->
         <scene sceneID="Lym-DT-WWZ">
             <objects>
                 <navigationController id="lXx-vE-nHl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Catalog" image="catalog3-iPhone.png" id="cxh-eK-9Xm"/>
+                    <tabBarItem key="tabBarItem" title="Catalog" image="catalog3-iPhone" id="cxh-eK-9Xm"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="s9p-gE-vht">
@@ -479,7 +484,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HwG-jQ-CI9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1928" y="3095"/>
+            <point key="canvasLocation" x="1908" y="2127"/>
         </scene>
         <!--Webview View Controller-->
         <scene sceneID="D3Y-YS-fGl">
@@ -554,7 +559,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JOT-OK-O0b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4531" y="2131"/>
+            <point key="canvasLocation" x="4531" y="859"/>
         </scene>
         <!--News Webview Controller View Controller-->
         <scene sceneID="86Q-MJ-Zq4">
@@ -598,13 +603,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="un6-kS-P5P" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2244" y="4516"/>
+            <point key="canvasLocation" x="1908" y="4788"/>
         </scene>
         <!--Important-->
         <scene sceneID="kEt-yT-Dza">
             <objects>
                 <navigationController id="UEp-0G-43Y" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Important" image="info-iPhone.png" id="oJ4-ST-9SM"/>
+                    <tabBarItem key="tabBarItem" title="Important" image="info-iPhone" id="oJ4-ST-9SM"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2aD-GQ-BV1">
@@ -618,7 +623,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="82B-EE-SCX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="830" y="3127"/>
+            <point key="canvasLocation" x="838" y="2155"/>
         </scene>
         <!--Lector List Table View Controller-->
         <scene sceneID="B7e-4T-1pk">
@@ -670,13 +675,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQL-1Q-4K8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1928" y="1842"/>
+            <point key="canvasLocation" x="1908" y="790"/>
         </scene>
         <!--Lectors-->
         <scene sceneID="fFe-dA-pRv">
             <objects>
                 <navigationController id="np2-lU-KHo" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Lectors" image="lectors-iPhone.png" id="DXD-sH-UEx"/>
+                    <tabBarItem key="tabBarItem" title="Lectors" image="lectors-iPhone" id="DXD-sH-UEx"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AwW-2P-XI8">
@@ -690,13 +695,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UmF-Kr-8XP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="822" y="1850"/>
+            <point key="canvasLocation" x="838" y="810"/>
         </scene>
-        <!--Favorites-->
+        <!--VIdeo-->
         <scene sceneID="8dw-C7-w72">
             <objects>
                 <navigationController id="u8i-gs-cdF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Favorites" image="bookmarks-iPhone.png" id="Roc-Ve-Xso"/>
+                    <tabBarItem key="tabBarItem" title="VIdeo" image="youtube" id="Roc-Ve-Xso"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="T6G-ox-uYN">
@@ -705,18 +710,18 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Cmf-sB-TlF" kind="relationship" relationship="rootViewController" id="NLU-vQ-Oll"/>
+                        <segue destination="YjH-TW-wy2" kind="relationship" relationship="rootViewController" id="ZFn-7j-TNX"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T2f-pF-swX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="830" y="663"/>
+            <point key="canvasLocation" x="838" y="3511"/>
         </scene>
         <!--News-->
         <scene sceneID="8nz-Fb-WPj">
             <objects>
                 <navigationController id="Wta-hG-btY" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="News" image="twitter-iPhone.png" id="gQp-JV-laV"/>
+                    <tabBarItem key="tabBarItem" title="News" image="twitter-iPhone" id="gQp-JV-laV"/>
                     <toolbarItems/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="B54-LA-iRf">
@@ -730,7 +735,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rjk-TC-58s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="856" y="4488"/>
+            <point key="canvasLocation" x="838" y="4788"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="hwn-7W-F9d">
@@ -808,7 +813,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a2F-Nn-piG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4011" y="-1665"/>
+            <point key="canvasLocation" x="4011" y="-3157"/>
         </scene>
         <!--Event Alert-->
         <scene sceneID="HaG-Mp-gn6">
@@ -851,7 +856,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qfx-Xw-BBG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5111" y="-1665"/>
+            <point key="canvasLocation" x="5111" y="-3157"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="or3-z0-mFN">
@@ -869,19 +874,63 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="O8f-f8-EBA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3037" y="-1665"/>
+            <point key="canvasLocation" x="3037" y="-3157"/>
+        </scene>
+        <!--News Webview Controller View Controller-->
+        <scene sceneID="U86-qO-laO">
+            <objects>
+                <viewController id="YjH-TW-wy2" customClass="ISNewsWebviewControllerViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S9n-gl-tTl">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView multipleTouchEnabled="YES" contentMode="scaleToFill" id="aV9-9J-oOX">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="YjH-TW-wy2" id="BmT-Xz-E5g"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="EZW-bu-GnM">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" image="back-iPhone.png" id="c4u-cs-tEm">
+                            <connections>
+                                <action selector="backButtonPressed:" destination="YjH-TW-wy2" id="F5A-F2-DeT"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="forward-iPhone.png" id="1xD-Ow-w5s">
+                            <connections>
+                                <action selector="forwardButtonPressed:" destination="YjH-TW-wy2" id="TxW-cQ-vrz"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <connections>
+                        <outlet property="backButton" destination="c4u-cs-tEm" id="EHO-Td-iTa"/>
+                        <outlet property="forwardButton" destination="1xD-Ow-w5s" id="wd8-5f-gh5"/>
+                        <outlet property="webview" destination="aV9-9J-oOX" id="gyr-Ec-sZx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9AB-6a-Jfd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1908" y="3511"/>
         </scene>
     </scenes>
     <resources>
         <image name="back-iPhone.png" width="20" height="20"/>
-        <image name="bookmarks-iPhone.png" width="30" height="30"/>
-        <image name="catalog3-iPhone.png" width="30" height="30"/>
+        <image name="catalog3-iPhone" width="30" height="30"/>
         <image name="forward-iPhone.png" width="20" height="20"/>
         <image name="gear-iPhone" width="30" height="30"/>
-        <image name="info-iPhone.png" width="30" height="30"/>
-        <image name="lectors-iPhone.png" width="30" height="30"/>
+        <image name="info-iPhone" width="30" height="30"/>
+        <image name="lectors-iPhone" width="30" height="30"/>
         <image name="profile-icon.png" width="128" height="128"/>
-        <image name="twitter-iPhone.png" width="30" height="30"/>
+        <image name="twitter-iPhone" width="30" height="30"/>
+        <image name="youtube" width="30" height="30"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
@@ -889,8 +938,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="6NU-Lo-oOk"/>
+        <segue reference="zvB-hx-HA2"/>
         <segue reference="VsF-FJ-0gS"/>
-        <segue reference="2L4-Gf-Zte"/>
+        <segue reference="ASJ-44-5f7"/>
     </inferredMetricsTieBreakers>
 </document>

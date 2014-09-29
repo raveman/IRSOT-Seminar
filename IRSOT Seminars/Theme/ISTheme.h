@@ -29,6 +29,8 @@
 + (CGSize)shadowOffset;
 
 + (UIFont *)labelFont;
++ (UIFont *) buttonLabelFont;
+
 + (UIFont *)cellMainFont;
 + (UIFont *)cellDetailFont;
 

@@ -88,6 +88,11 @@
     return font;
 }
 
++ (UIFont *) buttonLabelFont
+{
+    return [UIFont fontWithName:@"HelveticaNeue-Medium" size:13.0];
+}
+
 #pragma mark - Table Fonts and Styling
 
 + (UIFont *)sectionLabelFont

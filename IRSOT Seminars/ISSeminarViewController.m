@@ -217,7 +217,14 @@
             whiteButtonHighlight = [whiteButtonHighlight resizableImageWithCapInsets:UIEdgeInsetsMake(0, 16, 0, 16)];
         }
 
-        [self.attendSeminarButton setTitle:NSLocalizedString(@"Attend seminar", @"Attend seminar") forState:UIControlStateNormal];
+        NSDate *today = [NSDate date];
+        if ([self.seminar.date_start compare:today] != NSOrderedAscending) {
+            [self.attendSeminarButton setTitle:NSLocalizedString(@"Attend seminar", @"Attend seminar") forState:UIControlStateNormal];
+        } else {
+            [self.attendSeminarButton setTitle: NSLocalizedString(@"View additional materials", @"View additional materials button title") forState:UIControlStateNormal];
+            self.attendSeminarButton.titleLabel.font = [ISTheme buttonLabelFont];
+        }
+        
         [self.attendSeminarButton setBackgroundImage:whiteButton forState:UIControlStateNormal];
         [self.attendSeminarButton setBackgroundImage:whiteButtonHighlight forState:UIControlStateHighlighted];
         
@@ -294,11 +301,18 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"Bill Webview"]) {
-        NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/bill?id=%@", RUSEMINAR_SITE, self.seminar.ruseminarID]];
-        
+        UIButton *button = (UIButton *)sender;
+        NSURL *url;
         ISWebviewViewController *dvc = (ISWebviewViewController *)segue.destinationViewController;
+        if ([button.titleLabel.text isEqualToString: NSLocalizedString(@"View additional materials", @"View additional materials button title")]) {
+            url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/%@/%@", EDU_RUSEMINAR_SITE, ADDITIONAL_PATH, self.seminar.ruseminarID]];
+            [dvc setWebviewTitle:self.seminar.name];
+        } else {
+            url = [NSURL URLWithString:[NSString stringWithFormat:@"%@/bill?id=%@", RUSEMINAR_SITE, self.seminar.ruseminarID]];
+            [dvc setWebviewTitle:NSLocalizedString(@"Attend seminar", @"Attend seminar")];
+        }
+        
         [dvc setUrl:url];
-        [dvc setWebviewTitle:NSLocalizedString(@"Attend seminar", @"Attend seminar")];
     } else if ([segue.identifier isEqualToString:@"View On Web"]) {
         NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", self.seminar.ruseminar_url]];
         

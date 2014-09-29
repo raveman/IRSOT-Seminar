@@ -213,7 +213,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="SBq-1l-4kx" kind="modal" identifier="Bill Webview" modalPresentationStyle="currentContext" id="64w-Vr-LX1"/>
+                                            <segue destination="SBq-1l-4kx" kind="modal" identifier="Bill Webview" id="64w-Vr-LX1"/>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" editable="NO" text="Seminar Name" textAlignment="center" id="XDL-ls-akc">
@@ -276,8 +276,8 @@
                         <outlet property="seminarDate" destination="jRn-fZ-bTu" id="SfA-1a-HOb"/>
                         <outlet property="seminarName" destination="XDL-ls-akc" id="nZd-7v-NG4"/>
                         <outlet property="typeLabel" destination="xEt-SL-Rk2" id="bg1-41-e1m"/>
-                        <segue destination="SBq-1l-4kx" kind="modal" identifier="View On Web" modalPresentationStyle="currentContext" id="ap6-i4-iW8"/>
-                        <segue destination="SBq-1l-4kx" kind="modal" identifier="View additional" modalPresentationStyle="currentContext" id="6NU-Lo-oOk"/>
+                        <segue destination="SBq-1l-4kx" kind="modal" identifier="View On Web" id="ap6-i4-iW8"/>
+                        <segue destination="SBq-1l-4kx" kind="modal" identifier="View additional" id="6NU-Lo-oOk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MkF-Gj-2Ad" userLabel="First Responder" sceneMemberID="firstResponder"/>

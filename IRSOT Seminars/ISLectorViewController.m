@@ -79,7 +79,7 @@
     
     // seminars
 //    size.height += self.lectorSeminars.frame.size.height;
-    int tableHeight = self.lectorSeminars.rowHeight * ([self.lector.seminars count] + 1);
+    NSInteger tableHeight = 44 * ([self.lector.seminars count] + 1);
     //    CGRectGetMaxY([self.tableView rectForSection:[self.tableView numberOfSections] - 1])
     
     CGRect tableFrame = self.lectorSeminars.frame;

@@ -161,17 +161,6 @@
     if ([self.lector.photo length]) [self loadLectorPhoto];
 }
 
-- (void)viewDidUnload
-{
-    [self setLectorName:nil];
-    [self setLectorBio:nil];
-    [self setLectorSeminars:nil];
-    [self setScrollView:nil];
-    [self setLectorPhoto:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [self recalculateElementsBounds];

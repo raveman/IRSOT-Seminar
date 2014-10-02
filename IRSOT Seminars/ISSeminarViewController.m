@@ -29,6 +29,7 @@
 #import "Section+Load_Data.h"
 #import "Type+Load_Data.h"
 #import "ISAlertTimes.h"
+#import "ISActivityProvider.h"
 
 @interface ISSeminarViewController () <UIActionSheetDelegate, UIWebViewDelegate, UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate>
 
@@ -37,7 +38,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *seminarDate;
 @property (weak, nonatomic) IBOutlet UILabel *sectionLabel;
 @property (weak, nonatomic) IBOutlet UILabel *typeLabel;
-@property (weak, nonatomic) IBOutlet UILabel *lectorsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *programLabel;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIWebView *programWebView;
@@ -59,7 +59,6 @@
 @synthesize seminarDate = _seminarDate;
 @synthesize sectionLabel = _sectionLabel;
 @synthesize typeLabel = _typeLabel;
-@synthesize lectorsLabel = _lectorsLabel;
 @synthesize programLabel = _programLabel;
 @synthesize scrollView = _scrollView;
 @synthesize programWebView = _programWebView;
@@ -191,7 +190,6 @@
         self.seminarDate.hidden = YES;
         self.sectionLabel.hidden = YES;
         self.typeLabel.hidden = YES;
-        self.lectorsLabel.hidden = YES;
         self.programWebView.hidden = YES;
         self.lectorTableView.hidden = YES;
         self.programLabel.hidden = YES;
@@ -260,13 +258,10 @@
 {
     [super viewWillAppear:animated];
 
-//    [self recalculateElementsBounds];
-
     NSIndexPath *indexPath = [self.lectorTableView indexPathForSelectedRow];
     if (indexPath != nil) {
         [self.lectorTableView deselectRowAtIndexPath:indexPath animated:YES];
     }
-    
 }
 
 - (void) viewWillDisappear:(BOOL)animated
@@ -341,21 +336,52 @@
         NSString *addBookmarkButton = NSLocalizedString(@"Add bookmark", @"Add bookmark");
         NSString *viewOnWebButton = NSLocalizedString(@"View on web site", @"View on web site");
         NSString *addToCalendar = NSLocalizedString(@"Add to calendar", @"Add to calendar button title");
-
+        
         NSString *viewAdditionaMaterials = NSLocalizedString(@"View additional materials", @"View additional materials button title");
-        NSString *emailButton = NSLocalizedString(@"Email", @"Share via E-Mail");
+        NSString *shareToButton = NSLocalizedString(@"Share to", @"Share to");
         
-        UIActionSheet *actionSheet = nil;
-        
-        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Favorites", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, addToCalendar, viewAdditionaMaterials, emailButton, nil];
-        } else {
-            actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Favorites", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, addToCalendar, viewAdditionaMaterials, emailButton, nil];
-        }
-        
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:NSLocalizedString(@"Favorites", @"Bookmarks List View Title") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") destructiveButtonTitle:nil otherButtonTitles:addBookmarkButton, viewOnWebButton, addToCalendar, viewAdditionaMaterials, shareToButton, nil];
+     
         [actionSheet showFromBarButtonItem:sender animated:YES];
         self.actionSheet = actionSheet;
     }
+}
+
+
+// present modern ActivityVC with system share buttons
+- (void)presentActivityVC:(UIBarButtonItem *)sender
+{
+    ISActivityProvider *ap = [[ISActivityProvider alloc] init];
+    ap.seminar = self.seminar;
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%@", self.seminar.ruseminar_url]];
+    NSArray *activityItems = @[ap, url];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    activityVC.excludedActivityTypes = @[UIActivityTypePostToWeibo, UIActivityTypeAssignToContact ];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+    {
+        UIPopoverController *popoverController = [[UIPopoverController alloc] initWithContentViewController:activityVC];
+        
+        [popoverController
+         presentPopoverFromBarButtonItem:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+    else
+    {
+        [self presentViewController:activityVC animated:YES completion:nil];
+    }
+    
+//    [activityVC setCompletionHandler:^(NSString *act, BOOL done) {
+//        NSString *status = nil;
+//        if ( [act isEqualToString:UIActivityTypeMail] )             status = @"Mail sended!";
+//        if ( [act isEqualToString:UIActivityTypePostToTwitter] )    status = @"Post on twitter, ok!";
+//        if ( [act isEqualToString:UIActivityTypePostToFacebook] )   status = @"Post on facebook, ok!";
+//        if ( [act isEqualToString:UIActivityTypeMessage] )          status = @"SMS sended!";
+//        if ( done )
+//        {
+//            [SVProgressHUD showWithStatus:status];
+//        }
+//    }];
 }
 
 #pragma mark - UIActionSheetDelegate
@@ -437,50 +463,29 @@
         // view seminar additional materials
         [self performSegueWithIdentifier:@"View additional" sender:self];
     } else if (buttonIndex == 4) {
-        //share to email
+        //share to everywhere
         
-        if ([MFMailComposeViewController canSendMail]) {
-            NSString *subject = [NSString stringWithFormat:@"Семинар %@", self.seminar.name];
-            NSString *message = [NSString stringWithFormat:@"%@ \n%@\n", self.seminar.name, self.seminar.ruseminar_url];
-            if ([self.seminar.date_start isEqualToDate: self.seminar.date_end]) {
-                message = [NSString stringWithFormat:@"%@ дата проведения: %@", message, [self stringFromDate:self.seminar.date_start]];
-            } else {
-                message = [NSString stringWithFormat:@"%@ дата проведения: с %@ по %@", message, [self stringFromDate:self.seminar.date_start], [self stringFromDate:self.seminar.date_end]];
-            }
-            MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
-            mc.mailComposeDelegate = self;
-            mc.navigationBar.tintColor = [ISTheme barButtonItemColor];
-            [mc setSubject:subject];
-            [mc setMessageBody:message isHTML:NO];
-            [self presentViewController:mc animated:YES completion:NULL];
-        } else {
-            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Can't send email", @"Can't send email")];
-        }
-
-
-    } else if (buttonIndex == 5) {
-        //share to facebook
+        [self presentActivityVC:self.navigationItem.rightBarButtonItem];
+        
+//        if ([MFMailComposeViewController canSendMail]) {
+//            NSString *subject = [NSString stringWithFormat:@"Семинар %@", self.seminar.name];
+//            NSString *message = [NSString stringWithFormat:@"%@ \n%@\n", self.seminar.name, self.seminar.ruseminar_url];
+//            if ([self.seminar.date_start isEqualToDate: self.seminar.date_end]) {
+//                message = [NSString stringWithFormat:@"%@ дата проведения: %@", message, [Helper stringFromDate:self.seminar.date_start]];
+//            } else {
+//                message = [NSString stringWithFormat:@"%@ дата проведения: с %@ по %@", message, [Helper stringFromDate:self.seminar.date_start], [Helper stringFromDate:self.seminar.date_end]];
+//            }
+//            MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+//            mc.mailComposeDelegate = self;
+//            mc.navigationBar.tintColor = [ISTheme barButtonItemColor];
+//            [mc setSubject:subject];
+//            [mc setMessageBody:message isHTML:NO];
+//            [self presentViewController:mc animated:YES completion:NULL];
+//        } else {
+//            [SVProgressHUD showErrorWithStatus:NSLocalizedString(@"Can't send email", @"Can't send email")];
+//        }
 
     }
-//    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-       else if (buttonIndex == 6) {
-            //share to vkontakte
-
-    }
-    
-    //share to evernote
-//    SHKItem *item = [SHKItem URL:[NSURL URLWithString:self.seminar.ruseminar_url] title:[NSString stringWithFormat:@"Семинар ИРСОТ: «%@»", self.seminar.name] contentType:SHKShareTypeURL];
-//    [SHKEvernote shareItem:item];
-}
-
-- (NSString *)stringFromDate:(NSDate *)date
-{
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"d.MM.y"];
-    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
-    [dateFormatter setLocale:locale];
-    
-    return [dateFormatter stringFromDate:date];
 }
 
 #pragma mark - Core Data Fetch

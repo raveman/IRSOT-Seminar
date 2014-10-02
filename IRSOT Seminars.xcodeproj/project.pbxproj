@@ -41,6 +41,7 @@
 		C46DED8216D26813008DAC47 /* ISAlertTimesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C46DED8116D26813008DAC47 /* ISAlertTimesTableViewController.m */; };
 		C46DED8516D28828008DAC47 /* ISAlertTimes.m in Sources */ = {isa = PBXBuildFile; fileRef = C46DED8416D28828008DAC47 /* ISAlertTimes.m */; };
 		C4786CA416DE023C007A9B4A /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4786CA316DE023C007A9B4A /* CoreImage.framework */; };
+		C481E96719DD78A400356E79 /* ISActivityProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = C481E96619DD78A400356E79 /* ISActivityProvider.m */; };
 		C483E40C15D2ADD1001A41FB /* ISLectorListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */; };
 		C483E40F15D2C393001A41FB /* Helper.m in Sources */ = {isa = PBXBuildFile; fileRef = C483E40E15D2C393001A41FB /* Helper.m */; };
 		C48F972215CC663400F4AA51 /* ISSeminarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C48F972115CC663400F4AA51 /* ISSeminarViewController.m */; };
@@ -124,6 +125,8 @@
 		C46DED8316D28828008DAC47 /* ISAlertTimes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISAlertTimes.h; path = Models/ISAlertTimes.h; sourceTree = "<group>"; };
 		C46DED8416D28828008DAC47 /* ISAlertTimes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISAlertTimes.m; path = Models/ISAlertTimes.m; sourceTree = "<group>"; };
 		C4786CA316DE023C007A9B4A /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		C481E96519DD78A400356E79 /* ISActivityProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISActivityProvider.h; sourceTree = "<group>"; };
+		C481E96619DD78A400356E79 /* ISActivityProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISActivityProvider.m; sourceTree = "<group>"; };
 		C483E40A15D2ADD1001A41FB /* ISLectorListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLectorListTableViewController.h; sourceTree = "<group>"; };
 		C483E40B15D2ADD1001A41FB /* ISLectorListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLectorListTableViewController.m; sourceTree = "<group>"; };
 		C483E40D15D2C393001A41FB /* Helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helper.h; sourceTree = "<group>"; };
@@ -425,6 +428,8 @@
 				C4DE788915C95D26007FBEC4 /* ISSeminarListTableViewController.m */,
 				C48F972015CC663400F4AA51 /* ISSeminarViewController.h */,
 				C48F972115CC663400F4AA51 /* ISSeminarViewController.m */,
+				C481E96519DD78A400356E79 /* ISActivityProvider.h */,
+				C481E96619DD78A400356E79 /* ISActivityProvider.m */,
 			);
 			name = "Seminar Views";
 			sourceTree = "<group>";
@@ -563,6 +568,7 @@
 				C462BDBD15C95A8700170E3C /* main.m in Sources */,
 				C462BDC115C95A8700170E3C /* ISAppDelegate.m in Sources */,
 				C462BDCA15C95A8700170E3C /* IRSOT_Seminars.xcdatamodeld in Sources */,
+				C481E96719DD78A400356E79 /* ISActivityProvider.m in Sources */,
 				C4D42DAE19D72EDC003D51CD /* AllEvents.m in Sources */,
 				C462BDDB15C95B7300170E3C /* ISMainPageViewController.m in Sources */,
 				C4D42DC619D731FB003D51CD /* ISTheme.m in Sources */,
@@ -664,7 +670,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
+				PROVISIONING_PROFILE = "d4ae0bc2-9010-4e4a-affc-f1539c0fa751";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALID_ARCHS = "armv7 armv7s i386 x86_64";
@@ -699,7 +705,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "3e90f56f-bc51-49b5-8db7-d3f8f4a32d78";
+				PROVISIONING_PROFILE = "d4ae0bc2-9010-4e4a-affc-f1539c0fa751";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -713,8 +719,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "IRSOT Seminars/IRSOT Seminars.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Vladimir Ershov (3FUFQ8X9FW)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Vladimir Ershov (3FUFQ8X9FW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
 				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
@@ -724,8 +730,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "940e4acb-953c-4e80-84ac-cd72863402b3";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "940e4acb-953c-4e80-84ac-cd72863402b3";
+				PROVISIONING_PROFILE = "26cabbba-90b7-46a1-aa6c-049a89a50f78";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "26cabbba-90b7-46a1-aa6c-049a89a50f78";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";
@@ -739,8 +745,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_ENTITLEMENTS = "IRSOT Seminars/IRSOT Seminars.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Vladimir Ershov (3FUFQ8X9FW)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Vladimir Ershov (3FUFQ8X9FW)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Vladimir Ershov (H4TUUJ7WXY)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "IRSOT Seminars/IRSOT Seminars-Prefix.pch";
 				INFOPLIST_FILE = "IRSOT Seminars/IRSOT Seminars-Info.plist";
@@ -750,8 +756,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "940e4acb-953c-4e80-84ac-cd72863402b3";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "940e4acb-953c-4e80-84ac-cd72863402b3";
+				PROVISIONING_PROFILE = "26cabbba-90b7-46a1-aa6c-049a89a50f78";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "26cabbba-90b7-46a1-aa6c-049a89a50f78";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "Submodules/**";
 				VALID_ARCHS = "armv7 armv7s arm64 i386 x86_64";

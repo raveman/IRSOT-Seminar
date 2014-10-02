@@ -24,4 +24,6 @@ extern NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification;
 
 +(void)setLocalizedItemsLabelsForTabBarController:(UITabBarController *)tabBarController;
 
++ (NSString *)stringFromDate:(NSDate *)date;
+
 @end

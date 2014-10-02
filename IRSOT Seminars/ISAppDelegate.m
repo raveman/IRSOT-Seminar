@@ -37,8 +37,11 @@
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 
     [[UINavigationBar appearance] setBarTintColor: [ISTheme navigationBarBackgroundColor]];
+    
     [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName: [ISTheme navigationBarTitleColor]}];
 
+    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[ISTheme navigationBarTitleColor]];
+    
     [[UINavigationBar appearance] setTintColor:[ISTheme navigationBarTitleColor]];
     [[UITabBar appearance] setTintColor:[ISTheme selectedTabbarItemTintColor]];
     

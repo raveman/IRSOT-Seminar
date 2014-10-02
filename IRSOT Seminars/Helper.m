@@ -134,5 +134,15 @@ NSString * const NSUbiquitousKeyValueStoreDidChangeLocallyNotification = @"Semin
 
 }
 
++ (NSString *)stringFromDate:(NSDate *)date
+{
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"d.MM.y"];
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"ru_RU"];
+    [dateFormatter setLocale:locale];
+    
+    return [dateFormatter stringFromDate:date];
+}
+
 
 @end

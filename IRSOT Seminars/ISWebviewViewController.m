@@ -44,8 +44,6 @@
 {
     [super viewDidLoad];
     
-    
-    
     NSMutableArray *buttons = self.modalWebToolBar.items.mutableCopy;
     UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     spacer.width = 10;

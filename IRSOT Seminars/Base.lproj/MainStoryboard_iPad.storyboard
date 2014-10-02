@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="13F34" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="SDO-f5-Zha">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="SDO-f5-Zha">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
@@ -583,12 +582,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="rCp-97-phO">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" enabled="NO" image="back-iPhone.png" id="E30-d4-v8s">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" image="back-iPhone" id="E30-d4-v8s">
                             <connections>
                                 <action selector="backButtonPressed:" destination="EzJ-dU-4X8" id="WfW-j0-Ska"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="forward-iPhone.png" id="XlU-RG-8dG">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="forward-iPhone" id="XlU-RG-8dG">
                             <connections>
                                 <action selector="forwardButtonPressed:" destination="EzJ-dU-4X8" id="qYN-wk-pqt"/>
                             </connections>
@@ -898,12 +897,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="EZW-bu-GnM">
                         <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" enabled="NO" image="back-iPhone.png" id="c4u-cs-tEm">
+                        <barButtonItem key="leftBarButtonItem" enabled="NO" image="back-iPhone" id="c4u-cs-tEm">
                             <connections>
                                 <action selector="backButtonPressed:" destination="YjH-TW-wy2" id="F5A-F2-DeT"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="forward-iPhone.png" id="1xD-Ow-w5s">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" image="forward-iPhone" id="1xD-Ow-w5s">
                             <connections>
                                 <action selector="forwardButtonPressed:" destination="YjH-TW-wy2" id="TxW-cQ-vrz"/>
                             </connections>
@@ -922,8 +921,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back-iPhone" width="20" height="20"/>
         <image name="back-iPhone.png" width="20" height="20"/>
         <image name="catalog3-iPhone" width="30" height="30"/>
+        <image name="forward-iPhone" width="20" height="20"/>
         <image name="forward-iPhone.png" width="20" height="20"/>
         <image name="gear-iPhone" width="30" height="30"/>
         <image name="info-iPhone" width="30" height="30"/>
@@ -939,7 +940,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="zvB-hx-HA2"/>
-        <segue reference="VsF-FJ-0gS"/>
+        <segue reference="ch1-0n-b75"/>
         <segue reference="ASJ-44-5f7"/>
     </inferredMetricsTieBreakers>
 </document>

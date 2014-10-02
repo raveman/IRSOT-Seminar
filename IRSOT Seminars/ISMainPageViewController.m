@@ -180,8 +180,6 @@ static const NSUInteger TYPES_SECTION = 2;
     }
     
     if ([[segue identifier] isEqualToString:@"bookmarks"]) {
-        ISBookmarksTableViewController *dvc = (ISBookmarksTableViewController *)[segue destinationViewController];
-        
     }
     
     if ([[segue identifier] isEqualToString:@"Settings"]) {

@@ -15,6 +15,7 @@
 #import "ISTheme.h"
 
 #import "SeminarFetcher.h"
+#import "SVProgressHUD/SVProgressHUD.h"
 
 @implementation ISAppDelegate
 
@@ -40,6 +41,8 @@
 
     [[UINavigationBar appearance] setTintColor:[ISTheme navigationBarTitleColor]];
     [[UITabBar appearance] setTintColor:[ISTheme selectedTabbarItemTintColor]];
+    
+    [SVProgressHUD setBackgroundColor:[UIColor lightGrayColor]];
     
     self.kvStore = [NSUbiquitousKeyValueStore defaultStore];
     

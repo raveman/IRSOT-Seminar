@@ -42,10 +42,11 @@
 
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[ISTheme navigationBarTitleColor]];
     
-    [[UINavigationBar appearance] setTintColor:[ISTheme navigationBarTitleColor]];
+    [[UINavigationBar appearance] setTintColor:[ISTheme navigationBarBackgroundColor]];
     [[UITabBar appearance] setTintColor:[ISTheme selectedTabbarItemTintColor]];
     
-    [SVProgressHUD setBackgroundColor:[UIColor lightGrayColor]];
+    [SVProgressHUD setBackgroundColor:[ISTheme hudColor]];
+    [SVProgressHUD setForegroundColor:[UIColor whiteColor]];
     
     self.kvStore = [NSUbiquitousKeyValueStore defaultStore];
     

@@ -23,6 +23,7 @@
 + (UIColor *)baseTintColor;
 + (UIColor *)labelColor;
 + (UIColor *)selectedTabbarItemTintColor;
++ (UIColor *)hudColor;
 
 + (UIColor *)switchThumbColor;
 + (UIColor *)switchOnColor;

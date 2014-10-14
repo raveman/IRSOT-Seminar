@@ -36,6 +36,10 @@
     return [UIColor whiteColor];
 }
 
++ (UIColor *)hudColor
+{
+    return [UIColor colorWithRed:18/255.0 green:122/255.0 blue:187/255.0 alpha:0.8];
+}
 
 + (UIColor *)baseTintColor
 {

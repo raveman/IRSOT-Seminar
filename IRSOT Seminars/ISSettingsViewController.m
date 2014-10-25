@@ -100,7 +100,6 @@ const NSInteger settingsSections = 3;
     }
 }
 
-
 #pragma mark - UIViewContoller methods
 - (void)viewDidLoad
 {
@@ -143,6 +142,19 @@ const NSInteger settingsSections = 3;
  
     [self checkCalendarAccess];
     self.isUpdating = NO;
+    if (self.doUpdate) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:settingsUpdateSection];
+        UITableViewCell *refreshCell = [self.tableView cellForRowAtIndexPath:indexPath];
+        refreshCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        refreshCell.textLabel.enabled = NO;
+        refreshCell.userInteractionEnabled = NO;
+        
+        [self loadData];
+
+        refreshCell.selectionStyle = UITableViewCellSelectionStyleBlue;
+        refreshCell.textLabel.enabled = YES;
+        refreshCell.userInteractionEnabled = YES;
+    }
 }
 
 - (void)viewDidUnload

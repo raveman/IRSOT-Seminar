@@ -28,6 +28,7 @@
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic) BOOL emptyStore;
 @property (nonatomic) NSInteger changedTime;
+@property (nonatomic) BOOL doUpdate;
 
 @property (nonatomic, weak) id <ISSettingsViewControllerDelegate> delegate;
  

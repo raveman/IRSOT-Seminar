@@ -44,6 +44,7 @@ static const NSUInteger TYPES_SECTION = 2;
 @property (nonatomic) NSInteger changedTime;
 @property (nonatomic) NSUInteger emptyCount;
 @property (nonatomic, strong) NSArray *filteredTypeItems;
+@property (nonatomic) BOOL doUpdate;
 
 @end
 
@@ -58,6 +59,7 @@ static const NSUInteger TYPES_SECTION = 2;
 @synthesize changedTime = _changedTime;
 @synthesize emptyCount = _emptyCount;
 @synthesize filteredTypeItems = _filteredTypeItems;
+@synthesize doUpdate = _doUpdate;
 
 #pragma mark - Class methods 
 
@@ -133,11 +135,13 @@ static const NSUInteger TYPES_SECTION = 2;
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Catalog", @"Catalog") message:NSLocalizedString(@"No downloaded seminars", @"No downloaded data") delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", @"Cancel") otherButtonTitles:NSLocalizedString(@"Download", @"Download"), nil];
         [alert show];
         checkUpdates = NO;
+        self.doUpdate = YES;
         self.noDataLabel.hidden = NO;
     } else {
         [self.seminarCategoriesTableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 
         self.noDataLabel.hidden = YES;
+        self.doUpdate = NO;
         // deselecting previous selected row;
 //        NSIndexPath *indexPath = [self.seminarCategoriesTableView indexPathForSelectedRow];
 //        if (indexPath != nil) {
@@ -189,6 +193,9 @@ static const NSUInteger TYPES_SECTION = 2;
             dvc.emptyStore = NO;
         } else {
             dvc.emptyStore = YES;
+        }
+        if (self.doUpdate) {
+            [dvc setDoUpdate:self.doUpdate];
         }
         [dvc setManagedObjectContext:self.managedObjectContext];
         [dvc setDelegate:self];
@@ -436,6 +443,7 @@ static const NSUInteger TYPES_SECTION = 2;
     
     if (buttonIndex == 1) {
         [self performSegueWithIdentifier:@"Settings" sender:self];
+        
     }
     // в buttonIndex содержится номер кнопки
 }
@@ -490,6 +498,7 @@ static const NSUInteger TYPES_SECTION = 2;
                     dispatch_async(dispatch_get_main_queue(), ^{
                         self.changedTime = changeTime;
                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"Catalog", @"Catalog") message:NSLocalizedString(@"There are catalog updates. Download ?", @"There are updates message")  delegate:self cancelButtonTitle:NSLocalizedString(@"Not now", @"Not now button") otherButtonTitles:NSLocalizedString(@"Download", @"Download button"), nil];
+                        self.doUpdate = YES;
                         [alert show];
                     });
                 }

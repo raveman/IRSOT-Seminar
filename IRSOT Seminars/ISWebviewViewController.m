@@ -65,7 +65,7 @@
     if (self.navigationController) {
         self.modalNavigationBar.hidden = YES;
         self.modalWebToolBar.hidden = YES;
-
+        self.navigationController.navigationItem.leftBarButtonItem.tintColor = [ISTheme navigationBarTitleColor];
     } else {
         self.modalNavigationBar.topItem.title = self.webviewTitle;
         self.modalWebToolBar.hidden = NO;

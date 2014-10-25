@@ -16,6 +16,7 @@
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *forwardButton;
+@property (strong, nonatomic) UIBarButtonItem *refreshButton;
 
 @end
 
@@ -23,7 +24,7 @@
 @synthesize webview;
 @synthesize backButton;
 @synthesize forwardButton;
-
+@synthesize refreshButton;
 
 - (void)viewDidLoad
 {
@@ -43,10 +44,16 @@
     
     self.webview.scalesPageToFit = YES;
     
+    
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [self.webview loadRequest: request];
     self.navigationItem.rightBarButtonItem.tintColor = [ISTheme barButtonItemColor];
     self.navigationItem.leftBarButtonItem.tintColor = [ISTheme barButtonItemColor];
+    
+    self.refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refresh:)];
+    
+    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:  self.forwardButton, self.refreshButton, nil];
+    
 }
 
 - (void)viewDidUnload
@@ -74,6 +81,10 @@
 }
 - (IBAction)forwardButtonPressed:(UIBarButtonItem *)sender {
     [self.webview goForward];
+}
+
+- (void)refresh:(UIBarButtonItem *)sender {
+    [self.webview reload];
 }
 
 #pragma mark - IUWebviewDelegate

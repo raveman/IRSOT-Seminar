@@ -18,9 +18,8 @@
 
     
     // TODO: export links and names from website
-    urls = [NSArray arrayWithObjects: @"http://www.ruseminar.ru/terms", @"http://www.ruseminar.ru/terms-kadry", @"http://www.ruseminar.ru/mesto-provedeniya", @"http://www.ruseminar.ru/dogovor", nil];
-    titles = [NSArray arrayWithObjects:NSLocalizedString(@"Разделы «Бухгалтерский учет и налогообложение», «Финансы», «Право», «Управление»", @"All sections"),
-              NSLocalizedString(@"Раздел «Кадры»", @"Раздел «Кадры»"), NSLocalizedString(@"Места проведения мероприятий", @"Seminar place"), NSLocalizedString(@"Образец договора", @"Contract template"), nil];
+    urls = [NSArray arrayWithObjects: @"http://www.ruseminar.ru/terms",  @"http://www.ruseminar.ru/mesto-provedeniya", @"http://www.ruseminar.ru/dogovor", nil];
+    titles = [NSArray arrayWithObjects:NSLocalizedString(@"Регистрация на мероприятия", @"All sections"), NSLocalizedString(@"Места проведения мероприятий", @"Seminar place"), NSLocalizedString(@"Образец договора", @"Contract template"), nil];
     NSArray *terms = [NSArray arrayWithObjects:urls, titles, nil];
     
     urls = [NSArray arrayWithObjects: @"http://www.ruseminar.ru/distance", @"http://www.ruseminar.ru/rodo", nil];

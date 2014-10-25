@@ -119,7 +119,7 @@
 {
     NSString *title;
     if (section == 2) {
-        title = NSLocalizedString(@"Телефоны: +7 (495) 933-02-17, +7 (495) 974-24-53\n Факс: (495) 933-0215\n E-mail: seminar@ruseminar.ru",@"Info telephones");
+        title = NSLocalizedString(@"Телефоны: +7 (495) 933-02-17, +7 (495) 974-24-53\nФакс: +7 (495) 933-0215\nE-mail: seminar@ruseminar.ru",@"Info telephones");
     }
     return title;
 

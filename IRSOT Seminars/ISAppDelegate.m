@@ -42,7 +42,8 @@
 
     [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil] setTintColor:[ISTheme navigationBarTitleColor]];
     
-    [[UINavigationBar appearance] setTintColor:[ISTheme navigationBarBackgroundColor]];
+    [[UINavigationBar appearance] setTintColor:[ISTheme navigationBarTitleColor]];
+    
     [[UITabBar appearance] setTintColor:[ISTheme selectedTabbarItemTintColor]];
     
     [SVProgressHUD setBackgroundColor:[ISTheme hudColor]];

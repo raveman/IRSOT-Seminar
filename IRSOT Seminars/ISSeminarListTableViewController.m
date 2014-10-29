@@ -78,6 +78,7 @@
     [super viewDidLoad];
 
     self.navigationItem.leftBarButtonItem.tintColor = [ISTheme barButtonItemColor];
+
     self.searchDisplayController.searchBar.delegate = self;
 //    self.searchDisplayController.searchBar.backgroundColor = [UIColor clearColor];
     

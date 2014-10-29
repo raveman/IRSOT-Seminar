@@ -516,6 +516,7 @@ const NSInteger settingsSections = 3;
         default:
             break;
     }
+    cell.textLabel.font = [ISTheme cellMainFont];
     
     return cell;
 }

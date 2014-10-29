@@ -27,6 +27,7 @@
 #import "Seminar+Load_Data.h"
 #import "AllEvents+Load_Data.h"
 #import "Lector+Load_Data.h"
+#import "Info+Load_data.h"
 
 const NSInteger settingsUpdateSection = 0;
 const NSInteger settingsSortSection = 1;
@@ -260,6 +261,11 @@ const NSInteger settingsSections = 3;
                 dispatch_async(dispatch_get_main_queue(), ^{
                     self.closeButton.enabled = NO;
                 });
+                
+                NSArray *infoPages = [SeminarFetcher infoPages];
+                for (NSDictionary *infoPage in infoPages) {
+                    [Info infoWithDictionary:infoPage inManagedObjectContext:self.managedObjectContext];
+                }
                 
                 NSDictionary  *sectionsAndTypes = [SeminarFetcher sectionsAndTypes];
         

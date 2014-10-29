@@ -104,6 +104,14 @@
     return lectors;
 }
 
++ (NSArray *)infoPages
+{
+    NSString *infoPagesURL = [NSString stringWithFormat:@"%@/%@", SEMINAR_URL, SEMINAR_INFO_LIST_URL];
+    NSArray *infoPages = [SeminarFetcher executeFetch:infoPagesURL];
+    
+    return infoPages;
+}
+
 // проверяем наличие обновлений на сайте
 + (NSInteger)checkUpdates
 {

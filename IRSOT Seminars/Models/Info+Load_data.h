@@ -10,6 +10,5 @@
 
 @interface Info (Load_data)
 
-
-
++ (Info *) infoWithDictionary:(NSDictionary *) dictionary inManagedObjectContext:(NSManagedObjectContext *)context;
 @end

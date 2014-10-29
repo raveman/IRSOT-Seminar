@@ -63,6 +63,13 @@
 #define LECTOR_RUSEMINAR_ID @"id"
 #define LECTOR_PHOTO_URL @"photo_url"
 
+#define SEMINAR_INFO_LIST_URL @"info_settings.json"
+#define SEMINAR_INFO_ID @"id"
+#define SEMINAR_INFO_CATEGORY @"category"
+#define SEMINAR_INFO_URL @"page_url"
+#define SEMINAR_INFO_TITLE_RUS @"title_rus"
+#define SEMINAR_INFO_TITLE_ENG @"title_eng"
+
 #define SEMINAR_PROGRAMS_LIST_URL @"seminar_programs.json"
 #define SEMINAR_PROGRAM_ID @"ruseminar_id"
 #define SEMINAR_PROGRAM_PROGRAM @"program"
@@ -83,6 +90,7 @@
 + (NSArray *)seminars;
 + (NSArray *)seminarPrograms;
 + (NSArray *)lectors;
++ (NSArray *)infoPages;
 
 + (NSInteger)checkUpdates;
 

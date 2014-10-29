@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ISInfoTableViewController : UITableViewController
+@interface ISInfoTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @end

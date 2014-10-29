@@ -4,10 +4,11 @@
         <relationship name="seminars" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Seminar" inverseName="allevents" inverseEntity="Seminar" syncable="YES"/>
     </entity>
     <entity name="Info" syncable="YES">
-        <attribute name="category" optional="YES" syncable="YES"/>
-        <attribute name="page_url" optional="YES" syncable="YES"/>
-        <attribute name="title_eng" optional="YES" syncable="YES"/>
-        <attribute name="title_rus" optional="YES" syncable="YES"/>
+        <attribute name="category" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="page_url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title_eng" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title_rus" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Lector" representedClassName="Lector" syncable="YES">
         <attribute name="bio" optional="YES" attributeType="String" syncable="YES"/>
@@ -55,6 +56,6 @@
         <element name="Seminar" positionX="135" positionY="-315" width="128" height="253"/>
         <element name="Term" positionX="-74" positionY="-522" width="128" height="103"/>
         <element name="Type" positionX="-261" positionY="-324" width="128" height="58"/>
-        <element name="Info" positionX="207" positionY="-520" width="128" height="103"/>
+        <element name="Info" positionX="207" positionY="-520" width="128" height="118"/>
     </elements>
 </model>

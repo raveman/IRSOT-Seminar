@@ -51,11 +51,11 @@
     </entity>
     <elements>
         <element name="AllEvents" positionX="376" positionY="-306" width="128" height="58"/>
-        <element name="Info" positionX="207" positionY="-520" width="128" height="118"/>
         <element name="Lector" positionX="-108" positionY="-63" width="128" height="180"/>
         <element name="Section" positionX="-225" positionY="-207" width="128" height="58"/>
         <element name="Seminar" positionX="135" positionY="-315" width="128" height="253"/>
         <element name="Term" positionX="-74" positionY="-522" width="128" height="103"/>
         <element name="Type" positionX="-261" positionY="-324" width="128" height="58"/>
+        <element name="Info" positionX="160" positionY="-549" width="128" height="120"/>
     </elements>
 </model>
